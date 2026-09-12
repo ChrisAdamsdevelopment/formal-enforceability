@@ -1,6 +1,10 @@
 [
   {
     "candidate_key": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
     "oracle": {
       "explored_profiles": 2,
       "failure_probability": "1/2",
@@ -18,10 +22,17 @@
       "unresolved": "retain_all"
     },
     "stratum": "observation-conflict|LOSING",
-    "tie_break": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    }
   },
   {
     "candidate_key": "observation-conflict:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "duplicate_classification": {
+      "category": "FORMAL_ISOMORPHIC_DUPLICATE",
+      "representative_candidate_key": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
     "oracle": {
       "explored_profiles": 2,
       "failure_probability": "1/2",
@@ -31,7 +42,7 @@
       "threshold_satisfied": false,
       "witness": null
     },
-    "reason": "same_isomorphism_class_as:observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "reason": "formal_isomorphic_duplicate_excluded",
     "retained": false,
     "rule": {
       "exact_duplicates": "retain_first",
@@ -39,10 +50,17 @@
       "unresolved": "retain_all"
     },
     "stratum": "observation-conflict|LOSING",
-    "tie_break": "observation-conflict:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "observation-conflict:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    }
   },
   {
     "candidate_key": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+    },
     "oracle": {
       "explored_profiles": 4,
       "failure_probability": "0",
@@ -75,10 +93,17 @@
       "unresolved": "retain_all"
     },
     "stratum": "authority-limitation|WINNING",
-    "tie_break": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+    }
   },
   {
     "candidate_key": "authority-limitation:1:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+    "duplicate_classification": {
+      "category": "EXACT_DUPLICATE",
+      "representative_candidate_key": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+    },
     "oracle": {
       "explored_profiles": 4,
       "failure_probability": "0",
@@ -103,7 +128,7 @@
         }
       ]
     },
-    "reason": "same_game_id_as:authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+    "reason": "exact_duplicate_excluded",
     "retained": false,
     "rule": {
       "exact_duplicates": "retain_first",
@@ -111,10 +136,17 @@
       "unresolved": "retain_all"
     },
     "stratum": "authority-limitation|WINNING",
-    "tie_break": "authority-limitation:1:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "authority-limitation:1:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+    }
   },
   {
     "candidate_key": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
     "oracle": {
       "explored_profiles": 324,
       "failure_probability": "0",
@@ -195,10 +227,17 @@
       "unresolved": "retain_all"
     },
     "stratum": "probe|WINNING",
-    "tie_break": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    }
   },
   {
     "candidate_key": "probe:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "duplicate_classification": {
+      "category": "EXACT_DUPLICATE",
+      "representative_candidate_key": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
     "oracle": {
       "explored_profiles": 324,
       "failure_probability": "0",
@@ -271,7 +310,7 @@
         }
       ]
     },
-    "reason": "same_game_id_as:probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "reason": "exact_duplicate_excluded",
     "retained": false,
     "rule": {
       "exact_duplicates": "retain_first",
@@ -279,10 +318,17 @@
       "unresolved": "retain_all"
     },
     "stratum": "probe|WINNING",
-    "tie_break": "probe:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "probe:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    }
   },
   {
     "candidate_key": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
     "oracle": {
       "explored_profiles": 2,
       "failure_probability": "0",
@@ -315,10 +361,17 @@
       "unresolved": "retain_all"
     },
     "stratum": "timing|WINNING",
-    "tie_break": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    }
   },
   {
     "candidate_key": "timing:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "duplicate_classification": {
+      "category": "EXACT_DUPLICATE",
+      "representative_candidate_key": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
     "oracle": {
       "explored_profiles": 2,
       "failure_probability": "0",
@@ -343,7 +396,7 @@
         }
       ]
     },
-    "reason": "same_game_id_as:timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "reason": "exact_duplicate_excluded",
     "retained": false,
     "rule": {
       "exact_duplicates": "retain_first",
@@ -351,10 +404,17 @@
       "unresolved": "retain_all"
     },
     "stratum": "timing|WINNING",
-    "tie_break": "timing:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "timing:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    }
   },
   {
     "candidate_key": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+    },
     "oracle": {
       "explored_profiles": 3,
       "failure_probability": "1",
@@ -372,10 +432,17 @@
       "unresolved": "retain_all"
     },
     "stratum": "capability-restriction|LOSING",
-    "tie_break": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+    }
   },
   {
     "candidate_key": "capability-restriction:1:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+    "duplicate_classification": {
+      "category": "FORMAL_ISOMORPHIC_DUPLICATE",
+      "representative_candidate_key": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+    },
     "oracle": {
       "explored_profiles": 3,
       "failure_probability": "1",
@@ -385,7 +452,7 @@
       "threshold_satisfied": false,
       "witness": null
     },
-    "reason": "same_isomorphism_class_as:capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+    "reason": "formal_isomorphic_duplicate_excluded",
     "retained": false,
     "rule": {
       "exact_duplicates": "retain_first",
@@ -393,10 +460,17 @@
       "unresolved": "retain_all"
     },
     "stratum": "capability-restriction|LOSING",
-    "tie_break": "capability-restriction:1:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "capability-restriction:1:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+    }
   },
   {
     "candidate_key": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
     "oracle": {
       "explored_profiles": 8,
       "failure_probability": "1",
@@ -414,10 +488,17 @@
       "unresolved": "retain_all"
     },
     "stratum": "mixed-restoration|LOSING",
-    "tie_break": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    }
   },
   {
     "candidate_key": "mixed-restoration:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "duplicate_classification": {
+      "category": "EXACT_DUPLICATE",
+      "representative_candidate_key": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
     "oracle": {
       "explored_profiles": 8,
       "failure_probability": "1",
@@ -427,7 +508,7 @@
       "threshold_satisfied": false,
       "witness": null
     },
-    "reason": "same_game_id_as:mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "reason": "exact_duplicate_excluded",
     "retained": false,
     "rule": {
       "exact_duplicates": "retain_first",
@@ -435,6 +516,9 @@
       "unresolved": "retain_all"
     },
     "stratum": "mixed-restoration|LOSING",
-    "tie_break": "mixed-restoration:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "mixed-restoration:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    }
   }
 ]

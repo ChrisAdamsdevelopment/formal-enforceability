@@ -1,40 +1,45 @@
 # Stage-3 formal corpus audit and freeze
 
-Stage 3 is formal only: specification → procedural candidates → exact oracle → audits and exact renaming analysis → deterministic retention → immutable manifest.
+Stage 3 is formal only: specification → candidates → exact oracle → structural and duplicate audit → declared retention → frozen corpus.
 
 > The corpus is a controlled sample of formal games produced by declared synthetic generators. Its distributions do not estimate the frequency of safety mechanisms in real AI systems.
 
-## CorpusSpec and complete ledger
+## Immutable specification and complete provenance
 
-`CorpusSpec` is frozen and strictly parsed. Required fields declare all component versions, ordered families and half-open seed ranges, complete generator parameter sets, complexity/isomorphism limits, retention, stratification, tie-break, and quotas. Unsupported versions and unknown or missing fields fail. Sorted compact JSON is canonical; its SHA-256 is the spec fingerprint. Candidate order is family order then seed order. There is no global or hidden sampling RNG.
+`CorpusSpec` strictly declares all component versions, ordered families and half-open seed ranges, complete generator parameters, complexity and exact-isomorphism limits, retention rules, supported stratification fields, canonical `|`-separated quota keys, and the `candidate_key` tie-break. Unsupported versions, fields, policies, or strata fail. Nested mappings/lists are recursively copied into read-only mappings/tuples; serialization explicitly thaws a copy. Sorted compact JSON and SHA-256 define the fingerprint. This is semantic immutability, not a security boundary.
 
-Every attempted combination has one final state: `COMPLEXITY_REJECTED`, `GENERATION_ERROR`, `FILTERED_AFTER_SOLUTION`, `DUPLICATE_EXCLUDED`, `ISOMORPHIC_EXCLUDED`, `ISOMORPHISM_UNRESOLVED`, or `RETAINED`. Generation and solution are represented by populated fields rather than competing final states. Each record preserves the candidate key, full config and versions, config fingerprint, game ID, exact oracle/restoration results, descriptors, complexity calibration, isomorphism result, decision, stratum, tie-break, and exact reason.
+Before validation, every attempt records family, seed, generator version, limits, exact supplied parameters, and its attempted-config fingerprint. Valid and complexity-rejected attempts additionally record normalized configuration and its fingerprint. Thus configuration errors and complexity rejections remain reproducible from the ledger.
 
-## Formal isomorphism and duplicate taxonomy
+## Raw classification before retention
 
-Games are isomorphic exactly when bijections on state, controller-action, adversary-action, and observation IDs make their complete mathematical representations equal. Bijections preserve exact initial and transition probabilities, observation mapping, failure/recovery membership, horizon, epsilon, availability by round, legitimate rewards, action roles, timing, and schema version. Only `display_labels` are ignored.
+The pipeline first generates, solves, checks emitted component versions, and performs exact isomorphism. It then sorts solved candidates by canonical candidate key and classifies the entire raw set, before any sampling:
 
-`stage3.exact-permutation.v1` partitions states by failure/recovery/other role, enumerates every within-role state permutation and every action and observation permutation, serializes each renamed game, and selects the lexicographic minimum. Its class ID hashes the version and minimum. The declared `max_permutations` is checked before work; overflow produces typed `ISOMORPHISM_UNRESOLVED`, never a false “different”.
+1. same game ID → `EXACT_DUPLICATE`;
+2. otherwise same resolved class → `FORMAL_ISOMORPHIC_DUPLICATE`;
+3. otherwise unresolved canonicalization → `ISOMORPHISM_UNRESOLVED`;
+4. otherwise → `UNIQUE`.
 
-An **exact duplicate** shares the Stage-2 `game_id`. A **formal isomorphic duplicate** has a different ID but shares the exact class ID. **Template-relative similarity** merely means a common generator family and is descriptive, not duplication. Neither deduplication nor class separation establishes independence or fundamentally different safety problems.
+Each relation names its lowest-key representative when known. Exact and formal-isomorphic categories are disjoint. Only after classification are category policies and quotas applied, again in candidate-key order. Exact and isomorphic policies accept `retain_first` or `retain_all`; unresolved accepts `retain_all` or `exclude`. Retained unresolved artifacts remain marked unresolved. Raw statistics derive from classification/isomorphism results, while retained statistics derive from dispositions, so quotas cannot rewrite raw duplication facts. Retention semantics are version `stage3.deterministic-retention.v2`.
 
-## Retention and fingerprints
+## Exact formal isomorphism
 
-Policies explicitly select `retain_first` or `retain_all`; quotas are optional declared strata. The tie-break is the lowest canonical candidate key. There is no implicit 50/50 balance. The corpus fingerprint is SHA-256 of canonical JSON containing the complete canonical spec, ordered retained game IDs, and generator, schema, oracle, isomorphism, and retention versions. The ledger has a separate canonical SHA-256. These are reproducibility identifiers, not security attestations.
+Two games are isomorphic exactly when independent bijections on state, controller-action, adversary-action, and observation IDs preserve exact initial/transition probabilities, observations, failure/recovery roles, horizon, epsilon, per-round availability, rewards, timing, action roles, and schema version. Only display labels are ignored. Algorithm `stage3.exact-permutation.v1` is unchanged: partition states by failure/recovery/other role, enumerate every role-compatible state and every action/observation permutation, and choose lexicographically minimal canonical JSON. The versioned hash identifies the class. If the declared permutation bound would be exceeded, it returns typed `ISOMORPHISM_UNRESOLVED`, never false non-equivalence.
 
-## Audits
+Exact duplicates share `game_id`; formal-isomorphic duplicates have different IDs but the same resolved class; template-relative similarity is descriptive family membership only. None implies statistical independence or fundamentally distinct safety problems.
 
-Raw and retained distributions and per-family counts are separate. Coverage reports families/statuses, horizons, counts, aliasing and stochasticity; gaps are descriptors, not evidence of completeness. Configs and restoration results retain probe delay, intervention position, capability/restoration counts, tied/unique/no-feasible repairs, and information needed for mechanically matched intervention comparisons.
+## Data-derived audits
 
-Transformation integrity requires a recomputed child ID, a ledger parent (or declared external artifact), equal generator version, canonical category, and equality of reported versus actual changed formal fields. Unexpected changes fail audit. The regression spec has no transformations and reports that explicitly.
+The audit contains deterministic status contingency tables for family and mode; state/controller/adversary counts, horizon, ambiguous classes, restoration count, and stochastic branching; identifier-prefix signatures, terminal naming, and ordering-role patterns. Each row gives `WINNING`, `LOSING`, support, and descriptive `status_pure_in_this_corpus`. Purity is not proof of leakage or predictive validity. Oracle/restoration fields are explicitly answer-direct and separated from merely correlated provenance, semantic, and representational fields. Relevant naming diagnostics are repeated on the oracle-independent neutralized `s0/c0/a0/o0` view, which never mutates the original or its ID.
 
-Leakage risks are categorized as `SEMANTIC`, `REPRESENTATIONAL`, `PROVENANCE-ONLY`, and `ANSWER-DIRECT`. The report calls out names, ordering, terminal conventions, counts, restoration count, family/mode labels, and generator artifacts. A blacklist cannot prove absence of shortcuts. The audit-only neutral view deterministically maps input-order identifiers to `s0`, `c0`, `a0`, and `o0` without oracle results. It neither mutates the game nor changes its ID, and is weaker than exact isomorphism canonicalization.
+Coverage mechanically reports all-six-family and both-status flags, horizons, state/action counts, aliasing, deterministic/stochastic modes, probe delays, timing positions, adversary capabilities, restoration counts, inferable tied-optimal/no-feasible cases, matched-pair count, complexity rejections, unresolved canonicalizations, and explicit gaps. Complexity records estimates, actual `explored_profiles`, thresholds, saturation, and ratios. Actual history counts remain null because the oracle does not expose them. Nondeterministic wall-clock diagnostics are separate and never fingerprinted.
 
-Complexity calibration records estimated controller histories/profiles, actual oracle `explored_profiles`, thresholds, saturation, and overestimate ratios. Actual histories remain `null` because the oracle does not expose that measurement. Wall-clock samples are stored separately in `complexity-timing-diagnostics.json`; they are diagnostics only and excluded from reproducibility verification. Complexity estimates are operational protection, not conceptual difficulty.
+Matched-pair validation recomputes child IDs, versions, categories, parent availability, and exact changed fields. Unexpected differences fail.
 
-## Freeze and verification
+## Fingerprints and frozen verification
 
-The checked-in freeze contains the spec, complete raw ledger, retained formal manifests, corpus manifest, audit, duplicate/isomorphism report, retention report, and timing diagnostics.
+The corpus fingerprint hashes canonical JSON containing the complete spec, ordered retained IDs, and verified generator/schema/oracle/isomorphism/retention versions. The ledger fingerprint hashes its canonical records. These are reproducibility identifiers, not attestations.
+
+Verification regenerates into a temporary directory, but independently validates the actual frozen files: canonical frozen spec and manifest fingerprint; frozen ledger recomputation and three-way fingerprint equality; exact retained filename set; ledger-to-manifest IDs; recomputed formal game IDs; canonical equality of every frozen and regenerated retained manifest; deterministic reports; and timing-diagnostic schema/key coverage. Missing, extra, unparsable, or corrupt artifacts fail loudly. Timing values alone are intentionally not compared.
 
 ```bash
 PYTHONPATH=src python -m enforceability.corpus build \
@@ -43,6 +48,6 @@ PYTHONPATH=src python -m enforceability.corpus verify \
   --spec corpus_specs/regression-v1.json --corpus artifacts/regression-corpus-v1
 ```
 
-Verification regenerates and loudly compares ledger fingerprint, retained IDs, corpus fingerprint, aggregate counts, and deterministic audit, duplicate, and retention outputs. It never overwrites the freeze.
+## Limitations and next step
 
-Known biases include tiny stylized families, systematic names and terminal labels, fixed ordering, uniform initial distributions, repeated games across seeds, sparse stochastic coverage, and family-specific counts/modes. Balance does not estimate prevalence; coverage does not prove completeness; low leakage risk cannot prove no shortcuts; retained games do not represent deployments, real autonomous agents, or model behavior. Stage 3 assumes terminal-role partitioning is a sound invariant and unresolved cases must remain visible. Reproduce the freeze and expand declared mechanism coverage before introducing a separately versioned rendering stage.
+The freeze remains tiny and stylized, with systematic names, fixed ordering, uniform initialization, seed-insensitive templates, a single horizon, and no stochastic, transformed, rejected, or unresolved retained examples. Balance does not estimate prevalence; coverage does not prove completeness; low observed leakage risk does not prove absence of shortcuts; complexity is not conceptual difficulty; retained games do not represent deployments, agents, or model behavior. Reproduce this fingerprint and expand the declared formal mechanism coverage before adding any separately versioned rendering layer.

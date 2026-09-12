@@ -124,7 +124,7 @@
     "isomorphic_duplicates": "retain_first",
     "unresolved": "retain_all"
   },
-  "retention_policy_version": "stage3.deterministic-retention.v1",
+  "retention_policy_version": "stage3.deterministic-retention.v2",
   "schema_version": "stage1.v2",
   "seed_ranges": [
     [

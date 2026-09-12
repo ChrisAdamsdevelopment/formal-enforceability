@@ -1,5 +1,34 @@
 [
   {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "observation-conflict",
+      "generator_parameters": {
+        "adversary_action_count": 1,
+        "aliasing_degree": 2,
+        "ambiguous_states": 2,
+        "common_action": false,
+        "controller_action_count": 2,
+        "coverage": 1,
+        "epsilon": "0",
+        "horizon": 2,
+        "intervention_round": 0,
+        "mode": "base",
+        "probe_available": true,
+        "probe_delay": 1,
+        "probe_informative": true,
+        "stochasticity": false
+      },
+      "generator_version": "stage2.v2",
+      "seed": 0
+    },
+    "attempted_config_fingerprint": "778c2cea1b22f263021f10714112e9664648e61fd61070fddd3413f626392027",
     "candidate_key": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
     "complexity": {
       "actual_controller_histories": null,
@@ -32,6 +61,10 @@
       "restoration_candidates": 0,
       "state_count": 4,
       "stochastic_branching": 0
+    },
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
     },
     "family": "observation-conflict",
     "game_id": "0108b060532ceca8aac72a377511fe30cee6fd911476929d7d9ace3e2c2a4d1a",
@@ -89,12 +122,44 @@
         "unresolved": "retain_all"
       },
       "stratum": "observation-conflict|LOSING",
-      "tie_break": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      }
     },
     "seed": 0,
     "state": "RETAINED"
   },
   {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "observation-conflict",
+      "generator_parameters": {
+        "adversary_action_count": 1,
+        "aliasing_degree": 2,
+        "ambiguous_states": 2,
+        "common_action": false,
+        "controller_action_count": 2,
+        "coverage": 1,
+        "epsilon": "0",
+        "horizon": 2,
+        "intervention_round": 0,
+        "mode": "base",
+        "probe_available": true,
+        "probe_delay": 1,
+        "probe_informative": true,
+        "stochasticity": false
+      },
+      "generator_version": "stage2.v2",
+      "seed": 1
+    },
+    "attempted_config_fingerprint": "e045005af33410affdd36c13ce12cab0a2bbeee1766ff025f3336cd6311a8f54",
     "candidate_key": "observation-conflict:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
     "complexity": {
       "actual_controller_histories": null,
@@ -127,6 +192,10 @@
       "restoration_candidates": 0,
       "state_count": 4,
       "stochastic_branching": 0
+    },
+    "duplicate_classification": {
+      "category": "FORMAL_ISOMORPHIC_DUPLICATE",
+      "representative_candidate_key": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
     },
     "family": "observation-conflict",
     "game_id": "803c0bddc6a05ee25f4298e5f1012f92c0fa90eb04e643dd09e378e2a61278f7",
@@ -173,10 +242,10 @@
       "threshold_satisfied": false,
       "witness": null
     },
-    "reason": "same_isomorphism_class_as:observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "reason": "formal_isomorphic_duplicate_excluded",
     "restorations": [],
     "retention": {
-      "reason": "same_isomorphism_class_as:observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+      "reason": "formal_isomorphic_duplicate_excluded",
       "retained": false,
       "rule": {
         "exact_duplicates": "retain_first",
@@ -184,12 +253,44 @@
         "unresolved": "retain_all"
       },
       "stratum": "observation-conflict|LOSING",
-      "tie_break": "observation-conflict:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "observation-conflict:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      }
     },
     "seed": 1,
     "state": "ISOMORPHIC_EXCLUDED"
   },
   {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "authority-limitation",
+      "generator_parameters": {
+        "adversary_action_count": 2,
+        "aliasing_degree": 2,
+        "ambiguous_states": 2,
+        "common_action": false,
+        "controller_action_count": 2,
+        "coverage": 1,
+        "epsilon": "0",
+        "horizon": 2,
+        "intervention_round": 0,
+        "mode": "robust",
+        "probe_available": true,
+        "probe_delay": 1,
+        "probe_informative": true,
+        "stochasticity": false
+      },
+      "generator_version": "stage2.v2",
+      "seed": 0
+    },
+    "attempted_config_fingerprint": "5992ddec7a701fb998cec1a513a2471c75e036eacfd20b996aad1f5e947c9d52",
     "candidate_key": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
     "complexity": {
       "actual_controller_histories": null,
@@ -222,6 +323,10 @@
       "restoration_candidates": 0,
       "state_count": 3,
       "stochastic_branching": 0
+    },
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
     },
     "family": "authority-limitation",
     "game_id": "6cad330aa9c65f6202365a003ad43be6f3e189a081fe31ba72fdba4eb311df30",
@@ -294,12 +399,44 @@
         "unresolved": "retain_all"
       },
       "stratum": "authority-limitation|WINNING",
-      "tie_break": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+      }
     },
     "seed": 0,
     "state": "RETAINED"
   },
   {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "authority-limitation",
+      "generator_parameters": {
+        "adversary_action_count": 2,
+        "aliasing_degree": 2,
+        "ambiguous_states": 2,
+        "common_action": false,
+        "controller_action_count": 2,
+        "coverage": 1,
+        "epsilon": "0",
+        "horizon": 2,
+        "intervention_round": 0,
+        "mode": "robust",
+        "probe_available": true,
+        "probe_delay": 1,
+        "probe_informative": true,
+        "stochasticity": false
+      },
+      "generator_version": "stage2.v2",
+      "seed": 1
+    },
+    "attempted_config_fingerprint": "d73bd27692301542edbad35b321bc36dd51a302848d8caf864a6f8746a2d9a89",
     "candidate_key": "authority-limitation:1:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
     "complexity": {
       "actual_controller_histories": null,
@@ -332,6 +469,10 @@
       "restoration_candidates": 0,
       "state_count": 3,
       "stochastic_branching": 0
+    },
+    "duplicate_classification": {
+      "category": "EXACT_DUPLICATE",
+      "representative_candidate_key": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
     },
     "family": "authority-limitation",
     "game_id": "6cad330aa9c65f6202365a003ad43be6f3e189a081fe31ba72fdba4eb311df30",
@@ -393,10 +534,10 @@
         }
       ]
     },
-    "reason": "same_game_id_as:authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+    "reason": "exact_duplicate_excluded",
     "restorations": [],
     "retention": {
-      "reason": "same_game_id_as:authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+      "reason": "exact_duplicate_excluded",
       "retained": false,
       "rule": {
         "exact_duplicates": "retain_first",
@@ -404,12 +545,44 @@
         "unresolved": "retain_all"
       },
       "stratum": "authority-limitation|WINNING",
-      "tie_break": "authority-limitation:1:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "authority-limitation:1:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+      }
     },
     "seed": 1,
     "state": "DUPLICATE_EXCLUDED"
   },
   {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "probe",
+      "generator_parameters": {
+        "adversary_action_count": 1,
+        "aliasing_degree": 2,
+        "ambiguous_states": 2,
+        "common_action": false,
+        "controller_action_count": 2,
+        "coverage": 1,
+        "epsilon": "0",
+        "horizon": 2,
+        "intervention_round": 0,
+        "mode": "base",
+        "probe_available": true,
+        "probe_delay": 1,
+        "probe_informative": true,
+        "stochasticity": false
+      },
+      "generator_version": "stage2.v2",
+      "seed": 0
+    },
+    "attempted_config_fingerprint": "22df5fec540c73cc675af2fbd28f954ec15cca9dd340a260a4253392064dbc08",
     "candidate_key": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
     "complexity": {
       "actual_controller_histories": null,
@@ -445,6 +618,10 @@
       "state_count": 6,
       "stochastic_branching": 0
     },
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
     "family": "probe",
     "game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
     "generator_config": {
@@ -564,12 +741,44 @@
         "unresolved": "retain_all"
       },
       "stratum": "probe|WINNING",
-      "tie_break": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      }
     },
     "seed": 0,
     "state": "RETAINED"
   },
   {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "probe",
+      "generator_parameters": {
+        "adversary_action_count": 1,
+        "aliasing_degree": 2,
+        "ambiguous_states": 2,
+        "common_action": false,
+        "controller_action_count": 2,
+        "coverage": 1,
+        "epsilon": "0",
+        "horizon": 2,
+        "intervention_round": 0,
+        "mode": "base",
+        "probe_available": true,
+        "probe_delay": 1,
+        "probe_informative": true,
+        "stochasticity": false
+      },
+      "generator_version": "stage2.v2",
+      "seed": 1
+    },
+    "attempted_config_fingerprint": "c465a1b36568d01448e0abc137f4087eb5c4a47ebe904e2f0c88676353095cbf",
     "candidate_key": "probe:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
     "complexity": {
       "actual_controller_histories": null,
@@ -605,6 +814,10 @@
       "state_count": 6,
       "stochastic_branching": 0
     },
+    "duplicate_classification": {
+      "category": "EXACT_DUPLICATE",
+      "representative_candidate_key": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
     "family": "probe",
     "game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
     "generator_config": {
@@ -713,10 +926,10 @@
         }
       ]
     },
-    "reason": "same_game_id_as:probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "reason": "exact_duplicate_excluded",
     "restorations": [],
     "retention": {
-      "reason": "same_game_id_as:probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+      "reason": "exact_duplicate_excluded",
       "retained": false,
       "rule": {
         "exact_duplicates": "retain_first",
@@ -724,12 +937,44 @@
         "unresolved": "retain_all"
       },
       "stratum": "probe|WINNING",
-      "tie_break": "probe:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "probe:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      }
     },
     "seed": 1,
     "state": "DUPLICATE_EXCLUDED"
   },
   {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "timing",
+      "generator_parameters": {
+        "adversary_action_count": 1,
+        "aliasing_degree": 2,
+        "ambiguous_states": 2,
+        "common_action": false,
+        "controller_action_count": 2,
+        "coverage": 1,
+        "epsilon": "0",
+        "horizon": 2,
+        "intervention_round": 0,
+        "mode": "base",
+        "probe_available": true,
+        "probe_delay": 1,
+        "probe_informative": true,
+        "stochasticity": false
+      },
+      "generator_version": "stage2.v2",
+      "seed": 0
+    },
+    "attempted_config_fingerprint": "3774b4b9d024ce40c84e62052d06edee624f1293a700faec6b3ee9a470e0b7cf",
     "candidate_key": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
     "complexity": {
       "actual_controller_histories": null,
@@ -763,6 +1008,10 @@
       "restoration_candidates": 0,
       "state_count": 4,
       "stochastic_branching": 0
+    },
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
     },
     "family": "timing",
     "game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
@@ -835,12 +1084,44 @@
         "unresolved": "retain_all"
       },
       "stratum": "timing|WINNING",
-      "tie_break": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      }
     },
     "seed": 0,
     "state": "RETAINED"
   },
   {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "timing",
+      "generator_parameters": {
+        "adversary_action_count": 1,
+        "aliasing_degree": 2,
+        "ambiguous_states": 2,
+        "common_action": false,
+        "controller_action_count": 2,
+        "coverage": 1,
+        "epsilon": "0",
+        "horizon": 2,
+        "intervention_round": 0,
+        "mode": "base",
+        "probe_available": true,
+        "probe_delay": 1,
+        "probe_informative": true,
+        "stochasticity": false
+      },
+      "generator_version": "stage2.v2",
+      "seed": 1
+    },
+    "attempted_config_fingerprint": "29f2f2a6ca74e4567f6000019d96462d24a5949112b159f98b09741e8e38a626",
     "candidate_key": "timing:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
     "complexity": {
       "actual_controller_histories": null,
@@ -874,6 +1155,10 @@
       "restoration_candidates": 0,
       "state_count": 4,
       "stochastic_branching": 0
+    },
+    "duplicate_classification": {
+      "category": "EXACT_DUPLICATE",
+      "representative_candidate_key": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
     },
     "family": "timing",
     "game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
@@ -935,10 +1220,10 @@
         }
       ]
     },
-    "reason": "same_game_id_as:timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "reason": "exact_duplicate_excluded",
     "restorations": [],
     "retention": {
-      "reason": "same_game_id_as:timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+      "reason": "exact_duplicate_excluded",
       "retained": false,
       "rule": {
         "exact_duplicates": "retain_first",
@@ -946,12 +1231,44 @@
         "unresolved": "retain_all"
       },
       "stratum": "timing|WINNING",
-      "tie_break": "timing:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "timing:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      }
     },
     "seed": 1,
     "state": "DUPLICATE_EXCLUDED"
   },
   {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "capability-restriction",
+      "generator_parameters": {
+        "adversary_action_count": 3,
+        "aliasing_degree": 2,
+        "ambiguous_states": 2,
+        "common_action": false,
+        "controller_action_count": 2,
+        "coverage": 1,
+        "epsilon": "0",
+        "horizon": 2,
+        "intervention_round": 0,
+        "mode": "base",
+        "probe_available": true,
+        "probe_delay": 1,
+        "probe_informative": true,
+        "stochasticity": false
+      },
+      "generator_version": "stage2.v2",
+      "seed": 0
+    },
+    "attempted_config_fingerprint": "1339ec5a49b3c73cc080b5465df822f728c1586c07d05b55b869a4aad0500967",
     "candidate_key": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
     "complexity": {
       "actual_controller_histories": null,
@@ -984,6 +1301,10 @@
       "restoration_candidates": 2,
       "state_count": 3,
       "stochastic_branching": 0
+    },
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
     },
     "family": "capability-restriction",
     "game_id": "fa3d5fb53e11c1b686d3ff2a3e175dca08bb93f1f0ce32a2a28ba33467f901c9",
@@ -1085,12 +1406,44 @@
         "unresolved": "retain_all"
       },
       "stratum": "capability-restriction|LOSING",
-      "tie_break": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+      }
     },
     "seed": 0,
     "state": "RETAINED"
   },
   {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "capability-restriction",
+      "generator_parameters": {
+        "adversary_action_count": 3,
+        "aliasing_degree": 2,
+        "ambiguous_states": 2,
+        "common_action": false,
+        "controller_action_count": 2,
+        "coverage": 1,
+        "epsilon": "0",
+        "horizon": 2,
+        "intervention_round": 0,
+        "mode": "base",
+        "probe_available": true,
+        "probe_delay": 1,
+        "probe_informative": true,
+        "stochasticity": false
+      },
+      "generator_version": "stage2.v2",
+      "seed": 1
+    },
+    "attempted_config_fingerprint": "dc94c8c48698dc7f3a2762ee2e67ca556a74b04bf93c9814528efa68c4b37db0",
     "candidate_key": "capability-restriction:1:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
     "complexity": {
       "actual_controller_histories": null,
@@ -1123,6 +1476,10 @@
       "restoration_candidates": 2,
       "state_count": 3,
       "stochastic_branching": 0
+    },
+    "duplicate_classification": {
+      "category": "FORMAL_ISOMORPHIC_DUPLICATE",
+      "representative_candidate_key": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
     },
     "family": "capability-restriction",
     "game_id": "5406ec146fdf88c95361daacd259bf9f6fe48c4e909312a1530b88f6376a02a0",
@@ -1169,7 +1526,7 @@
       "threshold_satisfied": false,
       "witness": null
     },
-    "reason": "same_isomorphism_class_as:capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+    "reason": "formal_isomorphic_duplicate_excluded",
     "restorations": [
       {
         "candidate_id": "z0",
@@ -1216,7 +1573,7 @@
       }
     ],
     "retention": {
-      "reason": "same_isomorphism_class_as:capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+      "reason": "formal_isomorphic_duplicate_excluded",
       "retained": false,
       "rule": {
         "exact_duplicates": "retain_first",
@@ -1224,12 +1581,44 @@
         "unresolved": "retain_all"
       },
       "stratum": "capability-restriction|LOSING",
-      "tie_break": "capability-restriction:1:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "capability-restriction:1:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+      }
     },
     "seed": 1,
     "state": "ISOMORPHIC_EXCLUDED"
   },
   {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "mixed-restoration",
+      "generator_parameters": {
+        "adversary_action_count": 1,
+        "aliasing_degree": 2,
+        "ambiguous_states": 2,
+        "common_action": false,
+        "controller_action_count": 2,
+        "coverage": 1,
+        "epsilon": "0",
+        "horizon": 2,
+        "intervention_round": 0,
+        "mode": "base",
+        "probe_available": true,
+        "probe_delay": 1,
+        "probe_informative": true,
+        "stochasticity": false
+      },
+      "generator_version": "stage2.v2",
+      "seed": 0
+    },
+    "attempted_config_fingerprint": "b7b11995d80e42e1c57f09153a7fa34f45aa4039df86cd1af137cba339fc07a8",
     "candidate_key": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
     "complexity": {
       "actual_controller_histories": null,
@@ -1264,6 +1653,10 @@
       "restoration_candidates": 3,
       "state_count": 4,
       "stochastic_branching": 0
+    },
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
     },
     "family": "mixed-restoration",
     "game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
@@ -1379,12 +1772,44 @@
         "unresolved": "retain_all"
       },
       "stratum": "mixed-restoration|LOSING",
-      "tie_break": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      }
     },
     "seed": 0,
     "state": "RETAINED"
   },
   {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "mixed-restoration",
+      "generator_parameters": {
+        "adversary_action_count": 1,
+        "aliasing_degree": 2,
+        "ambiguous_states": 2,
+        "common_action": false,
+        "controller_action_count": 2,
+        "coverage": 1,
+        "epsilon": "0",
+        "horizon": 2,
+        "intervention_round": 0,
+        "mode": "base",
+        "probe_available": true,
+        "probe_delay": 1,
+        "probe_informative": true,
+        "stochasticity": false
+      },
+      "generator_version": "stage2.v2",
+      "seed": 1
+    },
+    "attempted_config_fingerprint": "6ec1e20c433a99d44f9357cf88a4531bcc93ba5fba9be09641a63f4e87f3cbe0",
     "candidate_key": "mixed-restoration:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
     "complexity": {
       "actual_controller_histories": null,
@@ -1419,6 +1844,10 @@
       "restoration_candidates": 3,
       "state_count": 4,
       "stochastic_branching": 0
+    },
+    "duplicate_classification": {
+      "category": "EXACT_DUPLICATE",
+      "representative_candidate_key": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
     },
     "family": "mixed-restoration",
     "game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
@@ -1465,7 +1894,7 @@
       "threshold_satisfied": false,
       "witness": null
     },
-    "reason": "same_game_id_as:mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "reason": "exact_duplicate_excluded",
     "restorations": [
       {
         "candidate_id": "z0",
@@ -1526,7 +1955,7 @@
       }
     ],
     "retention": {
-      "reason": "same_game_id_as:mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+      "reason": "exact_duplicate_excluded",
       "retained": false,
       "rule": {
         "exact_duplicates": "retain_first",
@@ -1534,7 +1963,10 @@
         "unresolved": "retain_all"
       },
       "stratum": "mixed-restoration|LOSING",
-      "tie_break": "mixed-restoration:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "mixed-restoration:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+      }
     },
     "seed": 1,
     "state": "DUPLICATE_EXCLUDED"
