@@ -1,0 +1,440 @@
+[
+  {
+    "candidate_key": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "1/2",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "retain_all"
+    },
+    "stratum": "observation-conflict|LOSING",
+    "tie_break": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+  },
+  {
+    "candidate_key": "observation-conflict:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "1/2",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "same_isomorphism_class_as:observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "retained": false,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "retain_all"
+    },
+    "stratum": "observation-conflict|LOSING",
+    "tie_break": "observation-conflict:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+  },
+  {
+    "candidate_key": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+    "oracle": {
+      "explored_profiles": 4,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "q"
+                ],
+                "previous_actions": []
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "retain_all"
+    },
+    "stratum": "authority-limitation|WINNING",
+    "tie_break": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+  },
+  {
+    "candidate_key": "authority-limitation:1:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+    "oracle": {
+      "explored_profiles": 4,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "q"
+                ],
+                "previous_actions": []
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "same_game_id_as:authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+    "retained": false,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "retain_all"
+    },
+    "stratum": "authority-limitation|WINNING",
+    "tie_break": "authority-limitation:1:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+  },
+  {
+    "candidate_key": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "oracle": {
+      "explored_profiles": 324,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "probe",
+              "history": {
+                "observations": [
+                  "o"
+                ],
+                "previous_actions": []
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "o"
+                ],
+                "previous_actions": [
+                  "c0"
+                ]
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "o"
+                ],
+                "previous_actions": [
+                  "c1"
+                ]
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "p0"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            },
+            {
+              "action": "c1",
+              "history": {
+                "observations": [
+                  "o",
+                  "p1"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "retain_all"
+    },
+    "stratum": "probe|WINNING",
+    "tie_break": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+  },
+  {
+    "candidate_key": "probe:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "oracle": {
+      "explored_profiles": 324,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "probe",
+              "history": {
+                "observations": [
+                  "o"
+                ],
+                "previous_actions": []
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "o"
+                ],
+                "previous_actions": [
+                  "c0"
+                ]
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "o"
+                ],
+                "previous_actions": [
+                  "c1"
+                ]
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "p0"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            },
+            {
+              "action": "c1",
+              "history": {
+                "observations": [
+                  "o",
+                  "p1"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "same_game_id_as:probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "retained": false,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "retain_all"
+    },
+    "stratum": "probe|WINNING",
+    "tie_break": "probe:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+  },
+  {
+    "candidate_key": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "act",
+              "history": {
+                "observations": [
+                  "q"
+                ],
+                "previous_actions": []
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "retain_all"
+    },
+    "stratum": "timing|WINNING",
+    "tie_break": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+  },
+  {
+    "candidate_key": "timing:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "act",
+              "history": {
+                "observations": [
+                  "q"
+                ],
+                "previous_actions": []
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "same_game_id_as:timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "retained": false,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "retain_all"
+    },
+    "stratum": "timing|WINNING",
+    "tie_break": "timing:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+  },
+  {
+    "candidate_key": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+    "oracle": {
+      "explored_profiles": 3,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "retain_all"
+    },
+    "stratum": "capability-restriction|LOSING",
+    "tie_break": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+  },
+  {
+    "candidate_key": "capability-restriction:1:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+    "oracle": {
+      "explored_profiles": 3,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "same_isomorphism_class_as:capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+    "retained": false,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "retain_all"
+    },
+    "stratum": "capability-restriction|LOSING",
+    "tie_break": "capability-restriction:1:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+  },
+  {
+    "candidate_key": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "oracle": {
+      "explored_profiles": 8,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "retain_all"
+    },
+    "stratum": "mixed-restoration|LOSING",
+    "tie_break": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+  },
+  {
+    "candidate_key": "mixed-restoration:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "oracle": {
+      "explored_profiles": 8,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "same_game_id_as:mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "retained": false,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "retain_all"
+    },
+    "stratum": "mixed-restoration|LOSING",
+    "tie_break": "mixed-restoration:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+  }
+]

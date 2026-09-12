@@ -10,3 +10,7 @@ python -m pip install -e '.[test]'
 ruff check src tests
 python -m pytest
 ```
+
+Stage 3 adds the entirely formal, deterministic audited-corpus pipeline described
+in [`docs/corpus.md`](docs/corpus.md): complete candidate ledgers, exact
+identifier-renaming isomorphism, declared retention, and a rebuildable freeze.

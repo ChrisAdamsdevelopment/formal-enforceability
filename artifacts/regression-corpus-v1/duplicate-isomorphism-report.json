@@ -1,0 +1,14 @@
+{
+  "exact_duplicate_count": 4,
+  "formal_isomorphic_duplicate_count": 2,
+  "isomorphism_version": "stage3.exact-permutation.v1",
+  "template_relative_similarity_counts": {
+    "authority-limitation": 2,
+    "capability-restriction": 2,
+    "mixed-restoration": 2,
+    "observation-conflict": 2,
+    "probe": 2,
+    "timing": 2
+  },
+  "unresolved_count": 0
+}

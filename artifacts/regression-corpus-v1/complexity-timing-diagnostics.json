@@ -1,0 +1,62 @@
+[
+  {
+    "candidate_key": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.0017999859992414713
+  },
+  {
+    "candidate_key": "observation-conflict:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.0014014010002938448
+  },
+  {
+    "candidate_key": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.0015946510002322611
+  },
+  {
+    "candidate_key": "authority-limitation:1:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.0015671970004405011
+  },
+  {
+    "candidate_key": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.37858697899991967
+  },
+  {
+    "candidate_key": "probe:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.36035027599973546
+  },
+  {
+    "candidate_key": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.0017366199999742093
+  },
+  {
+    "candidate_key": "timing:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.0012361330000203452
+  },
+  {
+    "candidate_key": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.006170411999846692
+  },
+  {
+    "candidate_key": "capability-restriction:1:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.003705655999510782
+  },
+  {
+    "candidate_key": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.03902710100010154
+  },
+  {
+    "candidate_key": "mixed-restoration:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.03624690300057409
+  }
+]

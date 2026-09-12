@@ -1,0 +1,35 @@
+{
+  "aggregate_counts": {
+    "LOSING": 6,
+    "WINNING": 6,
+    "attempted": 12,
+    "complexity_rejected": 0,
+    "errors": 0,
+    "exact_duplicates": 4,
+    "filtered": 6,
+    "generated": 12,
+    "isomorphic_duplicates": 2,
+    "retained": 6,
+    "solved": 12,
+    "unresolved": 0
+  },
+  "candidate_ledger_fingerprint": "0fb3dcb7fa0936eaf7c4d22d4bcf30276eb1bced6b6d9b22088d5f64a2bc5dd2",
+  "corpus_fingerprint": "b30cd8dd5a9df21eb1b2e2f9793daada858625820678d3815644145954b2a5c3",
+  "corpus_spec_fingerprint": "fdb8f6abc48172be72a465d48663c451f23e431b8024ea3caf82482d2da669ec",
+  "fingerprint_security_attestation": false,
+  "retained_game_ids": [
+    "6cad330aa9c65f6202365a003ad43be6f3e189a081fe31ba72fdba4eb311df30",
+    "fa3d5fb53e11c1b686d3ff2a3e175dca08bb93f1f0ce32a2a28ba33467f901c9",
+    "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
+    "0108b060532ceca8aac72a377511fe30cee6fd911476929d7d9ace3e2c2a4d1a",
+    "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+    "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f"
+  ],
+  "versions": {
+    "generator": "stage2.v2",
+    "isomorphism": "stage3.exact-permutation.v1",
+    "oracle": "normal-form-reference.v2",
+    "retention": "stage3.deterministic-retention.v1",
+    "schema": "stage1.v2"
+  }
+}

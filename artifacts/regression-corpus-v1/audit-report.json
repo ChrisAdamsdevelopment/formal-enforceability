@@ -1,0 +1,189 @@
+{
+  "by_family": {
+    "authority-limitation": {
+      "LOSING": 0,
+      "WINNING": 2,
+      "attempted": 2,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 1,
+      "filtered": 1,
+      "generated": 2,
+      "isomorphic_duplicates": 0,
+      "retained": 1,
+      "solved": 2,
+      "unresolved": 0
+    },
+    "capability-restriction": {
+      "LOSING": 2,
+      "WINNING": 0,
+      "attempted": 2,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 0,
+      "filtered": 1,
+      "generated": 2,
+      "isomorphic_duplicates": 1,
+      "retained": 1,
+      "solved": 2,
+      "unresolved": 0
+    },
+    "mixed-restoration": {
+      "LOSING": 2,
+      "WINNING": 0,
+      "attempted": 2,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 1,
+      "filtered": 1,
+      "generated": 2,
+      "isomorphic_duplicates": 0,
+      "retained": 1,
+      "solved": 2,
+      "unresolved": 0
+    },
+    "observation-conflict": {
+      "LOSING": 2,
+      "WINNING": 0,
+      "attempted": 2,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 0,
+      "filtered": 1,
+      "generated": 2,
+      "isomorphic_duplicates": 1,
+      "retained": 1,
+      "solved": 2,
+      "unresolved": 0
+    },
+    "probe": {
+      "LOSING": 0,
+      "WINNING": 2,
+      "attempted": 2,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 1,
+      "filtered": 1,
+      "generated": 2,
+      "isomorphic_duplicates": 0,
+      "retained": 1,
+      "solved": 2,
+      "unresolved": 0
+    },
+    "timing": {
+      "LOSING": 0,
+      "WINNING": 2,
+      "attempted": 2,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 1,
+      "filtered": 1,
+      "generated": 2,
+      "isomorphic_duplicates": 0,
+      "retained": 1,
+      "solved": 2,
+      "unresolved": 0
+    }
+  },
+  "complexity_calibration": {
+    "note": "runtime is an engineering diagnostic; estimates are not conceptual difficulty",
+    "samples": 12
+  },
+  "leakage_audit": {
+    "blacklist_is_not_absence_proof": true,
+    "neutralized_view_available": true,
+    "risks": [
+      {
+        "category": "ANSWER-DIRECT",
+        "feature": "oracle/restoration fields",
+        "scope": "solution section only"
+      },
+      {
+        "category": "PROVENANCE-ONLY",
+        "feature": "family and mode labels",
+        "risk": "may correlate with status"
+      },
+      {
+        "category": "REPRESENTATIONAL",
+        "feature": "systematic identifier names and fixed ordering",
+        "risk": "generator convention shortcut"
+      },
+      {
+        "category": "SEMANTIC",
+        "feature": "counts, aliasing, availability and transitions",
+        "risk": "legitimate formal predictors"
+      }
+    ]
+  },
+  "matched_pair_audit": {
+    "failures": [],
+    "note": "no transformation records declared by this spec",
+    "records": 0
+  },
+  "raw_candidates": {
+    "LOSING": 6,
+    "WINNING": 6,
+    "attempted": 12,
+    "complexity_rejected": 0,
+    "errors": 0,
+    "exact_duplicates": 4,
+    "filtered": 6,
+    "generated": 12,
+    "isomorphic_duplicates": 2,
+    "retained": 6,
+    "solved": 12,
+    "unresolved": 0
+  },
+  "retained_corpus": {
+    "LOSING": 3,
+    "WINNING": 3,
+    "attempted": 6,
+    "complexity_rejected": 0,
+    "errors": 0,
+    "exact_duplicates": 0,
+    "filtered": 0,
+    "generated": 6,
+    "isomorphic_duplicates": 0,
+    "retained": 6,
+    "solved": 6,
+    "unresolved": 0
+  },
+  "structural_coverage": {
+    "adversary_action_counts": [
+      1,
+      2,
+      3
+    ],
+    "controller_action_counts": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "families": [
+      "authority-limitation",
+      "capability-restriction",
+      "mixed-restoration",
+      "observation-conflict",
+      "probe",
+      "timing"
+    ],
+    "gaps": [
+      "stochastic-transitions"
+    ],
+    "horizons": [
+      2
+    ],
+    "observation_aliasing": true,
+    "oracle_statuses": [
+      "LOSING",
+      "WINNING"
+    ],
+    "state_counts": [
+      3,
+      4,
+      6
+    ],
+    "stochastic": false
+  }
+}

@@ -1,0 +1,1542 @@
+[
+  {
+    "candidate_key": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 2,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 1,
+      "estimated_profiles": 2,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "5c43997fb6b8556ecf62b51cc3dc4fbccb346b31e1d054dd7b04f7071b390713",
+    "descriptors": {
+      "adversary_action_count": 1,
+      "ambiguous_controller_classes": 1,
+      "controller_action_count": 2,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "o0": 2,
+        "r": 1,
+        "x": 1
+      },
+      "oracle_explored_profiles": 2,
+      "reachable_states": 4,
+      "restoration_candidates": 0,
+      "state_count": 4,
+      "stochastic_branching": 0
+    },
+    "family": "observation-conflict",
+    "game_id": "0108b060532ceca8aac72a377511fe30cee6fd911476929d7d9ace3e2c2a4d1a",
+    "generator_config": {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "observation-conflict",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 0,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": "2a66456ef0f84f87107fa40d5103bac33ba0775389c1a53b11e748c887a42ef8",
+      "permutations_examined": 24,
+      "signature": "{\"action_availability\":{\"c0\":[0,1],\"c1\":[0,1]},\"adversary_actions\":[\"a0\"],\"controller_actions\":[\"c0\",\"c1\"],\"display_labels\":{},\"epsilon\":\"0\",\"failure_states\":[\"s2\"],\"horizon\":2,\"initial_distribution\":[{\"probability\":\"1/2\",\"state\":\"s0\"},{\"probability\":\"1/2\",\"state\":\"s1\"}],\"legitimate_rewards\":[],\"observation_map\":{\"s0\":\"o0\",\"s1\":\"o0\",\"s2\":\"o1\",\"s3\":\"o2\"},\"observations\":[\"o0\",\"o1\",\"o2\"],\"recovery_states\":[\"s3\"],\"schema_version\":\"stage1.v2\",\"states\":[\"s0\",\"s1\",\"s2\",\"s3\"],\"transitions\":[{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"}]}",
+      "status": "RESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "1/2",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "restorations": [],
+    "retention": {
+      "reason": "selected_by_declared_policy",
+      "retained": true,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "observation-conflict|LOSING",
+      "tie_break": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
+    "seed": 0,
+    "state": "RETAINED"
+  },
+  {
+    "candidate_key": "observation-conflict:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 2,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 1,
+      "estimated_profiles": 2,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "9b2f8b1a2978b0bb3f69978e0045a94206a60bf6d99f2d1845be05df0d224b2d",
+    "descriptors": {
+      "adversary_action_count": 1,
+      "ambiguous_controller_classes": 1,
+      "controller_action_count": 2,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "o0": 2,
+        "r": 1,
+        "x": 1
+      },
+      "oracle_explored_profiles": 2,
+      "reachable_states": 4,
+      "restoration_candidates": 0,
+      "state_count": 4,
+      "stochastic_branching": 0
+    },
+    "family": "observation-conflict",
+    "game_id": "803c0bddc6a05ee25f4298e5f1012f92c0fa90eb04e643dd09e378e2a61278f7",
+    "generator_config": {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "observation-conflict",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 1,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": "2a66456ef0f84f87107fa40d5103bac33ba0775389c1a53b11e748c887a42ef8",
+      "permutations_examined": 24,
+      "signature": "{\"action_availability\":{\"c0\":[0,1],\"c1\":[0,1]},\"adversary_actions\":[\"a0\"],\"controller_actions\":[\"c0\",\"c1\"],\"display_labels\":{},\"epsilon\":\"0\",\"failure_states\":[\"s2\"],\"horizon\":2,\"initial_distribution\":[{\"probability\":\"1/2\",\"state\":\"s0\"},{\"probability\":\"1/2\",\"state\":\"s1\"}],\"legitimate_rewards\":[],\"observation_map\":{\"s0\":\"o0\",\"s1\":\"o0\",\"s2\":\"o1\",\"s3\":\"o2\"},\"observations\":[\"o0\",\"o1\",\"o2\"],\"recovery_states\":[\"s3\"],\"schema_version\":\"stage1.v2\",\"states\":[\"s0\",\"s1\",\"s2\",\"s3\"],\"transitions\":[{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"}]}",
+      "status": "RESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "1/2",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "same_isomorphism_class_as:observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "restorations": [],
+    "retention": {
+      "reason": "same_isomorphism_class_as:observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+      "retained": false,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "observation-conflict|LOSING",
+      "tie_break": "observation-conflict:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
+    "seed": 1,
+    "state": "ISOMORPHIC_EXCLUDED"
+  },
+  {
+    "candidate_key": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 4,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 1,
+      "estimated_profiles": 4,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "00b3a34eb6dbc56438355b911a7336b6d2feadf079d7bbe7671f763c27b92bcd",
+    "descriptors": {
+      "adversary_action_count": 2,
+      "ambiguous_controller_classes": 0,
+      "controller_action_count": 2,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "q": 1,
+        "r": 1,
+        "x": 1
+      },
+      "oracle_explored_profiles": 4,
+      "reachable_states": 2,
+      "restoration_candidates": 0,
+      "state_count": 3,
+      "stochastic_branching": 0
+    },
+    "family": "authority-limitation",
+    "game_id": "6cad330aa9c65f6202365a003ad43be6f3e189a081fe31ba72fdba4eb311df30",
+    "generator_config": {
+      "adversary_action_count": 2,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "authority-limitation",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "robust",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 0,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": "ae730f098cc5cbbdc679a30d783291b79ec9c4fb532d5a946a2d701c58c39a0e",
+      "permutations_examined": 24,
+      "signature": "{\"action_availability\":{\"c0\":[0,1],\"c1\":[0,1]},\"adversary_actions\":[\"a0\",\"a1\"],\"controller_actions\":[\"c0\",\"c1\"],\"display_labels\":{},\"epsilon\":\"0\",\"failure_states\":[\"s2\"],\"horizon\":2,\"initial_distribution\":[{\"probability\":\"1\",\"state\":\"s0\"}],\"legitimate_rewards\":[],\"observation_map\":{\"s0\":\"o0\",\"s1\":\"o1\",\"s2\":\"o2\"},\"observations\":[\"o0\",\"o1\",\"o2\"],\"recovery_states\":[\"s1\"],\"schema_version\":\"stage1.v2\",\"states\":[\"s0\",\"s1\",\"s2\"],\"transitions\":[{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s0\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s0\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"}]}",
+      "status": "RESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 4,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "q"
+                ],
+                "previous_actions": []
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "selected_by_declared_policy",
+    "restorations": [],
+    "retention": {
+      "reason": "selected_by_declared_policy",
+      "retained": true,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "authority-limitation|WINNING",
+      "tie_break": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+    },
+    "seed": 0,
+    "state": "RETAINED"
+  },
+  {
+    "candidate_key": "authority-limitation:1:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 4,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 1,
+      "estimated_profiles": 4,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "0e5c8e314e2e82c0a3156c2866ed1b44292e323aa830f991525d08e6efc66029",
+    "descriptors": {
+      "adversary_action_count": 2,
+      "ambiguous_controller_classes": 0,
+      "controller_action_count": 2,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "q": 1,
+        "r": 1,
+        "x": 1
+      },
+      "oracle_explored_profiles": 4,
+      "reachable_states": 2,
+      "restoration_candidates": 0,
+      "state_count": 3,
+      "stochastic_branching": 0
+    },
+    "family": "authority-limitation",
+    "game_id": "6cad330aa9c65f6202365a003ad43be6f3e189a081fe31ba72fdba4eb311df30",
+    "generator_config": {
+      "adversary_action_count": 2,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "authority-limitation",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "robust",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 1,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": "ae730f098cc5cbbdc679a30d783291b79ec9c4fb532d5a946a2d701c58c39a0e",
+      "permutations_examined": 24,
+      "signature": "{\"action_availability\":{\"c0\":[0,1],\"c1\":[0,1]},\"adversary_actions\":[\"a0\",\"a1\"],\"controller_actions\":[\"c0\",\"c1\"],\"display_labels\":{},\"epsilon\":\"0\",\"failure_states\":[\"s2\"],\"horizon\":2,\"initial_distribution\":[{\"probability\":\"1\",\"state\":\"s0\"}],\"legitimate_rewards\":[],\"observation_map\":{\"s0\":\"o0\",\"s1\":\"o1\",\"s2\":\"o2\"},\"observations\":[\"o0\",\"o1\",\"o2\"],\"recovery_states\":[\"s1\"],\"schema_version\":\"stage1.v2\",\"states\":[\"s0\",\"s1\",\"s2\"],\"transitions\":[{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s0\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s0\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"}]}",
+      "status": "RESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 4,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "q"
+                ],
+                "previous_actions": []
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "same_game_id_as:authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+    "restorations": [],
+    "retention": {
+      "reason": "same_game_id_as:authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+      "retained": false,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "authority-limitation|WINNING",
+      "tie_break": "authority-limitation:1:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e"
+    },
+    "seed": 1,
+    "state": "DUPLICATE_EXCLUDED"
+  },
+  {
+    "candidate_key": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 324,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 5,
+      "estimated_profiles": 324,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "94feeeba6d70fe6573920f1a0135e7ea0e1da3b352fddc85943205d3a4cbb109",
+    "descriptors": {
+      "adversary_action_count": 1,
+      "ambiguous_controller_classes": 1,
+      "controller_action_count": 4,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "o": 2,
+        "p0": 1,
+        "p1": 1,
+        "r": 1,
+        "x": 1
+      },
+      "oracle_explored_profiles": 324,
+      "reachable_states": 6,
+      "restoration_candidates": 0,
+      "state_count": 6,
+      "stochastic_branching": 0
+    },
+    "family": "probe",
+    "game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+    "generator_config": {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "probe",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 0,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": "fa4983349a4528dc25ada2642367669ef1d4eb5b762110aaa2c24cdd3600b942",
+      "permutations_examined": 69120,
+      "signature": "{\"action_availability\":{\"c0\":[0,1],\"c1\":[0,1],\"c2\":[0,1],\"c3\":[0]},\"adversary_actions\":[\"a0\"],\"controller_actions\":[\"c0\",\"c1\",\"c2\",\"c3\"],\"display_labels\":{},\"epsilon\":\"0\",\"failure_states\":[\"s2\"],\"horizon\":2,\"initial_distribution\":[{\"probability\":\"1/2\",\"state\":\"s0\"},{\"probability\":\"1/2\",\"state\":\"s1\"}],\"legitimate_rewards\":[],\"observation_map\":{\"s0\":\"o0\",\"s1\":\"o0\",\"s2\":\"o1\",\"s3\":\"o2\",\"s4\":\"o3\",\"s5\":\"o4\"},\"observations\":[\"o0\",\"o1\",\"o2\",\"o3\",\"o4\"],\"recovery_states\":[\"s3\"],\"schema_version\":\"stage1.v2\",\"states\":[\"s0\",\"s1\",\"s2\",\"s3\",\"s4\",\"s5\"],\"transitions\":[{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s0\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c3\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s4\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c3\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s5\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c3\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c3\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s4\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s4\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s4\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c3\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s4\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s5\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s5\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s5\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c3\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s5\"}]}",
+      "status": "RESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 324,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "probe",
+              "history": {
+                "observations": [
+                  "o"
+                ],
+                "previous_actions": []
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "o"
+                ],
+                "previous_actions": [
+                  "c0"
+                ]
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "o"
+                ],
+                "previous_actions": [
+                  "c1"
+                ]
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "p0"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            },
+            {
+              "action": "c1",
+              "history": {
+                "observations": [
+                  "o",
+                  "p1"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "selected_by_declared_policy",
+    "restorations": [],
+    "retention": {
+      "reason": "selected_by_declared_policy",
+      "retained": true,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "probe|WINNING",
+      "tie_break": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
+    "seed": 0,
+    "state": "RETAINED"
+  },
+  {
+    "candidate_key": "probe:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 324,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 5,
+      "estimated_profiles": 324,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "9af0f3b5604faa5fc42b80fdf4f90be71b4edd561fe857837174f003ebc78478",
+    "descriptors": {
+      "adversary_action_count": 1,
+      "ambiguous_controller_classes": 1,
+      "controller_action_count": 4,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "o": 2,
+        "p0": 1,
+        "p1": 1,
+        "r": 1,
+        "x": 1
+      },
+      "oracle_explored_profiles": 324,
+      "reachable_states": 6,
+      "restoration_candidates": 0,
+      "state_count": 6,
+      "stochastic_branching": 0
+    },
+    "family": "probe",
+    "game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+    "generator_config": {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "probe",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 1,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": "fa4983349a4528dc25ada2642367669ef1d4eb5b762110aaa2c24cdd3600b942",
+      "permutations_examined": 69120,
+      "signature": "{\"action_availability\":{\"c0\":[0,1],\"c1\":[0,1],\"c2\":[0,1],\"c3\":[0]},\"adversary_actions\":[\"a0\"],\"controller_actions\":[\"c0\",\"c1\",\"c2\",\"c3\"],\"display_labels\":{},\"epsilon\":\"0\",\"failure_states\":[\"s2\"],\"horizon\":2,\"initial_distribution\":[{\"probability\":\"1/2\",\"state\":\"s0\"},{\"probability\":\"1/2\",\"state\":\"s1\"}],\"legitimate_rewards\":[],\"observation_map\":{\"s0\":\"o0\",\"s1\":\"o0\",\"s2\":\"o1\",\"s3\":\"o2\",\"s4\":\"o3\",\"s5\":\"o4\"},\"observations\":[\"o0\",\"o1\",\"o2\",\"o3\",\"o4\"],\"recovery_states\":[\"s3\"],\"schema_version\":\"stage1.v2\",\"states\":[\"s0\",\"s1\",\"s2\",\"s3\",\"s4\",\"s5\"],\"transitions\":[{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s0\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c3\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s4\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c3\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s5\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c3\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c3\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s4\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s4\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s4\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c3\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s4\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s5\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s5\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s5\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c3\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s5\"}]}",
+      "status": "RESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 324,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "probe",
+              "history": {
+                "observations": [
+                  "o"
+                ],
+                "previous_actions": []
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "o"
+                ],
+                "previous_actions": [
+                  "c0"
+                ]
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "o"
+                ],
+                "previous_actions": [
+                  "c1"
+                ]
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "p0"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            },
+            {
+              "action": "c1",
+              "history": {
+                "observations": [
+                  "o",
+                  "p1"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "same_game_id_as:probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "restorations": [],
+    "retention": {
+      "reason": "same_game_id_as:probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+      "retained": false,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "probe|WINNING",
+      "tie_break": "probe:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
+    "seed": 1,
+    "state": "DUPLICATE_EXCLUDED"
+  },
+  {
+    "candidate_key": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 2,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 1,
+      "estimated_profiles": 2,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "a17e3a481ec8e89f9559319a90ddc225c19ea270ef67109cbb621cfa76c3a09b",
+    "descriptors": {
+      "adversary_action_count": 1,
+      "ambiguous_controller_classes": 0,
+      "controller_action_count": 2,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "d": 1,
+        "q": 1,
+        "r": 1,
+        "x": 1
+      },
+      "oracle_explored_profiles": 2,
+      "reachable_states": 3,
+      "restoration_candidates": 0,
+      "state_count": 4,
+      "stochastic_branching": 0
+    },
+    "family": "timing",
+    "game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
+    "generator_config": {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "timing",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 0,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": "c48e4c00aeb1a0f57cb9ddc64673756de44b77d0db8755f06bc98c9b7f4a4121",
+      "permutations_examined": 96,
+      "signature": "{\"action_availability\":{\"c0\":[0,1],\"c1\":[0]},\"adversary_actions\":[\"a0\"],\"controller_actions\":[\"c0\",\"c1\"],\"display_labels\":{},\"epsilon\":\"0\",\"failure_states\":[\"s2\"],\"horizon\":2,\"initial_distribution\":[{\"probability\":\"1\",\"state\":\"s0\"}],\"legitimate_rewards\":[],\"observation_map\":{\"s0\":\"o0\",\"s1\":\"o1\",\"s2\":\"o2\",\"s3\":\"o3\"},\"observations\":[\"o0\",\"o1\",\"o2\",\"o3\"],\"recovery_states\":[\"s3\"],\"schema_version\":\"stage1.v2\",\"states\":[\"s0\",\"s1\",\"s2\",\"s3\"],\"transitions\":[{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"}]}",
+      "status": "RESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "act",
+              "history": {
+                "observations": [
+                  "q"
+                ],
+                "previous_actions": []
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "selected_by_declared_policy",
+    "restorations": [],
+    "retention": {
+      "reason": "selected_by_declared_policy",
+      "retained": true,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "timing|WINNING",
+      "tie_break": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
+    "seed": 0,
+    "state": "RETAINED"
+  },
+  {
+    "candidate_key": "timing:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 2,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 1,
+      "estimated_profiles": 2,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "2286e12ac10dd93f5f70bf190f32f3c21bf474eb98755de220eaeeafcb1bac65",
+    "descriptors": {
+      "adversary_action_count": 1,
+      "ambiguous_controller_classes": 0,
+      "controller_action_count": 2,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "d": 1,
+        "q": 1,
+        "r": 1,
+        "x": 1
+      },
+      "oracle_explored_profiles": 2,
+      "reachable_states": 3,
+      "restoration_candidates": 0,
+      "state_count": 4,
+      "stochastic_branching": 0
+    },
+    "family": "timing",
+    "game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
+    "generator_config": {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "timing",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 1,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": "c48e4c00aeb1a0f57cb9ddc64673756de44b77d0db8755f06bc98c9b7f4a4121",
+      "permutations_examined": 96,
+      "signature": "{\"action_availability\":{\"c0\":[0,1],\"c1\":[0]},\"adversary_actions\":[\"a0\"],\"controller_actions\":[\"c0\",\"c1\"],\"display_labels\":{},\"epsilon\":\"0\",\"failure_states\":[\"s2\"],\"horizon\":2,\"initial_distribution\":[{\"probability\":\"1\",\"state\":\"s0\"}],\"legitimate_rewards\":[],\"observation_map\":{\"s0\":\"o0\",\"s1\":\"o1\",\"s2\":\"o2\",\"s3\":\"o3\"},\"observations\":[\"o0\",\"o1\",\"o2\",\"o3\"],\"recovery_states\":[\"s3\"],\"schema_version\":\"stage1.v2\",\"states\":[\"s0\",\"s1\",\"s2\",\"s3\"],\"transitions\":[{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"}]}",
+      "status": "RESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "act",
+              "history": {
+                "observations": [
+                  "q"
+                ],
+                "previous_actions": []
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "same_game_id_as:timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "restorations": [],
+    "retention": {
+      "reason": "same_game_id_as:timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+      "retained": false,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "timing|WINNING",
+      "tie_break": "timing:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
+    "seed": 1,
+    "state": "DUPLICATE_EXCLUDED"
+  },
+  {
+    "candidate_key": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 3,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 1,
+      "estimated_profiles": 3,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "2ebed97dbf355d2068b833a92c6b80886fc46faafe9262aa70066583b6dbe4ce",
+    "descriptors": {
+      "adversary_action_count": 3,
+      "ambiguous_controller_classes": 0,
+      "controller_action_count": 1,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "q": 1,
+        "r": 1,
+        "x": 1
+      },
+      "oracle_explored_profiles": 3,
+      "reachable_states": 3,
+      "restoration_candidates": 2,
+      "state_count": 3,
+      "stochastic_branching": 0
+    },
+    "family": "capability-restriction",
+    "game_id": "fa3d5fb53e11c1b686d3ff2a3e175dca08bb93f1f0ce32a2a28ba33467f901c9",
+    "generator_config": {
+      "adversary_action_count": 3,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "capability-restriction",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 0,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": "a02b14db3209576a4e89f53018c8f5c6a69037ea28a3e2616041766add3a5d80",
+      "permutations_examined": 36,
+      "signature": "{\"action_availability\":{\"c0\":[0,1]},\"adversary_actions\":[\"a0\",\"a1\",\"a2\"],\"controller_actions\":[\"c0\"],\"display_labels\":{},\"epsilon\":\"0\",\"failure_states\":[\"s2\"],\"horizon\":2,\"initial_distribution\":[{\"probability\":\"1\",\"state\":\"s0\"}],\"legitimate_rewards\":[],\"observation_map\":{\"s0\":\"o0\",\"s1\":\"o1\",\"s2\":\"o2\"},\"observations\":[\"o0\",\"o1\",\"o2\"],\"recovery_states\":[\"s1\"],\"schema_version\":\"stage1.v2\",\"states\":[\"s0\",\"s1\",\"s2\"],\"transitions\":[{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s0\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s0\"},{\"adversary_action\":\"a2\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a2\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a2\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"}]}",
+      "status": "RESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 3,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "restorations": [
+      {
+        "candidate_id": "z0",
+        "cost": "0",
+        "legitimate_utility": "0",
+        "oracle": {
+          "explored_profiles": 2,
+          "failure_probability": "1",
+          "oracle_version": "normal-form-reference.v2",
+          "schema_version": "stage1.v2",
+          "status": "LOSING",
+          "threshold_satisfied": false,
+          "witness": null
+        }
+      },
+      {
+        "candidate_id": "z1",
+        "cost": "0",
+        "legitimate_utility": "0",
+        "oracle": {
+          "explored_profiles": 2,
+          "failure_probability": "0",
+          "oracle_version": "normal-form-reference.v2",
+          "schema_version": "stage1.v2",
+          "status": "WINNING",
+          "threshold_satisfied": true,
+          "witness": [
+            {
+              "policy": [
+                {
+                  "action": "c0",
+                  "history": {
+                    "observations": [
+                      "q"
+                    ],
+                    "previous_actions": []
+                  }
+                }
+              ],
+              "probability": "1"
+            }
+          ]
+        }
+      }
+    ],
+    "retention": {
+      "reason": "selected_by_declared_policy",
+      "retained": true,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "capability-restriction|LOSING",
+      "tie_break": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+    },
+    "seed": 0,
+    "state": "RETAINED"
+  },
+  {
+    "candidate_key": "capability-restriction:1:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 3,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 1,
+      "estimated_profiles": 3,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "7afb4125502af35f249c20be460fa818ea00a61c7129d5f2be37ebb4a89e5455",
+    "descriptors": {
+      "adversary_action_count": 3,
+      "ambiguous_controller_classes": 0,
+      "controller_action_count": 1,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "q": 1,
+        "r": 1,
+        "x": 1
+      },
+      "oracle_explored_profiles": 3,
+      "reachable_states": 3,
+      "restoration_candidates": 2,
+      "state_count": 3,
+      "stochastic_branching": 0
+    },
+    "family": "capability-restriction",
+    "game_id": "5406ec146fdf88c95361daacd259bf9f6fe48c4e909312a1530b88f6376a02a0",
+    "generator_config": {
+      "adversary_action_count": 3,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "capability-restriction",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 1,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": "a02b14db3209576a4e89f53018c8f5c6a69037ea28a3e2616041766add3a5d80",
+      "permutations_examined": 36,
+      "signature": "{\"action_availability\":{\"c0\":[0,1]},\"adversary_actions\":[\"a0\",\"a1\",\"a2\"],\"controller_actions\":[\"c0\"],\"display_labels\":{},\"epsilon\":\"0\",\"failure_states\":[\"s2\"],\"horizon\":2,\"initial_distribution\":[{\"probability\":\"1\",\"state\":\"s0\"}],\"legitimate_rewards\":[],\"observation_map\":{\"s0\":\"o0\",\"s1\":\"o1\",\"s2\":\"o2\"},\"observations\":[\"o0\",\"o1\",\"o2\"],\"recovery_states\":[\"s1\"],\"schema_version\":\"stage1.v2\",\"states\":[\"s0\",\"s1\",\"s2\"],\"transitions\":[{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s0\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s0\"},{\"adversary_action\":\"a2\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a2\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s1\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a2\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"}]}",
+      "status": "RESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 3,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "same_isomorphism_class_as:capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+    "restorations": [
+      {
+        "candidate_id": "z0",
+        "cost": "0",
+        "legitimate_utility": "0",
+        "oracle": {
+          "explored_profiles": 2,
+          "failure_probability": "0",
+          "oracle_version": "normal-form-reference.v2",
+          "schema_version": "stage1.v2",
+          "status": "WINNING",
+          "threshold_satisfied": true,
+          "witness": [
+            {
+              "policy": [
+                {
+                  "action": "c0",
+                  "history": {
+                    "observations": [
+                      "q"
+                    ],
+                    "previous_actions": []
+                  }
+                }
+              ],
+              "probability": "1"
+            }
+          ]
+        }
+      },
+      {
+        "candidate_id": "z1",
+        "cost": "0",
+        "legitimate_utility": "0",
+        "oracle": {
+          "explored_profiles": 2,
+          "failure_probability": "1",
+          "oracle_version": "normal-form-reference.v2",
+          "schema_version": "stage1.v2",
+          "status": "LOSING",
+          "threshold_satisfied": false,
+          "witness": null
+        }
+      }
+    ],
+    "retention": {
+      "reason": "same_isomorphism_class_as:capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+      "retained": false,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "capability-restriction|LOSING",
+      "tie_break": "capability-restriction:1:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb"
+    },
+    "seed": 1,
+    "state": "ISOMORPHIC_EXCLUDED"
+  },
+  {
+    "candidate_key": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 8,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 1,
+      "estimated_profiles": 8,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "beb23b218dd00bb48bf76f39097ad9a111c03aeff0dfc190afa777edcb850f08",
+    "descriptors": {
+      "adversary_action_count": 2,
+      "ambiguous_controller_classes": 1,
+      "controller_action_count": 3,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "o": 2,
+        "r": 1,
+        "u0": 0,
+        "u1": 0,
+        "x": 1
+      },
+      "oracle_explored_profiles": 8,
+      "reachable_states": 4,
+      "restoration_candidates": 3,
+      "state_count": 4,
+      "stochastic_branching": 0
+    },
+    "family": "mixed-restoration",
+    "game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
+    "generator_config": {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "mixed-restoration",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 0,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": "5472ad77b64f2cc18bb5ad91afc909a8655fce4952389f41f5949c45341bd481",
+      "permutations_examined": 2880,
+      "signature": "{\"action_availability\":{\"c0\":[0,1],\"c1\":[0,1],\"c2\":[]},\"adversary_actions\":[\"a0\",\"a1\"],\"controller_actions\":[\"c0\",\"c1\",\"c2\"],\"display_labels\":{},\"epsilon\":\"0\",\"failure_states\":[\"s2\"],\"horizon\":2,\"initial_distribution\":[{\"probability\":\"1/2\",\"state\":\"s0\"},{\"probability\":\"1/2\",\"state\":\"s1\"}],\"legitimate_rewards\":[{\"controller_action\":\"c0\",\"reward\":\"10\",\"state\":\"s0\"},{\"controller_action\":\"c2\",\"reward\":\"7\",\"state\":\"s0\"},{\"controller_action\":\"c1\",\"reward\":\"10\",\"state\":\"s1\"},{\"controller_action\":\"c2\",\"reward\":\"7\",\"state\":\"s1\"}],\"observation_map\":{\"s0\":\"o0\",\"s1\":\"o0\",\"s2\":\"o1\",\"s3\":\"o2\"},\"observations\":[\"o0\",\"o1\",\"o2\",\"o3\",\"o4\"],\"recovery_states\":[\"s3\"],\"schema_version\":\"stage1.v2\",\"states\":[\"s0\",\"s1\",\"s2\",\"s3\"],\"transitions\":[{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s0\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s1\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s1\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s1\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"}]}",
+      "status": "RESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 8,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "restorations": [
+      {
+        "candidate_id": "z0",
+        "cost": "-5",
+        "legitimate_utility": "10",
+        "oracle": {
+          "explored_profiles": 16,
+          "failure_probability": "1",
+          "oracle_version": "normal-form-reference.v2",
+          "schema_version": "stage1.v2",
+          "status": "LOSING",
+          "threshold_satisfied": false,
+          "witness": null
+        }
+      },
+      {
+        "candidate_id": "z1",
+        "cost": "0",
+        "legitimate_utility": "5",
+        "oracle": {
+          "explored_profiles": 2,
+          "failure_probability": "1/2",
+          "oracle_version": "normal-form-reference.v2",
+          "schema_version": "stage1.v2",
+          "status": "LOSING",
+          "threshold_satisfied": false,
+          "witness": null
+        }
+      },
+      {
+        "candidate_id": "z2",
+        "cost": "-2",
+        "legitimate_utility": "7",
+        "oracle": {
+          "explored_profiles": 12,
+          "failure_probability": "0",
+          "oracle_version": "normal-form-reference.v2",
+          "schema_version": "stage1.v2",
+          "status": "WINNING",
+          "threshold_satisfied": true,
+          "witness": [
+            {
+              "policy": [
+                {
+                  "action": "c2",
+                  "history": {
+                    "observations": [
+                      "o"
+                    ],
+                    "previous_actions": []
+                  }
+                }
+              ],
+              "probability": "1"
+            }
+          ]
+        }
+      }
+    ],
+    "retention": {
+      "reason": "selected_by_declared_policy",
+      "retained": true,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "mixed-restoration|LOSING",
+      "tie_break": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
+    "seed": 0,
+    "state": "RETAINED"
+  },
+  {
+    "candidate_key": "mixed-restoration:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 8,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 1,
+      "estimated_profiles": 8,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "bc8a7b01b48b1a4d38ff70a70c115e3789445314373e7f187b606cd8becd2f10",
+    "descriptors": {
+      "adversary_action_count": 2,
+      "ambiguous_controller_classes": 1,
+      "controller_action_count": 3,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "o": 2,
+        "r": 1,
+        "u0": 0,
+        "u1": 0,
+        "x": 1
+      },
+      "oracle_explored_profiles": 8,
+      "reachable_states": 4,
+      "restoration_candidates": 3,
+      "state_count": 4,
+      "stochastic_branching": 0
+    },
+    "family": "mixed-restoration",
+    "game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
+    "generator_config": {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "mixed-restoration",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 1,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": "5472ad77b64f2cc18bb5ad91afc909a8655fce4952389f41f5949c45341bd481",
+      "permutations_examined": 2880,
+      "signature": "{\"action_availability\":{\"c0\":[0,1],\"c1\":[0,1],\"c2\":[]},\"adversary_actions\":[\"a0\",\"a1\"],\"controller_actions\":[\"c0\",\"c1\",\"c2\"],\"display_labels\":{},\"epsilon\":\"0\",\"failure_states\":[\"s2\"],\"horizon\":2,\"initial_distribution\":[{\"probability\":\"1/2\",\"state\":\"s0\"},{\"probability\":\"1/2\",\"state\":\"s1\"}],\"legitimate_rewards\":[{\"controller_action\":\"c0\",\"reward\":\"10\",\"state\":\"s0\"},{\"controller_action\":\"c2\",\"reward\":\"7\",\"state\":\"s0\"},{\"controller_action\":\"c1\",\"reward\":\"10\",\"state\":\"s1\"},{\"controller_action\":\"c2\",\"reward\":\"7\",\"state\":\"s1\"}],\"observation_map\":{\"s0\":\"o0\",\"s1\":\"o0\",\"s2\":\"o1\",\"s3\":\"o2\"},\"observations\":[\"o0\",\"o1\",\"o2\",\"o3\",\"o4\"],\"recovery_states\":[\"s3\"],\"schema_version\":\"stage1.v2\",\"states\":[\"s0\",\"s1\",\"s2\",\"s3\"],\"transitions\":[{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s0\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s0\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s1\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s1\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s1\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s1\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s2\"}],\"state\":\"s2\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c0\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c1\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a0\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"},{\"adversary_action\":\"a1\",\"controller_action\":\"c2\",\"outcomes\":[{\"probability\":\"1\",\"state\":\"s3\"}],\"state\":\"s3\"}]}",
+      "status": "RESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 8,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "same_game_id_as:mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+    "restorations": [
+      {
+        "candidate_id": "z0",
+        "cost": "-5",
+        "legitimate_utility": "10",
+        "oracle": {
+          "explored_profiles": 16,
+          "failure_probability": "1",
+          "oracle_version": "normal-form-reference.v2",
+          "schema_version": "stage1.v2",
+          "status": "LOSING",
+          "threshold_satisfied": false,
+          "witness": null
+        }
+      },
+      {
+        "candidate_id": "z1",
+        "cost": "0",
+        "legitimate_utility": "5",
+        "oracle": {
+          "explored_profiles": 2,
+          "failure_probability": "1/2",
+          "oracle_version": "normal-form-reference.v2",
+          "schema_version": "stage1.v2",
+          "status": "LOSING",
+          "threshold_satisfied": false,
+          "witness": null
+        }
+      },
+      {
+        "candidate_id": "z2",
+        "cost": "-2",
+        "legitimate_utility": "7",
+        "oracle": {
+          "explored_profiles": 12,
+          "failure_probability": "0",
+          "oracle_version": "normal-form-reference.v2",
+          "schema_version": "stage1.v2",
+          "status": "WINNING",
+          "threshold_satisfied": true,
+          "witness": [
+            {
+              "policy": [
+                {
+                  "action": "c2",
+                  "history": {
+                    "observations": [
+                      "o"
+                    ],
+                    "previous_actions": []
+                  }
+                }
+              ],
+              "probability": "1"
+            }
+          ]
+        }
+      }
+    ],
+    "retention": {
+      "reason": "same_game_id_as:mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+      "retained": false,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "mixed-restoration|LOSING",
+      "tie_break": "mixed-restoration:1:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f"
+    },
+    "seed": 1,
+    "state": "DUPLICATE_EXCLUDED"
+  }
+]
