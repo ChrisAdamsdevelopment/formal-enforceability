@@ -5,20 +5,27 @@
 Stage 2 is a formal experimental instrument. `GeneratorConfig` is passed to
 `generate`, which constructs and schema-round-trips a `Game`. Only the separate
 `build_manifest` step calls the exact Stage-1 oracle and restoration evaluator.
-Structural output therefore has no status or answer field. Generator version
-`stage2.v1`, schema version, and oracle version are independently recorded.
+Structural output therefore has no status or answer field. Each `GeneratedGame`
+carries its immutable `GeneratorConfig` and a canonical config fingerprint;
+`build_manifest(generated)` derives all provenance from that artifact. The old
+two-argument form verifies exact config equality and rejects mismatches. Generator version
+`stage2.v2`, schema version, and oracle version are independently recorded.
 
 The public pipeline is:
 
 ```python
 generated = generate(config)
-manifest = build_manifest(config, generated)  # oracle invocation occurs here
+manifest = build_manifest(generated)  # oracle invocation occurs here
 ```
 
-`GeneratorConfig` records family, integer seed, horizon, action counts,
+`GeneratorConfig` records family, integer seed, exact horizon, action counts,
 ambiguity/aliasing controls, common-action availability, response coverage,
 probe availability/informativeness/delay, intervention round, exact epsilon,
 stochasticity switch, neutral structural mode, and complexity limits. Invalid
+Booleans must be actual `bool` objects; epsilon follows the Stage-1 exact-number
+contract (floats and booleans are rejected); and modes are validated per family.
+Probe and timing horizons must be at least two, probe delay must be positive,
+and the probe horizon must include the probe, its delay, and the decision. Invalid
 fields raise `GenerationError`; over-limit candidates return
 `GenerationRejected`, including configuration, seed, estimates, and the reason
 `estimated_oracle_complexity`. A rejection has no game-theoretic status.
@@ -47,8 +54,14 @@ is an identifier, not cryptographic attestation or a security guarantee.
   count are configurable.
 * **authority-limitation** varies controller actions, adversary capabilities,
   response coverage, and the existence of a robust response.
-* **probe** includes a first-round probe, informative or aliased subsequent
-  observations, configurable availability/delay/horizon, and a common option.
+* **probe** includes a first-round probe, explicit hidden delay stages,
+  informative or aliased decision observations, configurable availability and
+  a common option. Every non-progress action at a delay or decision deadline
+  reaches failure, so waiting cannot evade the decision. `probe_delay = k`
+  means exactly `k` action rounds elapse from selecting the probe until the
+  informed decision action is available: `k=1` reveals on the probe transition;
+  larger values add `k-1` distinct hidden delay stages. In `too-late` mode the
+  deadline expires at the first delay stage before revelation can be used.
 * **timing** places an intervention on a declared round while a waiting action
   exercises action-availability and terminal timing semantics.
 * **capability-restriction** creates relevant and irrelevant adversary
@@ -68,7 +81,9 @@ structural switches and family frequencies have no prevalence interpretation.
 explicit total transition slice. Both return a `TransformationRecord` with
 parent/child IDs, transformation type, exact changed formal field names,
 generator version, and transformation seed. Other formal fields are copied.
-Records make no outcome claim.
+The category is derived from the actual operation (or `compound`), and changed
+fields are obtained by comparing validated before/after formal dictionaries.
+A mismatched legacy caller label is rejected. Records make no outcome claim.
 
 A manifest separates `config` and `formal_game` from `oracle`, restoration
 evaluations, structural `descriptors`, and optional ancestry/transformation.
@@ -85,9 +100,14 @@ decision, and declared reason. It does not prescribe benchmark balance.
 
 ## Complexity and batch interface
 
-Limits cover states, horizon, estimated controller histories, estimated policy
-profiles, and candidates per batch. Estimates are deliberately conservative
-upper bounds and can reject tractable games; they do not silently drop cases.
+Limits cover effective generated states, effective horizon, controller histories,
+policy profiles, and candidates per batch. Cheap family-exact dimensions are
+checked before allocating the game. After construction, bounded traversal of
+the actual nonterminal game estimates information histories and profiles before
+any oracle call. Saturating multiplication/power stops at the declared limit,
+so pathological integer inputs cannot trigger enormous exponentiation.
+Estimates are deliberately conservative upper bounds and can reject tractable
+games; they do not silently drop cases.
 Generate a batch with:
 
 ```bash
@@ -112,7 +132,9 @@ Scientific assumptions introduced in this implementation are: uniform initial
 mass across ambiguous states; simultaneous controller/adversary action in each
 oracle round; terminal absorption as already defined by Stage 1; MT19937 as the
 versioned RNG mechanism; and conservative product-form complexity estimates.
-These choices must be controlled or revised before benchmark conclusions are
+The repaired probe additionally assumes that any action other than prescribed
+delay progress consumes the deadline and fails, and that `too-late` means the
+deadline expires at the first post-probe delay stage. These choices must be controlled or revised before benchmark conclusions are
 drawn. Correlated templates, repeated isomorphic games, parameter imbalance,
 identifier leakage, or changes in Python RNG behavior could invalidate naive
 later benchmark use. Canonical IDs detect identity, not graph isomorphism.

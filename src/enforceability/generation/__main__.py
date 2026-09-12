@@ -20,7 +20,7 @@ def main(argv=None):
         config=replace(base,seed=seed); generated=generate(config); path=args.output/f"{seed:08d}.json"
         if path.exists(): raise FileExistsError(f"refusing to overwrite {path}")
         if isinstance(generated,GenerationRejected): payload={"rejection":asdict(generated)}; counts["rejected"]+=1
-        else: payload=build_manifest(config,generated); counts[payload["oracle"]["status"]]+=1
+        else: payload=build_manifest(generated); counts[payload["oracle"]["status"]]+=1
         path.write_text(canonical_json(payload)+"\n",encoding="utf-8")
     summary={"generator_version":GENERATOR_VERSION,"family":args.family,"seed_start":args.seed_start,"requested":args.count,"counts":dict(sorted(counts.items()))}
     summary_path=args.output/"summary.json"

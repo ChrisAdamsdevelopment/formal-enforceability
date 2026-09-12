@@ -50,29 +50,29 @@ def test_exact_rational_stochastic_generation():
 def test_refinement_zero_and_positive_value_and_record():
     base=made(GeneratorConfig(family="observation-conflict",seed=0,common_action=True)).game
     raw=base.to_dict(); raw["observations"].append("split"); base=base.from_dict(raw)
-    refined,record=transform(base,Restoration("z",observation_overrides=(("q1","split"),)),"observation-refinement",5)
+    refined,record=transform(base,Restoration("z",observation_overrides=(("q1","split"),)),5)
     assert solve(refined).failure_probability==solve(base).failure_probability==0
     assert record.parent_game_id==game_id(base) and record.child_game_id==game_id(refined)
     base=made(GeneratorConfig(family="observation-conflict",seed=0)).game
     raw=base.to_dict(); raw["observations"].append("split"); base=base.from_dict(raw)
-    refined,_=transform(base,Restoration("z",observation_overrides=(("q1","split"),)),"observation-refinement",5)
+    refined,_=transform(base,Restoration("z",observation_overrides=(("q1","split"),)),5)
     assert solve(refined).failure_probability < solve(base).failure_probability
 
 
 def test_restriction_zero_positive_and_both_required():
     generated=made(GeneratorConfig(family="capability-restriction",seed=0,adversary_action_count=3))
     base=generated.game
-    irrelevant,_=transform(base,Restoration("z",remove_adversary_actions=frozenset({"a0"})),"adversary-restriction",0)
+    irrelevant,_=transform(base,Restoration("z",remove_adversary_actions=frozenset({"a0"})),0)
     assert solve(irrelevant).failure_probability==solve(base).failure_probability
-    harmful=next(r for r in generated.restorations if solve(transform(base,r,"adversary-restriction",0)[0]).failure_probability < solve(base).failure_probability)
-    restricted,_=transform(base,harmful,"adversary-restriction",0)
+    harmful=next(r for r in generated.restorations if solve(transform(base,r,0)[0]).failure_probability < solve(base).failure_probability)
+    restricted,_=transform(base,harmful,0)
     assert solve(restricted).failure_probability < solve(base).failure_probability
     mixed=made(GeneratorConfig(family="mixed-restoration",seed=0)).game
     rs=Restoration("r",observation_overrides=(("q0","u0"),("q1","u1")))
     rr=Restoration("a",remove_adversary_actions=frozenset({"a1"}))
-    assert solve(transform(mixed,rs,"observation-refinement",0)[0]).failure_probability>0
-    assert solve(transform(mixed,rr,"adversary-restriction",0)[0]).failure_probability>0
-    both=transform(transform(mixed,rs,"observation-refinement",0)[0],rr,"adversary-restriction",0)[0]
+    assert solve(transform(mixed,rs,0)[0]).failure_probability>0
+    assert solve(transform(mixed,rr,0)[0]).failure_probability>0
+    both=transform(transform(mixed,rs,0)[0],rr,0)[0]
     assert solve(both).failure_probability==0
 
 
