@@ -1,0 +1,263 @@
+{
+  "config": {
+    "adversary_action_count": 2,
+    "aliasing_degree": 2,
+    "ambiguous_states": 2,
+    "common_action": false,
+    "controller_action_count": 2,
+    "coverage": 1,
+    "epsilon": "0",
+    "family": "authority-limitation",
+    "generator_version": "stage2.v2",
+    "horizon": 2,
+    "intervention_round": 0,
+    "limits": {
+      "max_controller_histories": 100,
+      "max_generated_candidates": 1000,
+      "max_horizon": 4,
+      "max_policy_profiles": 100000,
+      "max_states": 20
+    },
+    "mode": "robust",
+    "probe_available": true,
+    "probe_delay": 1,
+    "probe_informative": true,
+    "seed": 0,
+    "stochasticity": false
+  },
+  "descriptors": {
+    "adversary_action_count": 2,
+    "ambiguous_controller_classes": 0,
+    "controller_action_count": 2,
+    "horizon": 2,
+    "observation_class_sizes": {
+      "q": 1,
+      "r": 1,
+      "x": 1
+    },
+    "oracle_explored_profiles": 4,
+    "reachable_states": 2,
+    "restoration_candidates": 0,
+    "state_count": 3,
+    "stochastic_branching": 0
+  },
+  "family": "authority-limitation",
+  "formal_game": {
+    "action_availability": {
+      "c0": [
+        0,
+        1
+      ],
+      "c1": [
+        0,
+        1
+      ]
+    },
+    "adversary_actions": [
+      "a0",
+      "a1"
+    ],
+    "controller_actions": [
+      "c0",
+      "c1"
+    ],
+    "display_labels": {},
+    "epsilon": "0",
+    "failure_states": [
+      "x"
+    ],
+    "horizon": 2,
+    "initial_distribution": [
+      {
+        "probability": "1",
+        "state": "q"
+      }
+    ],
+    "legitimate_rewards": [],
+    "observation_map": {
+      "q": "q",
+      "r": "r",
+      "x": "x"
+    },
+    "observations": [
+      "q",
+      "r",
+      "x"
+    ],
+    "recovery_states": [
+      "r"
+    ],
+    "schema_version": "stage1.v2",
+    "states": [
+      "q",
+      "r",
+      "x"
+    ],
+    "transitions": [
+      {
+        "adversary_action": "a0",
+        "controller_action": "c0",
+        "outcomes": [
+          {
+            "probability": "1",
+            "state": "r"
+          }
+        ],
+        "state": "q"
+      },
+      {
+        "adversary_action": "a1",
+        "controller_action": "c0",
+        "outcomes": [
+          {
+            "probability": "1",
+            "state": "r"
+          }
+        ],
+        "state": "q"
+      },
+      {
+        "adversary_action": "a0",
+        "controller_action": "c1",
+        "outcomes": [
+          {
+            "probability": "1",
+            "state": "r"
+          }
+        ],
+        "state": "q"
+      },
+      {
+        "adversary_action": "a1",
+        "controller_action": "c1",
+        "outcomes": [
+          {
+            "probability": "1",
+            "state": "r"
+          }
+        ],
+        "state": "q"
+      },
+      {
+        "adversary_action": "a0",
+        "controller_action": "c0",
+        "outcomes": [
+          {
+            "probability": "1",
+            "state": "r"
+          }
+        ],
+        "state": "r"
+      },
+      {
+        "adversary_action": "a1",
+        "controller_action": "c0",
+        "outcomes": [
+          {
+            "probability": "1",
+            "state": "r"
+          }
+        ],
+        "state": "r"
+      },
+      {
+        "adversary_action": "a0",
+        "controller_action": "c1",
+        "outcomes": [
+          {
+            "probability": "1",
+            "state": "r"
+          }
+        ],
+        "state": "r"
+      },
+      {
+        "adversary_action": "a1",
+        "controller_action": "c1",
+        "outcomes": [
+          {
+            "probability": "1",
+            "state": "r"
+          }
+        ],
+        "state": "r"
+      },
+      {
+        "adversary_action": "a0",
+        "controller_action": "c0",
+        "outcomes": [
+          {
+            "probability": "1",
+            "state": "x"
+          }
+        ],
+        "state": "x"
+      },
+      {
+        "adversary_action": "a1",
+        "controller_action": "c0",
+        "outcomes": [
+          {
+            "probability": "1",
+            "state": "x"
+          }
+        ],
+        "state": "x"
+      },
+      {
+        "adversary_action": "a0",
+        "controller_action": "c1",
+        "outcomes": [
+          {
+            "probability": "1",
+            "state": "x"
+          }
+        ],
+        "state": "x"
+      },
+      {
+        "adversary_action": "a1",
+        "controller_action": "c1",
+        "outcomes": [
+          {
+            "probability": "1",
+            "state": "x"
+          }
+        ],
+        "state": "x"
+      }
+    ]
+  },
+  "game_id": "6cad330aa9c65f6202365a003ad43be6f3e189a081fe31ba72fdba4eb311df30",
+  "generator_version": "stage2.v2",
+  "oracle": {
+    "explored_profiles": 4,
+    "failure_probability": "0",
+    "oracle_version": "normal-form-reference.v2",
+    "schema_version": "stage1.v2",
+    "status": "WINNING",
+    "threshold_satisfied": true,
+    "witness": [
+      {
+        "policy": [
+          {
+            "action": "c0",
+            "history": {
+              "observations": [
+                "q"
+              ],
+              "previous_actions": []
+            }
+          }
+        ],
+        "probability": "1"
+      }
+    ]
+  },
+  "oracle_version": "normal-form-reference.v2",
+  "parent_game_id": null,
+  "restorations": [],
+  "schema_version": "stage1.v2",
+  "seed": 0,
+  "transformation": null
+}

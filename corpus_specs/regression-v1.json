@@ -1,0 +1,163 @@
+{
+  "complexity_limits": {
+    "max_controller_histories": 100,
+    "max_generated_candidates": 1000,
+    "max_horizon": 4,
+    "max_policy_profiles": 100000,
+    "max_states": 20
+  },
+  "corpus_spec_version": "stage3.corpus-spec.v1",
+  "families": [
+    "observation-conflict",
+    "authority-limitation",
+    "probe",
+    "timing",
+    "capability-restriction",
+    "mixed-restoration"
+  ],
+  "generator_parameter_sets": [
+    {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "horizon": 2,
+      "intervention_round": 0,
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "stochasticity": false
+    },
+    {
+      "adversary_action_count": 2,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "horizon": 2,
+      "intervention_round": 0,
+      "mode": "robust",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "stochasticity": false
+    },
+    {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "horizon": 2,
+      "intervention_round": 0,
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "stochasticity": false
+    },
+    {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "horizon": 2,
+      "intervention_round": 0,
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "stochasticity": false
+    },
+    {
+      "adversary_action_count": 3,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "horizon": 2,
+      "intervention_round": 0,
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "stochasticity": false
+    },
+    {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 2,
+      "common_action": false,
+      "controller_action_count": 2,
+      "coverage": 1,
+      "epsilon": "0",
+      "horizon": 2,
+      "intervention_round": 0,
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "stochasticity": false
+    }
+  ],
+  "generator_version": "stage2.v2",
+  "isomorphism_limits": {
+    "max_permutations": 2000000
+  },
+  "isomorphism_version": "stage3.exact-permutation.v1",
+  "oracle_version": "normal-form-reference.v2",
+  "retention_policy": {
+    "exact_duplicates": "retain_first",
+    "isomorphic_duplicates": "retain_first",
+    "unresolved": "retain_all"
+  },
+  "retention_policy_version": "stage3.deterministic-retention.v2",
+  "schema_version": "stage1.v2",
+  "seed_ranges": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ]
+  ],
+  "stratification_policy": {
+    "fields": [
+      "family",
+      "status"
+    ],
+    "tie_break": "candidate_key"
+  },
+  "target_counts": {}
+}

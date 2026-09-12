@@ -1,0 +1,68 @@
+{
+  "aggregate_counts": {
+    "LOSING": 6,
+    "WINNING": 6,
+    "attempted": 12,
+    "complexity_rejected": 0,
+    "errors": 0,
+    "exact_duplicates": 4,
+    "filtered": 6,
+    "generated": 12,
+    "isomorphic_duplicates": 2,
+    "retained": 6,
+    "solved": 12,
+    "unique_resolved": 6,
+    "unresolved": 0
+  },
+  "candidate_ledger_fingerprint": "afdff5d8c01d4b6c9bd54d92dc14e4624955f218f7c2fc755f40bbc90f0511c6",
+  "corpus_fingerprint": "7387d14f866bf95961bccd49200c8cccb7f360605763595594e7467cded965ac",
+  "corpus_spec_fingerprint": "9f2c1580d4d338f96bf92795ff639926b6cb9e60df7814a26da22ee8d409e87b",
+  "fingerprint_security_attestation": false,
+  "retained_candidates": [
+    {
+      "candidate_key": "authority-limitation:0:8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e",
+      "filename": "authority-limitation_0_8e5ef964eb020eb2940d69464675d4184169c836c5bbd7061d1b84d99ee3228e.json",
+      "game_id": "6cad330aa9c65f6202365a003ad43be6f3e189a081fe31ba72fdba4eb311df30"
+    },
+    {
+      "candidate_key": "capability-restriction:0:ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb",
+      "filename": "capability-restriction_0_ff4cf71e8f5ae836b7f7e3097cd9c8b800ec64a7108c95a47a8e3f22dfb49feb.json",
+      "game_id": "fa3d5fb53e11c1b686d3ff2a3e175dca08bb93f1f0ce32a2a28ba33467f901c9"
+    },
+    {
+      "candidate_key": "mixed-restoration:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+      "filename": "mixed-restoration_0_c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f.json",
+      "game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2"
+    },
+    {
+      "candidate_key": "observation-conflict:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+      "filename": "observation-conflict_0_c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f.json",
+      "game_id": "0108b060532ceca8aac72a377511fe30cee6fd911476929d7d9ace3e2c2a4d1a"
+    },
+    {
+      "candidate_key": "probe:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+      "filename": "probe_0_c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f.json",
+      "game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97"
+    },
+    {
+      "candidate_key": "timing:0:c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f",
+      "filename": "timing_0_c6d1ced6537a8863fc1cbdd23c649bd83dd6b3d0e7fce9b467996a90e711bc9f.json",
+      "game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f"
+    }
+  ],
+  "retained_game_ids": [
+    "6cad330aa9c65f6202365a003ad43be6f3e189a081fe31ba72fdba4eb311df30",
+    "fa3d5fb53e11c1b686d3ff2a3e175dca08bb93f1f0ce32a2a28ba33467f901c9",
+    "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
+    "0108b060532ceca8aac72a377511fe30cee6fd911476929d7d9ace3e2c2a4d1a",
+    "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+    "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f"
+  ],
+  "versions": {
+    "generator": "stage2.v2",
+    "isomorphism": "stage3.exact-permutation.v1",
+    "oracle": "normal-form-reference.v2",
+    "retention": "stage3.deterministic-retention.v2",
+    "schema": "stage1.v2"
+  }
+}
