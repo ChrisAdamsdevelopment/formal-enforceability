@@ -39,3 +39,31 @@ def test_unsupported_and_error_are_not_losing():
     with pytest.raises(UnsupportedGameClass):Game.from_dict(value)
     with pytest.raises(ValueError):SolveStatus("SOLVER_ERROR")
     with pytest.raises(TypeError):json.dumps(InvalidGame("boom"))
+
+
+def reward_row(state="s1", action="LEFT", reward="2/3"):
+    return {"state": state, "controller_action": action, "reward": reward}
+
+
+def test_one_legitimate_reward_declaration_is_accepted_and_others_default_zero():
+    value = raw()
+    value["legitimate_rewards"] = [reward_row()]
+    game = Game.from_dict(value)
+    assert game.legitimate_rewards[("s1", "LEFT")].numerator == 2
+    assert game.legitimate_rewards[("s1", "RIGHT")] == 0
+
+
+@pytest.mark.parametrize("second_reward", ["2/3", "1/3"])
+def test_duplicate_legitimate_reward_declarations_are_rejected(second_reward):
+    value = raw()
+    value["legitimate_rewards"] = [reward_row(), reward_row(reward=second_reward)]
+    with pytest.raises(InvalidGame, match="duplicate legitimate reward"):
+        Game.from_dict(value)
+
+
+def test_distinct_reward_row_order_does_not_change_parsed_game():
+    first = raw()
+    first["legitimate_rewards"] = [reward_row(), reward_row("s2", "RIGHT", "1/4")]
+    second = raw()
+    second["legitimate_rewards"] = list(reversed(first["legitimate_rewards"]))
+    assert Game.from_dict(first) == Game.from_dict(second)

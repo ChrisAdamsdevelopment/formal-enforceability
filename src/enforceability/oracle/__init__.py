@@ -16,9 +16,10 @@ AdversaryHistory=tuple[tuple[str,...],tuple[str,...],tuple[str,...]]
 def _controller_histories(game:Game)->tuple[CIH,...]:
     current={(s,CIH((game.observation_map[s],))) for s in game.initial_states}; all_h=[]
     for t in range(game.horizon):
-        histories={h for _,h in current};all_h.extend(sorted(histories,key=lambda h:(h.observations,h.previous_actions)))
+        active={(state,h) for state,h in current if state not in game.failure_states|game.recovery_states}
+        histories={h for _,h in active};all_h.extend(sorted(histories,key=lambda h:(h.observations,h.previous_actions)))
         nxt=set()
-        for state,h in current:
+        for state,h in active:
             for a in game.available_actions(t):
                 for adversary in game.adversary_actions:
                     for state2,p in game.transitions[(state,a,adversary)]:

@@ -102,10 +102,13 @@ class Game:
         availability={a:frozenset(_rounds(v,horizon,a)) for a,v in availability_raw.items()}
         if horizon and any(not any(t in availability[a] for a in ca) for t in range(horizon)): raise InvalidGame("at least one controller action must be available each round")
         rewards={(s,a):Fraction(0) for s in states for a in ca}
+        declared_rewards=set()
         for row in raw.get("legitimate_rewards",[]):
             if not isinstance(row,dict) or set(row)!={"state","controller_action","reward"}: raise InvalidGame("invalid legitimate reward")
             key=(row["state"],row["controller_action"])
             if key not in rewards: raise InvalidGame("reward references unknown identifier")
+            if key in declared_rewards: raise InvalidGame("duplicate legitimate reward declaration")
+            declared_rewards.add(key)
             rewards[key]=fraction(row["reward"],"reward")
         labels=raw.get("display_labels",{})
         if not isinstance(labels,dict) or any(not isinstance(k,str) or not isinstance(v,str) for k,v in labels.items()): raise InvalidGame("display_labels must map strings to strings")
