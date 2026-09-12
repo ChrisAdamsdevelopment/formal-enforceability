@@ -95,3 +95,34 @@ def test_actual_manifest_version_mismatch_fails(monkeypatch,tmp_path):
         value=original(generated); value["oracle_version"]="wrong"; return value
     monkeypatch.setattr(corpus_core,"build_manifest",mismatch)
     with pytest.raises(CorpusBuildError): build_corpus(spec(),tmp_path/"bad-version")
+
+
+@pytest.mark.parametrize("limit",[12,13])
+def test_candidate_count_at_or_below_limit_is_accepted(tmp_path,limit):
+    s=replace(spec(),complexity_limits=replace(spec().complexity_limits,max_generated_candidates=limit))
+    result=build_corpus(s,tmp_path/str(limit))
+    assert result["aggregate_counts"]["attempted"]==12
+
+
+def test_candidate_count_above_limit_fails_before_output(tmp_path):
+    output=tmp_path/"must-not-exist"
+    s=replace(spec(),complexity_limits=replace(spec().complexity_limits,max_generated_candidates=11))
+    with pytest.raises(CorpusBuildError,match=r"requested candidate count 12 exceeds max_generated_candidates limit 11"):
+        build_corpus(s,output)
+    assert not output.exists()
+
+
+@pytest.mark.parametrize(("field","value"),[("versions",{"generator":"corrupt"}),("fingerprint_security_attestation",True)])
+def test_verify_detects_complete_manifest_corruption(tmp_path,field,value):
+    target=tmp_path/"corpus"; shutil.copytree("artifacts/regression-corpus-v1",target)
+    path=target/"corpus-manifest.json"; manifest=json.loads(path.read_text()); manifest[field]=value; path.write_text(json.dumps(manifest))
+    with pytest.raises(CorpusBuildError): verify_corpus(spec(),target)
+
+
+def test_candidate_key_tie_break_is_lexicographic_for_multi_digit_seeds(tmp_path):
+    base=spec(); authority_index=base.families.index("authority-limitation")
+    s=replace(base,families=("authority-limitation",),seed_ranges=((2,11),),generator_parameter_sets=(base.generator_parameter_sets[authority_index],),stratification_policy={"fields":["status"],"tie_break":"candidate_key"},target_counts={"WINNING":1},retention_policy={"exact_duplicates":"retain_all","isomorphic_duplicates":"retain_all","unresolved":"retain_all"})
+    output=tmp_path/"multidigit"; build_corpus(s,output)
+    retained=[e for e in ledger(output) if e["retention"]["retained"]]
+    assert len(retained)==1 and retained[0]["seed"]==10
+    assert retained[0]["candidate_key"]==min(e["candidate_key"] for e in ledger(output))

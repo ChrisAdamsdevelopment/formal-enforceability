@@ -10,6 +10,8 @@ Stage 3 is formal only: specification → candidates → exact oracle → struct
 
 Before validation, every attempt records family, seed, generator version, limits, exact supplied parameters, and its attempted-config fingerprint. Valid and complexity-rejected attempts additionally record normalized configuration and its fingerprint. Thus configuration errors and complexity rejections remain reproducible from the ledger.
 
+`max_generated_candidates` is a hard corpus-build bound over the total attempted seed/configuration combinations. The builder sums every half-open seed range and rejects an over-limit specification before creating the output directory, invoking generation, or calling the oracle; it never processes a partial prefix.
+
 ## Raw classification before retention
 
 The pipeline first generates, solves, checks emitted component versions, and performs exact isomorphism. It then sorts solved candidates by canonical candidate key and classifies the entire raw set, before any sampling:
@@ -39,7 +41,7 @@ Matched-pair validation recomputes child IDs, versions, categories, parent avail
 
 The corpus fingerprint hashes canonical JSON containing the complete spec, ordered retained IDs, and verified generator/schema/oracle/isomorphism/retention versions. The ledger fingerprint hashes its canonical records. These are reproducibility identifiers, not attestations.
 
-Verification regenerates into a temporary directory, but independently validates the actual frozen files: canonical frozen spec and manifest fingerprint; frozen ledger recomputation and three-way fingerprint equality; exact retained filename set; ledger-to-manifest IDs; recomputed formal game IDs; canonical equality of every frozen and regenerated retained manifest; deterministic reports; and timing-diagnostic schema/key coverage. Missing, extra, unparsable, or corrupt artifacts fail loudly. Timing values alone are intentionally not compared.
+Verification regenerates into a temporary directory, but independently validates the actual frozen files: complete canonical equality of the frozen and regenerated corpus manifests; canonical frozen spec and manifest fingerprint; frozen ledger recomputation and three-way fingerprint equality; exact retained filename set; ledger-to-manifest IDs; recomputed formal game IDs; canonical equality of every frozen and regenerated retained manifest; deterministic reports; and timing-diagnostic schema/key coverage. Complete manifest equality covers version declarations, the non-attestation flag, and future deterministic fields in addition to targeted diagnostic checks. Missing, extra, unparsable, or corrupt artifacts fail loudly. Timing values alone are intentionally not compared.
 
 ```bash
 PYTHONPATH=src python -m enforceability.corpus build \

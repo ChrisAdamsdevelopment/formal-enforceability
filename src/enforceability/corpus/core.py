@@ -319,6 +319,10 @@ def _verify_manifest_versions(manifest,game,spec):
 
 def build_corpus(spec: CorpusSpec, output: str|Path)->dict[str,Any]:
     output=Path(output)
+    candidate_count=sum(stop-start for start,stop in spec.seed_ranges)
+    candidate_limit=spec.complexity_limits.max_generated_candidates
+    if candidate_count>candidate_limit:
+        raise CorpusBuildError(f"requested candidate count {candidate_count} exceeds max_generated_candidates limit {candidate_limit}")
     if output.exists(): raise FileExistsError(f"refusing to overwrite {output}")
     output.mkdir(parents=True); (output/"retained").mkdir()
     entries=[]; manifests={}; timings=[]
@@ -385,6 +389,7 @@ def verify_corpus(spec:CorpusSpec, corpus:str|Path)->dict[str,bool]:
     if temporary.exists(): shutil.rmtree(temporary)
     try:
       regenerated=build_corpus(spec,temporary); frozen_manifest=_load_json(corpus/"corpus-manifest.json"); checks={}
+      checks["corpus_manifest"]=canonical_json(frozen_manifest)==canonical_json(regenerated)
       frozen_spec=CorpusSpec.from_dict(_load_json(corpus/"corpus-spec.json")); checks["frozen_spec"]=frozen_spec.canonical_json()==spec.canonical_json() and frozen_spec.fingerprint==frozen_manifest.get("corpus_spec_fingerprint")
       frozen_ledger=_load_json(corpus/"candidate-ledger.json"); frozen_ledger_fp=_hash(canonical_json(frozen_ledger)); checks["candidate_ledger_fingerprint"]=frozen_ledger_fp==frozen_manifest.get("candidate_ledger_fingerprint")==regenerated["candidate_ledger_fingerprint"]
       checks["corpus_fingerprint"]=frozen_manifest.get("corpus_fingerprint")==regenerated["corpus_fingerprint"]
