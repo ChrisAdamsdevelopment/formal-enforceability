@@ -6,6 +6,19 @@ from tests.fixtures import conflicting
 def raw():return conflicting().to_dict()
 def test_deterministic_round_trip():
     game=conflicting();assert Game.from_json(game.to_json())==game;assert Game.from_json(game.to_json()).to_json()==game.to_json()
+
+
+def test_explicit_zero_mass_initial_state_round_trips_exactly():
+    value = raw()
+    value["initial_distribution"] = [
+        {"state": "s1", "probability": "1"},
+        {"state": "s2", "probability": "0"},
+    ]
+    game = Game.from_dict(value)
+    assert game.to_dict()["initial_distribution"] == value["initial_distribution"]
+    restored = Game.from_json(game.to_json())
+    assert restored == game
+    assert restored.to_json() == game.to_json()
 @pytest.mark.parametrize("change",[("states",[]),("initial_distribution",[]),("horizon",-1),("epsilon","2"),("recovery_states",["FAIL"])])
 def test_invalid(change):
     value=raw();value[change[0]]=change[1]

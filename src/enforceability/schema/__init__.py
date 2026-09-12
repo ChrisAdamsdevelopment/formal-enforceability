@@ -113,7 +113,10 @@ class Game:
 
     def to_dict(self) -> dict[str,Any]:
         return {"schema_version":self.schema_version,"states":list(self.states),
-          "initial_distribution":[{"state":s,"probability":rational_json(self.initial_distribution[s])} for s in self.states if self.initial_distribution.get(s,0)],
+          # Preserve explicitly supplied zero-mass entries.  Their presence is
+          # part of the validated representation, even though it has no effect
+          # on the induced probability measure.
+          "initial_distribution":[{"state":s,"probability":rational_json(self.initial_distribution[s])} for s in self.states if s in self.initial_distribution],
           "controller_actions":list(self.controller_actions),"adversary_actions":list(self.adversary_actions),"observations":list(self.observations),
           "observation_map":{s:self.observation_map[s] for s in self.states},
           "transitions":[{"state":s,"controller_action":c,"adversary_action":a,"outcomes":[{"state":n,"probability":rational_json(p)} for n,p in self.transitions[(s,c,a)]]} for s,c,a in product(self.states,self.controller_actions,self.adversary_actions)],

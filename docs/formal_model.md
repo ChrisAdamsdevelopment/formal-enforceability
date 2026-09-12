@@ -24,6 +24,9 @@ Rationals serialize as integers or strings such as `"2/3"`; JSON floats are
 rejected. Every distribution must have nonnegative mass summing **exactly** to
 one. Transition tables are total. Invalid data raises `InvalidGame`; an unknown
 version raises `UnsupportedGameClass`; neither becomes `LOSING`.
+Canonical serialization preserves every state entry explicitly supplied in
+`b0`, including zero-mass entries, in declared state order. It does not invent
+omitted zero-mass entries.
 
 ## Information and move order
 
@@ -89,6 +92,12 @@ remove controller permissions, refine observations using already declared
 observation IDs, or replace declared per-round action availability. It cannot run
 arbitrary code or carry a hand-authored cost. Topology is not a component of this
 schema, so topology edits are not represented.
+
+An observation override must be a true partition refinement: whenever two states
+had different observations before the transformation, they must still have
+different observations afterward. An override may leave the map unchanged or
+split one old class using a declared observation ID (including a previously
+unused ID), but it may never merge two old classes.
 
 For any game `G`, legitimate utility uses the same initial distribution,
 information, timing, transition, and adversary assumptions, but solves

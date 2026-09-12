@@ -4,7 +4,7 @@ from dataclasses import dataclass, replace
 from fractions import Fraction
 
 from .oracle import enumerate_adversary_policies, enumerate_controller_policies, solve, solve_matrix
-from .schema import Game, InvalidGame
+from .schema import Game, InvalidGame, fraction
 from .types import ControllerInformationHistory as CIH, OracleResult
 
 @dataclass(frozen=True,slots=True)
@@ -35,9 +35,19 @@ def apply_restoration(game:Game,r:Restoration)->Game:
     if not aa or not ca: raise InvalidGame("a restoration may not remove every action")
     if not r.remove_adversary_actions<=set(game.adversary_actions) or not r.remove_controller_actions<=set(game.controller_actions): raise InvalidGame("restoration removes an unknown action")
     obs=dict(game.observation_map)
+    overridden_states = [state for state, _ in r.observation_overrides]
+    if len(overridden_states) != len(set(overridden_states)):
+        raise InvalidGame("observation restoration contains duplicate state overrides")
     for state,observation in r.observation_overrides:
         if state not in game.states or observation not in game.observations: raise InvalidGame("invalid observation restoration")
         obs[state]=observation
+    # Refinement may split an old information class, but it must preserve every
+    # distinction the controller already had.  Equivalently, the new partition
+    # must refine (never coarsen) the old partition.
+    for index, state in enumerate(game.states):
+        for other in game.states[index + 1:]:
+            if game.observation_map[state] != game.observation_map[other] and obs[state] == obs[other]:
+                raise InvalidGame("observation restoration must be a refinement and may not merge distinct classes")
     availability={a:game.action_availability[a] for a in ca}
     for action,rounds in r.availability_overrides:
         if action not in ca or any(type(t) is not int or t<0 or t>=game.horizon for t in rounds): raise InvalidGame("invalid timing restoration")
@@ -65,7 +75,9 @@ def legitimate_utility(game:Game)->Fraction:
 def optimal_restoration(game:Game,candidates:tuple[Restoration,...],b0=None)->RestorationResult:
     """Evaluate finite candidates; ``b0`` may replace the declared initial belief."""
     if b0 is not None:
-        belief = {state: Fraction(probability) for state, probability in b0.items()}
+        if not hasattr(b0, "items"):
+            raise InvalidGame("b0 must be a mapping from state identifiers to exact probabilities")
+        belief = {state: fraction(probability, "b0 probability") for state, probability in b0.items()}
         if set(belief) - set(game.states) or any(p < 0 for p in belief.values()) or sum(belief.values(), Fraction(0)) != 1:
             raise InvalidGame("b0 must be an exact distribution over declared states")
         game = replace(game, initial_distribution=belief)
