@@ -7,9 +7,15 @@ Stage 2 is a formal experimental instrument. `GeneratorConfig` is passed to
 `build_manifest` step calls the exact Stage-1 oracle and restoration evaluator.
 Structural output therefore has no status or answer field. Each `GeneratedGame`
 carries its immutable `GeneratorConfig` and a canonical config fingerprint;
-`build_manifest(generated)` derives all provenance from that artifact. The old
+`build_manifest(generated)` derives all provenance from that artifact. Generation
+also stores the canonical game ID computed immediately after schema validation;
+manifest construction recomputes it before any oracle call and rejects mutable
+mapping changes. The old
 two-argument form verifies exact config equality and rejects mismatches. Generator version
 `stage2.v2`, schema version, and oracle version are independently recorded.
+These integrity repairs retain `stage2.v2`: formal games from configurations
+that already satisfied the documented horizon minima are unchanged; horizon-zero
+inputs were invalid under that documented contract and are now rejected.
 
 The public pipeline is:
 
@@ -21,10 +27,12 @@ manifest = build_manifest(generated)  # oracle invocation occurs here
 `GeneratorConfig` records family, integer seed, exact horizon, action counts,
 ambiguity/aliasing controls, common-action availability, response coverage,
 probe availability/informativeness/delay, intervention round, exact epsilon,
-stochasticity switch, neutral structural mode, and complexity limits. Invalid
-Booleans must be actual `bool` objects; epsilon follows the Stage-1 exact-number
+stochasticity switch, neutral structural mode, and complexity limits. Booleans
+must be actual `bool` objects; epsilon follows the Stage-1 exact-number
 contract (floats and booleans are rejected); and modes are validated per family.
-Probe and timing horizons must be at least two, probe delay must be positive,
+The declared horizon is always the exact formal-game horizon. Observation
+conflict, authority limitation, capability restriction, and mixed restoration
+require at least one round; probe and timing require at least two. Probe delay must be positive,
 and the probe horizon must include the probe, its delay, and the decision. Invalid
 fields raise `GenerationError`; over-limit candidates return
 `GenerationRejected`, including configuration, seed, estimates, and the reason
@@ -45,7 +53,11 @@ separators, with `display_labels` replaced by an empty object. Thus states,
 initial distribution (including explicit zero entries), actions, observations,
 observation map, all transitions, terminal sets, horizon, epsilon, availability,
 legitimate rewards, and schema version contribute. Display labels do not. This
-is an identifier, not cryptographic attestation or a security guarantee.
+is an identifier, not cryptographic attestation or a security guarantee. The
+stored generation-time ID detects accidental mutation before manifest solving;
+because Python objects and their stored IDs are not protected from deliberate
+coordinated modification, this is reproducibility/integrity checking rather
+than tamper-proof storage.
 
 ## Structural families
 
@@ -84,6 +96,10 @@ generator version, and transformation seed. Other formal fields are copied.
 The category is derived from the actual operation (or `compound`), and changed
 fields are obtained by comparing validated before/after formal dictionaries.
 A mismatched legacy caller label is rejected. Records make no outcome claim.
+When a record is attached to a manifest, its child ID must equal the verified
+formal-game ID and its generator version must equal the artifact's bound version;
+mismatches are errors rather than silently rewritten records. This is a
+consistency check, not authentication.
 
 A manifest separates `config` and `formal_game` from `oracle`, restoration
 evaluations, structural `descriptors`, and optional ancestry/transformation.

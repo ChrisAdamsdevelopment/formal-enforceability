@@ -23,6 +23,30 @@ def test_effective_probe_dimensions_and_horizon_are_limited():
     assert isinstance(rejected,GenerationRejected) and rejected.estimates["horizon"]==2
 
 
+@pytest.mark.parametrize("family",["observation-conflict","authority-limitation","capability-restriction"])
+def test_one_round_families_reject_zero_horizon(family):
+    with pytest.raises(GenerationError,match="invalid_configuration"):
+        GeneratorConfig(family=family,seed=0,horizon=0)
+
+
+@pytest.mark.parametrize("config",[
+    GeneratorConfig(family="observation-conflict",seed=0,horizon=1),
+    GeneratorConfig(family="authority-limitation",seed=0,horizon=3),
+    GeneratorConfig(family="probe",seed=0,horizon=3,probe_delay=2),
+    GeneratorConfig(family="timing",seed=0,horizon=2),
+    GeneratorConfig(family="capability-restriction",seed=0,horizon=1),
+    GeneratorConfig(family="mixed-restoration",seed=0,horizon=2),
+])
+def test_every_family_preserves_exact_declared_horizon(config):
+    assert made(config).game.horizon==config.horizon
+
+
+def test_exact_horizon_is_the_value_checked_by_limit():
+    config=GeneratorConfig(family="observation-conflict",seed=0,horizon=1,limits=ComplexityLimits(max_horizon=0))
+    rejected=generate(config)
+    assert isinstance(rejected,GenerationRejected) and rejected.estimates["horizon"]==1
+
+
 def test_fixed_action_counts_feed_actual_profile_estimate():
     rejected=generate(GeneratorConfig(family="probe",seed=0,controller_action_count=1,
         limits=ComplexityLimits(max_policy_profiles=1)))
@@ -47,6 +71,16 @@ def test_artifact_bound_provenance_and_reproduction():
     manifest=build_manifest(artifact); raw=manifest["config"]
     reconstructed=GeneratorConfig(**{**raw,"limits":ComplexityLimits(**raw["limits"])})
     assert canonical_game_json(made(reconstructed).game)==canonical_game_json(artifact.game)
+    assert made(reconstructed).generated_game_id==artifact.generated_game_id
+
+
+def test_mutated_formal_mapping_is_detected_independently_of_config_fingerprint():
+    artifact=made(GeneratorConfig(family="observation-conflict",seed=12))
+    original_config_fingerprint=artifact.config_fingerprint
+    artifact.game.observation_map["q0"]="r"
+    assert artifact.config_fingerprint==original_config_fingerprint
+    with pytest.raises(GenerationError,match="generated_game_provenance_mismatch"):
+        build_manifest(artifact)
 
 
 @pytest.mark.parametrize("epsilon",[0.5,True,"bad","2"])
@@ -76,6 +110,20 @@ def test_transformation_categories_are_derived_and_mislabels_rejected():
     assert set(record.changed_formal_fields)=={"adversary_actions","transitions"}
     with pytest.raises(GenerationError,match="mislabelled_transformation"):
         transform(artifact.game,restoration,"observation-refinement",7)
+
+
+def test_manifest_validates_transformation_record_consistency():
+    parent=made(GeneratorConfig(family="capability-restriction",seed=4))
+    child,record=transform(parent.game,parent.restorations[0],4)
+    child_artifact=replace(parent,game=child,restorations=(),generated_game_id=record.child_game_id)
+    assert build_manifest(child_artifact,transformation=record)["transformation"]["child_game_id"]==record.child_game_id
+    other=made(GeneratorConfig(family="capability-restriction",seed=5))
+    with pytest.raises(GenerationError,match="transformation_provenance_mismatch"):
+        build_manifest(other,transformation=record)
+    with pytest.raises(GenerationError,match="transformation_provenance_mismatch"):
+        build_manifest(child_artifact,transformation=replace(record,child_game_id="0"*64))
+    with pytest.raises(GenerationError,match="transformation_provenance_mismatch"):
+        build_manifest(child_artifact,transformation=replace(record,generator_version="stage2.v1"))
 
 
 def test_observation_and_authority_family_semantics():

@@ -69,6 +69,7 @@ class GeneratorConfig:
                "capability-restriction":{"base","multi","multi-absent","none"},
                "mixed-restoration":{"base","none","tie"}}
         if self.mode not in modes[self.family]: raise GenerationError("invalid_configuration",self.seed,self)
+        if self.horizon < 1: raise GenerationError("invalid_configuration",self.seed,self)
         if self.family in {"probe","timing"} and self.horizon < 2: raise GenerationError("invalid_configuration",self.seed,self)
         if self.family=="probe" and (self.probe_delay < 1 or self.horizon < self.probe_delay+1):
             raise GenerationError("invalid_configuration",self.seed,self)
@@ -106,6 +107,7 @@ class GeneratedGame:
     restorations: tuple[Restoration, ...] = ()
     config: GeneratorConfig | None = None
     config_fingerprint: str = ""
+    generated_game_id: str = ""
 
 
 def _game(*, states, initial, ca, aa, obs, transitions, horizon, availability=None, rewards=None, epsilon="0") -> Game:
@@ -137,7 +139,7 @@ def _conflict(c: GeneratorConfig, rng: random.Random) -> GeneratedGame:
             for k,act in enumerate(ca):
                 target="r" if act=="c_common" or k==required else "x"
                 t[s,act,a]={target:Fraction(1,2),s:Fraction(1,2)} if c.stochasticity else target
-    return GeneratedGame(_game(states=states,initial=states[:n],ca=ca,aa=aa,obs=obs,transitions=t,horizon=max(1,c.horizon),epsilon=c.epsilon))
+    return GeneratedGame(_game(states=states,initial=states[:n],ca=ca,aa=aa,obs=obs,transitions=t,horizon=c.horizon,epsilon=c.epsilon))
 
 
 def _authority(c: GeneratorConfig, rng: random.Random) -> GeneratedGame:
@@ -146,7 +148,7 @@ def _authority(c: GeneratorConfig, rng: random.Random) -> GeneratedGame:
     t={}
     for i,act in enumerate(ca):
         for j,adv in enumerate(aa): t["q",act,adv]="r" if c.mode=="robust" or j<c.coverage else "x"
-    return GeneratedGame(_game(states=states,initial=("q",),ca=ca,aa=aa,obs={s:s for s in states},transitions=t,horizon=max(1,c.horizon),epsilon=c.epsilon))
+    return GeneratedGame(_game(states=states,initial=("q",),ca=ca,aa=aa,obs={s:s for s in states},transitions=t,horizon=c.horizon,epsilon=c.epsilon))
 
 
 def _probe(c: GeneratorConfig, rng: random.Random) -> GeneratedGame:
@@ -183,7 +185,7 @@ def _capability(c: GeneratorConfig, rng: random.Random) -> GeneratedGame:
     states=("q","r","x"); ca=("c0",); aa=tuple(f"a{i}" for i in range(max(2,c.adversary_action_count))); t={}
     harmful=1+rng.randrange(len(aa)-1)
     for j,a in enumerate(aa): t["q","c0",a]="x" if j==harmful or (c.mode in {"multi","multi-absent"} and j>0) else "r"
-    game=_game(states=states,initial=("q",),ca=ca,aa=aa,obs={s:s for s in states},transitions=t,horizon=max(1,c.horizon),epsilon=c.epsilon)
+    game=_game(states=states,initial=("q",),ca=ca,aa=aa,obs={s:s for s in states},transitions=t,horizon=c.horizon,epsilon=c.epsilon)
     candidates=tuple(Restoration(f"z{i}",remove_adversary_actions=frozenset({a})) for i,a in enumerate(aa[1:]))
     if c.mode=="multi": candidates += (Restoration("z_combined",remove_adversary_actions=frozenset(aa[1:])),)
     if c.mode=="none": candidates=(Restoration("z0",remove_adversary_actions=frozenset({aa[0]})),)
@@ -286,7 +288,7 @@ def generate(c: GeneratorConfig) -> GeneratedGame | GenerationRejected:
         if estimates["controller_histories"]>limits.max_controller_histories or estimates["policy_profiles"]>limits.max_policy_profiles:
             return GenerationRejected("estimated_oracle_complexity",c.seed,_config_dict(c),estimates)
         config_json=canonical_json(_config_dict(c))
-        return replace(generated,config=c,config_fingerprint=hashlib.sha256(config_json.encode()).hexdigest())
+        return replace(generated,config=c,config_fingerprint=hashlib.sha256(config_json.encode()).hexdigest(),generated_game_id=game_id(generated.game))
     except (InvalidGame, KeyError, ValueError) as exc:
         raise GenerationError("formal_generation_failed",c.seed,c) from exc
 
@@ -387,9 +389,15 @@ def build_manifest(generated: GeneratedGame | GeneratorConfig, compatibility_gen
     c=generated.config
     expected=hashlib.sha256(canonical_json(_config_dict(c)).encode()).hexdigest()
     if generated.config_fingerprint != expected: raise GenerationError("provenance_mismatch",c.seed,c)
+    verified_game_id=game_id(generated.game)
+    if generated.generated_game_id != verified_game_id:
+        raise GenerationError("generated_game_provenance_mismatch",c.seed,c)
+    if transformation is not None:
+        if not isinstance(transformation,TransformationRecord) or transformation.child_game_id != verified_game_id or transformation.generator_version != c.generator_version:
+            raise GenerationError("transformation_provenance_mismatch",c.seed,c)
     result=solve(generated.game)
     restoration_result=optimal_restoration(generated.game,generated.restorations) if generated.restorations else None
-    manifest={"game_id":game_id(generated.game),"generator_version":GENERATOR_VERSION,"schema_version":generated.game.schema_version,"oracle_version":result.oracle_version,"seed":c.seed,"family":c.family,"config":_config_dict(c),"formal_game":generated.game.to_dict(),"oracle":result.to_dict(),"restorations":[] if restoration_result is None else [_restoration_dict(e) for e in restoration_result.evaluations],"descriptors":structural_descriptors(generated.game,result.explored_profiles,len(generated.restorations)),"parent_game_id":None if transformation is None else transformation.parent_game_id,"transformation":None if transformation is None else asdict(transformation)}
+    manifest={"game_id":verified_game_id,"generator_version":GENERATOR_VERSION,"schema_version":generated.game.schema_version,"oracle_version":result.oracle_version,"seed":c.seed,"family":c.family,"config":_config_dict(c),"formal_game":generated.game.to_dict(),"oracle":result.to_dict(),"restorations":[] if restoration_result is None else [_restoration_dict(e) for e in restoration_result.evaluations],"descriptors":structural_descriptors(generated.game,result.explored_profiles,len(generated.restorations)),"parent_game_id":None if transformation is None else transformation.parent_game_id,"transformation":None if transformation is None else asdict(transformation)}
     validate_no_leakage(manifest); return manifest
 
 
