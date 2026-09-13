@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "domains": [
+        "formal-plain-v1",
+        "access-control",
+        "service-routing",
+        "warehouse-operations",
+        "industrial-process"
+      ],
+      "formal_reconstruction_count": 1,
+      "source_game_id": "0d2ca4ac4898e31e7bb8a962fdde8a92a92fc88f3b82339c8161b3182b0c51cf"
+    },
+    {
+      "domains": [
+        "formal-plain-v1",
+        "access-control",
+        "service-routing",
+        "warehouse-operations",
+        "industrial-process"
+      ],
+      "formal_reconstruction_count": 1,
+      "source_game_id": "3162ea772a498c58e7585e0f20e726b2423b0978011928c5e54edf4d49b93e64"
+    },
+    {
+      "domains": [
+        "formal-plain-v1",
+        "access-control",
+        "service-routing",
+        "warehouse-operations",
+        "industrial-process"
+      ],
+      "formal_reconstruction_count": 1,
+      "source_game_id": "db009e647f3754018648cb936d30dd76ee3091d1b6ca2bb8e2313c212097971f"
+    },
+    {
+      "domains": [
+        "formal-plain-v1",
+        "access-control",
+        "service-routing",
+        "warehouse-operations",
+        "industrial-process"
+      ],
+      "formal_reconstruction_count": 1,
+      "source_game_id": "ea1bfca419fdc2bc604412ae15157a8d17ff3585b8c5e3727b5de60351c33860"
+    },
+    {
+      "domains": [
+        "formal-plain-v1",
+        "access-control",
+        "service-routing",
+        "warehouse-operations",
+        "industrial-process"
+      ],
+      "formal_reconstruction_count": 1,
+      "source_game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2"
+    }
+  ],
+  "permitted_variation": [
+    "domain vocabulary",
+    "surface identifiers",
+    "presentation order",
+    "approved template IDs"
+  ],
+  "repeated_domains_are_independent": false,
+  "version": "stage5.cross-domain.v1"
+}
