@@ -1,0 +1,79 @@
+{
+  "claim": "Descriptive only; no statistical significance or model exploitation is inferred.",
+  "cross_tabs": [
+    {
+      "LOSING": 13,
+      "WINNING": 13,
+      "feature": "domain",
+      "feature_class": "REPRESENTATIONAL",
+      "status_pure_in_this_sample": false,
+      "value": "access-control"
+    },
+    {
+      "LOSING": 13,
+      "WINNING": 13,
+      "feature": "domain",
+      "feature_class": "REPRESENTATIONAL",
+      "status_pure_in_this_sample": false,
+      "value": "formal-plain-v1"
+    },
+    {
+      "LOSING": 15,
+      "WINNING": 13,
+      "feature": "domain",
+      "feature_class": "REPRESENTATIONAL",
+      "status_pure_in_this_sample": false,
+      "value": "industrial-process"
+    },
+    {
+      "LOSING": 13,
+      "WINNING": 13,
+      "feature": "domain",
+      "feature_class": "REPRESENTATIONAL",
+      "status_pure_in_this_sample": false,
+      "value": "service-routing"
+    },
+    {
+      "LOSING": 15,
+      "WINNING": 14,
+      "feature": "domain",
+      "feature_class": "REPRESENTATIONAL",
+      "status_pure_in_this_sample": false,
+      "value": "warehouse-operations"
+    },
+    {
+      "LOSING": 54,
+      "WINNING": 51,
+      "feature": "variant_index",
+      "feature_class": "REPRESENTATIONAL",
+      "status_pure_in_this_sample": false,
+      "value": "0"
+    },
+    {
+      "LOSING": 15,
+      "WINNING": 15,
+      "feature": "variant_index",
+      "feature_class": "REPRESENTATIONAL",
+      "status_pure_in_this_sample": false,
+      "value": "1"
+    }
+  ],
+  "direct_leakage_findings": [],
+  "feature_classes": {
+    "domain": "REPRESENTATIONAL",
+    "observation_class_count": "SEMANTIC",
+    "oracle_status": "ANSWER_DIRECT",
+    "original_family_label": "PROVENANCE",
+    "selected_template_ids": "REPRESENTATIONAL",
+    "state_count": "SEMANTIC",
+    "transition_count": "SEMANTIC",
+    "variant_index": "REPRESENTATIONAL"
+  },
+  "fingerprint": "6666026d1ab6ab177caa3c30be57a428f96bc5d86da6207b847088f8e72755a5",
+  "text_length": {
+    "average": 2982.8962962962964,
+    "maximum": 5827,
+    "minimum": 1899
+  },
+  "version": "stage5.representation-audit.v1"
+}
