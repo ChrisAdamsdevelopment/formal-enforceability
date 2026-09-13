@@ -1,0 +1,194 @@
+[
+  {
+    "candidate_key": "observation-conflict:101:3b5e64e6bc642e3f231c2eeb8826437845fc53067d412f60e825a7dad8d89f16",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "observation-conflict:101:3b5e64e6bc642e3f231c2eeb8826437845fc53067d412f60e825a7dad8d89f16"
+    },
+    "oracle": {
+      "explored_profiles": 9,
+      "failure_probability": "1/6",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o0"
+                ],
+                "previous_actions": []
+              }
+            },
+            {
+              "action": "c1",
+              "history": {
+                "observations": [
+                  "o1"
+                ],
+                "previous_actions": []
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "exclude"
+    },
+    "stratum": "",
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "observation-conflict:101:3b5e64e6bc642e3f231c2eeb8826437845fc53067d412f60e825a7dad8d89f16"
+    }
+  },
+  {
+    "candidate_key": "authority-limitation:101:2d236ee71658ed42aa60d4eaa0bd9a353de2780a61e0a41ffc46c8b38487503d",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "authority-limitation:101:2d236ee71658ed42aa60d4eaa0bd9a353de2780a61e0a41ffc46c8b38487503d"
+    },
+    "oracle": {
+      "explored_profiles": 6,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "exclude"
+    },
+    "stratum": "",
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "authority-limitation:101:2d236ee71658ed42aa60d4eaa0bd9a353de2780a61e0a41ffc46c8b38487503d"
+    }
+  },
+  {
+    "candidate_key": "probe:101:65f92314fec74b8ceb5b2cc697998919af385dfa57effffdea50f1d166ed7fb3",
+    "duplicate_classification": {
+      "category": "ISOMORPHISM_UNRESOLVED",
+      "representative_candidate_key": null
+    },
+    "oracle": {
+      "explored_profiles": 2916,
+      "failure_probability": "1/2",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "unresolved_isomorphism_excluded",
+    "retained": false,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "exclude"
+    },
+    "stratum": "",
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "probe:101:65f92314fec74b8ceb5b2cc697998919af385dfa57effffdea50f1d166ed7fb3"
+    }
+  },
+  {
+    "candidate_key": "timing:101:d1d118a83bcae44afb4dc38cf68901a27f19d998828b2f6812eb195fac0a598c",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "timing:101:d1d118a83bcae44afb4dc38cf68901a27f19d998828b2f6812eb195fac0a598c"
+    },
+    "oracle": {
+      "explored_profiles": 1,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "exclude"
+    },
+    "stratum": "",
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "timing:101:d1d118a83bcae44afb4dc38cf68901a27f19d998828b2f6812eb195fac0a598c"
+    }
+  },
+  {
+    "candidate_key": "capability-restriction:101:143e7f0747340eb1469a47e6d1c07e720393f053ad2485ae595e61dc667e91ec",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "capability-restriction:101:143e7f0747340eb1469a47e6d1c07e720393f053ad2485ae595e61dc667e91ec"
+    },
+    "oracle": {
+      "explored_profiles": 3,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "exclude"
+    },
+    "stratum": "",
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "capability-restriction:101:143e7f0747340eb1469a47e6d1c07e720393f053ad2485ae595e61dc667e91ec"
+    }
+  },
+  {
+    "candidate_key": "mixed-restoration:101:c9139a8dfd3cbd8a109cdbb132de087667858e5b43d5b6fbb5f603820439ed55",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "mixed-restoration:101:c9139a8dfd3cbd8a109cdbb132de087667858e5b43d5b6fbb5f603820439ed55"
+    },
+    "oracle": {
+      "explored_profiles": 8,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "exclude"
+    },
+    "stratum": "",
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "mixed-restoration:101:c9139a8dfd3cbd8a109cdbb132de087667858e5b43d5b6fbb5f603820439ed55"
+    }
+  }
+]

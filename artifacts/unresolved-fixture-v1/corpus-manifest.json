@@ -1,0 +1,38 @@
+{
+  "aggregate_counts": {
+    "LOSING": 1,
+    "WINNING": 0,
+    "attempted": 1,
+    "complexity_rejected": 0,
+    "errors": 0,
+    "exact_duplicates": 0,
+    "filtered": 0,
+    "generated": 1,
+    "isomorphic_duplicates": 0,
+    "retained": 1,
+    "solved": 1,
+    "unique_resolved": 0,
+    "unresolved": 1
+  },
+  "candidate_ledger_fingerprint": "f342ac9322ec26816a0e9884517b18152d824c5bf868551cc0374cc7cabd7080",
+  "corpus_fingerprint": "220a038f713c826e7b04161fecb4f5e1d2f97f5337b6b14398c0f38b3b2ea51d",
+  "corpus_spec_fingerprint": "cab86ef495721be3af2c2624f77556988f4593798ed11453f5dfdfd19144a524",
+  "fingerprint_security_attestation": false,
+  "retained_candidates": [
+    {
+      "candidate_key": "observation-conflict:77:61d7400f1d666fe5747b1cbce1fb4e3dea3b59cf99ce6dab656f1c43b2c6beee",
+      "filename": "observation-conflict_77_61d7400f1d666fe5747b1cbce1fb4e3dea3b59cf99ce6dab656f1c43b2c6beee.json",
+      "game_id": "94b03bd75f555ceec64e31ce6284e0ac18cc1de1615d836b4926ae867d5d89e6"
+    }
+  ],
+  "retained_game_ids": [
+    "94b03bd75f555ceec64e31ce6284e0ac18cc1de1615d836b4926ae867d5d89e6"
+  ],
+  "versions": {
+    "generator": "stage2.v2",
+    "isomorphism": "stage3.exact-permutation.v1",
+    "oracle": "normal-form-reference.v2",
+    "retention": "stage3.deterministic-retention.v2",
+    "schema": "stage1.v2"
+  }
+}

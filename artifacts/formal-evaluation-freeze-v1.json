@@ -1,0 +1,83 @@
+{
+  "benchmark_freeze_fingerprint": "6640353057ff57fb8fd63da33e4eb97dd11533849ef586ac60a233c755a30379",
+  "deterministic_build_inputs": {
+    "development_spec_fingerprint": "e66566535b4f550f3238c5a200cc2dce1c61ac7079df332b512f2b9975d2d39d",
+    "evaluation_spec_fingerprint": "d2da887d90c39309968148c37acff3cc35fca296e298cca1f6f128fad4ba5229"
+  },
+  "development_corpus_fingerprint": "9b11eb5fe864794a5bfbfe1b28b62d143ec9c3f53b21533a01cc25357bf2463d",
+  "evaluation_corpus_fingerprint": "73b998719e06288d27fae5d528f6fb59783292534309771366c1fb4b4d7bb237",
+  "evaluation_oracle_status_counts": {
+    "LOSING": 4,
+    "WINNING": 1
+  },
+  "formal_mechanism_coverage": {
+    "authority": [
+      "authority-perfect-insufficient-v1",
+      "authority-robust-response-v1",
+      "restriction-positive-v1",
+      "restriction-zero-v1",
+      "restriction-joint-v1"
+    ],
+    "corpus": [
+      "duplicate-exact-v1",
+      "duplicate-isomorphic-v1",
+      "unique-resolved-v1",
+      "isomorphism-unresolved-fixture-v1",
+      "complexity-rejected-fixture-v1",
+      "matched-transformation-v1"
+    ],
+    "observation": [
+      "obs-ambiguous-incompatible-v1",
+      "obs-ambiguous-common-policy-v1",
+      "obs-refinement-positive-v1",
+      "obs-refinement-zero-v1",
+      "probe-useless-v1",
+      "probe-useful-v1",
+      "probe-too-late-v1",
+      "probe-delay-multiple-v1"
+    ],
+    "probability": [
+      "transition-deterministic-v1",
+      "transition-stochastic-rational-v1",
+      "probability-half-v1",
+      "probability-third-v1",
+      "probability-other-rational-v1",
+      "epsilon-nonzero-v1",
+      "epsilon-boundary-v1",
+      "epsilon-neighboring-v1"
+    ],
+    "restoration": [
+      "restoration-unique-optimum-v1",
+      "restoration-tied-optima-v1",
+      "restoration-dominated-v1",
+      "restoration-none-feasible-v1",
+      "repair-information-only-v1",
+      "repair-restriction-only-v1",
+      "repair-timing-only-v1",
+      "repair-compound-v1"
+    ],
+    "timing": [
+      "timing-before-deadline-v1",
+      "timing-last-usable-v1",
+      "timing-after-failure-v1",
+      "timing-multiple-horizons-v1",
+      "timing-multiple-positions-v1"
+    ]
+  },
+  "mechanism_spec_fingerprint": "bc37c99023a29677767ca96fc65631f58093001423a9bfb828e5d9e7ba81bdfa",
+  "retained_evaluation_game_ids": [
+    "0d2ca4ac4898e31e7bb8a962fdde8a92a92fc88f3b82339c8161b3182b0c51cf",
+    "db009e647f3754018648cb936d30dd76ee3091d1b6ca2bb8e2313c212097971f",
+    "3162ea772a498c58e7585e0f20e726b2423b0978011928c5e54edf4d49b93e64",
+    "ea1bfca419fdc2bc604412ae15157a8d17ff3585b8c5e3727b5de60351c33860",
+    "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2"
+  ],
+  "retained_resolved_evaluation_isomorphism_class_ids": [
+    "97f638ca923f70a1373eb5852b44e23f2482493e4e12071f21224933fe774ea9",
+    "fb7c581c39a9ed2443d128af5a28bf5e474c518466a78b5ba9d76c4d306bc096",
+    "2f59c9c37af1531e5c51bff799c40aa02132b3aa90bebdb5d7483d09e0edb744",
+    "0fb3df4d7e6d1e586594292e8bade2de6947412b91f12acde2f8b86a28c21b06",
+    "5472ad77b64f2cc18bb5ad91afc909a8655fce4952389f41f5949c45341bd481"
+  ],
+  "split_construction_version": "stage4.formal-freeze.v1"
+}

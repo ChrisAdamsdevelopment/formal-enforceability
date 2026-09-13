@@ -1,0 +1,10 @@
+{
+  "exact_duplicate_count": 0,
+  "formal_isomorphic_duplicate_count": 0,
+  "isomorphism_version": "stage3.exact-permutation.v1",
+  "template_relative_similarity_counts": {
+    "observation-conflict": 0
+  },
+  "unique_resolved_count": 0,
+  "unresolved_count": 0
+}

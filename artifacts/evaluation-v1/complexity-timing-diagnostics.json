@@ -1,0 +1,32 @@
+[
+  {
+    "candidate_key": "observation-conflict:101:3b5e64e6bc642e3f231c2eeb8826437845fc53067d412f60e825a7dad8d89f16",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.007099859999470937
+  },
+  {
+    "candidate_key": "authority-limitation:101:2d236ee71658ed42aa60d4eaa0bd9a353de2780a61e0a41ffc46c8b38487503d",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.002306760999999824
+  },
+  {
+    "candidate_key": "probe:101:65f92314fec74b8ceb5b2cc697998919af385dfa57effffdea50f1d166ed7fb3",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 27.16002993100028
+  },
+  {
+    "candidate_key": "timing:101:d1d118a83bcae44afb4dc38cf68901a27f19d998828b2f6812eb195fac0a598c",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.0012482040001486894
+  },
+  {
+    "candidate_key": "capability-restriction:101:143e7f0747340eb1469a47e6d1c07e720393f053ad2485ae595e61dc667e91ec",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.003130297999632603
+  },
+  {
+    "candidate_key": "mixed-restoration:101:c9139a8dfd3cbd8a109cdbb132de087667858e5b43d5b6fbb5f603820439ed55",
+    "diagnostic_only": true,
+    "wall_clock_seconds": 0.04330281200054742
+  }
+]

@@ -1,0 +1,123 @@
+[
+  {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "family": "observation-conflict",
+      "generator_parameters": {
+        "ambiguous_states": 3,
+        "controller_action_count": 3,
+        "horizon": 2
+      },
+      "generator_version": "stage2.v2",
+      "seed": 77
+    },
+    "attempted_config_fingerprint": "05af9f3101c9565cbac73ae75f787775b459cfa3426c0d92459df95f76eabb66",
+    "candidate_key": "observation-conflict:77:61d7400f1d666fe5747b1cbce1fb4e3dea3b59cf99ce6dab656f1c43b2c6beee",
+    "complexity": {
+      "actual_controller_histories": null,
+      "actual_explored_profiles": 9,
+      "estimate_saturated": false,
+      "estimated_controller_histories": 2,
+      "estimated_profiles": 9,
+      "profile_overestimate_ratio": 1.0,
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "b3821a92a6b4636f72ddbaafb9a7c10434329e72d3a7a1cef1df45c3355126f3",
+    "descriptors": {
+      "adversary_action_count": 1,
+      "ambiguous_controller_classes": 1,
+      "controller_action_count": 3,
+      "horizon": 2,
+      "observation_class_sizes": {
+        "o0": 2,
+        "o1": 1,
+        "r": 1,
+        "x": 1
+      },
+      "oracle_explored_profiles": 9,
+      "reachable_states": 5,
+      "restoration_candidates": 0,
+      "state_count": 5,
+      "stochastic_branching": 0
+    },
+    "duplicate_classification": {
+      "category": "ISOMORPHISM_UNRESOLVED",
+      "representative_candidate_key": null
+    },
+    "family": "observation-conflict",
+    "game_id": "94b03bd75f555ceec64e31ce6284e0ac18cc1de1615d836b4926ae867d5d89e6",
+    "generator_config": {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 3,
+      "common_action": false,
+      "controller_action_count": 3,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "observation-conflict",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 100000,
+        "max_states": 20
+      },
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 77,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": {
+      "class_id": null,
+      "permutations_examined": 0,
+      "signature": null,
+      "status": "ISOMORPHISM_UNRESOLVED",
+      "version": "stage3.exact-permutation.v1"
+    },
+    "oracle": {
+      "explored_profiles": 9,
+      "failure_probability": "1/3",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "restorations": [],
+    "retention": {
+      "reason": "selected_by_declared_policy",
+      "retained": true,
+      "rule": {
+        "exact_duplicates": "retain_first",
+        "isomorphic_duplicates": "retain_first",
+        "unresolved": "retain_all"
+      },
+      "stratum": "",
+      "tie_break": {
+        "field": "candidate_key",
+        "value": "observation-conflict:77:61d7400f1d666fe5747b1cbce1fb4e3dea3b59cf99ce6dab656f1c43b2c6beee"
+      }
+    },
+    "seed": 77,
+    "state": "RETAINED"
+  }
+]

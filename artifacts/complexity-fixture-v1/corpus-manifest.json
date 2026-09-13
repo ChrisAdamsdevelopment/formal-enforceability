@@ -1,0 +1,30 @@
+{
+  "aggregate_counts": {
+    "LOSING": 0,
+    "WINNING": 0,
+    "attempted": 1,
+    "complexity_rejected": 1,
+    "errors": 0,
+    "exact_duplicates": 0,
+    "filtered": 0,
+    "generated": 0,
+    "isomorphic_duplicates": 0,
+    "retained": 0,
+    "solved": 0,
+    "unique_resolved": 0,
+    "unresolved": 0
+  },
+  "candidate_ledger_fingerprint": "20933a1458cc8e0ff4cc9d3a0ce31bf8cea7959de9736f43ae1a6a941f4ea5f1",
+  "corpus_fingerprint": "4f51275e41a5b3a088a7d12665f5df53f1e7ba69daefee188aa61e7029b4d145",
+  "corpus_spec_fingerprint": "451e5227df3cf5b5190f3cc1b39d990b20fc6eeb3f13e0ca7051e37d5d7413b5",
+  "fingerprint_security_attestation": false,
+  "retained_candidates": [],
+  "retained_game_ids": [],
+  "versions": {
+    "generator": "stage2.v2",
+    "isomorphism": "stage3.exact-permutation.v1",
+    "oracle": "normal-form-reference.v2",
+    "retention": "stage3.deterministic-retention.v2",
+    "schema": "stage1.v2"
+  }
+}

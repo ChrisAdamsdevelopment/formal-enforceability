@@ -1,0 +1,602 @@
+{
+  "by_family": {
+    "authority-limitation": {
+      "LOSING": 1,
+      "WINNING": 0,
+      "attempted": 1,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 0,
+      "filtered": 0,
+      "generated": 1,
+      "isomorphic_duplicates": 0,
+      "retained": 1,
+      "solved": 1,
+      "unique_resolved": 1,
+      "unresolved": 0
+    },
+    "capability-restriction": {
+      "LOSING": 1,
+      "WINNING": 0,
+      "attempted": 1,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 0,
+      "filtered": 0,
+      "generated": 1,
+      "isomorphic_duplicates": 0,
+      "retained": 1,
+      "solved": 1,
+      "unique_resolved": 1,
+      "unresolved": 0
+    },
+    "mixed-restoration": {
+      "LOSING": 1,
+      "WINNING": 0,
+      "attempted": 1,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 0,
+      "filtered": 0,
+      "generated": 1,
+      "isomorphic_duplicates": 0,
+      "retained": 1,
+      "solved": 1,
+      "unique_resolved": 1,
+      "unresolved": 0
+    },
+    "observation-conflict": {
+      "LOSING": 0,
+      "WINNING": 1,
+      "attempted": 1,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 0,
+      "filtered": 0,
+      "generated": 1,
+      "isomorphic_duplicates": 0,
+      "retained": 1,
+      "solved": 1,
+      "unique_resolved": 1,
+      "unresolved": 0
+    },
+    "probe": {
+      "LOSING": 0,
+      "WINNING": 1,
+      "attempted": 1,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 0,
+      "filtered": 0,
+      "generated": 1,
+      "isomorphic_duplicates": 0,
+      "retained": 1,
+      "solved": 1,
+      "unique_resolved": 1,
+      "unresolved": 0
+    },
+    "timing": {
+      "LOSING": 0,
+      "WINNING": 1,
+      "attempted": 1,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 0,
+      "filtered": 0,
+      "generated": 1,
+      "isomorphic_duplicates": 0,
+      "retained": 1,
+      "solved": 1,
+      "unique_resolved": 1,
+      "unresolved": 0
+    }
+  },
+  "complexity_calibration": {
+    "note": "runtime is an engineering diagnostic; estimates are not conceptual difficulty",
+    "samples": 6
+  },
+  "leakage_audit": {
+    "answer_direct": {
+      "fields": [
+        "oracle",
+        "restorations"
+      ],
+      "separated_from_correlates": true
+    },
+    "blacklist_is_not_absence_proof": true,
+    "neutralized_representational": {
+      "neutral_state_prefix_signature": [
+        {
+          "LOSING": 2,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 2,
+          "value": "s,s,s"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 2,
+          "status_pure_in_this_corpus": false,
+          "support": 3,
+          "value": "s,s,s,s"
+        },
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "s,s,s,s,s,s"
+        }
+      ],
+      "neutral_terminal_identifier_convention": [
+        {
+          "LOSING": 2,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 2,
+          "value": "s2,s1"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 2,
+          "status_pure_in_this_corpus": false,
+          "support": 3,
+          "value": "s3,s2"
+        },
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "s5,s4"
+        }
+      ]
+    },
+    "provenance_only": {
+      "family": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "authority-limitation"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "capability-restriction"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "mixed-restoration"
+        },
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "observation-conflict"
+        },
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "probe"
+        },
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "timing"
+        }
+      ],
+      "mode": [
+        {
+          "LOSING": 1,
+          "WINNING": 3,
+          "status_pure_in_this_corpus": false,
+          "support": 4,
+          "value": "base"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "multi"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "tie"
+        }
+      ]
+    },
+    "purpose": "descriptive contingencies only; purity is not proof of leakage or predictive validity",
+    "representational": {
+      "controller_identifier_prefix_signature": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "c"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": false,
+          "support": 2,
+          "value": "c,c"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "c,c,c,c"
+        },
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "c,c,probe,wait"
+        },
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "wait,act"
+        }
+      ],
+      "observation_identifier_prefix_signature": [
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "d,q,r,x"
+        },
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "o,p,p,r,x"
+        },
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "o,r,x"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "o,r,x,u,u"
+        },
+        {
+          "LOSING": 2,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 2,
+          "value": "q,r,x"
+        }
+      ],
+      "state_identifier_prefix_signature": [
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "q,d,r,x"
+        },
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "q,q,p,p,r,x"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": false,
+          "support": 2,
+          "value": "q,q,r,x"
+        },
+        {
+          "LOSING": 2,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 2,
+          "value": "q,r,x"
+        }
+      ],
+      "terminal_identifier_convention": [
+        {
+          "LOSING": 3,
+          "WINNING": 3,
+          "status_pure_in_this_corpus": false,
+          "support": 6,
+          "value": "x,r"
+        }
+      ],
+      "terminal_order_roles": [
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "[False, False, False, False, True, True]"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 2,
+          "status_pure_in_this_corpus": false,
+          "support": 3,
+          "value": "[False, False, True, True]"
+        },
+        {
+          "LOSING": 2,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 2,
+          "value": "[False, True, True]"
+        }
+      ]
+    },
+    "semantic_structural": {
+      "adversary_action_count": [
+        {
+          "LOSING": 0,
+          "WINNING": 3,
+          "status_pure_in_this_corpus": true,
+          "support": 3,
+          "value": "1"
+        },
+        {
+          "LOSING": 3,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 3,
+          "value": "2"
+        }
+      ],
+      "ambiguous_controller_classes": [
+        {
+          "LOSING": 2,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": false,
+          "support": 3,
+          "value": "0"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 2,
+          "status_pure_in_this_corpus": false,
+          "support": 3,
+          "value": "1"
+        }
+      ],
+      "controller_action_count": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "1"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 2,
+          "status_pure_in_this_corpus": false,
+          "support": 3,
+          "value": "2"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": false,
+          "support": 2,
+          "value": "4"
+        }
+      ],
+      "horizon": [
+        {
+          "LOSING": 1,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": false,
+          "support": 2,
+          "value": "1"
+        },
+        {
+          "LOSING": 2,
+          "WINNING": 2,
+          "status_pure_in_this_corpus": false,
+          "support": 4,
+          "value": "2"
+        }
+      ],
+      "restoration_candidates": [
+        {
+          "LOSING": 1,
+          "WINNING": 3,
+          "status_pure_in_this_corpus": false,
+          "support": 4,
+          "value": "0"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "2"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "4"
+        }
+      ],
+      "state_count": [
+        {
+          "LOSING": 2,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 2,
+          "value": "3"
+        },
+        {
+          "LOSING": 1,
+          "WINNING": 2,
+          "status_pure_in_this_corpus": false,
+          "support": 3,
+          "value": "4"
+        },
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "6"
+        }
+      ],
+      "stochastic_branching": [
+        {
+          "LOSING": 3,
+          "WINNING": 2,
+          "status_pure_in_this_corpus": false,
+          "support": 5,
+          "value": "0"
+        },
+        {
+          "LOSING": 0,
+          "WINNING": 1,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "4"
+        }
+      ]
+    }
+  },
+  "matched_pair_audit": {
+    "failures": [],
+    "passed": true,
+    "records": 0
+  },
+  "raw_candidates": {
+    "LOSING": 3,
+    "WINNING": 3,
+    "attempted": 6,
+    "complexity_rejected": 0,
+    "errors": 0,
+    "exact_duplicates": 0,
+    "filtered": 0,
+    "generated": 6,
+    "isomorphic_duplicates": 0,
+    "retained": 6,
+    "solved": 6,
+    "unique_resolved": 6,
+    "unresolved": 0
+  },
+  "retained_corpus": {
+    "LOSING": 3,
+    "WINNING": 3,
+    "attempted": 6,
+    "complexity_rejected": 0,
+    "errors": 0,
+    "exact_duplicates": 0,
+    "filtered": 0,
+    "generated": 6,
+    "isomorphic_duplicates": 0,
+    "retained": 6,
+    "solved": 6,
+    "unique_resolved": 6,
+    "unresolved": 0
+  },
+  "structural_coverage": {
+    "adversary_action_counts": [
+      1,
+      2
+    ],
+    "adversary_capability_counts": [
+      1,
+      2
+    ],
+    "all_six_families": true,
+    "ambiguous_observation_class_counts": [
+      0,
+      1
+    ],
+    "both_oracle_statuses": true,
+    "complexity_rejected_count": 0,
+    "controller_action_counts": [
+      1,
+      2,
+      4
+    ],
+    "families": [
+      "authority-limitation",
+      "capability-restriction",
+      "mixed-restoration",
+      "observation-conflict",
+      "probe",
+      "timing"
+    ],
+    "gaps": [
+      "transformed-matched-pairs",
+      "complexity-rejections",
+      "unresolved-isomorphism",
+      "no-feasible-restorations"
+    ],
+    "horizon_values": [
+      1,
+      2
+    ],
+    "no_feasible_restoration_cases": 0,
+    "oracle_statuses": [
+      "LOSING",
+      "WINNING"
+    ],
+    "probe_delays": [
+      1
+    ],
+    "restoration_candidate_counts": [
+      0,
+      2,
+      4
+    ],
+    "state_counts": [
+      3,
+      4,
+      6
+    ],
+    "tied_optimal_restoration_cases": 2,
+    "timing_intervention_positions": [
+      0
+    ],
+    "transformed_matched_pair_count": 0,
+    "transition_modes": {
+      "deterministic": true,
+      "stochastic": true
+    },
+    "unresolved_isomorphism_count": 0
+  }
+}

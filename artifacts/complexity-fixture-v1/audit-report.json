@@ -1,0 +1,126 @@
+{
+  "by_family": {
+    "observation-conflict": {
+      "LOSING": 0,
+      "WINNING": 0,
+      "attempted": 1,
+      "complexity_rejected": 1,
+      "errors": 0,
+      "exact_duplicates": 0,
+      "filtered": 0,
+      "generated": 0,
+      "isomorphic_duplicates": 0,
+      "retained": 0,
+      "solved": 0,
+      "unique_resolved": 0,
+      "unresolved": 0
+    }
+  },
+  "complexity_calibration": {
+    "note": "runtime is an engineering diagnostic; estimates are not conceptual difficulty",
+    "samples": 0
+  },
+  "leakage_audit": {
+    "answer_direct": {
+      "fields": [
+        "oracle",
+        "restorations"
+      ],
+      "separated_from_correlates": true
+    },
+    "blacklist_is_not_absence_proof": true,
+    "neutralized_representational": {
+      "neutral_state_prefix_signature": [],
+      "neutral_terminal_identifier_convention": []
+    },
+    "provenance_only": {
+      "family": [],
+      "mode": []
+    },
+    "purpose": "descriptive contingencies only; purity is not proof of leakage or predictive validity",
+    "representational": {
+      "controller_identifier_prefix_signature": [],
+      "observation_identifier_prefix_signature": [],
+      "state_identifier_prefix_signature": [],
+      "terminal_identifier_convention": [],
+      "terminal_order_roles": []
+    },
+    "semantic_structural": {
+      "adversary_action_count": [],
+      "ambiguous_controller_classes": [],
+      "controller_action_count": [],
+      "horizon": [],
+      "restoration_candidates": [],
+      "state_count": [],
+      "stochastic_branching": []
+    }
+  },
+  "matched_pair_audit": {
+    "failures": [],
+    "passed": true,
+    "records": 0
+  },
+  "raw_candidates": {
+    "LOSING": 0,
+    "WINNING": 0,
+    "attempted": 1,
+    "complexity_rejected": 1,
+    "errors": 0,
+    "exact_duplicates": 0,
+    "filtered": 0,
+    "generated": 0,
+    "isomorphic_duplicates": 0,
+    "retained": 0,
+    "solved": 0,
+    "unique_resolved": 0,
+    "unresolved": 0
+  },
+  "retained_corpus": {
+    "LOSING": 0,
+    "WINNING": 0,
+    "attempted": 0,
+    "complexity_rejected": 0,
+    "errors": 0,
+    "exact_duplicates": 0,
+    "filtered": 0,
+    "generated": 0,
+    "isomorphic_duplicates": 0,
+    "retained": 0,
+    "solved": 0,
+    "unique_resolved": 0,
+    "unresolved": 0
+  },
+  "structural_coverage": {
+    "adversary_action_counts": [],
+    "adversary_capability_counts": [],
+    "all_six_families": false,
+    "ambiguous_observation_class_counts": [],
+    "both_oracle_statuses": false,
+    "complexity_rejected_count": 1,
+    "controller_action_counts": [],
+    "families": [],
+    "gaps": [
+      "all-six-families",
+      "both-oracle-statuses",
+      "stochastic-transitions",
+      "transformed-matched-pairs",
+      "unresolved-isomorphism",
+      "tied-optimal-restorations",
+      "no-feasible-restorations"
+    ],
+    "horizon_values": [],
+    "no_feasible_restoration_cases": 0,
+    "oracle_statuses": [],
+    "probe_delays": [],
+    "restoration_candidate_counts": [],
+    "state_counts": [],
+    "tied_optimal_restoration_cases": 0,
+    "timing_intervention_positions": [],
+    "transformed_matched_pair_count": 0,
+    "transition_modes": {
+      "deterministic": false,
+      "stochastic": false
+    },
+    "unresolved_isomorphism_count": 0
+  }
+}
