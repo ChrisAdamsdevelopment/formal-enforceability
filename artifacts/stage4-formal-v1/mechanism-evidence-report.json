@@ -1,0 +1,758 @@
+{
+  "coverage_complete": true,
+  "fingerprint": "698853538709779ef0bcd91936869da037187f6fe2276f08a534d39a3c7549e3",
+  "mechanisms": [
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "024a951f3a0be9ae18f835d05787561a76e47b0398471cc4abc52f0138a4783e",
+          "pair_id": "f9e8349b88d973b66d6603518d2577480ec4c8a4b24f1fd79d39a1b0d4c96b85",
+          "parent_game_id": "ab37f3376f08039866eb3b4956d1876487e192b275451a94766a04711b7960d0"
+        }
+      ],
+      "mechanism_id": "authority-perfect-insufficient-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "704c8aa7a65af1319d0aa2711d042a14b4b926d2619cb8ae824f7d15cf841ac1",
+          "pair_id": "819d252a384b19a666cf75b20c9ed7c95bee93b3f82623b7b7228998aee1d625",
+          "parent_game_id": "9de9af4a372536a634063c26510d8d2d4bd2395a00405827e891c57eb8e7fded"
+        }
+      ],
+      "mechanism_id": "authority-robust-response-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "corpus",
+          "candidate_state": "COMPLEXITY_REJECTED",
+          "corpus_fingerprint": "4f51275e41a5b3a088a7d12665f5df53f1e7ba69daefee188aa61e7029b4d145",
+          "fixture": "complexity"
+        }
+      ],
+      "mechanism_id": "complexity-rejected-fixture-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "corpus",
+          "fixture": "exact_duplicate",
+          "game_id": "9de9af4a372536a634063c26510d8d2d4bd2395a00405827e891c57eb8e7fded",
+          "occurrences": 2
+        }
+      ],
+      "mechanism_id": "duplicate-exact-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "corpus",
+          "fixture": "isomorphic_duplicate",
+          "game_ids": [
+            "9de9af4a372536a634063c26510d8d2d4bd2395a00405827e891c57eb8e7fded",
+            "6da90ecd4b2cc934896c83d7dda2df7b93661edd31574e1f041db73e3d1fbd61"
+          ],
+          "isomorphism_class_id": "f106e830e95b8e3fb71334c9bc7db3d13b190749a3cd5eab763be2462f3bd21a"
+        }
+      ],
+      "mechanism_id": "duplicate-isomorphic-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "third-boundary",
+          "game_id": "7aafa941517fff81309e57f649f6379aa30b2820ad2112d4aaddefb1412aca1b"
+        }
+      ],
+      "mechanism_id": "epsilon-boundary-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "quarter",
+          "game_id": "fca05a4f6b4da9511952012f68c8937b7116097feed29212aaf0ab3aedca5339"
+        },
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "third-boundary",
+          "game_id": "7aafa941517fff81309e57f649f6379aa30b2820ad2112d4aaddefb1412aca1b"
+        },
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "half-above-third",
+          "game_id": "374718bfa0da24a12e48b0473d7b123d0697edd5acd15ffb29e51d84bb6b4af0"
+        }
+      ],
+      "mechanism_id": "epsilon-neighboring-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "third-boundary",
+          "game_id": "7aafa941517fff81309e57f649f6379aa30b2820ad2112d4aaddefb1412aca1b"
+        }
+      ],
+      "mechanism_id": "epsilon-nonzero-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "game_id": "ab1f0c393829ddd42bfd7571617045ab331ebe0ddfae7d43c8f37cdc1a3669a6",
+          "pair_id": "be82f26fd4a4d1b18f3c9e7aef5a910561c900cf071846debaf2f30def1c8fbc"
+        }
+      ],
+      "mechanism_id": "horizon-1-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "game_id": "7c3fec875e4dd507e55c5e445f4de2e072a30d0bf0d0b27ee329224785c46c94",
+          "pair_id": "be82f26fd4a4d1b18f3c9e7aef5a910561c900cf071846debaf2f30def1c8fbc"
+        }
+      ],
+      "mechanism_id": "horizon-2-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "probe",
+          "fixture_id": "useful-long",
+          "game_id": "1e5437521083baff23c3d6f0dfd0facf4d7653c37ae8b80bd3c3e1f9ba76845f"
+        }
+      ],
+      "mechanism_id": "horizon-3-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "probe",
+          "fixture_id": "useful-delay3",
+          "game_id": "97a550052a1e6bff2c4980ebb80b33d06440a6ab8972fd105f63a39b69b6ce45"
+        }
+      ],
+      "mechanism_id": "horizon-4-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "game_id": "e74fcf7d3b5ed7549c8cda373354d2c884ca9ebbc36ba38229875b7d85f7a089",
+          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc"
+        }
+      ],
+      "mechanism_id": "intervention-round-0-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "game_id": "68237a2852a200ab204672b206c3b09ab76b08742efed4864f63209e9374a9f9",
+          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc"
+        }
+      ],
+      "mechanism_id": "intervention-round-1-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "game_id": "68237a2852a200ab204672b206c3b09ab76b08742efed4864f63209e9374a9f9",
+          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc"
+        }
+      ],
+      "mechanism_id": "intervention-too-late-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "corpus",
+          "candidate_state": "ISOMORPHISM_UNRESOLVED",
+          "corpus_fingerprint": "220a038f713c826e7b04161fecb4f5e1d2f97f5337b6b14398c0f38b3b2ea51d",
+          "fixture": "unresolved"
+        }
+      ],
+      "mechanism_id": "isomorphism-unresolved-fixture-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "704c8aa7a65af1319d0aa2711d042a14b4b926d2619cb8ae824f7d15cf841ac1",
+          "pair_id": "819d252a384b19a666cf75b20c9ed7c95bee93b3f82623b7b7228998aee1d625",
+          "parent_game_id": "9de9af4a372536a634063c26510d8d2d4bd2395a00405827e891c57eb8e7fded"
+        }
+      ],
+      "mechanism_id": "matched-transformation-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "minimax-half",
+          "game_id": "38b17ee9774be198aaa40047a3f51066c448338108dbd1aac2044bc0822e61d1"
+        }
+      ],
+      "mechanism_id": "minimax-nontrivial-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "35af740a460366cf1bbdd61fed91dfaf74d71ded7fcd4c56a9b6825ddbe13ff5",
+          "pair_id": "8657e763535e1f4739571a0a4b326ac7a94a9897e786b606cbc9fb4fa5c37284",
+          "parent_game_id": "704c8aa7a65af1319d0aa2711d042a14b4b926d2619cb8ae824f7d15cf841ac1"
+        }
+      ],
+      "mechanism_id": "obs-ambiguous-common-policy-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "c50ed900aa0a9940708db57ad86b621bb0e6995998683c279c5272c04acdbc9e",
+          "pair_id": "afdc5a289927576b5ea74c86d11aef3d860402351aa41fc42f3964444db5c3a3",
+          "parent_game_id": "9de9af4a372536a634063c26510d8d2d4bd2395a00405827e891c57eb8e7fded"
+        }
+      ],
+      "mechanism_id": "obs-ambiguous-incompatible-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "c50ed900aa0a9940708db57ad86b621bb0e6995998683c279c5272c04acdbc9e",
+          "pair_id": "afdc5a289927576b5ea74c86d11aef3d860402351aa41fc42f3964444db5c3a3",
+          "parent_game_id": "9de9af4a372536a634063c26510d8d2d4bd2395a00405827e891c57eb8e7fded"
+        }
+      ],
+      "mechanism_id": "obs-refinement-positive-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "35af740a460366cf1bbdd61fed91dfaf74d71ded7fcd4c56a9b6825ddbe13ff5",
+          "pair_id": "8657e763535e1f4739571a0a4b326ac7a94a9897e786b606cbc9fb4fa5c37284",
+          "parent_game_id": "704c8aa7a65af1319d0aa2711d042a14b4b926d2619cb8ae824f7d15cf841ac1"
+        }
+      ],
+      "mechanism_id": "obs-refinement-zero-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "half-boundary",
+          "game_id": "e727ab7f08e7ddacc28cf73371a0d6a8fead991b051c89dcce89064ab731e695"
+        }
+      ],
+      "mechanism_id": "probability-half-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "one",
+          "game_id": "c18b3cda42aa08462c88a2272866d3d8e0b139fafe98d39abde6970ad943213f"
+        }
+      ],
+      "mechanism_id": "probability-one-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "quarter",
+          "game_id": "fca05a4f6b4da9511952012f68c8937b7116097feed29212aaf0ab3aedca5339"
+        }
+      ],
+      "mechanism_id": "probability-other-rational-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "third-boundary",
+          "game_id": "7aafa941517fff81309e57f649f6379aa30b2820ad2112d4aaddefb1412aca1b"
+        }
+      ],
+      "mechanism_id": "probability-third-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "zero",
+          "game_id": "589aae52ab89b8597e49c5c6581e64084580abcf0c18d023bd5a411caf9b5cde"
+        }
+      ],
+      "mechanism_id": "probability-zero-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "probe",
+          "fixture_id": "useful-short",
+          "game_id": "fa75ad42ffdd1d868b18f9eab4129990af3e0cf31f4bf9ab46519360bc3d485c"
+        }
+      ],
+      "mechanism_id": "probe-delay-1-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "probe",
+          "fixture_id": "useful-long",
+          "game_id": "1e5437521083baff23c3d6f0dfd0facf4d7653c37ae8b80bd3c3e1f9ba76845f"
+        }
+      ],
+      "mechanism_id": "probe-delay-2-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "probe",
+          "fixture_id": "useful-delay3",
+          "game_id": "97a550052a1e6bff2c4980ebb80b33d06440a6ab8972fd105f63a39b69b6ce45"
+        }
+      ],
+      "mechanism_id": "probe-delay-3-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "probe",
+          "fixture_id": "useful-short",
+          "game_id": "fa75ad42ffdd1d868b18f9eab4129990af3e0cf31f4bf9ab46519360bc3d485c"
+        },
+        {
+          "artifact_type": "probe",
+          "fixture_id": "useful-long",
+          "game_id": "1e5437521083baff23c3d6f0dfd0facf4d7653c37ae8b80bd3c3e1f9ba76845f"
+        },
+        {
+          "artifact_type": "probe",
+          "fixture_id": "useful-delay3",
+          "game_id": "97a550052a1e6bff2c4980ebb80b33d06440a6ab8972fd105f63a39b69b6ce45"
+        }
+      ],
+      "mechanism_id": "probe-delay-multiple-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "probe",
+          "fixture_id": "too-late",
+          "game_id": "4e9c687f72320bed898148896a523612eb39056acbf7de24d58ad65b9e567d93"
+        }
+      ],
+      "mechanism_id": "probe-too-late-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "probe",
+          "fixture_id": "useful-short",
+          "game_id": "fa75ad42ffdd1d868b18f9eab4129990af3e0cf31f4bf9ab46519360bc3d485c"
+        }
+      ],
+      "mechanism_id": "probe-useful-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "probe",
+          "fixture_id": "useless",
+          "game_id": "59470b0c1fdc815bb295d9e207dc213f75fc8246bb302ccbe28149e0a6c9ddda"
+        }
+      ],
+      "mechanism_id": "probe-useless-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "c50ed900aa0a9940708db57ad86b621bb0e6995998683c279c5272c04acdbc9e",
+          "pair_id": "4c43fc61b244203744cd936f1937facd1ea3b8129f5df528453ec4978d5ca86d",
+          "parent_game_id": "251f660ca2a29b8b7bc5b528616e99fa90cace1479be9afab782feef591e8d52"
+        },
+        {
+          "artifact_type": "restoration",
+          "case_id": "compound",
+          "category": "compound-repair",
+          "game_id": "251f660ca2a29b8b7bc5b528616e99fa90cace1479be9afab782feef591e8d52"
+        }
+      ],
+      "mechanism_id": "repair-compound-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "c50ed900aa0a9940708db57ad86b621bb0e6995998683c279c5272c04acdbc9e",
+          "pair_id": "afdc5a289927576b5ea74c86d11aef3d860402351aa41fc42f3964444db5c3a3",
+          "parent_game_id": "9de9af4a372536a634063c26510d8d2d4bd2395a00405827e891c57eb8e7fded"
+        }
+      ],
+      "mechanism_id": "repair-information-only-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "024a951f3a0be9ae18f835d05787561a76e47b0398471cc4abc52f0138a4783e",
+          "pair_id": "f9e8349b88d973b66d6603518d2577480ec4c8a4b24f1fd79d39a1b0d4c96b85",
+          "parent_game_id": "ab37f3376f08039866eb3b4956d1876487e192b275451a94766a04711b7960d0"
+        }
+      ],
+      "mechanism_id": "repair-restriction-only-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "e74fcf7d3b5ed7549c8cda373354d2c884ca9ebbc36ba38229875b7d85f7a089",
+          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc",
+          "parent_game_id": "68237a2852a200ab204672b206c3b09ab76b08742efed4864f63209e9374a9f9"
+        }
+      ],
+      "mechanism_id": "repair-timing-only-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "restoration",
+          "case_id": "dominated",
+          "category": "dominated-safe",
+          "game_id": "626c99da29800236949829f23a80042e336a96231b004d841489d14751718ac7"
+        }
+      ],
+      "mechanism_id": "restoration-dominated-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "restoration",
+          "case_id": "none",
+          "category": "no-feasible",
+          "game_id": "a582fd66aca6bc3f8d9ad5a14e0be6b721edd28d3a40944a92d2693415b36b0a"
+        }
+      ],
+      "mechanism_id": "restoration-none-feasible-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "restoration",
+          "case_id": "tie",
+          "category": "tied-optima",
+          "game_id": "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db"
+        }
+      ],
+      "mechanism_id": "restoration-tied-optima-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "restoration",
+          "case_id": "compound",
+          "category": "unique-optimum",
+          "game_id": "251f660ca2a29b8b7bc5b528616e99fa90cace1479be9afab782feef591e8d52"
+        }
+      ],
+      "mechanism_id": "restoration-unique-optimum-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "c50ed900aa0a9940708db57ad86b621bb0e6995998683c279c5272c04acdbc9e",
+          "pair_id": "4c43fc61b244203744cd936f1937facd1ea3b8129f5df528453ec4978d5ca86d",
+          "parent_game_id": "251f660ca2a29b8b7bc5b528616e99fa90cace1479be9afab782feef591e8d52"
+        }
+      ],
+      "mechanism_id": "restriction-joint-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "024a951f3a0be9ae18f835d05787561a76e47b0398471cc4abc52f0138a4783e",
+          "pair_id": "f9e8349b88d973b66d6603518d2577480ec4c8a4b24f1fd79d39a1b0d4c96b85",
+          "parent_game_id": "ab37f3376f08039866eb3b4956d1876487e192b275451a94766a04711b7960d0"
+        }
+      ],
+      "mechanism_id": "restriction-positive-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "024a951f3a0be9ae18f835d05787561a76e47b0398471cc4abc52f0138a4783e",
+          "pair_id": "753cfb5f9458eddc0bccda72452f5fa28c668cbfb03d7cb50bb3e64094de1499",
+          "parent_game_id": "ee652cb62671e9589001abeae4a9e6555ebbac0534839ef4eca785b127bbd5f9"
+        }
+      ],
+      "mechanism_id": "restriction-zero-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "e74fcf7d3b5ed7549c8cda373354d2c884ca9ebbc36ba38229875b7d85f7a089",
+          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc",
+          "parent_game_id": "68237a2852a200ab204672b206c3b09ab76b08742efed4864f63209e9374a9f9"
+        }
+      ],
+      "mechanism_id": "timing-after-failure-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "e74fcf7d3b5ed7549c8cda373354d2c884ca9ebbc36ba38229875b7d85f7a089",
+          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc",
+          "parent_game_id": "68237a2852a200ab204672b206c3b09ab76b08742efed4864f63209e9374a9f9"
+        }
+      ],
+      "mechanism_id": "timing-before-deadline-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "e74fcf7d3b5ed7549c8cda373354d2c884ca9ebbc36ba38229875b7d85f7a089",
+          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc",
+          "parent_game_id": "68237a2852a200ab204672b206c3b09ab76b08742efed4864f63209e9374a9f9"
+        }
+      ],
+      "mechanism_id": "timing-last-usable-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "7c3fec875e4dd507e55c5e445f4de2e072a30d0bf0d0b27ee329224785c46c94",
+          "pair_id": "be82f26fd4a4d1b18f3c9e7aef5a910561c900cf071846debaf2f30def1c8fbc",
+          "parent_game_id": "ab1f0c393829ddd42bfd7571617045ab331ebe0ddfae7d43c8f37cdc1a3669a6"
+        }
+      ],
+      "mechanism_id": "timing-multiple-horizons-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "matched_pair",
+          "child_game_id": "e74fcf7d3b5ed7549c8cda373354d2c884ca9ebbc36ba38229875b7d85f7a089",
+          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc",
+          "parent_game_id": "68237a2852a200ab204672b206c3b09ab76b08742efed4864f63209e9374a9f9"
+        }
+      ],
+      "mechanism_id": "timing-multiple-positions-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "minimax-half",
+          "game_id": "38b17ee9774be198aaa40047a3f51066c448338108dbd1aac2044bc0822e61d1"
+        }
+      ],
+      "mechanism_id": "transition-deterministic-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "oracle_value",
+          "fixture_id": "third-boundary",
+          "game_id": "7aafa941517fff81309e57f649f6379aa30b2820ad2112d4aaddefb1412aca1b"
+        }
+      ],
+      "mechanism_id": "transition-stochastic-rational-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    },
+    {
+      "evidence_refs": [
+        {
+          "artifact_type": "corpus",
+          "corpus_fingerprint": "9b11eb5fe864794a5bfbfe1b28b62d143ec9c3f53b21533a01cc25357bf2463d",
+          "fixture": "development",
+          "game_id": "8213586e3999ab592b8ac1e075f997dfc25a007a62473ee0ba808d9514bb16aa"
+        }
+      ],
+      "mechanism_id": "unique-resolved-v1",
+      "notes": "mechanically validated Stage-4 evidence",
+      "observed": true
+    }
+  ],
+  "missing_count": 0,
+  "missing_mechanisms": [],
+  "observed_count": 53,
+  "observed_mechanisms": [
+    "authority-perfect-insufficient-v1",
+    "authority-robust-response-v1",
+    "complexity-rejected-fixture-v1",
+    "duplicate-exact-v1",
+    "duplicate-isomorphic-v1",
+    "epsilon-boundary-v1",
+    "epsilon-neighboring-v1",
+    "epsilon-nonzero-v1",
+    "horizon-1-v1",
+    "horizon-2-v1",
+    "horizon-3-v1",
+    "horizon-4-v1",
+    "intervention-round-0-v1",
+    "intervention-round-1-v1",
+    "intervention-too-late-v1",
+    "isomorphism-unresolved-fixture-v1",
+    "matched-transformation-v1",
+    "minimax-nontrivial-v1",
+    "obs-ambiguous-common-policy-v1",
+    "obs-ambiguous-incompatible-v1",
+    "obs-refinement-positive-v1",
+    "obs-refinement-zero-v1",
+    "probability-half-v1",
+    "probability-one-v1",
+    "probability-other-rational-v1",
+    "probability-third-v1",
+    "probability-zero-v1",
+    "probe-delay-1-v1",
+    "probe-delay-2-v1",
+    "probe-delay-3-v1",
+    "probe-delay-multiple-v1",
+    "probe-too-late-v1",
+    "probe-useful-v1",
+    "probe-useless-v1",
+    "repair-compound-v1",
+    "repair-information-only-v1",
+    "repair-restriction-only-v1",
+    "repair-timing-only-v1",
+    "restoration-dominated-v1",
+    "restoration-none-feasible-v1",
+    "restoration-tied-optima-v1",
+    "restoration-unique-optimum-v1",
+    "restriction-joint-v1",
+    "restriction-positive-v1",
+    "restriction-zero-v1",
+    "timing-after-failure-v1",
+    "timing-before-deadline-v1",
+    "timing-last-usable-v1",
+    "timing-multiple-horizons-v1",
+    "timing-multiple-positions-v1",
+    "transition-deterministic-v1",
+    "transition-stochastic-rational-v1",
+    "unique-resolved-v1"
+  ],
+  "version": "stage4.formal-freeze.v1"
+}

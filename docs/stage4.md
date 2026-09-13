@@ -1,40 +1,23 @@
-# Stage 4: formal evaluation freeze
+# Stage 4: mechanically evidenced formal freeze
 
-Stage 4 adds an outcome-independent, machine-readable mechanism matrix, two
-seed-disjoint corpus specifications, and separate deliberately bounded audit
-fixtures. The matrix declares intended coverage; mechanically derived audit
-reports remain the authority for observed coverage.
+Stage 4 keeps the outcome-independent mechanism requirements separate from observed evidence. `stage4-mechanisms-v1.json` is only the required matrix; `mechanism-evidence-report.json` links every observed identifier to a formal game, matched pair, restoration audit, oracle-value fixture, or independently verified Stage-3 corpus fixture. `coverage_complete` is derived from missing references and is never inferred from the size of the requirement list.
 
-Development uses seeds beginning at 0 and evaluation uses seeds beginning at
-101. More importantly, `audit_corpus_overlap` compares exact game IDs and
-resolved exact-isomorphism class IDs. Seed disjointness is not statistical
-independence. Same-family/template-relative overlap is reported and allowed.
+The frozen registry contains positive- and zero-value observation refinements, positive- and zero-value adversary restrictions, timing rescue, common-action addition, a horizon-only contrast, and an ordered compound repair. Improvement is the pair-specific exact rational `V(parent) - V(child)`; positive means lower child failure probability, not a universal control margin. Every child, oracle, changed-field list, compound component, and value is reproduced during verify.
 
-The complexity fixture uses Stage 2's pre-solution rejection path with
-`max_policy_profiles = 1`; its ledger has no oracle result. The unresolved
-fixture uses `max_permutations = 1` locally and retains its solved game under
-the declared unresolved policy without inventing a class ID. Normal corpus
-limits are unchanged.
+Probability fixtures cover exact values 0, 1/4, 1/3, 1/2, and 1. The 1/2 matching-pennies fixture comes from adversarial minimax mixing. The common 1/3 epsilon set contains below, exact-boundary, and above cases, with equality satisfying the unchanged `failure_probability <= epsilon` rule. Probe fixtures contain explicit delay-stage trajectories for delays 1, 2, and 3 and meaningful horizons through 4. Restoration records recompute endogenous costs and classify unique, tied, dominated, infeasible, and compound cases.
 
-All probabilities and epsilon values are rational strings. Pair-specific
-intervention improvement is `V(parent) - V(child)`: positive means the child
-has lower exact failure probability. It is not a universal control margin.
-Exact equality succeeds because the unchanged oracle rule is
-`failure_probability <= epsilon`.
+Development uses seeds beginning at 0 and evaluation uses seeds beginning at 101, but seed disjointness is not independence. The overlap audit separately reports raw and retained exact-ID and exact-isomorphism-class overlap. Shared families are descriptive and allowed. Selection uses formal structure, exact oracle results, and deterministic rules only—never model behavior.
 
-## Commands
+The complexity and unresolved fixtures retain local bounds and are bound into the freeze by both corpus and spec fingerprints. Full verification first runs Stage-3 verification on all four corpora, so corruption of a retained artifact fails before Stage-4 reconstruction.
+
+## Rebuild and verify
 
 ```bash
-PYTHONPATH=src python -m enforceability.corpus verify --spec corpus_specs/development-v1.json --corpus artifacts/development-v1
-PYTHONPATH=src python -m enforceability.corpus verify --spec corpus_specs/evaluation-v1.json --corpus artifacts/evaluation-v1
+PYTHONPATH=src python -m enforceability.benchmark build-formal-freeze --development artifacts/development-v1 --evaluation artifacts/evaluation-v1 --complexity artifacts/complexity-fixture-v1 --unresolved artifacts/unresolved-fixture-v1 --mechanisms corpus_specs/stage4-mechanisms-v1.json --artifacts artifacts/stage4-formal-v1
+PYTHONPATH=src python -m enforceability.benchmark verify-formal-freeze --development artifacts/development-v1 --evaluation artifacts/evaluation-v1 --complexity artifacts/complexity-fixture-v1 --unresolved artifacts/unresolved-fixture-v1 --mechanisms corpus_specs/stage4-mechanisms-v1.json --artifacts artifacts/stage4-formal-v1 --development-spec corpus_specs/development-v1.json --evaluation-spec corpus_specs/evaluation-v1.json --complexity-spec corpus_specs/complexity-fixture-v1.json --unresolved-spec corpus_specs/unresolved-fixture-v1.json
 PYTHONPATH=src python -m enforceability.benchmark audit-overlap --development artifacts/development-v1 --evaluation artifacts/evaluation-v1
-PYTHONPATH=src python -m enforceability.benchmark verify-formal-freeze --development artifacts/development-v1 --evaluation artifacts/evaluation-v1 --mechanisms corpus_specs/stage4-mechanisms-v1.json --freeze artifacts/formal-evaluation-freeze-v1.json
 ```
 
-The small freeze reports gaps rather than hiding generation rejection or
-isomorphism collapse. Listed mechanism coverage does not prove completeness,
-synthetic stochasticity is not real model uncertainty, and this corpus does
-not measure deployment risk. Natural-language rendering should remain delayed
-until every intended matched transformation and restoration contrast is frozen.
+Formal mechanism coverage is not real-world diversity; synthetic stochasticity is not model uncertainty; disjoint isomorphism classes are not statistical independence; and the freeze does not measure deployment risk or validate its underlying model of reality.
 
 > The formal evaluation freeze prevents later model-facing choices from silently changing which mathematical cases are evaluated. It does not establish that the formal cases represent real AI deployments.
