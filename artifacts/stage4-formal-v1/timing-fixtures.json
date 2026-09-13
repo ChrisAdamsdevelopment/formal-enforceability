@@ -1,0 +1,530 @@
+[
+  {
+    "fixture_id": "before-deadline",
+    "game": {
+      "action_availability": {
+        "act": [
+          0
+        ],
+        "wait": [
+          0,
+          1,
+          2
+        ]
+      },
+      "adversary_actions": [
+        "a0"
+      ],
+      "controller_actions": [
+        "wait",
+        "act"
+      ],
+      "display_labels": {},
+      "epsilon": "0",
+      "failure_states": [
+        "x"
+      ],
+      "horizon": 3,
+      "initial_distribution": [
+        {
+          "probability": "1",
+          "state": "q0"
+        }
+      ],
+      "legitimate_rewards": [],
+      "observation_map": {
+        "q0": "q0",
+        "q1": "q1",
+        "r": "r",
+        "x": "x"
+      },
+      "observations": [
+        "q0",
+        "q1",
+        "r",
+        "x"
+      ],
+      "recovery_states": [
+        "r"
+      ],
+      "schema_version": "stage1.v2",
+      "states": [
+        "q0",
+        "q1",
+        "r",
+        "x"
+      ],
+      "transitions": [
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "act",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "act",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "act",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "act",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        }
+      ]
+    },
+    "game_id": "9896f450422125230353f706a55f6bbc0a30e3b7b736bc14124454aa7570102e",
+    "intervention_round": 0,
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "act",
+              "history": {
+                "observations": [
+                  "q0"
+                ],
+                "previous_actions": []
+              }
+            },
+            {
+              "action": "wait",
+              "history": {
+                "observations": [
+                  "q0",
+                  "q1"
+                ],
+                "previous_actions": [
+                  "wait"
+                ]
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    }
+  },
+  {
+    "fixture_id": "last-usable",
+    "game": {
+      "action_availability": {
+        "act": [
+          1
+        ],
+        "wait": [
+          0,
+          1,
+          2
+        ]
+      },
+      "adversary_actions": [
+        "a0"
+      ],
+      "controller_actions": [
+        "wait",
+        "act"
+      ],
+      "display_labels": {},
+      "epsilon": "0",
+      "failure_states": [
+        "x"
+      ],
+      "horizon": 3,
+      "initial_distribution": [
+        {
+          "probability": "1",
+          "state": "q0"
+        }
+      ],
+      "legitimate_rewards": [],
+      "observation_map": {
+        "q0": "q0",
+        "q1": "q1",
+        "r": "r",
+        "x": "x"
+      },
+      "observations": [
+        "q0",
+        "q1",
+        "r",
+        "x"
+      ],
+      "recovery_states": [
+        "r"
+      ],
+      "schema_version": "stage1.v2",
+      "states": [
+        "q0",
+        "q1",
+        "r",
+        "x"
+      ],
+      "transitions": [
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "act",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "act",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "act",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "act",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        }
+      ]
+    },
+    "game_id": "31569a6a1f691323ed6f0a2454ca23a76977b4844da8b4da4191aefaa97662d5",
+    "intervention_round": 1,
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "wait",
+              "history": {
+                "observations": [
+                  "q0"
+                ],
+                "previous_actions": []
+              }
+            },
+            {
+              "action": "act",
+              "history": {
+                "observations": [
+                  "q0",
+                  "q1"
+                ],
+                "previous_actions": [
+                  "wait"
+                ]
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    }
+  },
+  {
+    "fixture_id": "too-late",
+    "game": {
+      "action_availability": {
+        "act": [
+          2
+        ],
+        "wait": [
+          0,
+          1,
+          2
+        ]
+      },
+      "adversary_actions": [
+        "a0"
+      ],
+      "controller_actions": [
+        "wait",
+        "act"
+      ],
+      "display_labels": {},
+      "epsilon": "0",
+      "failure_states": [
+        "x"
+      ],
+      "horizon": 3,
+      "initial_distribution": [
+        {
+          "probability": "1",
+          "state": "q0"
+        }
+      ],
+      "legitimate_rewards": [],
+      "observation_map": {
+        "q0": "q0",
+        "q1": "q1",
+        "r": "r",
+        "x": "x"
+      },
+      "observations": [
+        "q0",
+        "q1",
+        "r",
+        "x"
+      ],
+      "recovery_states": [
+        "r"
+      ],
+      "schema_version": "stage1.v2",
+      "states": [
+        "q0",
+        "q1",
+        "r",
+        "x"
+      ],
+      "transitions": [
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "act",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "act",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "act",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "act",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        }
+      ]
+    },
+    "game_id": "c47444fa46495d4561e106669d6b50d017ee5353d1d4451975aa7483c77e1d19",
+    "intervention_round": 2,
+    "oracle": {
+      "explored_profiles": 1,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    }
+  }
+]

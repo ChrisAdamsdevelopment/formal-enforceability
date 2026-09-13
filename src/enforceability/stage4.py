@@ -72,9 +72,12 @@ def audit_corpus_overlap(development: str | Path, evaluation: str | Path) -> dic
     raw_dev_classes = {x["isomorphism"]["class_id"] for x in raw_dev if (x.get("isomorphism") or {}).get("status") == "RESOLVED"}
     raw_exact = sorted({x["game_id"] for x in raw_eva if x.get("game_id") in raw_dev_ids})
     raw_iso = sorted({x["isomorphism"]["class_id"] for x in raw_eva if (x.get("isomorphism") or {}).get("status") == "RESOLVED" and x["isomorphism"]["class_id"] in raw_dev_classes})
+    raw_dev_unresolved = sorted(x["candidate_key"] for x in raw_dev if (x.get("isomorphism") or {}).get("status") == "ISOMORPHISM_UNRESOLVED")
+    raw_eval_unresolved = sorted(x["candidate_key"] for x in raw_eva if (x.get("isomorphism") or {}).get("status") == "ISOMORPHISM_UNRESOLVED")
     dev, eva = retained(dev), retained(eva)
     dev_ids = {x["game_id"] for x in dev}
     dev_classes = {x["isomorphism"]["class_id"] for x in dev if (x.get("isomorphism") or {}).get("status") == "RESOLVED"}
+    retained_dev_unresolved = sorted(x["candidate_key"] for x in dev if (x.get("isomorphism") or {}).get("status") != "RESOLVED")
     details = []
     for item in eva:
         iso = item.get("isomorphism") or {}
@@ -96,8 +99,12 @@ def audit_corpus_overlap(development: str | Path, evaluation: str | Path) -> dic
         "same_family_template_count": sum(x["same_family_template"] for x in details),
         "raw_exact_id_overlap": raw_exact,
         "raw_resolved_isomorphism_overlap": raw_iso,
+        "raw_development_unresolved_cases": raw_dev_unresolved,
+        "raw_evaluation_unresolved_cases": raw_eval_unresolved,
+        "retained_development_unresolved_cases": retained_dev_unresolved,
     }
-    report["passes"] = not report["exact_id_overlap"] and not report["resolved_isomorphism_overlap"]
+    report["passes"] = not any((report["exact_id_overlap"], report["resolved_isomorphism_overlap"],
+                                report["unresolved_evaluation_cases"], report["retained_development_unresolved_cases"]))
     return report
 
 
@@ -183,18 +190,18 @@ def validate_pair_registry(registry: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def build_mechanism_evidence(spec: MechanismCoverageSpec, registry: Mapping[str, Any], probability_fixtures,
-                             restoration_fixtures, probe_fixtures, corpus_refs: Mapping[str, Any]) -> dict[str, Any]:
+                             restoration_fixtures, probe_fixtures, timing_fixtures, corpus_refs: Mapping[str, Any]) -> dict[str, Any]:
     """Build an evidence-linked report; declarations alone never imply coverage."""
     pair_by_category = {x["category"]: x for x in registry["pairs"]}
     probability_by_id = {x["fixture_id"]: x for x in probability_fixtures}
     restoration_by_category = {category: row for row in restoration_fixtures for category in row["categories"]}
     probe_by_id = {x["fixture_id"]: x for x in probe_fixtures}
+    timing_by_id = {x["fixture_id"]: x for x in timing_fixtures}
     refs: dict[str, list[dict[str, Any]]] = {}
     def pair(mid, category):
         x = pair_by_category[category]; refs[mid] = [{"artifact_type": "matched_pair", "pair_id": x["pair_id"], "parent_game_id": x["parent_game_id"], "child_game_id": x["child_game_id"]}]
     for mid, category in (("obs-refinement-positive-v1", "positive-value-observation"), ("obs-refinement-zero-v1", "zero-value-observation"),
                           ("restriction-positive-v1", "positive-value-restriction"), ("restriction-zero-v1", "zero-value-restriction"),
-                          ("timing-before-deadline-v1", "timing-rescue"), ("timing-last-usable-v1", "timing-rescue"),
                           ("timing-multiple-positions-v1", "timing-rescue"), ("timing-multiple-horizons-v1", "horizon-only"),
                           ("obs-ambiguous-common-policy-v1", "zero-value-observation"), ("obs-ambiguous-incompatible-v1", "positive-value-observation"),
                           ("authority-robust-response-v1", "common-safe-action-addition"), ("authority-perfect-insufficient-v1", "positive-value-restriction"),
@@ -212,7 +219,10 @@ def build_mechanism_evidence(spec: MechanismCoverageSpec, registry: Mapping[str,
         x = restoration_by_category[category]; refs[mid] = [{"artifact_type": "restoration", "case_id": x["case_id"], "game_id": x["game_id"], "category": category}]
     x = restoration_by_category["compound-repair"]
     refs["repair-compound-v1"] = refs["repair-compound-v1"] + [{"artifact_type": "restoration", "case_id": x["case_id"], "game_id": x["game_id"], "category": "compound-repair"}]
-    pair("timing-after-failure-v1", "timing-rescue")
+    for mid, fixture in (("timing-before-deadline-v1", "before-deadline"), ("timing-last-usable-v1", "last-usable"),
+                         ("timing-after-failure-v1", "too-late"), ("intervention-round-0-v1", "before-deadline"),
+                         ("intervention-round-1-v1", "last-usable"), ("intervention-too-late-v1", "too-late")):
+        x = timing_by_id[fixture]; refs[mid] = [{"artifact_type": "timing", "fixture_id": fixture, "game_id": x["game_id"]}]
     for mid, fixture in (("probe-useful-v1", "useful-short"), ("probe-delay-multiple-v1", "useful-delay3"),
                          ("probe-useless-v1", "useless"), ("probe-too-late-v1", "too-late")):
         x = probe_by_id[fixture]; refs[mid] = [{"artifact_type": "probe", "fixture_id": fixture, "game_id": x["game_id"]}]
@@ -223,8 +233,7 @@ def build_mechanism_evidence(spec: MechanismCoverageSpec, registry: Mapping[str,
     for mid, fixture in (("probability-zero-v1", "zero"), ("probability-one-v1", "one"), ("minimax-nontrivial-v1", "minimax-half")):
         x = probability_by_id[fixture]; refs[mid] = [{"artifact_type": "oracle_value", "fixture_id": fixture, "game_id": x["game_id"]}]
     for mid, category, endpoint in (("horizon-1-v1", "horizon-only", "parent"), ("horizon-2-v1", "horizon-only", "child"),
-                                    ("intervention-round-0-v1", "timing-rescue", "child"), ("intervention-round-1-v1", "timing-rescue", "parent"),
-                                    ("intervention-too-late-v1", "timing-rescue", "parent")):
+                                    ):
         x = pair_by_category[category]; refs[mid] = [{"artifact_type": "matched_pair", "pair_id": x["pair_id"], "game_id": x[f"{endpoint}_game_id"]}]
     for mid, fixture in (("horizon-3-v1", "useful-long"), ("horizon-4-v1", "useful-delay3"),
                          ("probe-delay-1-v1", "useful-short"), ("probe-delay-2-v1", "useful-long"), ("probe-delay-3-v1", "useful-delay3")):
@@ -244,9 +253,9 @@ def build_mechanism_evidence(spec: MechanismCoverageSpec, registry: Mapping[str,
 
 
 def validate_mechanism_evidence(spec: MechanismCoverageSpec, report: Mapping[str, Any], registry: Mapping[str, Any],
-                                probability_fixtures, restoration_fixtures, probe_fixtures, corpus_refs) -> dict[str, Any]:
+                                probability_fixtures, restoration_fixtures, probe_fixtures, timing_fixtures, corpus_refs) -> dict[str, Any]:
     """Reject stale, missing, or semantically incorrect evidence references."""
-    expected = build_mechanism_evidence(spec, registry, probability_fixtures, restoration_fixtures, probe_fixtures, corpus_refs)
+    expected = build_mechanism_evidence(spec, registry, probability_fixtures, restoration_fixtures, probe_fixtures, timing_fixtures, corpus_refs)
     failures = []
     if canonical_json(report) != canonical_json(expected): failures.append("evidence report does not reproduce")
     if not validate_pair_registry(registry)["passed"]: failures.append("pair registry invalid")
@@ -273,8 +282,54 @@ def validate_mechanism_evidence(spec: MechanismCoverageSpec, report: Mapping[str
         if set(row["categories"]) != derived: failures.append(f'restoration:{row["case_id"]}:categories')
     for fixture in probe_fixtures:
         game = Game.from_dict(fixture["game"])
-        if game_id(game) != fixture["game_id"] or solve(game).to_dict() != fixture["oracle"] or len(fixture["delay_states"]) != 2 * (fixture["probe_delay"] - 1):
+        valid = game_id(game) == fixture["game_id"] and solve(game).to_dict() == fixture["oracle"]
+        initial = tuple(game.initial_states)
+        valid &= len(initial) == 2 and game.observation_map[initial[0]] == game.observation_map[initial[1]]
+        endpoints = []
+        for hidden in range(2):
+            state = f"q{hidden}"
+            for step in range(fixture["probe_delay"]):
+                action = "probe" if step == 0 else "wait"
+                outcome = game.transitions[state, action, "a0"]
+                if len(outcome) != 1 or outcome[0][1] != 1: valid = False; break
+                state = outcome[0][0]
+            endpoints.append(state)
+        expected_delay_states = {f"d{stage}_{hidden}" for stage in range(1, fixture["probe_delay"]) for hidden in range(2)}
+        valid &= set(fixture["delay_states"]) == expected_delay_states
+        if fixture["fixture_id"].startswith("useful"):
+            valid &= endpoints == ["p0", "p1"] and game.observation_map["p0"] != game.observation_map["p1"] and fixture["oracle"]["threshold_satisfied"]
+            raw = game.to_dict(); raw["observation_map"]["p1"] = raw["observation_map"]["p0"]
+            neutral = Game.from_dict(raw)
+            valid &= not solve(neutral).threshold_satisfied
+        elif fixture["fixture_id"] == "useless":
+            valid &= endpoints == ["p0", "p1"] and game.observation_map["p0"] == game.observation_map["p1"] and not fixture["oracle"]["threshold_satisfied"]
+        elif fixture["fixture_id"] == "too-late":
+            valid &= endpoints == ["x", "x"] and game.observation_map["p0"] != game.observation_map["p1"] and not fixture["oracle"]["threshold_satisfied"]
+        else:
+            valid = False
+        if not valid:
             failures.append(f'probe:{fixture["fixture_id"]}')
+    timing_by_id = {x["fixture_id"]: x for x in timing_fixtures}
+    if set(timing_by_id) != {"before-deadline", "last-usable", "too-late"}:
+        failures.append("timing:fixture set")
+    else:
+        games = {key: Game.from_dict(value["game"]) for key, value in timing_by_id.items()}
+        structural = []
+        for key, game in games.items():
+            raw = game.to_dict(); raw["action_availability"] = {}
+            structural.append(canonical_json(raw))
+            if game_id(game) != timing_by_id[key]["game_id"] or solve(game).to_dict() != timing_by_id[key]["oracle"]:
+                failures.append(f"timing:{key}:artifact")
+        if len(set(structural)) != 1 or [timing_by_id[x]["intervention_round"] for x in ("before-deadline", "last-usable", "too-late")] != [0, 1, 2]:
+            failures.append("timing:unrelated structure")
+        if [timing_by_id[x]["oracle"]["failure_probability"] for x in ("before-deadline", "last-usable", "too-late")] != ["0", "0", "1"]:
+            failures.append("timing:deadline relationship")
+        last = games["last-usable"]
+        after_wait = last.transitions["q0", "wait", "a0"]
+        after_act = last.transitions["q1", "act", "a0"]
+        late = games["too-late"].transitions["q1", "wait", "a0"]
+        if after_wait != (("q1", Fraction(1)),) or after_act != (("r", Fraction(1)),) or late != (("x", Fraction(1)),):
+            failures.append("timing:formal trajectory")
     return {"passed": not failures, "failures": failures}
 
 

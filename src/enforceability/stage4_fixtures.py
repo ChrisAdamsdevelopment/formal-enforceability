@@ -197,6 +197,21 @@ def build_probe_fixtures():
     return fixtures
 
 
+def build_timing_fixtures():
+    """One staged deadline with early, last-usable, and too-late authority."""
+    states = ("q0", "q1", "r", "x")
+    transitions = {("q0", "wait", "a0"): "q1", ("q1", "wait", "a0"): "x",
+                   ("q0", "act", "a0"): "r", ("q1", "act", "a0"): "r"}
+    fixtures = []
+    for fixture_id, round_ in (("before-deadline", 0), ("last-usable", 1), ("too-late", 2)):
+        game = _game(states=states, initial=("q0",), actions=("wait", "act"), adversaries=("a0",),
+                     observations={x: x for x in states}, transitions=transitions, horizon=3,
+                     availability={"wait": [0, 1, 2], "act": [round_]})
+        fixtures.append({"fixture_id": fixture_id, "intervention_round": round_, "game_id": game_id(game),
+                         "game": game.to_dict(), "oracle": solve(game).to_dict()})
+    return fixtures
+
+
 def build_corpus_mechanics(registry):
     """Derive exact-duplicate and different-ID isomorphic audit witnesses."""
     from enforceability.corpus.core import IsomorphismLimits, _renamed_dict, canonicalize_isomorphism

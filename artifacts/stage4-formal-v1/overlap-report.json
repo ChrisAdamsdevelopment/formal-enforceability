@@ -48,9 +48,14 @@
   ],
   "exact_id_overlap": [],
   "passes": true,
+  "raw_development_unresolved_cases": [],
+  "raw_evaluation_unresolved_cases": [
+    "probe:101:65f92314fec74b8ceb5b2cc697998919af385dfa57effffdea50f1d166ed7fb3"
+  ],
   "raw_exact_id_overlap": [],
   "raw_resolved_isomorphism_overlap": [],
   "resolved_isomorphism_overlap": [],
+  "retained_development_unresolved_cases": [],
   "same_family_template_count": 5,
   "unresolved_evaluation_cases": [],
   "version": "stage4.formal-freeze.v1"

@@ -1,6 +1,6 @@
 {
   "coverage_complete": true,
-  "fingerprint": "698853538709779ef0bcd91936869da037187f6fe2276f08a534d39a3c7549e3",
+  "fingerprint": "6b67ae546d1e94c3fca60cd5c83c04297b5c90a017082234ca3d68222251e12b",
   "mechanisms": [
     {
       "evidence_refs": [
@@ -167,9 +167,9 @@
     {
       "evidence_refs": [
         {
-          "artifact_type": "matched_pair",
-          "game_id": "e74fcf7d3b5ed7549c8cda373354d2c884ca9ebbc36ba38229875b7d85f7a089",
-          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc"
+          "artifact_type": "timing",
+          "fixture_id": "before-deadline",
+          "game_id": "9896f450422125230353f706a55f6bbc0a30e3b7b736bc14124454aa7570102e"
         }
       ],
       "mechanism_id": "intervention-round-0-v1",
@@ -179,9 +179,9 @@
     {
       "evidence_refs": [
         {
-          "artifact_type": "matched_pair",
-          "game_id": "68237a2852a200ab204672b206c3b09ab76b08742efed4864f63209e9374a9f9",
-          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc"
+          "artifact_type": "timing",
+          "fixture_id": "last-usable",
+          "game_id": "31569a6a1f691323ed6f0a2454ca23a76977b4844da8b4da4191aefaa97662d5"
         }
       ],
       "mechanism_id": "intervention-round-1-v1",
@@ -191,9 +191,9 @@
     {
       "evidence_refs": [
         {
-          "artifact_type": "matched_pair",
-          "game_id": "68237a2852a200ab204672b206c3b09ab76b08742efed4864f63209e9374a9f9",
-          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc"
+          "artifact_type": "timing",
+          "fixture_id": "too-late",
+          "game_id": "c47444fa46495d4561e106669d6b50d017ee5353d1d4451975aa7483c77e1d19"
         }
       ],
       "mechanism_id": "intervention-too-late-v1",
@@ -596,10 +596,9 @@
     {
       "evidence_refs": [
         {
-          "artifact_type": "matched_pair",
-          "child_game_id": "e74fcf7d3b5ed7549c8cda373354d2c884ca9ebbc36ba38229875b7d85f7a089",
-          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc",
-          "parent_game_id": "68237a2852a200ab204672b206c3b09ab76b08742efed4864f63209e9374a9f9"
+          "artifact_type": "timing",
+          "fixture_id": "too-late",
+          "game_id": "c47444fa46495d4561e106669d6b50d017ee5353d1d4451975aa7483c77e1d19"
         }
       ],
       "mechanism_id": "timing-after-failure-v1",
@@ -609,10 +608,9 @@
     {
       "evidence_refs": [
         {
-          "artifact_type": "matched_pair",
-          "child_game_id": "e74fcf7d3b5ed7549c8cda373354d2c884ca9ebbc36ba38229875b7d85f7a089",
-          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc",
-          "parent_game_id": "68237a2852a200ab204672b206c3b09ab76b08742efed4864f63209e9374a9f9"
+          "artifact_type": "timing",
+          "fixture_id": "before-deadline",
+          "game_id": "9896f450422125230353f706a55f6bbc0a30e3b7b736bc14124454aa7570102e"
         }
       ],
       "mechanism_id": "timing-before-deadline-v1",
@@ -622,10 +620,9 @@
     {
       "evidence_refs": [
         {
-          "artifact_type": "matched_pair",
-          "child_game_id": "e74fcf7d3b5ed7549c8cda373354d2c884ca9ebbc36ba38229875b7d85f7a089",
-          "pair_id": "74a8ca00da128da80b41d5cf76b6c55b4c7206590a87a7e1374f5cd31fdfcbdc",
-          "parent_game_id": "68237a2852a200ab204672b206c3b09ab76b08742efed4864f63209e9374a9f9"
+          "artifact_type": "timing",
+          "fixture_id": "last-usable",
+          "game_id": "31569a6a1f691323ed6f0a2454ca23a76977b4844da8b4da4191aefaa97662d5"
         }
       ],
       "mechanism_id": "timing-last-usable-v1",

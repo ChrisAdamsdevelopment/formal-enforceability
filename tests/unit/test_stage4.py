@@ -1,13 +1,18 @@
 from fractions import Fraction
 import json
+import os
+from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 
 from enforceability.corpus import CorpusBuildError, CorpusSpec, verify_corpus
+from enforceability.benchmark import deterministic_fixture_mismatches
 from enforceability.stage4 import (MechanismCoverageSpec, audit_corpus_overlap, build_mechanism_evidence,
-                                   intervention_value, validate_pair_registry)
+                                   intervention_value, validate_mechanism_evidence, validate_pair_registry)
 from enforceability.stage4_fixtures import (build_pair_registry, build_probability_fixtures,
-                                            build_probe_fixtures, build_restoration_fixtures)
+                                            build_probe_fixtures, build_restoration_fixtures, build_timing_fixtures)
 
 
 def test_mechanism_matrix_is_deeply_immutable():
@@ -52,7 +57,7 @@ def test_probe_delays_have_explicit_distinct_trajectories():
 
 def test_missing_evidence_keeps_coverage_incomplete():
     spec = MechanismCoverageSpec("stage4.formal-freeze.v1", {"x": ("missing-v1",)})
-    report = build_mechanism_evidence(spec, build_pair_registry(), build_probability_fixtures(), build_restoration_fixtures(), build_probe_fixtures(), {})
+    report = build_mechanism_evidence(spec, build_pair_registry(), build_probability_fixtures(), build_restoration_fixtures(), build_probe_fixtures(), build_timing_fixtures(), {})
     assert report["missing_mechanisms"] == ["missing-v1"] and not report["coverage_complete"]
 
 
@@ -79,3 +84,46 @@ def test_stage3_corruption_is_rejected_before_stage4(tmp_path):
 def test_intervention_value_accepts_frozen_oracle_shape():
     result = intervention_value({"failure_probability": "1/2", "threshold_satisfied": False}, {"failure_probability": "1/3", "threshold_satisfied": True})
     assert Fraction(result["improvement"]) == Fraction(1, 6) and result["threshold_crossing"]
+
+
+def test_timing_last_usable_and_too_late_are_distinct():
+    fixtures = {x["fixture_id"]: x for x in build_timing_fixtures()}
+    assert [fixtures[x]["intervention_round"] for x in ("before-deadline", "last-usable", "too-late")] == [0, 1, 2]
+    assert [fixtures[x]["oracle"]["failure_probability"] for x in ("before-deadline", "last-usable", "too-late")] == ["0", "0", "1"]
+
+
+def test_swapped_probe_semantics_are_rejected():
+    spec = MechanismCoverageSpec("stage4.formal-freeze.v1", {"probe": ("probe-useful-v1",)})
+    pairs, probabilities = build_pair_registry(), build_probability_fixtures()
+    restorations, probes, timing = build_restoration_fixtures(), build_probe_fixtures(), build_timing_fixtures()
+    report = build_mechanism_evidence(spec, pairs, probabilities, restorations, probes, timing, {})
+    corrupted = json.loads(json.dumps(probes)); useful = next(x for x in corrupted if x["fixture_id"] == "useful-short"); useless = next(x for x in corrupted if x["fixture_id"] == "useless")
+    useful["fixture_id"], useless["fixture_id"] = useless["fixture_id"], useful["fixture_id"]
+    result = validate_mechanism_evidence(spec, report, pairs, probabilities, restorations, corrupted, timing, {})
+    assert not result["passed"] and any(x.startswith("probe:") for x in result["failures"])
+
+
+def test_unresolved_retention_controls_overlap_result(tmp_path):
+    dev, eva = tmp_path / "dev", tmp_path / "eval"; _copy_corpus("artifacts/development-v1", dev); _copy_corpus("artifacts/evaluation-v1", eva)
+    clean = audit_corpus_overlap(dev, eva)
+    assert clean["raw_evaluation_unresolved_cases"] and not clean["unresolved_evaluation_cases"] and clean["passes"]
+    rows = json.loads((eva / "candidate-ledger.json").read_text()); unresolved = next(x for x in rows if (x.get("isomorphism") or {}).get("status") != "RESOLVED")
+    unresolved["retention"]["retained"] = True; (eva / "candidate-ledger.json").write_text(json.dumps(rows))
+    assert not audit_corpus_overlap(dev, eva)["passes"]
+
+
+def test_overlap_cli_exit_status(tmp_path):
+    command = [sys.executable, "-m", "enforceability.benchmark", "audit-overlap", "--development", "artifacts/development-v1", "--evaluation"]
+    env = os.environ | {"PYTHONPATH": "src"}
+    assert subprocess.run(command + ["artifacts/evaluation-v1"], env=env, capture_output=True).returncode == 0
+    eva = tmp_path / "eval"; _copy_corpus("artifacts/evaluation-v1", eva)
+    rows = json.loads((eva / "candidate-ledger.json").read_text()); row = next(x for x in rows if (x.get("retention") or {}).get("retained"))
+    dev_rows = json.loads(Path("artifacts/development-v1/candidate-ledger.json").read_text()); dev = next(x for x in dev_rows if (x.get("retention") or {}).get("retained"))
+    row["game_id"] = dev["game_id"]; (eva / "candidate-ledger.json").write_text(json.dumps(rows))
+    assert subprocess.run(command + [str(eva)], env=env, capture_output=True).returncode != 0
+
+
+def test_deterministic_fixture_corruption_is_rejected(tmp_path):
+    root = tmp_path / "stage4"; _copy_corpus("artifacts/stage4-formal-v1", root)
+    path = root / "diversity-audit.json"; raw = json.loads(path.read_text()); raw["families"][0]["attempted"] = 99; path.write_text(json.dumps(raw))
+    assert deterministic_fixture_mismatches(root) == ["diversity-audit.json"]
