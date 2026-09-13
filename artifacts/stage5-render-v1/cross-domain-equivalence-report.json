@@ -1,0 +1,110 @@
+{
+  "failures": [],
+  "fingerprint": "c89e4510e1ddf1de18ceec2d06aefb480caac1165e7be40356ff643ec98ee6b6",
+  "formal_games": 5,
+  "independence_warning": "Repeated representations are not independent formal cases.",
+  "passed": true,
+  "records": [
+    {
+      "domains": [
+        "access-control",
+        "formal-plain-v1",
+        "industrial-process",
+        "service-routing",
+        "warehouse-operations"
+      ],
+      "invariant_scalar_forms": 5,
+      "render_case_ids": [
+        "rc-b804eef7ce37b859aa0db4fe",
+        "rc-7997f92f07fb9246f19a83ea",
+        "rc-e2b1085a6be072d13e7d2b11",
+        "rc-3bd2869e559358ee234a6f8d",
+        "rc-56c424c776c6b0de3822f31b"
+      ],
+      "semantic_reconstructions_passed": true,
+      "source_game_id": "0d2ca4ac4898e31e7bb8a962fdde8a92a92fc88f3b82339c8161b3182b0c51cf",
+      "unexplained_differences": []
+    },
+    {
+      "domains": [
+        "access-control",
+        "formal-plain-v1",
+        "industrial-process",
+        "service-routing",
+        "warehouse-operations"
+      ],
+      "invariant_scalar_forms": 5,
+      "render_case_ids": [
+        "rc-60b386163b4384c0befd7af1",
+        "rc-dbd67a3f15fd7ba15624fa81",
+        "rc-f07d7cb778d6c8357f842aa1",
+        "rc-e2b4381044c8b1b038687de8",
+        "rc-438409ae32844a055e1fa266"
+      ],
+      "semantic_reconstructions_passed": true,
+      "source_game_id": "3162ea772a498c58e7585e0f20e726b2423b0978011928c5e54edf4d49b93e64",
+      "unexplained_differences": []
+    },
+    {
+      "domains": [
+        "access-control",
+        "formal-plain-v1",
+        "industrial-process",
+        "service-routing",
+        "warehouse-operations"
+      ],
+      "invariant_scalar_forms": 5,
+      "render_case_ids": [
+        "rc-9476d617efa16573497a1bfc",
+        "rc-204c73960ed8e18d411bc3e6",
+        "rc-7ac0d122eb2f95858035e26d",
+        "rc-60a1ec3ce005823d9ba978f3",
+        "rc-6de490ff97feced3719d431b"
+      ],
+      "semantic_reconstructions_passed": true,
+      "source_game_id": "db009e647f3754018648cb936d30dd76ee3091d1b6ca2bb8e2313c212097971f",
+      "unexplained_differences": []
+    },
+    {
+      "domains": [
+        "access-control",
+        "formal-plain-v1",
+        "industrial-process",
+        "service-routing",
+        "warehouse-operations"
+      ],
+      "invariant_scalar_forms": 4,
+      "render_case_ids": [
+        "rc-de19f5b0332a3ccd9d488efb",
+        "rc-6352542cbed958963da05983",
+        "rc-cb3d38dedf38b923d5404275",
+        "rc-506be311dc7927b5850e513b",
+        "rc-df531cf303a283913bb5bb76"
+      ],
+      "semantic_reconstructions_passed": true,
+      "source_game_id": "ea1bfca419fdc2bc604412ae15157a8d17ff3585b8c5e3727b5de60351c33860",
+      "unexplained_differences": []
+    },
+    {
+      "domains": [
+        "access-control",
+        "formal-plain-v1",
+        "industrial-process",
+        "service-routing",
+        "warehouse-operations"
+      ],
+      "invariant_scalar_forms": 5,
+      "render_case_ids": [
+        "rc-3e9669bcf7ed9b3315568e29",
+        "rc-b49cfb1862164ccaf5f1487f",
+        "rc-0dab3a01827b4ca14f8143a9",
+        "rc-1b251c03837e0cd64186f095",
+        "rc-6c6ae32a7194c46197d50fc1"
+      ],
+      "semantic_reconstructions_passed": true,
+      "source_game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
+      "unexplained_differences": []
+    }
+  ],
+  "version": "stage5.cross-domain-equivalence.v1"
+}

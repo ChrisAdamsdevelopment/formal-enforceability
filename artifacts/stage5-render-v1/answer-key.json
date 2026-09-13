@@ -1,0 +1,952 @@
+{
+  "answers": [
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-00b961395d0e071b6927c66e",
+      "source_game_id": "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-056b76c95bf843dbb9373c7c",
+      "source_game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-0dab3a01827b4ca14f8143a9",
+      "source_game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-0fb0eb9fa44a9a701d366180",
+      "source_game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-16e04854f3bf38167c102b94",
+      "source_game_id": "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-18ffb72960da747b7dff600e",
+      "source_game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-1a2a9d137073dd4f715226b0",
+      "source_game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-1b251c03837e0cd64186f095",
+      "source_game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-1fa2e599c85636140d939cc5",
+      "source_game_id": "4cd5c09d1c9b9124c6ca27e1e2ccf04fb3c23a187aa6401a7fbd5544579fdc7d",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-204c73960ed8e18d411bc3e6",
+      "source_game_id": "db009e647f3754018648cb936d30dd76ee3091d1b6ca2bb8e2313c212097971f",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-212fc0bc32ef37598c3ba2f3",
+      "source_game_id": "8213586e3999ab592b8ac1e075f997dfc25a007a62473ee0ba808d9514bb16aa",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/4",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-23a4301b32b3190340c44bb1",
+      "source_game_id": "fe3af3513269a91331fb8a90eb2962c8928a4d3d3cc33bf41a2015d9739108f5",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-24a31617eb84be78d3e44192",
+      "source_game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-26024bd714754257a4266f97",
+      "source_game_id": "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-2a562a50f49766f31a8704d9",
+      "source_game_id": "e727ab7f08e7ddacc28cf73371a0d6a8fead991b051c89dcce89064ab731e695",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-2c1e25e8aef48074ac680adb",
+      "source_game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1",
+      "render_case_id": "rc-2c6fc5bb6d8cb15451440d2d",
+      "source_game_id": "c18b3cda42aa08462c88a2272866d3d8e0b139fafe98d39abde6970ad943213f",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-2d6f881a60b9fbf649b8c8ae",
+      "source_game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-2f6ba672b57c8ef144e3a57f",
+      "source_game_id": "a582fd66aca6bc3f8d9ad5a14e0be6b721edd28d3a40944a92d2693415b36b0a",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1",
+      "render_case_id": "rc-2f76762fee4a0e2ac80889c4",
+      "source_game_id": "c18b3cda42aa08462c88a2272866d3d8e0b139fafe98d39abde6970ad943213f",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-31da65b18306f021417ddcce",
+      "source_game_id": "bd0fceeb436b73b2434106469d841f7ebca0b3c9deabf6ba0357c32ffc37201b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-33042cef881cf8caa10c4ea6",
+      "source_game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-345e8387d755cef5dc80f9cf",
+      "source_game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-3496c8b10b02e961e19e46e4",
+      "source_game_id": "a582fd66aca6bc3f8d9ad5a14e0be6b721edd28d3a40944a92d2693415b36b0a",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-3aa0c9852be635c4c11c0130",
+      "source_game_id": "a582fd66aca6bc3f8d9ad5a14e0be6b721edd28d3a40944a92d2693415b36b0a",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-3b8a5d5cdc7b92a3604f790f",
+      "source_game_id": "bd0fceeb436b73b2434106469d841f7ebca0b3c9deabf6ba0357c32ffc37201b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-3ba57f379386ca73ed0d7d98",
+      "source_game_id": "374718bfa0da24a12e48b0473d7b123d0697edd5acd15ffb29e51d84bb6b4af0",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/6",
+      "render_case_id": "rc-3bd2869e559358ee234a6f8d",
+      "source_game_id": "0d2ca4ac4898e31e7bb8a962fdde8a92a92fc88f3b82339c8161b3182b0c51cf",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-3e9669bcf7ed9b3315568e29",
+      "source_game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-438409ae32844a055e1fa266",
+      "source_game_id": "3162ea772a498c58e7585e0f20e726b2423b0978011928c5e54edf4d49b93e64",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-438a832e67d894353904f596",
+      "source_game_id": "bd0fceeb436b73b2434106469d841f7ebca0b3c9deabf6ba0357c32ffc37201b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-45ecfd7813863769327bca9e",
+      "source_game_id": "4cd5c09d1c9b9124c6ca27e1e2ccf04fb3c23a187aa6401a7fbd5544579fdc7d",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-462361968b4cb49a1bd3b2f5",
+      "source_game_id": "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-4babf4caa2b3fe0b2d1c47f1",
+      "source_game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-4bfee4c6418df486e5303fb7",
+      "source_game_id": "38b17ee9774be198aaa40047a3f51066c448338108dbd1aac2044bc0822e61d1",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-4c00fe7736689629abfdffb3",
+      "source_game_id": "bd0fceeb436b73b2434106469d841f7ebca0b3c9deabf6ba0357c32ffc37201b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-4d97bd8fe10c107d3620787d",
+      "source_game_id": "fca05a4f6b4da9511952012f68c8937b7116097feed29212aaf0ab3aedca5339",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-506be311dc7927b5850e513b",
+      "source_game_id": "ea1bfca419fdc2bc604412ae15157a8d17ff3585b8c5e3727b5de60351c33860",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-533487e17a7c5c67b29ac4cf",
+      "source_game_id": "a582fd66aca6bc3f8d9ad5a14e0be6b721edd28d3a40944a92d2693415b36b0a",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1",
+      "render_case_id": "rc-568eca6604bd82c9b6ca5521",
+      "source_game_id": "c18b3cda42aa08462c88a2272866d3d8e0b139fafe98d39abde6970ad943213f",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/6",
+      "render_case_id": "rc-56c424c776c6b0de3822f31b",
+      "source_game_id": "0d2ca4ac4898e31e7bb8a962fdde8a92a92fc88f3b82339c8161b3182b0c51cf",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-56f86d2eeaa079b618d181c2",
+      "source_game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-5857b55276ac5d80efcd2f70",
+      "source_game_id": "8213586e3999ab592b8ac1e075f997dfc25a007a62473ee0ba808d9514bb16aa",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "0",
+      "render_case_id": "rc-5abf2066d95032ba815d5ad1",
+      "source_game_id": "589aae52ab89b8597e49c5c6581e64084580abcf0c18d023bd5a411caf9b5cde",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-5b52221632bfc6540ec189dd",
+      "source_game_id": "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-5caf0b97a7822b1def4dacbd",
+      "source_game_id": "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-5fb454c3d6b54cdc310fe3fc",
+      "source_game_id": "a582fd66aca6bc3f8d9ad5a14e0be6b721edd28d3a40944a92d2693415b36b0a",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-60a1ec3ce005823d9ba978f3",
+      "source_game_id": "db009e647f3754018648cb936d30dd76ee3091d1b6ca2bb8e2313c212097971f",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-60b386163b4384c0befd7af1",
+      "source_game_id": "3162ea772a498c58e7585e0f20e726b2423b0978011928c5e54edf4d49b93e64",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-61376cfb16833dd05afc2b90",
+      "source_game_id": "bd0fceeb436b73b2434106469d841f7ebca0b3c9deabf6ba0357c32ffc37201b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-6352542cbed958963da05983",
+      "source_game_id": "ea1bfca419fdc2bc604412ae15157a8d17ff3585b8c5e3727b5de60351c33860",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-6593ba2a32c15310efb08e47",
+      "source_game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/6",
+      "render_case_id": "rc-65c56e71d12db13b5d5041b7",
+      "source_game_id": "0d2ca4ac4898e31e7bb8a962fdde8a92a92fc88f3b82339c8161b3182b0c51cf",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-676600bff2561256a3619a03",
+      "source_game_id": "7aafa941517fff81309e57f649f6379aa30b2820ad2112d4aaddefb1412aca1b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/4",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-676d38b1269669592fd29ae3",
+      "source_game_id": "fe3af3513269a91331fb8a90eb2962c8928a4d3d3cc33bf41a2015d9739108f5",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-6873d0aec0634b4b70368a5f",
+      "source_game_id": "38b17ee9774be198aaa40047a3f51066c448338108dbd1aac2044bc0822e61d1",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-689088e0b33e50f461f3c821",
+      "source_game_id": "a582fd66aca6bc3f8d9ad5a14e0be6b721edd28d3a40944a92d2693415b36b0a",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-693fa80cfa950fcbc8ee2105",
+      "source_game_id": "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-6c6ae32a7194c46197d50fc1",
+      "source_game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-6de490ff97feced3719d431b",
+      "source_game_id": "db009e647f3754018648cb936d30dd76ee3091d1b6ca2bb8e2313c212097971f",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-6fb4c2a860781aace5525797",
+      "source_game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-6fd7ceac5587f78d5db171fa",
+      "source_game_id": "8213586e3999ab592b8ac1e075f997dfc25a007a62473ee0ba808d9514bb16aa",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-7034cd897ef4b9eca3e26f4c",
+      "source_game_id": "a582fd66aca6bc3f8d9ad5a14e0be6b721edd28d3a40944a92d2693415b36b0a",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-7517a7f4f045472259975292",
+      "source_game_id": "e727ab7f08e7ddacc28cf73371a0d6a8fead991b051c89dcce89064ab731e695",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-75c282e3fc9c2e804d3e90ad",
+      "source_game_id": "ea1bfca419fdc2bc604412ae15157a8d17ff3585b8c5e3727b5de60351c33860",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-7776dc4901440e2c292adea2",
+      "source_game_id": "e727ab7f08e7ddacc28cf73371a0d6a8fead991b051c89dcce89064ab731e695",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/6",
+      "render_case_id": "rc-7997f92f07fb9246f19a83ea",
+      "source_game_id": "0d2ca4ac4898e31e7bb8a962fdde8a92a92fc88f3b82339c8161b3182b0c51cf",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-7ac0d122eb2f95858035e26d",
+      "source_game_id": "db009e647f3754018648cb936d30dd76ee3091d1b6ca2bb8e2313c212097971f",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-7eeed9ea5f4bee15428bc64c",
+      "source_game_id": "e727ab7f08e7ddacc28cf73371a0d6a8fead991b051c89dcce89064ab731e695",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-8031729f611add8ea9a3080b",
+      "source_game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-86f383d1e04bd13affdd3879",
+      "source_game_id": "7aafa941517fff81309e57f649f6379aa30b2820ad2112d4aaddefb1412aca1b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-8e2d793c2a5c3eece108a3c4",
+      "source_game_id": "a582fd66aca6bc3f8d9ad5a14e0be6b721edd28d3a40944a92d2693415b36b0a",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-8fd88131cfc00accc554f7f4",
+      "source_game_id": "bd0fceeb436b73b2434106469d841f7ebca0b3c9deabf6ba0357c32ffc37201b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-925c244d107b0750c8e4bca9",
+      "source_game_id": "8213586e3999ab592b8ac1e075f997dfc25a007a62473ee0ba808d9514bb16aa",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-9476d617efa16573497a1bfc",
+      "source_game_id": "db009e647f3754018648cb936d30dd76ee3091d1b6ca2bb8e2313c212097971f",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "0",
+      "render_case_id": "rc-9746cf7e68a72944c0226880",
+      "source_game_id": "589aae52ab89b8597e49c5c6581e64084580abcf0c18d023bd5a411caf9b5cde",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-97abc1aee15d8625a292bf39",
+      "source_game_id": "bd0fceeb436b73b2434106469d841f7ebca0b3c9deabf6ba0357c32ffc37201b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-98919db357c670ebc11075ae",
+      "source_game_id": "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-9b1719c17f05237236e7606e",
+      "source_game_id": "8213586e3999ab592b8ac1e075f997dfc25a007a62473ee0ba808d9514bb16aa",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-9bbfaf4fba46941744636748",
+      "source_game_id": "bd0fceeb436b73b2434106469d841f7ebca0b3c9deabf6ba0357c32ffc37201b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-a22cea29b898154da3456c81",
+      "source_game_id": "7aafa941517fff81309e57f649f6379aa30b2820ad2112d4aaddefb1412aca1b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-a252a31b7c6223be5c90ec51",
+      "source_game_id": "38b17ee9774be198aaa40047a3f51066c448338108dbd1aac2044bc0822e61d1",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-a579e27499995705e722a2cd",
+      "source_game_id": "a582fd66aca6bc3f8d9ad5a14e0be6b721edd28d3a40944a92d2693415b36b0a",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-a84d09234d86b960ba8c7097",
+      "source_game_id": "374718bfa0da24a12e48b0473d7b123d0697edd5acd15ffb29e51d84bb6b4af0",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-a88e4040fc00630b59dab01c",
+      "source_game_id": "a582fd66aca6bc3f8d9ad5a14e0be6b721edd28d3a40944a92d2693415b36b0a",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-a93445ba6af675a6f0f59b78",
+      "source_game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1",
+      "render_case_id": "rc-afad667fccfbcab2f6af6f90",
+      "source_game_id": "c18b3cda42aa08462c88a2272866d3d8e0b139fafe98d39abde6970ad943213f",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/4",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-b1bc8a3f07ea543267a8735f",
+      "source_game_id": "fe3af3513269a91331fb8a90eb2962c8928a4d3d3cc33bf41a2015d9739108f5",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-b1f5084c48b58e7f4dd64b76",
+      "source_game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-b49cfb1862164ccaf5f1487f",
+      "source_game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-b53b0f7d4a083bcbf9ea0ca1",
+      "source_game_id": "8213586e3999ab592b8ac1e075f997dfc25a007a62473ee0ba808d9514bb16aa",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-b66463121193ccc82bfcbb94",
+      "source_game_id": "8213586e3999ab592b8ac1e075f997dfc25a007a62473ee0ba808d9514bb16aa",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-b69a8829ab323f8730a27489",
+      "source_game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-b6d96115ea6192021a0319a0",
+      "source_game_id": "4cd5c09d1c9b9124c6ca27e1e2ccf04fb3c23a187aa6401a7fbd5544579fdc7d",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/6",
+      "render_case_id": "rc-b804eef7ce37b859aa0db4fe",
+      "source_game_id": "0d2ca4ac4898e31e7bb8a962fdde8a92a92fc88f3b82339c8161b3182b0c51cf",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-bc7a9b38c98580b8b16aa2a0",
+      "source_game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-bd89ed11c7070a7a828d9442",
+      "source_game_id": "fca05a4f6b4da9511952012f68c8937b7116097feed29212aaf0ab3aedca5339",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-bf5b4ffda33d715d10b7199d",
+      "source_game_id": "38b17ee9774be198aaa40047a3f51066c448338108dbd1aac2044bc0822e61d1",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/4",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-c0698c12dd406d1b8082f11c",
+      "source_game_id": "fe3af3513269a91331fb8a90eb2962c8928a4d3d3cc33bf41a2015d9739108f5",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-c59cf9ae24971b87d456b591",
+      "source_game_id": "374718bfa0da24a12e48b0473d7b123d0697edd5acd15ffb29e51d84bb6b4af0",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "0",
+      "render_case_id": "rc-c93ab916ddcb35c73e5b1922",
+      "source_game_id": "589aae52ab89b8597e49c5c6581e64084580abcf0c18d023bd5a411caf9b5cde",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-cb3d38dedf38b923d5404275",
+      "source_game_id": "ea1bfca419fdc2bc604412ae15157a8d17ff3585b8c5e3727b5de60351c33860",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-cf5638ae1bfcbcb75b1d068a",
+      "source_game_id": "db009e647f3754018648cb936d30dd76ee3091d1b6ca2bb8e2313c212097971f",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-cf77530f2f2f6fdc4ece605d",
+      "source_game_id": "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-d4170d878d587ca0f33eefc1",
+      "source_game_id": "8213586e3999ab592b8ac1e075f997dfc25a007a62473ee0ba808d9514bb16aa",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "0",
+      "render_case_id": "rc-d5365311d189f15784d29030",
+      "source_game_id": "589aae52ab89b8597e49c5c6581e64084580abcf0c18d023bd5a411caf9b5cde",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-d63282b27808f4f28920bb7d",
+      "source_game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-d99d1f3a0abafafcdeab1958",
+      "source_game_id": "bd0fceeb436b73b2434106469d841f7ebca0b3c9deabf6ba0357c32ffc37201b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-d9cc83e3fe1213c65b6a3173",
+      "source_game_id": "7aafa941517fff81309e57f649f6379aa30b2820ad2112d4aaddefb1412aca1b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-dabc6fc391b9133ff00d72cb",
+      "source_game_id": "bd0fceeb436b73b2434106469d841f7ebca0b3c9deabf6ba0357c32ffc37201b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-daf8f185d3c9259a6ec6a23c",
+      "source_game_id": "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/4",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-db02738efd9d8d3b5f21d55a",
+      "source_game_id": "fe3af3513269a91331fb8a90eb2962c8928a4d3d3cc33bf41a2015d9739108f5",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-dbd67a3f15fd7ba15624fa81",
+      "source_game_id": "3162ea772a498c58e7585e0f20e726b2423b0978011928c5e54edf4d49b93e64",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-de19f5b0332a3ccd9d488efb",
+      "source_game_id": "ea1bfca419fdc2bc604412ae15157a8d17ff3585b8c5e3727b5de60351c33860",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-df531cf303a283913bb5bb76",
+      "source_game_id": "ea1bfca419fdc2bc604412ae15157a8d17ff3585b8c5e3727b5de60351c33860",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-e01e58f39dee16d8257b35dd",
+      "source_game_id": "4cd5c09d1c9b9124c6ca27e1e2ccf04fb3c23a187aa6401a7fbd5544579fdc7d",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-e11847537024efe20f1c2c20",
+      "source_game_id": "8213586e3999ab592b8ac1e075f997dfc25a007a62473ee0ba808d9514bb16aa",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-e211085e9b5a071a6d83a6b2",
+      "source_game_id": "e727ab7f08e7ddacc28cf73371a0d6a8fead991b051c89dcce89064ab731e695",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/6",
+      "render_case_id": "rc-e2b1085a6be072d13e7d2b11",
+      "source_game_id": "0d2ca4ac4898e31e7bb8a962fdde8a92a92fc88f3b82339c8161b3182b0c51cf",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-e2b4381044c8b1b038687de8",
+      "source_game_id": "3162ea772a498c58e7585e0f20e726b2423b0978011928c5e54edf4d49b93e64",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-e3bec91c9299cea7659545a3",
+      "source_game_id": "38b17ee9774be198aaa40047a3f51066c448338108dbd1aac2044bc0822e61d1",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-e48f155aabd5e20d5d3534c7",
+      "source_game_id": "fca05a4f6b4da9511952012f68c8937b7116097feed29212aaf0ab3aedca5339",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-e6bf772be64369b22350e14c",
+      "source_game_id": "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "0",
+      "render_case_id": "rc-e8df63bfc458343f47d7585c",
+      "source_game_id": "589aae52ab89b8597e49c5c6581e64084580abcf0c18d023bd5a411caf9b5cde",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "0",
+      "render_case_id": "rc-e8fa0d41262e0c0247611087",
+      "source_game_id": "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1",
+      "render_case_id": "rc-eb16fda0fd35ceae441db929",
+      "source_game_id": "c18b3cda42aa08462c88a2272866d3d8e0b139fafe98d39abde6970ad943213f",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-ed00c4db4c3da164e105dce8",
+      "source_game_id": "fca05a4f6b4da9511952012f68c8937b7116097feed29212aaf0ab3aedca5339",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/2",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-eeca383bf1645088e1841528",
+      "source_game_id": "4cd5c09d1c9b9124c6ca27e1e2ccf04fb3c23a187aa6401a7fbd5544579fdc7d",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-f07d7cb778d6c8357f842aa1",
+      "source_game_id": "3162ea772a498c58e7585e0f20e726b2423b0978011928c5e54edf4d49b93e64",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/3",
+      "render_case_id": "rc-f1f1dd56d6409114e12af32f",
+      "source_game_id": "7aafa941517fff81309e57f649f6379aa30b2820ad2112d4aaddefb1412aca1b",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-f228e00a4b8d5214a19724de",
+      "source_game_id": "8213586e3999ab592b8ac1e075f997dfc25a007a62473ee0ba808d9514bb16aa",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-f3b687f7e72944275523c201",
+      "source_game_id": "374718bfa0da24a12e48b0473d7b123d0697edd5acd15ffb29e51d84bb6b4af0",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/4",
+      "render_case_id": "rc-f6c2eda3e92642a9b255dcad",
+      "source_game_id": "fca05a4f6b4da9511952012f68c8937b7116097feed29212aaf0ab3aedca5339",
+      "status": "WINNING"
+    },
+    {
+      "epsilon": "1/3",
+      "failure_probability": "1/2",
+      "render_case_id": "rc-facbf5a52d5680b18e163f32",
+      "source_game_id": "374718bfa0da24a12e48b0473d7b123d0697edd5acd15ffb29e51d84bb6b4af0",
+      "status": "LOSING"
+    },
+    {
+      "epsilon": "0",
+      "failure_probability": "1",
+      "render_case_id": "rc-fd893a1b791fb1a3e281c010",
+      "source_game_id": "3162ea772a498c58e7585e0f20e726b2423b0978011928c5e54edf4d49b93e64",
+      "status": "LOSING"
+    }
+  ],
+  "classification_rule": "WINNING iff exact V*_H <= epsilon",
+  "fingerprint": "9cf4a5dce4b14b67f38d1fd66788b65646eea819e6633a5e3f845fe783304b61",
+  "version": "stage5.answer-key.v1"
+}

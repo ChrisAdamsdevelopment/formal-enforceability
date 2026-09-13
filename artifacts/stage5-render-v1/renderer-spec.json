@@ -1,0 +1,24 @@
+{
+  "fingerprint": "c9e42a0de34cd019ee1871d03a5a18be8f325b5da0bf2181a3a11f5d781a84c4",
+  "protocol_text": "Protocol: The controller remembers all previous observations and its own previous actions, but does not directly observe the hidden state. The observation aliases below define exactly what it observes. The opposing player knows the true state and sees past controller actions. At each round both sides commit to their current actions simultaneously; the opposing player does not see the controller's current private random draw before committing. Play ends immediately upon entering failure or recovery; otherwise the finite horizon applies. All probabilities are exact. Epsilon is the permitted worst-case probability of failure before recovery.",
+  "protocol_text_hash": "3c6e5980ded961fb54e565cef7fc48ad73c13b3b69e47aafc8ad69739695d995",
+  "spec": {
+    "domains": [
+      "formal-plain-v1",
+      "access-control",
+      "service-routing",
+      "warehouse-operations",
+      "industrial-process"
+    ],
+    "identifier_policy": "neutral-lexicon-v1",
+    "language": "en",
+    "numeric_policy": "reduced-exact-fractions-v1",
+    "ordering_policy": "seeded-sha256-permutation-v1",
+    "protocol_text_version": "stage5.protocol.v1",
+    "renderer_version": "stage5.renderer.v1",
+    "surface_randomization_version": "stage5.surface-randomization.v1",
+    "task_contract_version": "enforceability-classification-v1",
+    "template_version": "stage5.templates.v1",
+    "variants_per_game": 2
+  }
+}
