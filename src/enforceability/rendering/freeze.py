@@ -7,7 +7,7 @@ from typing import Any, Mapping
 
 from enforceability.benchmark import deterministic_fixture_mismatches
 from enforceability.schema import Game
-from .core import (DOMAINS, PROTOCOL_VERSION, RendererSpec, assign_primary_domain, build_render_plan, canonical_json,
+from .core import (DOMAINS, PROTOCOL_TEXT, PROTOCOL_VERSION, RendererSpec, assign_primary_domain, build_render_plan, canonical_json,
                    deep_freeze, deep_thaw, fingerprint, prompt_from_plan, render_case, representation_features,
                    reconstruct_game_from_clauses, semantic_signature, to_model_input, validate_plan)
 
@@ -94,7 +94,7 @@ def build_artifacts(output: str|Path, repository_root: str|Path=".") -> dict[str
     write("render-plan-manifest.json",{"plans":plans}); write("answer-key.json",{"visibility":"PRIVATE ANSWER KEY","answers":answers})
     write("representation-leakage-report.json",report); write("cross-domain-equivalence-report.json",cross_report); write("domain-nontriviality-report.json",domain_report)
     components={"stage4_benchmark_freeze_fingerprint":STAGE4_FINGERPRINT,"renderer_spec_fingerprint":spec.fingerprint,"render_corpus_spec_fingerprint":corpus.fingerprint,
-      "protocol_version":PROTOCOL_VERSION,"protocol_hash":fingerprint(PROTOCOL_VERSION),"task_contract_version":spec.task_contract_version,"ordered_render_case_ids":[x.render_case_id for v in cases.values() for x in v],
+      "protocol_version":PROTOCOL_VERSION,"protocol_hash":fingerprint(PROTOCOL_TEXT),"task_contract_version":spec.task_contract_version,"ordered_render_case_ids":[x.render_case_id for v in cases.values() for x in v],
       "prompt_hashes":[x.prompt_text_hash for v in cases.values() for x in v],"render_plan_fingerprints":[x.render_plan_fingerprint for v in cases.values() for x in v],"answer_key_fingerprint":fingerprint(answers),
       "representation_leakage_fingerprint":fingerprint(report),"cross_domain_equivalence_fingerprint":fingerprint(cross_report),"domain_nontriviality_fingerprint":fingerprint(domain_report)}
     freeze={**components,"stage5_freeze_fingerprint":fingerprint(components),"counts":{k:len(v) for k,v in cases.items()}}
@@ -115,6 +115,7 @@ def _plan_from_dict(raw):
 def verify_freeze(artifacts: str|Path, repository_root: str|Path="."):
     target=Path(artifacts); temp=target.parent/(target.name+".verification-tmp")
     try:
+        validate_stored_dependencies(target)
         expected=build_artifacts(temp,repository_root)
         names=sorted(x.name for x in target.iterdir() if x.is_file()); rebuilt=sorted(x.name for x in temp.iterdir() if x.is_file())
         if names!=rebuilt: raise ValueError("artifact file set mismatch")
@@ -126,6 +127,18 @@ def verify_freeze(artifacts: str|Path, repository_root: str|Path="."):
             if to_model_input(next_case(target,x["render_case_id"]))!={"prompt":prompt_from_plan(plan)}: raise ValueError("model-input boundary")
         return expected
     finally: shutil.rmtree(temp,ignore_errors=True)
+
+def validate_stored_dependencies(root: str|Path) -> None:
+    root=Path(root); frozen=json.loads((root/"render-freeze.json").read_text())
+    if frozen["stage4_benchmark_freeze_fingerprint"]!=STAGE4_FINGERPRINT: raise ValueError("Stage-4 dependency fingerprint")
+    renderer=json.loads((root/"renderer-spec.json").read_text()); declared=renderer.pop("fingerprint")
+    spec=RendererSpec.from_dict(renderer)
+    if declared!=spec.fingerprint or frozen["renderer_spec_fingerprint"]!=declared: raise ValueError("renderer specification fingerprint")
+    corpus=json.loads((root/"render-corpus-spec.json").read_text()); declared_corpus=corpus.pop("fingerprint")
+    if declared_corpus!=RenderCorpusSpec.from_dict(corpus).fingerprint or frozen["render_corpus_spec_fingerprint"]!=declared_corpus: raise ValueError("render corpus specification fingerprint")
+    answers=json.loads((root/"answer-key.json").read_text())["answers"]
+    if fingerprint(answers)!=frozen["answer_key_fingerprint"]: raise ValueError("answer-key fingerprint")
+    if frozen["protocol_hash"]!=fingerprint(PROTOCOL_TEXT): raise ValueError("protocol-text fingerprint")
 
 def next_case(root,case_id):
     from .core import RenderedCase

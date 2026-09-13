@@ -1,12 +1,13 @@
-import inspect, json
+import dataclasses, inspect, json, shutil
 from types import MappingProxyType
 
 import pytest
 
-from enforceability.rendering import (DOMAINS, RenderCorpusSpec, RendererSpec, RestorationTaskContext,
+from enforceability.rendering import (DOMAINS, PROTOCOL_TEXT, RenderCorpusSpec, RendererSpec, RestorationTaskContext,
     assign_primary_domain, build_render_plan, deep_freeze, deep_thaw, prompt_from_plan, reconstruct_game_from_clauses,
-    reconstruct_surface_game_from_clauses, render_case, scan_direct_leakage, semantic_signature, to_model_input, validate_plan)
-from enforceability.rendering.freeze import STAGE4_FINGERPRINT, _plan_from_dict
+    reconstruct_surface_game_from_clauses, realize_clause, render_case, scan_direct_leakage, semantic_signature, to_model_input,
+    validate_plan, validate_primary_assignment, validate_rendered_case, validate_stored_dependencies)
+from enforceability.rendering.freeze import ASSIGNMENT_SALT, STAGE4_FINGERPRINT, _plan_from_dict
 from enforceability.schema import Game
 
 def game():
@@ -18,6 +19,8 @@ def test_deep_freeze_thaw_serializable_and_defensive():
     assert isinstance(frozen,MappingProxyType) and frozen["a"][0]["b"]==1
     thawed=deep_thaw(frozen); assert json.loads(json.dumps(thawed))=={"a":[{"b":1}]}
     thawed["a"][0]["b"]=3; assert frozen["a"][0]["b"]==1
+    for unsupported in ({1},frozenset({1})):
+        with pytest.raises(TypeError,match="canonical JSON"): deep_freeze({"nested":[unsupported]})
 
 def test_all_domains_reconstruct_and_are_deterministic():
     g=game(); spec=RendererSpec()
@@ -81,3 +84,99 @@ def test_strict_versions_and_frozen_corpus_spec():
     spec=RenderCorpusSpec("stage5.render-corpus.v1",STAGE4_FINGERPRINT,RendererSpec().fingerprint,{"x":["y"]},{"x":["id"]},DOMAINS,2,"sha256-modulo-v1","salt","enforceability-classification-v1","ns","policy")
     with pytest.raises(TypeError): spec.source_tracks["x"]=("z",)
     assert spec.fingerprint==spec.fingerprint
+
+def _large_game(kind):
+    n=21; states=[f"source-state-{i}" for i in range(n)] if kind in {"states","observations"} else ["source-state"]
+    controller=[f"source-control-{i}" for i in range(n)] if kind=="controller" else ["source-control"]
+    adversary=[f"source-adversary-{i}" for i in range(n)] if kind=="adversary" else ["source-adversary"]
+    observations=[f"source-observation-{i}" for i in range(n)] if kind=="observations" else ["source-observation"]
+    transitions=[{"state":s,"controller_action":c,"adversary_action":a,"outcomes":[{"state":s,"probability":"1"}]}
+                 for s in states for c in controller for a in adversary]
+    raw={"schema_version":"stage1.v2","states":states,"initial_distribution":[{"state":states[0],"probability":"1"}],
+      "controller_actions":controller,"adversary_actions":adversary,"observations":observations,
+      "observation_map":{s:observations[i] if kind=="observations" else observations[0] for i,s in enumerate(states)},
+      "transitions":transitions,"failure_states":[],"recovery_states":[],"horizon":1,"epsilon":"0",
+      "action_availability":{c:[0] for c in controller},"legitimate_rewards":[],"display_labels":{}}
+    return Game.from_dict(raw)
+
+@pytest.mark.parametrize("kind",["states","observations","controller","adversary"])
+def test_more_than_twenty_identifiers_are_collision_free_and_source_blind(kind):
+    source=_large_game(kind); plan=build_render_plan(source,RendererSpec(),"more-than-twenty","access-control")
+    validate_plan(plan,source)
+    mapping={"states":plan.state_map,"observations":plan.observation_map,"controller":plan.controller_action_map,"adversary":plan.adversary_action_map}[kind]
+    assert len(set(mapping.values()))==21 and not any("source-" in value for value in mapping.values())
+
+def _fixture(name,fixture_id):
+    rows=json.loads(__import__('pathlib').Path(f"artifacts/stage4-formal-v1/{name}.json").read_text())
+    return Game.from_dict(next(x for x in rows if x["fixture_id"]==fixture_id)["game"])
+
+def test_every_domain_supports_all_declared_representation_capabilities():
+    # Together these Stage-4 fixtures cover ambiguity/useful probing/multiple
+    # rounds, stochastic rationals with epsilon > 0, and both players having
+    # multiple actions.  These are representation checks, not deployment claims.
+    games=(_fixture("probe-fixtures","useful-long"),_fixture("probability-fixtures","third-boundary"),_fixture("probability-fixtures","minimax-half"),_fixture("timing-fixtures","last-usable"))
+    assert any(len(g.initial_states)>1 and len({g.observation_map[s] for s in g.initial_states})<len(g.initial_states) for g in games)
+    assert any(any(len(v)>1 for v in g.transitions.values()) for g in games) and any(g.epsilon>0 for g in games)
+    assert any(len(g.controller_actions)>1 and len(g.adversary_actions)>1 for g in games) and any(g.horizon>1 for g in games)
+    for domain in DOMAINS:
+        for index,g in enumerate(games): validate_plan(build_render_plan(g,RendererSpec(),f"capability-{index}",domain),g)
+
+def test_renderer_is_independent_of_oracle_entry_points(monkeypatch):
+    import enforceability, enforceability.oracle
+    def forbidden(*_args,**_kwargs): raise AssertionError("oracle was called")
+    monkeypatch.setattr(enforceability,"solve",forbidden); monkeypatch.setattr(enforceability.oracle,"solve",forbidden)
+    validate_plan(build_render_plan(game(),RendererSpec(),"answer-blind","industrial-process"),game())
+
+def _corrupt_clause(plan,clause_type,mutation,update_text=True):
+    raw=deep_thaw(plan.to_dict()); clause=next(x for x in raw["clauses"] if x["clause_type"]==clause_type); mutation(clause["semantic_payload"])
+    if update_text: clause["text"]=realize_clause(clause["semantic_payload"],clause["template_id"],raw["domain"])
+    return _plan_from_dict(raw)
+
+@pytest.mark.parametrize(("clause_type","mutation"),[
+ ("TransitionClause",lambda p:p["outcomes"][0].update(state="unknown-destination")),
+ ("TransitionClause",lambda p:p["outcomes"][0].update(probability="0")),
+ ("ObservationAliasClause",lambda p:p["states"].append("unknown-observation-member")),
+ ("InitialDistributionClause",lambda p:p["entries"][0].update(probability="0")),
+ ("ActionAvailabilityClause",lambda p:p["rounds"].append(999)),
+ ("TerminalClause",lambda p:p["failure_states"].append(p["recovery_states"][0])),
+ ("TerminalClause",lambda p:p["recovery_states"].append(p["failure_states"][0])),
+ ("ParameterClause",lambda p:p.update(epsilon="2")),
+ ("ParameterClause",lambda p:p.update(horizon=-1)),
+])
+def test_semantic_corruption_matrix_is_rejected(clause_type,mutation):
+    plan=build_render_plan(game(),RendererSpec(),"corruption-matrix","warehouse-operations")
+    with pytest.raises((ValueError,KeyError)): validate_plan(_corrupt_clause(plan,clause_type,mutation),game())
+
+def test_remaining_corruption_matrix_is_rejected():
+    plan=build_render_plan(game(),RendererSpec(),"remaining-corruption","service-routing")
+    # text while payload stays fixed; payload while text stays fixed
+    raw=deep_thaw(plan.to_dict()); raw["clauses"][0]["text"]="stale"
+    with pytest.raises(ValueError): validate_plan(_plan_from_dict(raw),game())
+    with pytest.raises(ValueError): validate_plan(_corrupt_clause(plan,"ParameterClause",lambda p:p.update(epsilon="1"),False),game())
+    # formal/source map and template identity
+    raw=deep_thaw(plan.to_dict()); raw["state_map"][next(iter(raw["state_map"]))]="wrong-surface-name"
+    with pytest.raises((ValueError,KeyError)): validate_plan(_plan_from_dict(raw),game())
+    raw=deep_thaw(plan.to_dict()); raw["clauses"][0]["template_id"]="access-control.state-declaration.v1"
+    with pytest.raises(ValueError): validate_plan(_plan_from_dict(raw),game())
+    # prompt hash and primary-domain assignment
+    case=render_case(game(),RendererSpec(),"hash","formal-plain-v1"); broken=dataclasses.replace(case,prompt_text_hash="0"*64)
+    with pytest.raises(ValueError): validate_rendered_case(broken)
+    domain,variant=assign_primary_domain("id",RendererSpec(),ASSIGNMENT_SALT)
+    with pytest.raises(ValueError): validate_primary_assignment("id",RendererSpec(),ASSIGNMENT_SALT,DOMAINS[(DOMAINS.index(domain)+1)%5],variant)
+
+def test_protocol_hash_binds_text_not_only_version():
+    from enforceability.rendering.core import fingerprint
+    frozen=json.loads(__import__('pathlib').Path("artifacts/stage5-render-v1/render-freeze.json").read_text())
+    assert frozen["protocol_hash"]==fingerprint(PROTOCOL_TEXT)
+    assert frozen["protocol_hash"]!=fingerprint(PROTOCOL_TEXT+" mutation")
+
+@pytest.mark.parametrize(("file_name","mutation"),[
+ ("answer-key.json",lambda x:x["answers"][0].update(status="CORRUPTED")),
+ ("renderer-spec.json",lambda x:x.update(renderer_version="future")),
+ ("render-freeze.json",lambda x:x.update(stage4_benchmark_freeze_fingerprint="0"*64)),
+ ("render-freeze.json",lambda x:x.update(protocol_hash="0"*64)),
+])
+def test_frozen_dependency_corruption_is_rejected(tmp_path,file_name,mutation):
+    target=tmp_path/"stage5"; shutil.copytree("artifacts/stage5-render-v1",target)
+    path=target/file_name; raw=json.loads(path.read_text()); mutation(raw); path.write_text(json.dumps(raw))
+    with pytest.raises(ValueError): validate_stored_dependencies(target)

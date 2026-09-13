@@ -6,14 +6,14 @@
     "warehouse-operations",
     "industrial-process"
   ],
-  "fingerprint": "8dc76a7fdc84e065dc246cfb4bd83ba9492ca65dfe1643a870bc31f771e0b27e",
+  "fingerprint": "93e9f42e32561f7a901f59846bdcb5dc76e30154c0d16aa2ceb5fc6d0365767e",
   "identifier_policy": "neutral-domain-lexicon-v1",
   "language": "en",
   "numeric_policy": "reduced-rational-v1",
   "ordering_policy": "seeded-shuffle-v1",
   "protocol_text_version": "stage1.information-protocol.v1",
-  "renderer_version": "stage5.semantic-render.v1",
-  "surface_randomization_version": "surface-map-v1",
+  "renderer_version": "stage5.semantic-render.v2",
+  "surface_randomization_version": "surface-map-v2",
   "task_contract_version": "stage5.task-contracts.v1",
   "template_version": "stage5.templates.v1",
   "variants_per_game": 2

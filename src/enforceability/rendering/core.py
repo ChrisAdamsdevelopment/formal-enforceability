@@ -15,15 +15,20 @@ from typing import Any, Mapping
 
 from enforceability.schema import Game
 
-RENDERER_VERSION = "stage5.semantic-render.v1"
+RENDERER_VERSION = "stage5.semantic-render.v2"
 TASK_CONTRACT_VERSION = "stage5.task-contracts.v1"
 TEMPLATE_VERSION = "stage5.templates.v1"
 PROTOCOL_VERSION = "stage1.information-protocol.v1"
+PROTOCOL_TEXT = ("At the start of every round t, the current hidden state is s_t and the controller receives the current observation o_t = obs(s_t) before choosing its round-t action. "
+  "The controller has perfect recall of its entire previous observation/action history and may use private randomization. The strategic adversary knows the current true state, the prior state history available under the formal model, its own previous actions, previous controller actions, and the game and protocol, with perfect recall. "
+  "Current controller and adversary actions are selected by simultaneous commitment: neither may condition on the other's current unrevealed action, and the adversary does not observe the controller's current private random draw before committing.")
 DOMAINS = ("formal-plain-v1", "access-control", "service-routing", "warehouse-operations", "industrial-process")
 TASKS = ("enforceability-classification-v1", "failure-value-v1", "restoration-selection-v1")
 
 
 def deep_freeze(value: Any) -> Any:
+    if isinstance(value, (set, frozenset)):
+        raise TypeError("sets are outside the canonical JSON representation contract")
     if isinstance(value, Mapping):
         return MappingProxyType({str(k): deep_freeze(v) for k, v in value.items()})
     if isinstance(value, (list, tuple)):
@@ -79,11 +84,11 @@ class RendererSpec:
     identifier_policy: str = "neutral-domain-lexicon-v1"
     numeric_policy: str = "reduced-rational-v1"
     protocol_text_version: str = PROTOCOL_VERSION
-    surface_randomization_version: str = "surface-map-v1"
+    surface_randomization_version: str = "surface-map-v2"
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "domains", tuple(self.domains))
-        expected = (RENDERER_VERSION,"en",TASK_CONTRACT_VERSION,TEMPLATE_VERSION,DOMAINS,2,"seeded-shuffle-v1","neutral-domain-lexicon-v1","reduced-rational-v1",PROTOCOL_VERSION,"surface-map-v1")
+        expected = (RENDERER_VERSION,"en",TASK_CONTRACT_VERSION,TEMPLATE_VERSION,DOMAINS,2,"seeded-shuffle-v1","neutral-domain-lexicon-v1","reduced-rational-v1",PROTOCOL_VERSION,"surface-map-v2")
         if tuple(getattr(self, f.name) for f in fields(self)) != expected:
             raise ValueError("unsupported renderer specification")
 
@@ -174,7 +179,9 @@ def _permute(items, seed, domain, channel):
 
 def _names(items, kind, seed, domain, noun):
     words = _permute(WORDS, seed, domain, kind)
-    return {x: f"{noun.title()} {words[i]}" for i, x in enumerate(items)}
+    # The word supplies seeded variation while the ordinal makes the namespace
+    # unbounded and collision-free.  Source identifiers are never interpolated.
+    return {x: f"{noun.title()} {words[i % len(words)]} {i + 1}" for i, x in enumerate(items)}
 
 
 def _surface(game: Game, seed: str, domain: str):
@@ -211,9 +218,7 @@ def realize_clause(payload: Mapping[str, Any], template_id: str, domain: str) ->
     if category=="terminal": return f"Failure {sn}s: {', '.join(p['failure_states']) or 'none'}. Recovery {sn}s: {', '.join(p['recovery_states']) or 'none'}."
     if category=="parameters": return f"The horizon is {p['horizon']} rounds and epsilon is {p['epsilon']}."
     if category=="reward": return f"Legitimate reward for {p['state']} with {p['controller_action']} is {p['reward']}."
-    if category=="protocol": return ("At the start of every round t, the current hidden state is s_t and the controller receives the current observation o_t = obs(s_t) before choosing its round-t action. "
-      "The controller has perfect recall of its entire previous observation/action history and may use private randomization. The strategic adversary knows the current true state, the prior state history available under the formal model, its own previous actions, previous controller actions, and the game and protocol, with perfect recall. "
-      "Current controller and adversary actions are selected by simultaneous commitment: neither may condition on the other's current unrevealed action, and the adversary does not observe the controller's current private random draw before committing.")
+    if category=="protocol": return PROTOCOL_TEXT
     if category=="objective": return p["text"]
     if category=="answer-format": return p["text"]
     if category=="restoration-context": return "Candidate restorations: "+"; ".join(f"{x['option']}: {x['description']} (cost {x['cost']})" for x in p["candidates"])+"."
@@ -314,6 +319,11 @@ def render_case(game: Game, spec: RendererSpec, render_seed: str, domain: str, v
 def to_model_input(case: RenderedCase) -> dict[str,str]: return {"prompt":case.prompt_text}
 
 
+def validate_rendered_case(case: RenderedCase) -> None:
+    if hashlib.sha256(case.prompt_text.encode()).hexdigest() != case.prompt_text_hash:
+        raise ValueError("prompt hash mismatch")
+
+
 PROVENANCE=("oracle","optimal policy","correct answer","game_id","candidate_key","generator_version","oracle_version","mechanism_id","stage 4","stage-4")
 def scan_direct_leakage(plan: RenderPlan) -> None:
     for c in plan.clauses:
@@ -336,3 +346,8 @@ def representation_features(case: RenderedCase, plan: RenderPlan) -> dict[str,An
 def assign_primary_domain(game_id: str, renderer_spec: RendererSpec, assignment_salt: str) -> tuple[str,int]:
     digest=int(hashlib.sha256(f"{renderer_spec.fingerprint}|{game_id}|{assignment_salt}".encode()).hexdigest(),16)
     return renderer_spec.domains[digest%len(renderer_spec.domains)], (digest//len(renderer_spec.domains))%renderer_spec.variants_per_game
+
+
+def validate_primary_assignment(game_id: str, renderer_spec: RendererSpec, assignment_salt: str, domain: str, variant_index: int) -> None:
+    if (domain, variant_index) != assign_primary_domain(game_id, renderer_spec, assignment_salt):
+        raise ValueError("primary-domain assignment mismatch")

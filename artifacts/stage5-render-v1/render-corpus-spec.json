@@ -8,11 +8,11 @@
     "warehouse-operations",
     "industrial-process"
   ],
-  "fingerprint": "18f26c36e139f41a1fb5ccbff8a3a9b5311e1457bca74dc9139d80ee51af20cd",
+  "fingerprint": "b53e02e5ac1957671422f7990ed1f9f2c8211659eccf526bb92cdf47fe338ae7",
   "output_policy": "canonical-json-and-jsonl-v1",
   "primary_assignment_rule": "sha256-modulo-v1",
   "render_seed_namespace": "stage5-seed-v1",
-  "renderer_spec_fingerprint": "8dc76a7fdc84e065dc246cfb4bd83ba9492ca65dfe1643a870bc31f771e0b27e",
+  "renderer_spec_fingerprint": "93e9f42e32561f7a901f59846bdcb5dc76e30154c0d16aa2ceb5fc6d0365767e",
   "source_game_ids": {
     "development": [
       "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db",
