@@ -1,0 +1,79 @@
+[
+  {
+    "attempted_config": {
+      "complexity_limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 1,
+        "max_states": 20
+      },
+      "family": "observation-conflict",
+      "generator_parameters": {
+        "ambiguous_states": 3,
+        "controller_action_count": 3,
+        "horizon": 2
+      },
+      "generator_version": "stage2.v2",
+      "seed": 77
+    },
+    "attempted_config_fingerprint": "bf15d910a15c7de3b82eadf2249fdcb05565a310c72a389a343d66827e6cb779",
+    "candidate_key": "observation-conflict:77:61d7400f1d666fe5747b1cbce1fb4e3dea3b59cf99ce6dab656f1c43b2c6beee",
+    "complexity": {
+      "estimate": {
+        "adversary_actions": 1,
+        "controller_actions": 3,
+        "controller_histories": 2,
+        "horizon": 2,
+        "policy_profiles": 2,
+        "states": 5
+      },
+      "threshold": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 1,
+        "max_states": 20
+      }
+    },
+    "config_fingerprint": "9d392961ed78b39d3cafa38b3fa360cb3c0cbf6603cd72a8e1dcd43d297a6307",
+    "descriptors": null,
+    "duplicate_classification": null,
+    "family": "observation-conflict",
+    "game_id": null,
+    "generator_config": {
+      "adversary_action_count": 1,
+      "aliasing_degree": 2,
+      "ambiguous_states": 3,
+      "common_action": false,
+      "controller_action_count": 3,
+      "coverage": 1,
+      "epsilon": "0",
+      "family": "observation-conflict",
+      "generator_version": "stage2.v2",
+      "horizon": 2,
+      "intervention_round": 0,
+      "limits": {
+        "max_controller_histories": 100,
+        "max_generated_candidates": 1000,
+        "max_horizon": 4,
+        "max_policy_profiles": 1,
+        "max_states": 20
+      },
+      "mode": "base",
+      "probe_available": true,
+      "probe_delay": 1,
+      "probe_informative": true,
+      "seed": 77,
+      "stochasticity": false
+    },
+    "generator_version": "stage2.v2",
+    "isomorphism": null,
+    "oracle": null,
+    "reason": "estimated_oracle_complexity",
+    "restorations": null,
+    "retention": null,
+    "seed": 77,
+    "state": "COMPLEXITY_REJECTED"
+  }
+]

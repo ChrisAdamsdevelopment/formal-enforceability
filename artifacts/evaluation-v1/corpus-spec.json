@@ -1,0 +1,94 @@
+{
+  "complexity_limits": {
+    "max_controller_histories": 100,
+    "max_generated_candidates": 1000,
+    "max_horizon": 4,
+    "max_policy_profiles": 100000,
+    "max_states": 20
+  },
+  "corpus_spec_version": "stage3.corpus-spec.v1",
+  "families": [
+    "observation-conflict",
+    "authority-limitation",
+    "probe",
+    "timing",
+    "capability-restriction",
+    "mixed-restoration"
+  ],
+  "generator_parameter_sets": [
+    {
+      "ambiguous_states": 3,
+      "controller_action_count": 3,
+      "epsilon": "1/3",
+      "horizon": 1,
+      "stochasticity": true
+    },
+    {
+      "adversary_action_count": 3,
+      "coverage": 1,
+      "horizon": 1
+    },
+    {
+      "horizon": 3,
+      "probe_delay": 2,
+      "probe_informative": false
+    },
+    {
+      "horizon": 2,
+      "intervention_round": 1
+    },
+    {
+      "adversary_action_count": 3,
+      "horizon": 1,
+      "mode": "multi"
+    },
+    {
+      "horizon": 2,
+      "mode": "base"
+    }
+  ],
+  "generator_version": "stage2.v2",
+  "isomorphism_limits": {
+    "max_permutations": 2000000
+  },
+  "isomorphism_version": "stage3.exact-permutation.v1",
+  "oracle_version": "normal-form-reference.v2",
+  "retention_policy": {
+    "exact_duplicates": "retain_first",
+    "isomorphic_duplicates": "retain_first",
+    "unresolved": "exclude"
+  },
+  "retention_policy_version": "stage3.deterministic-retention.v2",
+  "schema_version": "stage1.v2",
+  "seed_ranges": [
+    [
+      101,
+      102
+    ],
+    [
+      101,
+      102
+    ],
+    [
+      101,
+      102
+    ],
+    [
+      101,
+      102
+    ],
+    [
+      101,
+      102
+    ],
+    [
+      101,
+      102
+    ]
+  ],
+  "stratification_policy": {
+    "fields": [],
+    "tie_break": "candidate_key"
+  },
+  "target_counts": {}
+}

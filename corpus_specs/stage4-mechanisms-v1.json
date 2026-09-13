@@ -1,0 +1,70 @@
+{
+  "version": "stage4.formal-freeze.v1",
+  "dimensions": {
+    "observation": [
+      "obs-ambiguous-incompatible-v1",
+      "obs-ambiguous-common-policy-v1",
+      "obs-refinement-positive-v1",
+      "obs-refinement-zero-v1",
+      "probe-useless-v1",
+      "probe-useful-v1",
+      "probe-too-late-v1",
+      "probe-delay-multiple-v1",
+      "probe-delay-1-v1",
+      "probe-delay-2-v1",
+      "probe-delay-3-v1"
+    ],
+    "authority": [
+      "authority-perfect-insufficient-v1",
+      "authority-robust-response-v1",
+      "restriction-positive-v1",
+      "restriction-zero-v1",
+      "restriction-joint-v1"
+    ],
+    "timing": [
+      "timing-before-deadline-v1",
+      "timing-last-usable-v1",
+      "timing-after-failure-v1",
+      "timing-multiple-horizons-v1",
+      "timing-multiple-positions-v1",
+      "horizon-1-v1",
+      "horizon-2-v1",
+      "horizon-3-v1",
+      "horizon-4-v1",
+      "intervention-round-0-v1",
+      "intervention-round-1-v1",
+      "intervention-too-late-v1"
+    ],
+    "restoration": [
+      "restoration-unique-optimum-v1",
+      "restoration-tied-optima-v1",
+      "restoration-dominated-v1",
+      "restoration-none-feasible-v1",
+      "repair-information-only-v1",
+      "repair-restriction-only-v1",
+      "repair-timing-only-v1",
+      "repair-compound-v1"
+    ],
+    "probability": [
+      "transition-deterministic-v1",
+      "transition-stochastic-rational-v1",
+      "probability-half-v1",
+      "probability-third-v1",
+      "probability-other-rational-v1",
+      "epsilon-nonzero-v1",
+      "epsilon-boundary-v1",
+      "epsilon-neighboring-v1",
+      "probability-zero-v1",
+      "probability-one-v1",
+      "minimax-nontrivial-v1"
+    ],
+    "corpus": [
+      "duplicate-exact-v1",
+      "duplicate-isomorphic-v1",
+      "unique-resolved-v1",
+      "isomorphism-unresolved-fixture-v1",
+      "complexity-rejected-fixture-v1",
+      "matched-transformation-v1"
+    ]
+  }
+}

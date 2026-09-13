@@ -1,0 +1,65 @@
+{
+  "families": [
+    {
+      "attempted": 4,
+      "exact_collapse_ratio": "2/4",
+      "exact_unique": 2,
+      "family": "observation-conflict",
+      "generated": 4,
+      "isomorphism_collapse_ratio": "1/4",
+      "resolved_isomorphism_classes": 1,
+      "seed_effective": true
+    },
+    {
+      "attempted": 4,
+      "exact_collapse_ratio": "1/4",
+      "exact_unique": 1,
+      "family": "authority-limitation",
+      "generated": 4,
+      "isomorphism_collapse_ratio": "1/4",
+      "resolved_isomorphism_classes": 1,
+      "seed_effective": false
+    },
+    {
+      "attempted": 4,
+      "exact_collapse_ratio": "1/4",
+      "exact_unique": 1,
+      "family": "probe",
+      "generated": 4,
+      "isomorphism_collapse_ratio": "1/4",
+      "resolved_isomorphism_classes": 1,
+      "seed_effective": false
+    },
+    {
+      "attempted": 4,
+      "exact_collapse_ratio": "1/4",
+      "exact_unique": 1,
+      "family": "timing",
+      "generated": 4,
+      "isomorphism_collapse_ratio": "1/4",
+      "resolved_isomorphism_classes": 1,
+      "seed_effective": false
+    },
+    {
+      "attempted": 4,
+      "exact_collapse_ratio": "1/4",
+      "exact_unique": 1,
+      "family": "capability-restriction",
+      "generated": 4,
+      "isomorphism_collapse_ratio": "1/4",
+      "resolved_isomorphism_classes": 1,
+      "seed_effective": false
+    },
+    {
+      "attempted": 4,
+      "exact_collapse_ratio": "1/4",
+      "exact_unique": 1,
+      "family": "mixed-restoration",
+      "generated": 4,
+      "isomorphism_collapse_ratio": "1/4",
+      "resolved_isomorphism_classes": 1,
+      "seed_effective": false
+    }
+  ],
+  "version": "stage4.diversity-audit.v1"
+}

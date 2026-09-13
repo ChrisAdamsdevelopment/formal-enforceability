@@ -1,0 +1,44 @@
+{
+  "complexity_limits": {
+    "max_controller_histories": 100,
+    "max_generated_candidates": 1000,
+    "max_horizon": 4,
+    "max_policy_profiles": 100000,
+    "max_states": 20
+  },
+  "corpus_spec_version": "stage3.corpus-spec.v1",
+  "families": [
+    "observation-conflict"
+  ],
+  "generator_parameter_sets": [
+    {
+      "ambiguous_states": 3,
+      "controller_action_count": 3,
+      "horizon": 2
+    }
+  ],
+  "generator_version": "stage2.v2",
+  "isomorphism_limits": {
+    "max_permutations": 1
+  },
+  "isomorphism_version": "stage3.exact-permutation.v1",
+  "oracle_version": "normal-form-reference.v2",
+  "retention_policy": {
+    "exact_duplicates": "retain_first",
+    "isomorphic_duplicates": "retain_first",
+    "unresolved": "retain_all"
+  },
+  "retention_policy_version": "stage3.deterministic-retention.v2",
+  "schema_version": "stage1.v2",
+  "seed_ranges": [
+    [
+      77,
+      78
+    ]
+  ],
+  "stratification_policy": {
+    "fields": [],
+    "tie_break": "candidate_key"
+  },
+  "target_counts": {}
+}

@@ -1,0 +1,62 @@
+{
+  "evaluation_cases": [
+    {
+      "candidate_key": "observation-conflict:101:3b5e64e6bc642e3f231c2eeb8826437845fc53067d412f60e825a7dad8d89f16",
+      "exact_id_in_development": false,
+      "game_id": "0d2ca4ac4898e31e7bb8a962fdde8a92a92fc88f3b82339c8161b3182b0c51cf",
+      "isomorphism_class_id": "97f638ca923f70a1373eb5852b44e23f2482493e4e12071f21224933fe774ea9",
+      "isomorphism_unresolved": false,
+      "resolved_class_in_development": false,
+      "same_family_template": true
+    },
+    {
+      "candidate_key": "authority-limitation:101:2d236ee71658ed42aa60d4eaa0bd9a353de2780a61e0a41ffc46c8b38487503d",
+      "exact_id_in_development": false,
+      "game_id": "db009e647f3754018648cb936d30dd76ee3091d1b6ca2bb8e2313c212097971f",
+      "isomorphism_class_id": "fb7c581c39a9ed2443d128af5a28bf5e474c518466a78b5ba9d76c4d306bc096",
+      "isomorphism_unresolved": false,
+      "resolved_class_in_development": false,
+      "same_family_template": true
+    },
+    {
+      "candidate_key": "timing:101:d1d118a83bcae44afb4dc38cf68901a27f19d998828b2f6812eb195fac0a598c",
+      "exact_id_in_development": false,
+      "game_id": "3162ea772a498c58e7585e0f20e726b2423b0978011928c5e54edf4d49b93e64",
+      "isomorphism_class_id": "2f59c9c37af1531e5c51bff799c40aa02132b3aa90bebdb5d7483d09e0edb744",
+      "isomorphism_unresolved": false,
+      "resolved_class_in_development": false,
+      "same_family_template": true
+    },
+    {
+      "candidate_key": "capability-restriction:101:143e7f0747340eb1469a47e6d1c07e720393f053ad2485ae595e61dc667e91ec",
+      "exact_id_in_development": false,
+      "game_id": "ea1bfca419fdc2bc604412ae15157a8d17ff3585b8c5e3727b5de60351c33860",
+      "isomorphism_class_id": "0fb3df4d7e6d1e586594292e8bade2de6947412b91f12acde2f8b86a28c21b06",
+      "isomorphism_unresolved": false,
+      "resolved_class_in_development": false,
+      "same_family_template": true
+    },
+    {
+      "candidate_key": "mixed-restoration:101:c9139a8dfd3cbd8a109cdbb132de087667858e5b43d5b6fbb5f603820439ed55",
+      "exact_id_in_development": false,
+      "game_id": "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2",
+      "isomorphism_class_id": "5472ad77b64f2cc18bb5ad91afc909a8655fce4952389f41f5949c45341bd481",
+      "isomorphism_unresolved": false,
+      "resolved_class_in_development": false,
+      "same_family_template": true
+    }
+  ],
+  "exact_id_overlap": [],
+  "passes": true,
+  "raw_development_unresolved_cases": [],
+  "raw_evaluation_unresolved_cases": [
+    "probe:101:65f92314fec74b8ceb5b2cc697998919af385dfa57effffdea50f1d166ed7fb3"
+  ],
+  "raw_exact_id_overlap": [],
+  "raw_resolved_isomorphism_overlap": [],
+  "resolved_isomorphism_overlap": [],
+  "retained_development_unresolved_cases": [],
+  "same_family_template_count": 5,
+  "unresolved_evaluation_cases": [],
+  "version": "stage4.formal-freeze.v1"
+}

@@ -1,0 +1,2404 @@
+[
+  {
+    "delay_states": [],
+    "fixture_id": "useful-short",
+    "game": {
+      "action_availability": {
+        "probe": [
+          0
+        ],
+        "resolve0": [
+          1
+        ],
+        "resolve1": [
+          1
+        ],
+        "wait": []
+      },
+      "adversary_actions": [
+        "a0"
+      ],
+      "controller_actions": [
+        "probe",
+        "wait",
+        "resolve0",
+        "resolve1"
+      ],
+      "display_labels": {},
+      "epsilon": "0",
+      "failure_states": [
+        "x"
+      ],
+      "horizon": 2,
+      "initial_distribution": [
+        {
+          "probability": "1/2",
+          "state": "q0"
+        },
+        {
+          "probability": "1/2",
+          "state": "q1"
+        }
+      ],
+      "legitimate_rewards": [],
+      "observation_map": {
+        "p0": "p0",
+        "p1": "p1",
+        "q0": "o",
+        "q1": "o",
+        "r": "r",
+        "x": "x"
+      },
+      "observations": [
+        "o",
+        "p0",
+        "p1",
+        "r",
+        "x"
+      ],
+      "recovery_states": [
+        "r"
+      ],
+      "schema_version": "stage1.v2",
+      "states": [
+        "q0",
+        "q1",
+        "p0",
+        "p1",
+        "r",
+        "x"
+      ],
+      "transitions": [
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        }
+      ]
+    },
+    "game_id": "fa75ad42ffdd1d868b18f9eab4129990af3e0cf31f4bf9ab46519360bc3d485c",
+    "informative": true,
+    "oracle": {
+      "explored_profiles": 4,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "probe",
+              "history": {
+                "observations": [
+                  "o"
+                ],
+                "previous_actions": []
+              }
+            },
+            {
+              "action": "resolve0",
+              "history": {
+                "observations": [
+                  "o",
+                  "p0"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            },
+            {
+              "action": "resolve1",
+              "history": {
+                "observations": [
+                  "o",
+                  "p1"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "probe_delay": 1,
+    "too_late": false
+  },
+  {
+    "delay_states": [
+      "d1_0",
+      "d1_1"
+    ],
+    "fixture_id": "useful-long",
+    "game": {
+      "action_availability": {
+        "probe": [
+          0
+        ],
+        "resolve0": [
+          2
+        ],
+        "resolve1": [
+          2
+        ],
+        "wait": [
+          1
+        ]
+      },
+      "adversary_actions": [
+        "a0"
+      ],
+      "controller_actions": [
+        "probe",
+        "wait",
+        "resolve0",
+        "resolve1"
+      ],
+      "display_labels": {},
+      "epsilon": "0",
+      "failure_states": [
+        "x"
+      ],
+      "horizon": 3,
+      "initial_distribution": [
+        {
+          "probability": "1/2",
+          "state": "q0"
+        },
+        {
+          "probability": "1/2",
+          "state": "q1"
+        }
+      ],
+      "legitimate_rewards": [],
+      "observation_map": {
+        "d1_0": "d1",
+        "d1_1": "d1",
+        "p0": "p0",
+        "p1": "p1",
+        "q0": "o",
+        "q1": "o",
+        "r": "r",
+        "x": "x"
+      },
+      "observations": [
+        "d1",
+        "o",
+        "p0",
+        "p1",
+        "r",
+        "x"
+      ],
+      "recovery_states": [
+        "r"
+      ],
+      "schema_version": "stage1.v2",
+      "states": [
+        "q0",
+        "q1",
+        "d1_0",
+        "d1_1",
+        "p0",
+        "p1",
+        "r",
+        "x"
+      ],
+      "transitions": [
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_0"
+            }
+          ],
+          "state": "d1_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "d1_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_0"
+            }
+          ],
+          "state": "d1_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_0"
+            }
+          ],
+          "state": "d1_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_1"
+            }
+          ],
+          "state": "d1_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "d1_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_1"
+            }
+          ],
+          "state": "d1_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_1"
+            }
+          ],
+          "state": "d1_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        }
+      ]
+    },
+    "game_id": "1e5437521083baff23c3d6f0dfd0facf4d7653c37ae8b80bd3c3e1f9ba76845f",
+    "informative": true,
+    "oracle": {
+      "explored_profiles": 4,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "probe",
+              "history": {
+                "observations": [
+                  "o"
+                ],
+                "previous_actions": []
+              }
+            },
+            {
+              "action": "wait",
+              "history": {
+                "observations": [
+                  "o",
+                  "d1"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            },
+            {
+              "action": "resolve0",
+              "history": {
+                "observations": [
+                  "o",
+                  "d1",
+                  "p0"
+                ],
+                "previous_actions": [
+                  "probe",
+                  "wait"
+                ]
+              }
+            },
+            {
+              "action": "resolve1",
+              "history": {
+                "observations": [
+                  "o",
+                  "d1",
+                  "p1"
+                ],
+                "previous_actions": [
+                  "probe",
+                  "wait"
+                ]
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "probe_delay": 2,
+    "too_late": false
+  },
+  {
+    "delay_states": [
+      "d1_0",
+      "d1_1",
+      "d2_0",
+      "d2_1"
+    ],
+    "fixture_id": "useful-delay3",
+    "game": {
+      "action_availability": {
+        "probe": [
+          0
+        ],
+        "resolve0": [
+          3
+        ],
+        "resolve1": [
+          3
+        ],
+        "wait": [
+          1,
+          2
+        ]
+      },
+      "adversary_actions": [
+        "a0"
+      ],
+      "controller_actions": [
+        "probe",
+        "wait",
+        "resolve0",
+        "resolve1"
+      ],
+      "display_labels": {},
+      "epsilon": "0",
+      "failure_states": [
+        "x"
+      ],
+      "horizon": 4,
+      "initial_distribution": [
+        {
+          "probability": "1/2",
+          "state": "q0"
+        },
+        {
+          "probability": "1/2",
+          "state": "q1"
+        }
+      ],
+      "legitimate_rewards": [],
+      "observation_map": {
+        "d1_0": "d1",
+        "d1_1": "d1",
+        "d2_0": "d2",
+        "d2_1": "d2",
+        "p0": "p0",
+        "p1": "p1",
+        "q0": "o",
+        "q1": "o",
+        "r": "r",
+        "x": "x"
+      },
+      "observations": [
+        "d1",
+        "d2",
+        "o",
+        "p0",
+        "p1",
+        "r",
+        "x"
+      ],
+      "recovery_states": [
+        "r"
+      ],
+      "schema_version": "stage1.v2",
+      "states": [
+        "q0",
+        "q1",
+        "d1_0",
+        "d1_1",
+        "d2_0",
+        "d2_1",
+        "p0",
+        "p1",
+        "r",
+        "x"
+      ],
+      "transitions": [
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_0"
+            }
+          ],
+          "state": "d1_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_0"
+            }
+          ],
+          "state": "d1_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_0"
+            }
+          ],
+          "state": "d1_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_0"
+            }
+          ],
+          "state": "d1_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_1"
+            }
+          ],
+          "state": "d1_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_1"
+            }
+          ],
+          "state": "d1_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_1"
+            }
+          ],
+          "state": "d1_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_1"
+            }
+          ],
+          "state": "d1_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_0"
+            }
+          ],
+          "state": "d2_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "d2_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_0"
+            }
+          ],
+          "state": "d2_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_0"
+            }
+          ],
+          "state": "d2_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_1"
+            }
+          ],
+          "state": "d2_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "d2_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_1"
+            }
+          ],
+          "state": "d2_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_1"
+            }
+          ],
+          "state": "d2_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        }
+      ]
+    },
+    "game_id": "97a550052a1e6bff2c4980ebb80b33d06440a6ab8972fd105f63a39b69b6ce45",
+    "informative": true,
+    "oracle": {
+      "explored_profiles": 4,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "probe",
+              "history": {
+                "observations": [
+                  "o"
+                ],
+                "previous_actions": []
+              }
+            },
+            {
+              "action": "wait",
+              "history": {
+                "observations": [
+                  "o",
+                  "d1"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            },
+            {
+              "action": "wait",
+              "history": {
+                "observations": [
+                  "o",
+                  "d1",
+                  "d2"
+                ],
+                "previous_actions": [
+                  "probe",
+                  "wait"
+                ]
+              }
+            },
+            {
+              "action": "resolve0",
+              "history": {
+                "observations": [
+                  "o",
+                  "d1",
+                  "d2",
+                  "p0"
+                ],
+                "previous_actions": [
+                  "probe",
+                  "wait",
+                  "wait"
+                ]
+              }
+            },
+            {
+              "action": "resolve1",
+              "history": {
+                "observations": [
+                  "o",
+                  "d1",
+                  "d2",
+                  "p1"
+                ],
+                "previous_actions": [
+                  "probe",
+                  "wait",
+                  "wait"
+                ]
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "probe_delay": 3,
+    "too_late": false
+  },
+  {
+    "delay_states": [],
+    "fixture_id": "useless",
+    "game": {
+      "action_availability": {
+        "probe": [
+          0
+        ],
+        "resolve0": [
+          1
+        ],
+        "resolve1": [
+          1
+        ],
+        "wait": []
+      },
+      "adversary_actions": [
+        "a0"
+      ],
+      "controller_actions": [
+        "probe",
+        "wait",
+        "resolve0",
+        "resolve1"
+      ],
+      "display_labels": {},
+      "epsilon": "0",
+      "failure_states": [
+        "x"
+      ],
+      "horizon": 2,
+      "initial_distribution": [
+        {
+          "probability": "1/2",
+          "state": "q0"
+        },
+        {
+          "probability": "1/2",
+          "state": "q1"
+        }
+      ],
+      "legitimate_rewards": [],
+      "observation_map": {
+        "p0": "p",
+        "p1": "p",
+        "q0": "o",
+        "q1": "o",
+        "r": "r",
+        "x": "x"
+      },
+      "observations": [
+        "o",
+        "p",
+        "r",
+        "x"
+      ],
+      "recovery_states": [
+        "r"
+      ],
+      "schema_version": "stage1.v2",
+      "states": [
+        "q0",
+        "q1",
+        "p0",
+        "p1",
+        "r",
+        "x"
+      ],
+      "transitions": [
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        }
+      ]
+    },
+    "game_id": "59470b0c1fdc815bb295d9e207dc213f75fc8246bb302ccbe28149e0a6c9ddda",
+    "informative": false,
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "1/2",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "probe_delay": 1,
+    "too_late": false
+  },
+  {
+    "delay_states": [
+      "d1_0",
+      "d1_1",
+      "d2_0",
+      "d2_1"
+    ],
+    "fixture_id": "too-late",
+    "game": {
+      "action_availability": {
+        "probe": [
+          0
+        ],
+        "resolve0": [
+          3
+        ],
+        "resolve1": [
+          3
+        ],
+        "wait": [
+          1,
+          2
+        ]
+      },
+      "adversary_actions": [
+        "a0"
+      ],
+      "controller_actions": [
+        "probe",
+        "wait",
+        "resolve0",
+        "resolve1"
+      ],
+      "display_labels": {},
+      "epsilon": "0",
+      "failure_states": [
+        "x"
+      ],
+      "horizon": 4,
+      "initial_distribution": [
+        {
+          "probability": "1/2",
+          "state": "q0"
+        },
+        {
+          "probability": "1/2",
+          "state": "q1"
+        }
+      ],
+      "legitimate_rewards": [],
+      "observation_map": {
+        "d1_0": "d1",
+        "d1_1": "d1",
+        "d2_0": "d2",
+        "d2_1": "d2",
+        "p0": "p0",
+        "p1": "p1",
+        "q0": "o",
+        "q1": "o",
+        "r": "r",
+        "x": "x"
+      },
+      "observations": [
+        "d1",
+        "d2",
+        "o",
+        "p0",
+        "p1",
+        "r",
+        "x"
+      ],
+      "recovery_states": [
+        "r"
+      ],
+      "schema_version": "stage1.v2",
+      "states": [
+        "q0",
+        "q1",
+        "d1_0",
+        "d1_1",
+        "d2_0",
+        "d2_1",
+        "p0",
+        "p1",
+        "r",
+        "x"
+      ],
+      "transitions": [
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q0"
+            }
+          ],
+          "state": "q0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "q1"
+            }
+          ],
+          "state": "q1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_0"
+            }
+          ],
+          "state": "d1_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "d1_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_0"
+            }
+          ],
+          "state": "d1_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_0"
+            }
+          ],
+          "state": "d1_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_1"
+            }
+          ],
+          "state": "d1_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "d1_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_1"
+            }
+          ],
+          "state": "d1_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d1_1"
+            }
+          ],
+          "state": "d1_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_0"
+            }
+          ],
+          "state": "d2_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "d2_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_0"
+            }
+          ],
+          "state": "d2_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_0"
+            }
+          ],
+          "state": "d2_0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_1"
+            }
+          ],
+          "state": "d2_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "d2_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_1"
+            }
+          ],
+          "state": "d2_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "d2_1"
+            }
+          ],
+          "state": "d2_1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p0"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "p0"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "p1"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "p1"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "r"
+            }
+          ],
+          "state": "r"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "probe",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "wait",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve0",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        },
+        {
+          "adversary_action": "a0",
+          "controller_action": "resolve1",
+          "outcomes": [
+            {
+              "probability": "1",
+              "state": "x"
+            }
+          ],
+          "state": "x"
+        }
+      ]
+    },
+    "game_id": "4e9c687f72320bed898148896a523612eb39056acbf7de24d58ad65b9e567d93",
+    "informative": true,
+    "oracle": {
+      "explored_profiles": 1,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "probe_delay": 3,
+    "too_late": true
+  }
+]

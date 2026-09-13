@@ -14,3 +14,6 @@ python -m pytest
 Stage 3 adds the entirely formal, deterministic audited-corpus pipeline described
 in [`docs/corpus.md`](docs/corpus.md): complete candidate ledgers, exact
 identifier-renaming isomorphism, declared retention, and a rebuildable freeze.
+
+Stage 4's formal split and benchmark-freeze workflow is documented in
+[`docs/stage4.md`](docs/stage4.md).

@@ -1,0 +1,263 @@
+[
+  {
+    "candidate_key": "observation-conflict:0:6149b1d0fbd62403020c90bf22a21b33e85ad7da6af782aca45f25609e20f168",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "observation-conflict:0:6149b1d0fbd62403020c90bf22a21b33e85ad7da6af782aca45f25609e20f168"
+    },
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "1/4",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o0"
+                ],
+                "previous_actions": []
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "exclude"
+    },
+    "stratum": "",
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "observation-conflict:0:6149b1d0fbd62403020c90bf22a21b33e85ad7da6af782aca45f25609e20f168"
+    }
+  },
+  {
+    "candidate_key": "authority-limitation:0:e384c47d147b32a3adadc15e9e5cace4336481ead4c126b00243a03c098b8388",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "authority-limitation:0:e384c47d147b32a3adadc15e9e5cace4336481ead4c126b00243a03c098b8388"
+    },
+    "oracle": {
+      "explored_profiles": 4,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "exclude"
+    },
+    "stratum": "",
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "authority-limitation:0:e384c47d147b32a3adadc15e9e5cace4336481ead4c126b00243a03c098b8388"
+    }
+  },
+  {
+    "candidate_key": "probe:0:9186a746753a3933370da0c7e4dd82b4cbc2b9538680af6fe99da8e337254a5f",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "probe:0:9186a746753a3933370da0c7e4dd82b4cbc2b9538680af6fe99da8e337254a5f"
+    },
+    "oracle": {
+      "explored_profiles": 324,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "probe",
+              "history": {
+                "observations": [
+                  "o"
+                ],
+                "previous_actions": []
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "o"
+                ],
+                "previous_actions": [
+                  "c0"
+                ]
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "o"
+                ],
+                "previous_actions": [
+                  "c1"
+                ]
+              }
+            },
+            {
+              "action": "c0",
+              "history": {
+                "observations": [
+                  "o",
+                  "p0"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            },
+            {
+              "action": "c1",
+              "history": {
+                "observations": [
+                  "o",
+                  "p1"
+                ],
+                "previous_actions": [
+                  "probe"
+                ]
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "exclude"
+    },
+    "stratum": "",
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "probe:0:9186a746753a3933370da0c7e4dd82b4cbc2b9538680af6fe99da8e337254a5f"
+    }
+  },
+  {
+    "candidate_key": "timing:0:3619b2e409f5c8a0830987d40f3901d19d7b6fb4f4da865e588508d6fbece540",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "timing:0:3619b2e409f5c8a0830987d40f3901d19d7b6fb4f4da865e588508d6fbece540"
+    },
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "0",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "WINNING",
+      "threshold_satisfied": true,
+      "witness": [
+        {
+          "policy": [
+            {
+              "action": "act",
+              "history": {
+                "observations": [
+                  "q"
+                ],
+                "previous_actions": []
+              }
+            }
+          ],
+          "probability": "1"
+        }
+      ]
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "exclude"
+    },
+    "stratum": "",
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "timing:0:3619b2e409f5c8a0830987d40f3901d19d7b6fb4f4da865e588508d6fbece540"
+    }
+  },
+  {
+    "candidate_key": "capability-restriction:0:88c80c77b3df5a04da3994232e397aa1640ece3b3765c9649e5d5429e9d64372",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "capability-restriction:0:88c80c77b3df5a04da3994232e397aa1640ece3b3765c9649e5d5429e9d64372"
+    },
+    "oracle": {
+      "explored_profiles": 2,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "exclude"
+    },
+    "stratum": "",
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "capability-restriction:0:88c80c77b3df5a04da3994232e397aa1640ece3b3765c9649e5d5429e9d64372"
+    }
+  },
+  {
+    "candidate_key": "mixed-restoration:0:58c93ef6e121008569e1606e8c5d38f92ec59db6a7f31a571d0d20b403c718df",
+    "duplicate_classification": {
+      "category": "UNIQUE",
+      "representative_candidate_key": "mixed-restoration:0:58c93ef6e121008569e1606e8c5d38f92ec59db6a7f31a571d0d20b403c718df"
+    },
+    "oracle": {
+      "explored_profiles": 8,
+      "failure_probability": "1",
+      "oracle_version": "normal-form-reference.v2",
+      "schema_version": "stage1.v2",
+      "status": "LOSING",
+      "threshold_satisfied": false,
+      "witness": null
+    },
+    "reason": "selected_by_declared_policy",
+    "retained": true,
+    "rule": {
+      "exact_duplicates": "retain_first",
+      "isomorphic_duplicates": "retain_first",
+      "unresolved": "exclude"
+    },
+    "stratum": "",
+    "tie_break": {
+      "field": "candidate_key",
+      "value": "mixed-restoration:0:58c93ef6e121008569e1606e8c5d38f92ec59db6a7f31a571d0d20b403c718df"
+    }
+  }
+]

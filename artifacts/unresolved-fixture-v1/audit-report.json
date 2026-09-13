@@ -1,0 +1,272 @@
+{
+  "by_family": {
+    "observation-conflict": {
+      "LOSING": 1,
+      "WINNING": 0,
+      "attempted": 1,
+      "complexity_rejected": 0,
+      "errors": 0,
+      "exact_duplicates": 0,
+      "filtered": 0,
+      "generated": 1,
+      "isomorphic_duplicates": 0,
+      "retained": 1,
+      "solved": 1,
+      "unique_resolved": 0,
+      "unresolved": 1
+    }
+  },
+  "complexity_calibration": {
+    "note": "runtime is an engineering diagnostic; estimates are not conceptual difficulty",
+    "samples": 1
+  },
+  "leakage_audit": {
+    "answer_direct": {
+      "fields": [
+        "oracle",
+        "restorations"
+      ],
+      "separated_from_correlates": true
+    },
+    "blacklist_is_not_absence_proof": true,
+    "neutralized_representational": {
+      "neutral_state_prefix_signature": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "s,s,s,s,s"
+        }
+      ],
+      "neutral_terminal_identifier_convention": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "s4,s3"
+        }
+      ]
+    },
+    "provenance_only": {
+      "family": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "observation-conflict"
+        }
+      ],
+      "mode": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "base"
+        }
+      ]
+    },
+    "purpose": "descriptive contingencies only; purity is not proof of leakage or predictive validity",
+    "representational": {
+      "controller_identifier_prefix_signature": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "c,c,c"
+        }
+      ],
+      "observation_identifier_prefix_signature": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "o,o,r,x"
+        }
+      ],
+      "state_identifier_prefix_signature": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "q,q,q,r,x"
+        }
+      ],
+      "terminal_identifier_convention": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "x,r"
+        }
+      ],
+      "terminal_order_roles": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "[False, False, False, True, True]"
+        }
+      ]
+    },
+    "semantic_structural": {
+      "adversary_action_count": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "1"
+        }
+      ],
+      "ambiguous_controller_classes": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "1"
+        }
+      ],
+      "controller_action_count": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "3"
+        }
+      ],
+      "horizon": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "2"
+        }
+      ],
+      "restoration_candidates": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "0"
+        }
+      ],
+      "state_count": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "5"
+        }
+      ],
+      "stochastic_branching": [
+        {
+          "LOSING": 1,
+          "WINNING": 0,
+          "status_pure_in_this_corpus": true,
+          "support": 1,
+          "value": "0"
+        }
+      ]
+    }
+  },
+  "matched_pair_audit": {
+    "failures": [],
+    "passed": true,
+    "records": 0
+  },
+  "raw_candidates": {
+    "LOSING": 1,
+    "WINNING": 0,
+    "attempted": 1,
+    "complexity_rejected": 0,
+    "errors": 0,
+    "exact_duplicates": 0,
+    "filtered": 0,
+    "generated": 1,
+    "isomorphic_duplicates": 0,
+    "retained": 1,
+    "solved": 1,
+    "unique_resolved": 0,
+    "unresolved": 1
+  },
+  "retained_corpus": {
+    "LOSING": 1,
+    "WINNING": 0,
+    "attempted": 1,
+    "complexity_rejected": 0,
+    "errors": 0,
+    "exact_duplicates": 0,
+    "filtered": 0,
+    "generated": 1,
+    "isomorphic_duplicates": 0,
+    "retained": 1,
+    "solved": 1,
+    "unique_resolved": 0,
+    "unresolved": 1
+  },
+  "structural_coverage": {
+    "adversary_action_counts": [
+      1
+    ],
+    "adversary_capability_counts": [
+      1
+    ],
+    "all_six_families": false,
+    "ambiguous_observation_class_counts": [
+      1
+    ],
+    "both_oracle_statuses": false,
+    "complexity_rejected_count": 0,
+    "controller_action_counts": [
+      3
+    ],
+    "families": [
+      "observation-conflict"
+    ],
+    "gaps": [
+      "all-six-families",
+      "both-oracle-statuses",
+      "stochastic-transitions",
+      "transformed-matched-pairs",
+      "complexity-rejections",
+      "tied-optimal-restorations",
+      "no-feasible-restorations"
+    ],
+    "horizon_values": [
+      2
+    ],
+    "no_feasible_restoration_cases": 0,
+    "oracle_statuses": [
+      "LOSING"
+    ],
+    "probe_delays": [],
+    "restoration_candidate_counts": [
+      0
+    ],
+    "state_counts": [
+      5
+    ],
+    "tied_optimal_restoration_cases": 0,
+    "timing_intervention_positions": [],
+    "transformed_matched_pair_count": 0,
+    "transition_modes": {
+      "deterministic": true,
+      "stochastic": false
+    },
+    "unresolved_isomorphism_count": 1
+  }
+}
