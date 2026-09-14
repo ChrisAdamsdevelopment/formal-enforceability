@@ -7,7 +7,8 @@ from enforceability.identifiability import (
     ADVERSARY_ACTIONS, ARTIFACT_DIRECTORY, CANONICAL_COLLECTION_REGIME, COLLECTION_REGIME_VERSION,
     CONTROLLER_ACTIONS, PublicSignature, ThresholdStatus, ambiguity_classes, ambiguity_interval,
     ambiguity_values, as_schema_game, build_artifacts, enumerate_games, public_signature,
-    select_witnesses, strategic_value, threshold_status, threshold_sweep, verify_artifacts,
+    probabilistic_phenomenon_witnesses, select_witnesses, strategic_value, threshold_phase_structure,
+    threshold_status, threshold_sweep, verify_artifacts,
 )
 from enforceability.independent_validation import build_reachable_tree, validate_game
 
@@ -60,10 +61,35 @@ def test_frozen_witnesses_and_deterministic_selection():
     assert witnesses["witness_B"]["all_public_joint_actions_positive_probability"]
     assert len(set(public_signature(game_by_id("d015")).failure_probabilities)) == 1
     witness_c = witnesses["witness_C"]
+    assert witness_c["game_ids"] == ["d006", "d036"]
+    assert witness_c["epsilon"] == "1/2"
+    assert witness_c["epsilon_nonidentified"] == "1/4"
+    assert witness_c["game_labels"] == ["WINNING", "WINNING"]
     c_games = ambiguity_classes()[public_signature(game_by_id(witness_c["game_ids"][0]))]
     assert len({strategic_value(game) for game in c_games}) > 1
     epsilon = Fraction(witness_c["epsilon"])
     assert len({strategic_value(game) <= epsilon for game in c_games}) == 1
+
+
+def test_witness_class_has_all_three_exact_threshold_phases():
+    signature = public_signature(game_by_id("d006"))
+    expected = {
+        Fraction(0): ThresholdStatus.CERTIFIABLY_LOSING,
+        Fraction(1, 4): ThresholdStatus.INSUFFICIENT_INFORMATION,
+        Fraction(1, 3): ThresholdStatus.INSUFFICIENT_INFORMATION,
+        Fraction(1, 2): ThresholdStatus.CERTIFIABLY_WINNING,
+        Fraction(3, 4): ThresholdStatus.CERTIFIABLY_WINNING,
+    }
+    assert {epsilon: threshold_status(signature, epsilon) for epsilon in expected} == expected
+    assert threshold_phase_structure(signature) == {
+        "ambiguity_interval": ["1/4", "1/2"],
+        "standard_partial_identification_logic": True,
+        "phases": [
+            {"epsilon_region": "epsilon < 1/4", "status": "CERTIFIABLY_LOSING"},
+            {"epsilon_region": "1/4 <= epsilon < 1/2", "status": "INSUFFICIENT_INFORMATION"},
+            {"epsilon_region": "epsilon >= 1/2", "status": "CERTIFIABLY_WINNING"},
+        ],
+    }
 
 
 def test_schema_conversion_preserves_information_semantics_for_all_256_games():
@@ -92,6 +118,15 @@ def test_probabilistic_extension_and_sweeps_are_bounded_and_deterministic():
     classes = ambiguity_classes(True)
     assert len(classes) == 625 and sum(map(len, classes.values())) == 6561
     assert sum(len(ambiguity_values(signature, True)) > 1 for signature in classes) == 297
+    phenomena = probabilistic_phenomenon_witnesses()
+    p1 = phenomena["P1_value_nonidentification"]
+    p2 = phenomena["P2_threshold_nonidentification"]
+    p3 = phenomena["P3_threshold_identification_without_value_identification"]
+    assert len(p1["exact_values"]) > 1
+    assert len(p2["exact_values"]) > 1 and p2["threshold_status"] == "INSUFFICIENT_INFORMATION"
+    assert len(p3["exact_values"]) > 1
+    assert p3["threshold_status"] in {"CERTIFIABLY_WINNING", "CERTIFIABLY_LOSING"}
+    assert phenomena == probabilistic_phenomenon_witnesses()
     assert threshold_sweep() == threshold_sweep()
 
 

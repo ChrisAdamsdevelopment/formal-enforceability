@@ -2,7 +2,7 @@
 
 ## Definitions
 
-**Family (ESTABLISHED).** There are equiprobable latent states (s_0,s_1),
+**PROJECT DEFINITION — canonical family.** There are equiprobable latent states (s_0,s_1),
 one controller observation `hidden`, controller actions (c_0,c_1), informed
 adversary actions (a_0,a_1), and terminals `SAFE`,`FAIL`. The horizon is one.
 A deterministic game is the eight-bit failure table in the fixed order
@@ -33,9 +33,11 @@ For an interface (I), let (\underline V(I)) and (\overline V(I)) be the
 minimum and maximum of (1) over its finite compatibility class. We call it
 certifiably winning when (\overline V\leq\epsilon), certifiably losing when
 (\underline V>\epsilon), and insufficient otherwise. This weak-boundary
-rule is standard partial-identification logic; no novelty is claimed for it.
+rule is **ESTABLISHED PRIOR THEORY** from standard partial-identification interval logic; no novelty is claimed for it.
 
 ## Propositions and proofs
+
+**Epistemic status of Propositions A–D:** **PROVED HERE FOR THE DECLARED FINITE FAMILY; NOVELTY NOT YET ESTABLISHED.** This distinguishes repository proofs from claims about prior literature.
 
 ### Proposition A — exact public ambiguity
 
@@ -64,12 +66,22 @@ inequality: (1/4\leq1/4), while (1/2\nleq1/4). ∎
 
 ### Proposition C — threshold identification without value identification
 
-The same interface identifies a losing label at (\epsilon=0), although it
+The same interface identifies a winning label at (\epsilon=1/2), although it
 does not identify the value.
 
 **Proof.** Exhaustive compatibility construction gives its exact value set
-\(\{1/4,1/2\}\). Hence (\underline V=1/4>0): every compatible game is
-losing, while Proposition A supplies two unequal compatible values. ∎
+\(\{1/4,1/2\}\), so (\overline V=1/2). At (\epsilon=1/2), weak threshold
+semantics give (\overline V\leq\epsilon); therefore every compatible game is
+winning. Proposition A nevertheless supplies two unequal compatible values, so
+the exact value is not identified. ∎
+
+**Observation (direct application of established interval logic, not a novel
+theorem).** For this same public interface, the exact ambiguity interval is
+\([1/4,1/2]\). It is `CERTIFIABLY_LOSING` for (\epsilon<1/4),
+`INSUFFICIENT_INFORMATION` for (1/4\leq\epsilon<1/2), and
+`CERTIFIABLY_WINNING` for (\epsilon\geq1/2). Thus identifiability belongs to
+the information-interface-plus-estimand/threshold pair, not to the raw public
+interface alone.
 
 ### Proposition D — complete public joint-action coverage is insufficient
 
@@ -135,13 +147,20 @@ extension is bounded robustness evidence, not an unrestricted theorem.
 
 ## Prior-art status
 
-* **ESTABLISHED:** the finite statements above are exact consequences of the
-  displayed tables and mechanically verified enumeration.
-* **PROVISIONAL COMPARISON:** they instantiate familiar partial-identification
-  distinctions in an asymmetric-information reach-avoid game.
-* **NOT YET ESTABLISHED:** novelty relative to BOMB, Cui–Du,
-  asymmetric-information game theory, or generic partial identification. No
-  source-specific collision review is attempted here.
+* **PROJECT DEFINITION:** the canonical family, collection regime, versioned
+  public signature, and canonical IDs are definitions made by this project.
+* **PROVED HERE FOR THE DECLARED FINITE FAMILY; NOVELTY NOT YET ESTABLISHED:**
+  Propositions A–D and the bounded probabilistic persistence checks are exact
+  consequences of the displayed tables and exhaustive enumeration.
+* **ESTABLISHED PRIOR THEORY:** perfect-recall game theory and generic
+  partial-identification interval logic, including the three-way threshold
+  classification used here.
+* **PROVISIONAL COMPARISON:** these results instantiate familiar
+  partial-identification distinctions; comparison to BOMB, Cui–Du, and
+  offline-IIEFG results remains provisional.
+* **NOT YET ESTABLISHED:** novelty or non-collision relative to BOMB, Cui–Du,
+  offline-IIEFG results, asymmetric-information game theory, or generic partial
+  identification. No source-specific collision review is attempted here.
 * **PROJECT QUESTION:** whether useful general conditions identify only
   \(\mathbf1[V_H\leq\epsilon]\) from passive public evidence.
 

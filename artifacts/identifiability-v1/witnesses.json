@@ -57,15 +57,17 @@
       "1/4",
       "1/2"
     ],
-    "epsilon": "0",
+    "epsilon": "1/2",
+    "epsilon_nonidentified": "1/4",
     "game_ids": [
       "d006",
       "d036"
     ],
     "game_labels": [
-      "LOSING",
-      "LOSING"
+      "WINNING",
+      "WINNING"
     ],
+    "selection_rule": "prefer Witness A class with both identified and nonidentified declared thresholds; choose its upper boundary when certifiably winning",
     "signature": {
       "collection_regime_version": "state-blind-uniform-joint-actions.v1",
       "failure_conditionals": [
@@ -76,7 +78,28 @@
       ],
       "signature_version": "public-failure-conditionals.v1"
     },
-    "threshold_status": "CERTIFIABLY_LOSING",
+    "threshold_phase_structure": {
+      "ambiguity_interval": [
+        "1/4",
+        "1/2"
+      ],
+      "phases": [
+        {
+          "epsilon_region": "epsilon < 1/4",
+          "status": "CERTIFIABLY_LOSING"
+        },
+        {
+          "epsilon_region": "1/4 <= epsilon < 1/2",
+          "status": "INSUFFICIENT_INFORMATION"
+        },
+        {
+          "epsilon_region": "epsilon >= 1/2",
+          "status": "CERTIFIABLY_WINNING"
+        }
+      ],
+      "standard_partial_identification_logic": true
+    },
+    "threshold_status": "CERTIFIABLY_WINNING",
     "values": [
       "1/4",
       "1/2"

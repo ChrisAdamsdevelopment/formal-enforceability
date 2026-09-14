@@ -18,6 +18,101 @@
     "1"
   ],
   "family_version": "one-step-2state-2x2.v1",
+  "phenomenon_witnesses": {
+    "P1_value_nonidentification": {
+      "ambiguity_interval": [
+        "1/8",
+        "1/4"
+      ],
+      "canonical_game_ids": [
+        "p0012",
+        "p0252",
+        "p0732",
+        "p0972"
+      ],
+      "exact_values": [
+        "1/8",
+        "1/4"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/4",
+          "1/4",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    "P2_threshold_nonidentification": {
+      "ambiguity_interval": [
+        "1/4",
+        "1/2"
+      ],
+      "canonical_game_ids": [
+        "p0022",
+        "p0102",
+        "p0262",
+        "p0342",
+        "p0742",
+        "p0822",
+        "p0982",
+        "p1062",
+        "p1462",
+        "p1542",
+        "p1702",
+        "p1782"
+      ],
+      "epsilon": "1/4",
+      "exact_values": [
+        "1/4",
+        "1/3",
+        "3/8",
+        "1/2"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/2",
+          "1/4",
+          "1/4"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      },
+      "threshold_status": "INSUFFICIENT_INFORMATION"
+    },
+    "P3_threshold_identification_without_value_identification": {
+      "ambiguity_interval": [
+        "1/8",
+        "1/4"
+      ],
+      "canonical_game_ids": [
+        "p0012",
+        "p0252",
+        "p0732",
+        "p0972"
+      ],
+      "epsilon": "1/4",
+      "exact_values": [
+        "1/8",
+        "1/4"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/4",
+          "1/4",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      },
+      "threshold_status": "CERTIFIABLY_WINNING"
+    },
+    "selection_rule": "lexicographically smallest compatible game ID, then declared epsilon; P3 prefers certifiably winning"
+  },
   "probability_alphabet": [
     "0",
     "1/2",
