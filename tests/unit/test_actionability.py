@@ -3,7 +3,7 @@ from fractions import Fraction
 from enforceability.actionability import (
     ActionabilityStatus,
     classify,
-    fixed_policy_loss,
+    FiberPoint, fixed_policy_loss, public_fiber_vertices,
     optimal_policies,
     robust_actionability,
     verify_canonical_families,
@@ -19,14 +19,22 @@ def test_wait_and_see_is_upper_and_never_exceeds_here_and_now_all_families():
     assert verify_canonical_families() == {"deterministic_classes": 81, "probabilistic_classes": 625}
 
 
-def test_fixed_policy_vertex_evaluation_matches_exhaustive_models():
-    games = (GAMES["d006"], GAMES["d036"])
-    for x in map(Fraction, ("0", "1/3", "1")):
-        assert max(fixed_policy_loss(game, x) for game in games) == max(
-            b + m * x
-            for game in games
-            for b, m, _ in __import__("enforceability.actionability", fromlist=["adversary_lines"]).adversary_lines(game)
-        )
+def test_continuous_public_fiber_vertices_and_fixed_policy_bound():
+    from enforceability.identifiability import PublicSignature, public_signature
+
+    signature = PublicSignature((Fraction(1, 4), Fraction(1, 2), Fraction(3, 4), Fraction(0)))
+    vertices = public_fiber_vertices(signature)
+    assert len(vertices) == 8  # three nondegenerate cell segments
+    for point in vertices:
+        assert all(0 <= value <= 1 for value in point.failure_probabilities)
+        assert public_signature(type(GAMES["d000"])("vertex", point.failure_probabilities)) == signature
+    interior = FiberPoint(tuple((sum(v.failure_probabilities[i] for v in vertices) / len(vertices)) for i in range(8)))
+    for x in (Fraction(0), Fraction(1, 3), Fraction(1)):
+        assert fixed_policy_loss(interior, x) <= max(fixed_policy_loss(vertex, x) for vertex in vertices)
+    solution = robust_actionability(vertices)
+    brute_grid = min(max(fixed_policy_loss(vertex, Fraction(k, 100)) for vertex in vertices) for k in range(101))
+    assert solution.value <= brute_grid
+    assert solution.value == max(fixed_policy_loss(vertex, Fraction(1, 3)) for vertex in vertices)
 
 
 def test_exact_lp_matches_rational_brute_grid_on_small_cases():

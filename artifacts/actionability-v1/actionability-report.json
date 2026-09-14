@@ -1,5 +1,10 @@
 {
-  "canonical_public_interface_gap_found": false,
+  "continuous_public_fiber": {
+    "adaptive_V_upper_solved": false,
+    "gap_search_status": "unresolved",
+    "robust_R_via_vertices": true,
+    "vertices_implemented": true
+  },
   "explicit_interface_regression_case": {
     "R": "1/2",
     "V_lower": "0",
@@ -39,6 +44,7 @@
       "0"
     ]
   },
+  "frozen_family_gap_found": false,
   "search_scope": {
     "deterministic_games": 256,
     "deterministic_public_classes": 81,

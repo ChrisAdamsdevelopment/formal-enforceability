@@ -1,8 +1,0 @@
-{
-  "chance_accuracy": "1/4",
-  "classes": 4,
-  "contaminated": false,
-  "majority_accuracy": "1/4",
-  "n": 48,
-  "template_domain_only_accuracy": "1/4"
-}

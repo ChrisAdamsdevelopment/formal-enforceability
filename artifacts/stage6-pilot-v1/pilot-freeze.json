@@ -1,8 +1,9 @@
 {
   "files": {
-    "leakage-report.json": "c485a920fed85e882ad41d1d133e74b0a940dc13e0c7f4a79c59e6427f2c3253",
-    "pilot-corpus.json": "05cd583655c4859e32139a7c9e6352475fb1c4e509d4cbf06d6ba6d8da35b69b",
-    "render-manifest.json": "0d61cd34de77a849b672f7bd24bdf1aee9927f121d53bf54032d8fe9e1c30bdd"
+    "private-answer-key.json": "f17943140e12873245505193aa11d48268e9e3f0d118cded0f00131c4319b608",
+    "public-prompts.jsonl": "df0d6f8ddb63bb1834ad1f2c0ab790f497c0d5b591f6fb95763b074761bd89cb",
+    "render-plan-manifest.json": "de5e92408b50140a429cabe0659694b09f986b6c7d5918e10d2ca7ef50ca4cdb",
+    "representation-leakage-report.json": "581632ddf4cfb6bd844759064f61b708a95d107721686424f3c985b2d2b994b0"
   },
-  "version": "stage6-pilot-v1"
+  "version": "stage6-pilot-v2"
 }

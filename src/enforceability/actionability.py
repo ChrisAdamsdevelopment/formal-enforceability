@@ -35,7 +35,38 @@ class RobustSolution:
     controller_c0_probabilities: tuple[Fraction, ...]
 
 
-def adversary_lines(game: OneStepGame) -> tuple[tuple[Fraction, Fraction, tuple[str, ...]], ...]:
+@dataclass(frozen=True, slots=True)
+class FiberPoint:
+    """One exact state-conditioned table in a continuous public fiber."""
+
+    failure_probabilities: tuple[Fraction, ...]
+
+    def probability(self, state: str, controller: str, adversary: str) -> Fraction:
+        from enforceability.identifiability import CELLS
+
+        return self.failure_probabilities[CELLS.index((state, controller, adversary))]
+
+
+def public_fiber_vertices(signature: PublicSignature) -> tuple[FiberPoint, ...]:
+    """Vertices of ``q[c,a]=(p[0,c,a]+p[1,c,a])/2`` over ``[0,1]^8``."""
+    from enforceability.identifiability import CELLS, PUBLIC_CELLS
+
+    endpoints = []
+    for q in signature.failure_probabilities:
+        low, high = max(Fraction(0), 2 * q - 1), min(Fraction(1), 2 * q)
+        endpoints.append(tuple(dict.fromkeys((low, high))))
+    vertices = []
+    for state0_values in product(*endpoints):
+        by_cell = dict(zip(PUBLIC_CELLS, state0_values, strict=True))
+        values = tuple(
+            by_cell[(c, a)] if state == STATES[0] else 2 * signature.failure_probabilities[PUBLIC_CELLS.index((c, a))] - by_cell[(c, a)]
+            for state, c, a in CELLS
+        )
+        vertices.append(FiberPoint(values))
+    return tuple(dict.fromkeys(vertices))
+
+
+def adversary_lines(game: OneStepGame | FiberPoint) -> tuple[tuple[Fraction, Fraction, tuple[str, ...]], ...]:
     """Return ``(intercept, slope, alpha)`` for loss at ``x=P(c0)``."""
     result = []
     for alpha in product(ADVERSARY_ACTIONS, repeat=len(STATES)):
@@ -48,7 +79,7 @@ def adversary_lines(game: OneStepGame) -> tuple[tuple[Fraction, Fraction, tuple[
     return tuple(result)
 
 
-def fixed_policy_loss(game: OneStepGame, controller_c0_probability: Fraction) -> Fraction:
+def fixed_policy_loss(game: OneStepGame | FiberPoint, controller_c0_probability: Fraction) -> Fraction:
     if not 0 <= controller_c0_probability <= 1:
         raise ValueError("controller probability must be in [0,1]")
     return max(b + m * controller_c0_probability for b, m, _ in adversary_lines(game))
@@ -60,7 +91,7 @@ def optimal_policies(game: OneStepGame) -> tuple[Fraction, ...]:
     return solution.controller_c0_probabilities
 
 
-def robust_actionability(games: tuple[OneStepGame, ...]) -> RobustSolution:
+def robust_actionability(games: tuple[OneStepGame | FiberPoint, ...]) -> RobustSolution:
     """Solve ``min_x z`` s.t. ``z >= b_i + m_i x, 0 <= x <= 1`` exactly."""
     if not games:
         raise ValueError("compatibility set must be nonempty")

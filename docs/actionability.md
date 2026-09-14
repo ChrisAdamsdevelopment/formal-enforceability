@@ -96,12 +96,21 @@ compact formula can exist.
 
 Exhaustive exact search covered all 81 public classes of the 256 deterministic
 tables and all 625 public classes of the 6,561 bounded probabilistic tables.
-No canonical \(\mathcal F(q)\) had \(\overline V<R\), so no actionability-gap
-witness is claimed for that frozen public interface. The generic solver has a
+No gap was found in those 81 frozen deterministic or 625 frozen
+bounded-probabilistic public-signature classes. This finite enumeration does
+not settle the continuous public fiber, because exact continuous
+\(\sup_{p\in\mathcal F(q)}V(p)\) remains unresolved. The generic solver has a
 regression case on the explicitly declared set `{d051,d204}`: both worlds have
 value zero and require opposite pure controllers, while the common-policy value
 is \(1/2\). Those games have different public signatures and are **not** passed
 off as a canonical-signature witness.
+
+For the continuous two-state uniform-prior fiber, the implementation now
+constructs every vertex exactly. In each public cell, the state-zero coordinate
+ranges from \(\max(0,2q-1)\) to \(\min(1,2q)\), with the other coordinate
+equal to \(2q-p_0\); Cartesian endpoint choices give the full product-fiber
+vertex set. This mechanically validates fixed-policy vertex sufficiency and
+continuous-fiber robust \(R\), but not adaptive \(\overline V\).
 
 The **inner game** is precisely the one-step object governed by
 \(V,\underline V,\overline V,R\). The **outer decision wrapper** asks whether
