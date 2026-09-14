@@ -1,0 +1,130 @@
+{
+  "minimum_categories": [
+    "StateDeclarationClause",
+    "ObservationAliasClause",
+    "ActionDeclarationClause",
+    "AdversaryActionDeclarationClause",
+    "ActionAvailabilityClause",
+    "TransitionClause",
+    "TerminalClause"
+  ],
+  "passed": true,
+  "templates": {
+    "access-control": {
+      "ActionAvailabilityClause": [
+        "access-control.availability.v1"
+      ],
+      "ActionDeclarationClause": [
+        "access-control.controller-action-declaration.v1"
+      ],
+      "AdversaryActionDeclarationClause": [
+        "access-control.adversary-action-declaration.v1"
+      ],
+      "ObservationAliasClause": [
+        "access-control.observation-alias.v1"
+      ],
+      "StateDeclarationClause": [
+        "access-control.state-declaration.v1"
+      ],
+      "TerminalClause": [
+        "access-control.terminal.v1"
+      ],
+      "TransitionClause": [
+        "access-control.transition.v1"
+      ]
+    },
+    "formal-plain-v1": {
+      "ActionAvailabilityClause": [
+        "formal-plain.availability.v1"
+      ],
+      "ActionDeclarationClause": [
+        "formal-plain.controller-action-declaration.v1"
+      ],
+      "AdversaryActionDeclarationClause": [
+        "formal-plain.adversary-action-declaration.v1"
+      ],
+      "ObservationAliasClause": [
+        "formal-plain.observation-alias.v1"
+      ],
+      "StateDeclarationClause": [
+        "formal-plain.state-declaration.v1"
+      ],
+      "TerminalClause": [
+        "formal-plain.terminal.v1"
+      ],
+      "TransitionClause": [
+        "formal-plain.transition.v1"
+      ]
+    },
+    "industrial-process": {
+      "ActionAvailabilityClause": [
+        "industrial-process.availability.v1"
+      ],
+      "ActionDeclarationClause": [
+        "industrial-process.controller-action-declaration.v1"
+      ],
+      "AdversaryActionDeclarationClause": [
+        "industrial-process.adversary-action-declaration.v1"
+      ],
+      "ObservationAliasClause": [
+        "industrial-process.observation-alias.v1"
+      ],
+      "StateDeclarationClause": [
+        "industrial-process.state-declaration.v1"
+      ],
+      "TerminalClause": [
+        "industrial-process.terminal.v1"
+      ],
+      "TransitionClause": [
+        "industrial-process.transition.v1"
+      ]
+    },
+    "service-routing": {
+      "ActionAvailabilityClause": [
+        "service-routing.availability.v1"
+      ],
+      "ActionDeclarationClause": [
+        "service-routing.controller-action-declaration.v1"
+      ],
+      "AdversaryActionDeclarationClause": [
+        "service-routing.adversary-action-declaration.v1"
+      ],
+      "ObservationAliasClause": [
+        "service-routing.observation-alias.v1"
+      ],
+      "StateDeclarationClause": [
+        "service-routing.state-declaration.v1"
+      ],
+      "TerminalClause": [
+        "service-routing.terminal.v1"
+      ],
+      "TransitionClause": [
+        "service-routing.transition.v1"
+      ]
+    },
+    "warehouse-operations": {
+      "ActionAvailabilityClause": [
+        "warehouse-operations.availability.v1"
+      ],
+      "ActionDeclarationClause": [
+        "warehouse-operations.controller-action-declaration.v1"
+      ],
+      "AdversaryActionDeclarationClause": [
+        "warehouse-operations.adversary-action-declaration.v1"
+      ],
+      "ObservationAliasClause": [
+        "warehouse-operations.observation-alias.v1"
+      ],
+      "StateDeclarationClause": [
+        "warehouse-operations.state-declaration.v1"
+      ],
+      "TerminalClause": [
+        "warehouse-operations.terminal.v1"
+      ],
+      "TransitionClause": [
+        "warehouse-operations.transition.v1"
+      ]
+    }
+  },
+  "version": "stage5.domain-nontriviality.v1"
+}

@@ -1,0 +1,52 @@
+{
+  "assignment_salt": "stage5-primary-domain-assignment-v1",
+  "development_variants": 2,
+  "domains": [
+    "formal-plain-v1",
+    "access-control",
+    "service-routing",
+    "warehouse-operations",
+    "industrial-process"
+  ],
+  "fingerprint": "b53e02e5ac1957671422f7990ed1f9f2c8211659eccf526bb92cdf47fe338ae7",
+  "output_policy": "canonical-json-and-jsonl-v1",
+  "primary_assignment_rule": "sha256-modulo-v1",
+  "render_seed_namespace": "stage5-seed-v1",
+  "renderer_spec_fingerprint": "93e9f42e32561f7a901f59846bdcb5dc76e30154c0d16aa2ceb5fc6d0365767e",
+  "source_game_ids": {
+    "development": [
+      "24fc92faf9fabe2e248884ad9c8cdc3d2a664a0a91832af8738a4928bcafd4db",
+      "8213586e3999ab592b8ac1e075f997dfc25a007a62473ee0ba808d9514bb16aa",
+      "a582fd66aca6bc3f8d9ad5a14e0be6b721edd28d3a40944a92d2693415b36b0a",
+      "a658121c4a3da7cb2122a9bdaa2c906d2cea32f9f0bd3dd7fc5c3349b8d87d97",
+      "bd0fceeb436b73b2434106469d841f7ebca0b3c9deabf6ba0357c32ffc37201b",
+      "df98630d09bf0a15cdaf7e5b20eba56b976c6fc9150d44004eda3b1aa8d4f52f"
+    ],
+    "evaluation": [
+      "0d2ca4ac4898e31e7bb8a962fdde8a92a92fc88f3b82339c8161b3182b0c51cf",
+      "3162ea772a498c58e7585e0f20e726b2423b0978011928c5e54edf4d49b93e64",
+      "db009e647f3754018648cb936d30dd76ee3091d1b6ca2bb8e2313c212097971f",
+      "ea1bfca419fdc2bc604412ae15157a8d17ff3585b8c5e3727b5de60351c33860",
+      "f62bb5787e123a934165e4d35a40508def5643d40d07ad294fed3868fd76a1c2"
+    ],
+    "mechanism_diagnostics": [
+      "374718bfa0da24a12e48b0473d7b123d0697edd5acd15ffb29e51d84bb6b4af0",
+      "38b17ee9774be198aaa40047a3f51066c448338108dbd1aac2044bc0822e61d1",
+      "4cd5c09d1c9b9124c6ca27e1e2ccf04fb3c23a187aa6401a7fbd5544579fdc7d",
+      "589aae52ab89b8597e49c5c6581e64084580abcf0c18d023bd5a411caf9b5cde",
+      "7aafa941517fff81309e57f649f6379aa30b2820ad2112d4aaddefb1412aca1b",
+      "c18b3cda42aa08462c88a2272866d3d8e0b139fafe98d39abde6970ad943213f",
+      "e727ab7f08e7ddacc28cf73371a0d6a8fead991b051c89dcce89064ab731e695",
+      "fca05a4f6b4da9511952012f68c8937b7116097feed29212aaf0ab3aedca5339",
+      "fe3af3513269a91331fb8a90eb2962c8928a4d3d3cc33bf41a2015d9739108f5"
+    ]
+  },
+  "source_tracks": {
+    "development": "stage4-development-retained",
+    "evaluation": "stage4-evaluation-retained",
+    "mechanism_diagnostics": "stage4-probability-fixtures"
+  },
+  "stage4_freeze_fingerprint": "0018543875ddf0c66c2ea11d6ea5ad25b7a05e472bc13abca139570139e8efbe",
+  "task_contract": "enforceability-classification-v1",
+  "version": "stage5.render-corpus.v1"
+}
