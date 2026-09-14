@@ -19,8 +19,13 @@ The repository now has exact formal semantics; an
 a [semantic representation freeze](docs/stage5-rendering.md); an
 [independently cross-validated probabilistic oracle](docs/independent-probabilistic-validation.md);
 a [value-preserving perfect-recall IIEFG reduction](docs/formal-iiefg-reduction.md);
-and the current [threshold-identifiability theorem sprint](docs/threshold-identifiability.md).
+the [threshold-identifiability theorem sprint](docs/threshold-identifiability.md);
+and a [source-by-source prior-art collision review](docs/prior-art-collision.md).
+The review selects **Paper Shape B (theory + benchmark)**: the finite examples
+remain exact benchmark constructions, but their generic partial-identification
+and feedback-dependent-coverage principles are not claimed as new.
 
 The repository does not yet establish a general theorem that passive public
-evidence identifies strategic enforceability. No publication or novelty claim
-is made here.
+evidence identifies strategic enforceability. No general novelty claim is made
+for the frozen finite propositions; the surviving question is a structural
+characterization of information needed only for a minimax threshold decision.
