@@ -1,0 +1,19 @@
+{
+  "deterministic_files": {
+    "aggregate-report.json": "0f0cd63b4d793796ad61ed358a51fa003e435d90928c1dd7cdb54811cb624107",
+    "condition-transition-report.json": "320b06c7565597c24779b69395558de6d797f12b7cae13e4174455f5db87f3e3",
+    "cross-domain-report.json": "ead8612a49a8d5828aa6b17ca82dd1c785bbc2e697296e1fe4545d776514ea13",
+    "pilot-plan.json": "b69f9e7017512b91b42ab03dfe9f5e8eea8ebddd697d11b163b245d1f37f81fd",
+    "representation-leakage-control.json": "581632ddf4cfb6bd844759064f61b708a95d107721686424f3c985b2d2b994b0",
+    "request-manifest.json": "f92de4b54b49f87f5ffb41d655ca0faaaad7f69cf459d67ee843f7e67bb08ddb",
+    "scored-responses.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "pilot_plan_sha256": "b69f9e7017512b91b42ab03dfe9f5e8eea8ebddd697d11b163b245d1f37f81fd",
+  "raw_metadata_excluded_from_deterministic_hash": [
+    "request_timestamp",
+    "provider_request_id",
+    "latency_seconds",
+    "token_usage"
+  ],
+  "version": "stage6a-model-pilot-v1"
+}
