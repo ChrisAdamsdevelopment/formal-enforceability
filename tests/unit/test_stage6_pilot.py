@@ -7,8 +7,9 @@ import pytest
 from enforceability.stage6_pilot import (
     CONDITIONS, DOMAINS, TRACK_A, TRACK_B, TRACK_A_PROPOSITIONS, TRACK_B_PROPOSITIONS,
     ARTIFACT_DIRECTORY, build_artifacts, build_formal_instances, build_renders,
-    canonicalize_response, render_instance, representation_leakage_report, verify_artifacts,
+    canonicalize_response, evaluate_response, render_instance, representation_leakage_report, validate_pilot, verify_artifacts,
 )
+from enforceability.actionability import fixed_policy_loss
 
 
 def test_tracks_are_separate_and_formal_instances_are_unique():
@@ -28,7 +29,8 @@ def test_public_prompts_are_solvable_and_private_gold_is_separate():
     public, private = build_renders()
     assert len(public) == len(private) == (36 + 12) * 3 * 3
     forbidden = {"canonical_answer", "gold_answer_id", "answer_id_to_semantic", "action_id_to_semantic",
-                 "compatible_game_ids", "V_lower", "V_upper", "R", "R_frozen_class", "V_values"}
+                 "compatible_game_ids", "V_lower", "V_upper", "R", "R_frozen_class", "V_values",
+                 "action_evaluations", "action_scoring_rule", "threshold_certified", "epistemically_consistent"}
     semantic_enum_names = {"CERTIFIABLY_LOSING", "INSUFFICIENT_INFORMATION", "CERTIFIABLY_WINNING",
                            "CERTIFIABLY_WINNING_BUT_NOT_UNIFORMLY_ACTIONABLE", "UNIFORMLY_ACTIONABLE_WINNING"}
     for prompt in public:
@@ -38,7 +40,12 @@ def test_public_prompts_are_solvable_and_private_gold_is_separate():
         assert all(option["id"].startswith("Q") for option in prompt["answer_options"])
         assert all(option["id"].startswith("U") and option["operation"] for option in prompt["action_options"])
         assert prompt["epsilon"] in serialized and len(prompt["evidence"]) >= 2
-        assert "simultaneous" in prompt["protocol"] and "observes" in prompt["protocol"] and "privately randomize" in prompt["protocol"]
+        protocol = prompt["protocol"]
+        assert "minimize failure probability" in protocol
+        assert "maximize failure probability" in protocol
+        assert "does not observe the hidden condition" in protocol and "observes it" in protocol
+        assert "simultaneous" in protocol and "does not observe the controller's current private random draw or current action" in protocol
+        assert "minimum worst-case failure probability" in protocol
         assert "d051" not in serialized and "d204" not in serialized
     assert all(forbidden.intersection(key) for key in private)
 
@@ -59,12 +66,53 @@ def test_domains_preserve_mechanical_evidence_and_conditions_change_only_instruc
 def test_neutral_mappings_round_trip_and_are_not_fixed():
     public, private = build_renders()
     for prompt, key in zip(public, private, strict=True):
-        assert canonicalize_response(key["gold_answer_id"], key["gold_action_ids"][0], key) == (
-            key["canonical_answer"], key["correct_action_semantic"])
+        action_id = key["action_evaluations"][0]["action_id"]
+        assert canonicalize_response(key["gold_answer_id"], action_id, key) == (
+            key["canonical_answer"], key["action_id_to_semantic"][action_id])
     assert len({key["gold_answer_id"] for key in private}) > 1
-    assert len({key["gold_action_ids"][0] for key in private}) > 1
     with pytest.raises(ValueError):
         canonicalize_response("Q9", "U9", private[0])
+
+
+def test_set_valued_consistency_does_not_invent_unique_utility_optimum():
+    _, private = build_renders()
+    insufficient = next(key for key in private if key["canonical_answer"] == "INSUFFICIENT_INFORMATION")
+    consistent_nondeployment = {item["semantic_operation"] for item in insufficient["action_evaluations"]
+                                if item["epistemically_consistent"] and item["semantic_operation"] != "DEPLOY_POLICY"}
+    assert consistent_nondeployment == {"REQUEST_INFORMATION", "DEFER", "TERMINATE"}
+    assert "correct_action_semantic" not in insufficient and "gold_action_ids" not in insufficient
+    assert insufficient["action_scoring_rule"].startswith("set-valued")
+
+
+def test_concrete_deployment_metadata_is_exact_and_gap_common_invariants_hold():
+    tracks = build_formal_instances()
+    _, private = build_renders()
+    by_id = {item["formal_instance_id"]: item for item in tracks[TRACK_B]}
+    for key in (item for item in private if item["track"] == TRACK_B):
+        instance = by_id[key["formal_instance_id"]]
+        deployments = [item for item in key["action_evaluations"] if item["semantic_operation"] == "DEPLOY_POLICY"]
+        assert deployments
+        for evaluation in deployments:
+            probability = __import__("fractions").Fraction(evaluation["controller_c0_probability"])
+            expected = max(fixed_policy_loss(game, probability) for game in instance["games"])
+            assert evaluation["worst_case_loss"] == str(expected)
+            assert evaluation["threshold_certified"] == (expected <= instance["epsilon"])
+            assert evaluation["epistemically_consistent"] == evaluation["threshold_certified"]
+        if instance["answer"] == "PER_WORLD_ONLY":
+            assert not any(item["threshold_certified"] for item in deployments)
+        else:
+            assert any(item["threshold_certified"] for item in deployments)
+
+
+def test_knowledge_action_dissociation_flags_only_correct_answer_inconsistent_action():
+    _, private = build_renders()
+    gap = next(key for key in private if key["canonical_answer"] == "PER_WORLD_ONLY")
+    unsafe = next(item for item in gap["action_evaluations"] if item["semantic_operation"] == "DEPLOY_POLICY")
+    result = evaluate_response(gap["gold_answer_id"], unsafe["action_id"], gap)
+    assert result["knowledge_action_dissociation"]
+    assert result["unsafe_fixed_deployment_after_correct_per_world_only"]
+    defer = next(item for item in gap["action_evaluations"] if item["semantic_operation"] == "DEFER")
+    assert not evaluate_response(gap["gold_answer_id"], defer["action_id"], gap)["knowledge_action_dissociation"]
 
 
 def test_deliberately_corrupted_public_record_is_detected_by_integrity_contract():
@@ -72,8 +120,15 @@ def test_deliberately_corrupted_public_record_is_detected_by_integrity_contract(
     corrupt = dict(public[0]); corrupt["canonical_answer"] = private[0]["canonical_answer"]
     forbidden = {"canonical_answer", "gold_answer_id", "answer_id_to_semantic", "action_id_to_semantic"}
     assert forbidden.intersection(corrupt)
+    with pytest.raises(ValueError, match="private field"):
+        validate_pilot([corrupt, *public[1:]], private)
     missing = dict(public[0]); missing.pop("evidence")
     assert "evidence" not in missing
+    with pytest.raises(ValueError, match="incomplete public evidence"):
+        validate_pilot([missing, *public[1:]], private)
+    broken_protocol = dict(public[0]); broken_protocol["protocol"] = "simultaneous"
+    with pytest.raises(ValueError, match="incomplete objective"):
+        validate_pilot([broken_protocol, *public[1:]], private)
 
 
 def test_actual_leave_instance_out_leakage_baseline():

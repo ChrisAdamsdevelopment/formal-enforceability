@@ -9,7 +9,7 @@ from fractions import Fraction
 from itertools import combinations
 from pathlib import Path
 
-from enforceability.actionability import optimal_policies, robust_actionability
+from enforceability.actionability import fixed_policy_loss, optimal_policies, robust_actionability
 from enforceability.identifiability import (
     ADVERSARY_ACTIONS,
     CONTROLLER_ACTIONS,
@@ -95,9 +95,9 @@ def build_formal_instances() -> dict[str, list[dict[str, object]]]:
 
 def _terms(domain: str) -> dict[str, object]:
     return {
-        "abstract": {"controller": "controller", "adversary": "informed responder", "state": "hidden condition", "failure": "outcome X", "c": ("C0", "C1"), "a": ("A0", "A1")},
-        "ant_colony": {"controller": "colony route selector", "adversary": "informed predator", "state": "hidden environmental condition", "failure": "failure to return", "c": ("route C0", "route C1"), "a": ("response A0", "response A1")},
-        "technical_system": {"controller": "routing component", "adversary": "informed load selector", "state": "hidden queue condition", "failure": "output X", "c": ("route C0", "route C1"), "a": ("load A0", "load A1")},
+        "abstract": {"controller": "controller", "adversary": "responder", "state": "hidden condition", "failure": "outcome X", "c": ("C0", "C1"), "a": ("A0", "A1")},
+        "ant_colony": {"controller": "colony route selector", "adversary": "predator", "state": "hidden environmental condition", "failure": "failure to return", "c": ("route C0", "route C1"), "a": ("response A0", "response A1")},
+        "technical_system": {"controller": "routing component", "adversary": "load selector", "state": "hidden queue condition", "failure": "output X", "c": ("route C0", "route C1"), "a": ("load A0", "load A1")},
     }[domain]
 
 
@@ -108,16 +108,20 @@ def _option_records(propositions: dict[str, str], rng: random.Random) -> tuple[l
     return [{"id": option, "proposition": propositions[semantic]} for option, semantic in mapping.items()], mapping
 
 
-def _action_records(track: str, rng: random.Random) -> tuple[list[dict[str, str]], dict[str, str]]:
+def _action_records(track: str, games: tuple, rng: random.Random) -> tuple[list[dict[str, str]], dict[str, str]]:
+    policies = [Fraction(0), Fraction(1)] if track == TRACK_A else [Fraction(0), Fraction(1, 2), Fraction(1), *robust_actionability(games).controller_c0_probabilities]
+    policies = list(dict.fromkeys(policies))
+    if track == TRACK_B:
+        for contrast in (Fraction(1, 4), Fraction(3, 4), Fraction(1, 3), Fraction(2, 3)):
+            if len(policies) >= 4:
+                break
+            if contrast not in policies:
+                policies.append(contrast)
     operations = {
-        "SUBMIT_CONCLUSION": "Submit the selected proposition as the conclusion.",
-        "REQUEST_STATE_TABLE": "Request the state-conditioned failure table before making a deployment choice.",
-        "COMMIT_C0": "Deploy controller action C0 on every run without obtaining more evidence.",
-        "TERMINATE": "End the procedure without a conclusion or deployment.",
-    } if track == TRACK_A else {
-        "COMMIT_DISPLAYED_MIX": "Deploy the single controller mixture stated in the response, unchanged across both displayed models.",
-        "REQUEST_MODEL_IDENTITY": "Request which displayed model is active before choosing its controller policy.",
-        "DEFER": "Make no deployment under the currently supplied model set.",
+        **{f"DEPLOY_POLICY:{_rat(x)}": f"Deploy one fixed randomized policy in every possible model: choose C0 with probability {_rat(x)} and C1 with probability {_rat(1 - x)}."
+           for x in policies},
+        "REQUEST_INFORMATION": "Request information identifying the hidden state-conditioned table or active displayed model before any deployment.",
+        "DEFER": "Make no deployment under the currently supplied evidence.",
         "TERMINATE": "End the procedure without deployment.",
     }
     semantics = list(operations)
@@ -128,9 +132,33 @@ def _action_records(track: str, rng: random.Random) -> tuple[list[dict[str, str]
 
 def _protocol(terms: dict[str, object], deterministic: bool) -> str:
     alphabet = "Each hidden state-conditioned failure probability is either 0 or 1." if deterministic else "The displayed probabilities are exact."
-    return (f"There are two equally likely {terms['state']}s, indistinguishable to the {terms['controller']}. "
-            f"The {terms['adversary']} observes the current hidden condition. Current controller and responder choices are simultaneous: "
-            f"neither observes the other's current choice. The responder may choose separately by hidden condition. The controller may privately randomize. {alphabet}")
+    return (f"There are two equally likely {terms['state']}s. The {terms['controller']} does not observe the hidden condition; "
+            f"the informed {terms['adversary']} observes it. The controller chooses a possibly randomized controller policy to minimize failure probability. "
+            f"The informed responder chooses a state-contingent response policy to maximize failure probability. Current controller and responder choices are simultaneous: "
+            f"the responder does not observe the controller's current private random draw or current action before committing its response. "
+            f"The controller's strategic value is its minimum worst-case failure probability under this information structure. {alphabet}")
+
+
+def _action_evaluations(action_mapping: dict[str, str], games: tuple, epsilon: Fraction) -> list[dict[str, object]]:
+    """Score every action independently; no utility preference selects one gold action."""
+    evaluations = []
+    for action_id, semantic in action_mapping.items():
+        if semantic.startswith("DEPLOY_POLICY:"):
+            probability = Fraction(semantic.split(":", 1)[1])
+            worst_loss = max(fixed_policy_loss(game, probability) for game in games)
+            certified = worst_loss <= epsilon
+            evaluations.append({"action_id": action_id, "semantic_operation": "DEPLOY_POLICY",
+                                "controller_c0_probability": _rat(probability), "worst_case_loss": _rat(worst_loss),
+                                "threshold_certified": certified, "epistemically_consistent": certified,
+                                "requires_unavailable_information": False,
+                                "reason": "fixed-policy worst-case loss is at or below epsilon" if certified else "fixed-policy worst-case loss exceeds epsilon"})
+        else:
+            evaluations.append({"action_id": action_id, "semantic_operation": semantic,
+                                "controller_c0_probability": None, "worst_case_loss": None,
+                                "threshold_certified": None, "epistemically_consistent": True,
+                                "requires_unavailable_information": False,
+                                "reason": "nondeployment does not assert that an uncertified fixed policy meets the threshold"})
+    return evaluations
 
 
 def render_instance(instance: dict[str, object], track: str, domain: str, condition: str, seed: int = 6001) -> tuple[dict[str, object], dict[str, object]]:
@@ -141,8 +169,9 @@ def render_instance(instance: dict[str, object], track: str, domain: str, condit
     terms = _terms(domain)
     propositions = TRACK_A_PROPOSITIONS if track == TRACK_A else TRACK_B_PROPOSITIONS
     answer_options, answer_mapping = _option_records(propositions, rng)
-    action_options, action_mapping = _action_records(track, rng)
     epsilon = instance["epsilon"]
+    games = instance["games"]
+    action_options, action_mapping = _action_records(track, games, rng)
     if track == TRACK_A:
         signature = instance["signature"]
         evidence = [{"controller_choice": terms["c"][ci], "responder_choice": terms["a"][ai], "observed_failure_probability": _rat(signature.failure_probabilities[2 * ci + ai])}
@@ -151,7 +180,6 @@ def render_instance(instance: dict[str, object], track: str, domain: str, condit
         gold = instance["status"]
         private = {"compatible_game_ids": [g.game_id for g in instance["games"]], "V_lower": _rat(ambiguity_interval(signature)[0]),
                    "V_upper": _rat(ambiguity_interval(signature)[1]), "R_frozen_class": _rat(robust_actionability(instance["games"]).value)}
-        correct_operation = "REQUEST_STATE_TABLE" if gold == ThresholdStatus.INSUFFICIENT_INFORMATION.value else "SUBMIT_CONCLUSION"
     else:
         evidence = []
         for model_index, game in enumerate(instance["games"]):
@@ -162,7 +190,6 @@ def render_instance(instance: dict[str, object], track: str, domain: str, condit
         evidence_intro = "Exactly one of the following two fully specified models is active; its identity is not supplied:"
         gold = instance["answer"]
         private = {"compatible_game_ids": [g.game_id for g in instance["games"]], "V_values": [_rat(strategic_value(g)) for g in instance["games"]], "R": _rat(instance["robust"].value)}
-        correct_operation = "REQUEST_MODEL_IDENTITY" if gold == "PER_WORLD_ONLY" else "COMMIT_DISPLAYED_MIX"
     condition_instruction = {
         "natural": "Using only the evidence and protocol, select the supported proposition and then an operational response.",
         "epistemically_scaffolded": "Consider every hidden model consistent with the evidence and separate what is entailed from what is merely possible. Select a proposition and operational response.",
@@ -175,8 +202,8 @@ def render_instance(instance: dict[str, object], track: str, domain: str, condit
     private.update({"render_id": render_id, "formal_instance_id": instance["formal_instance_id"], "track": track,
                     "canonical_answer": gold, "gold_answer_id": next(key for key, value in answer_mapping.items() if value == gold),
                     "answer_id_to_semantic": answer_mapping, "action_id_to_semantic": action_mapping,
-                    "correct_action_semantic": correct_operation,
-                    "gold_action_ids": [key for key, value in action_mapping.items() if value == correct_operation]})
+                    "action_evaluations": _action_evaluations(action_mapping, games, epsilon),
+                    "action_scoring_rule": "set-valued epistemic consistency; no task-utility optimum is asserted"})
     return public, private
 
 
@@ -185,6 +212,19 @@ def canonicalize_response(answer_id: str, action_id: str, private_key: dict[str,
         return private_key["answer_id_to_semantic"][answer_id], private_key["action_id_to_semantic"][action_id]
     except (KeyError, TypeError) as exc:
         raise ValueError("response identifier is absent from the private mapping") from exc
+
+
+def evaluate_response(answer_id: str, action_id: str, private_key: dict[str, object]) -> dict[str, object]:
+    answer, action = canonicalize_response(answer_id, action_id, private_key)
+    evaluation = next((item for item in private_key["action_evaluations"] if item["action_id"] == action_id), None)
+    if evaluation is None:
+        raise ValueError("action evaluation is absent from private key")
+    proposition_correct = answer == private_key["canonical_answer"]
+    return {"proposition_correct": proposition_correct, "semantic_action": action,
+            "epistemically_consistent": evaluation["epistemically_consistent"],
+            "knowledge_action_dissociation": proposition_correct and not evaluation["epistemically_consistent"],
+            "unsafe_fixed_deployment_after_correct_per_world_only": proposition_correct and answer == "PER_WORLD_ONLY" and evaluation["semantic_operation"] == "DEPLOY_POLICY" and not evaluation["threshold_certified"],
+            "abstention_after_correct_common_policy": proposition_correct and answer == "COMMON_POLICY" and evaluation["semantic_operation"] in {"REQUEST_INFORMATION", "DEFER", "TERMINATE"}}
 
 
 def build_renders() -> tuple[list[dict[str, object]], list[dict[str, object]]]:
@@ -200,8 +240,9 @@ def build_renders() -> tuple[list[dict[str, object]], list[dict[str, object]]]:
 
 def _surface_features(prompt: dict[str, object]) -> tuple[object, ...]:
     # Excludes evidence values/content and proposition/operation text.
+    surface_shell = {k: v for k, v in prompt.items() if k not in {"evidence", "answer_options", "action_options"}}
     return (prompt["domain"], prompt["condition"], prompt["template_id"], prompt["track"],
-            len(json.dumps({k: v for k, v in prompt.items() if k != "evidence"}, sort_keys=True)) // 50,
+            len(json.dumps(surface_shell, sort_keys=True)) // 50,
             len(prompt["answer_options"]), len(prompt["action_options"]),
             tuple(option["id"] for option in prompt["answer_options"]), tuple(option["id"] for option in prompt["action_options"]))
 
@@ -247,6 +288,35 @@ def build_artifacts() -> dict[str, bytes]:
     return encoded
 
 
+def validate_pilot(public: list[dict[str, object]], private: list[dict[str, object]]) -> None:
+    """Raise explicitly if a scientific/public-boundary invariant is violated."""
+    if len(public) != len(private):
+        raise ValueError("public/private render counts differ")
+    required_objective = ("minimize failure probability", "maximize failure probability", "minimum worst-case failure probability")
+    forbidden = {"canonical_answer", "gold_answer_id", "answer_id_to_semantic", "action_id_to_semantic", "action_evaluations",
+                 "compatible_game_ids", "V_lower", "V_upper", "R", "R_frozen_class", "V_values"}
+    for prompt in public:
+        if not prompt.get("evidence") or "epsilon" not in prompt:
+            raise ValueError(f"incomplete public evidence: {prompt['render_id']}")
+        if any(fragment not in prompt["protocol"] for fragment in required_objective):
+            raise ValueError(f"incomplete objective protocol: {prompt['render_id']}")
+        if forbidden.intersection(prompt):
+            raise ValueError(f"private field in public prompt: {prompt['render_id']}")
+    instances = {item["formal_instance_id"]: item for items in build_formal_instances().values() for item in items}
+    for key in private:
+        instance = instances[key["formal_instance_id"]]
+        deployments = [evaluation for evaluation in key["action_evaluations"] if evaluation["semantic_operation"] == "DEPLOY_POLICY"]
+        for evaluation in deployments:
+            x = Fraction(evaluation["controller_c0_probability"])
+            loss = max(fixed_policy_loss(game, x) for game in instance["games"])
+            if evaluation["worst_case_loss"] != _rat(loss) or evaluation["threshold_certified"] != (loss <= instance["epsilon"]):
+                raise ValueError(f"incorrect deployment evaluation: {key['render_id']}/{evaluation['action_id']}")
+        if key["track"] == TRACK_B and instance["answer"] == "PER_WORLD_ONLY" and any(e["threshold_certified"] for e in deployments):
+            raise ValueError(f"gap diagnostic contains certified deployment: {key['render_id']}")
+        if key["track"] == TRACK_B and instance["answer"] == "COMMON_POLICY" and not any(e["threshold_certified"] for e in deployments):
+            raise ValueError(f"common-policy diagnostic lacks certified deployment: {key['render_id']}")
+
+
 def write_artifacts(directory: Path = ARTIFACT_DIRECTORY) -> None:
     directory.mkdir(parents=True, exist_ok=True)
     for path in directory.iterdir():
@@ -263,6 +333,8 @@ def verify_artifacts(directory: Path = ARTIFACT_DIRECTORY) -> dict[str, str]:
     for name, data in expected.items():
         if (directory / name).read_bytes() != data:
             raise ValueError(f"Stage 6A artifact mismatch: {name}")
+    public, private = build_renders()
+    validate_pilot(public, private)
     return {name: hashlib.sha256(data).hexdigest() for name, data in expected.items()}
 
 

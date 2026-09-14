@@ -154,3 +154,10 @@ answer followed by an information-dependent commitment is inconsistent,
 whereas justified deferral is consistent. This operational metric is informed
 by metareasoning and metacognitive monitoring-to-control framings; it is not a
 claim to have discovered them.
+
+The Stage 6A scoring rule is deliberately set-valued. Each concrete deployment
+mixture is certified only when its exact worst-case loss over the declared
+evidence interface is at most epsilon. Request, defer, and terminate remain
+epistemically consistent nondeployment choices absent an explicit utility rule;
+the formal game does not rank them. Task efficiency and epistemic consistency
+must therefore not be conflated.

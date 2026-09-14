@@ -18,7 +18,9 @@ and 432 public prompts. `formal_instance_id` and `render_id` are distinct.
 
 Each public prompt contains exact task-specific evidence, epsilon, move timing,
 the observation structure, adversary information, controller randomization,
-and operationally defined answer/action choices. Track A exposes only the
+the controller-minimizes/responder-maximizes objective, the resulting minimum
+worst-case failure interpretation, and operationally defined answer/action
+choices. Track A exposes only the
 state-marginal population table and the deterministic hidden-row restriction;
 Track B, whose evidence object is an explicit set, exposes two neutral
 state-conditioned tables. Internal game IDs never appear in public prompts.
@@ -30,6 +32,16 @@ and canonical statuses are confined to `private-answer-key.json`.
 `public-prompts.jsonl` contains no gold. `render-plan-manifest.json` contains
 only render coordinates, and the private mapping supports exact response
 canonicalization.
+
+Track A classification is primary; its action response is secondary and has no
+unique gold. Track B deployment choices are concrete exact mixtures, including
+the robust optimum and contrasting policies. For every surface action, the
+private key independently records exact worst-case loss, threshold
+certification, epistemic consistency, and a reason. Requesting information,
+deferring, and terminating are all consistent nondeployment responses; no
+unstated cost or efficiency preference ranks them. A fixed deployment is
+consistent exactly when its worst-case loss over the displayed compatibility
+set is at most epsilon.
 
 Natural prompts state the complete observable problem without compatibility,
 partial-identification, or LP vocabulary. Scaffolded prompts add the instruction
@@ -51,6 +63,13 @@ outer-action correctness, epistemic-to-action consistency, cross-render
 agreement/sensitivity, and separately reported condition gaps. Human response
 class, confidence, action, and expertise remain supported metadata; no human or
 model experiment has run.
+
+The primary knowledge/action dissociation metric is
+`P(action is epistemically inconsistent | proposition correct)`. Track B also
+records unsafe fixed deployment conditional on a correct `PER_WORLD_ONLY`
+answer and abstention/defer conditional on a correct `COMMON_POLICY` answer.
+The latter is descriptive because the prompt imposes no preference for
+deployment.
 
 Readiness remains `NOT_READY_FOR_MODEL_PILOT`: hosted CI and the independent
 oracle cannot be validated in the current environment, and exact adaptive

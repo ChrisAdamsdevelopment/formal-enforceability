@@ -87,7 +87,8 @@ def fixed_policy_loss(game: OneStepGame | FiberPoint, controller_c0_probability:
 
 def optimal_policies(game: OneStepGame) -> tuple[Fraction, ...]:
     solution = robust_actionability((game,))
-    assert solution.value == strategic_value(game)
+    if solution.value != strategic_value(game):
+        raise RuntimeError("single-model robust value disagrees with strategic value")
     return solution.controller_c0_probabilities
 
 
@@ -142,7 +143,9 @@ def verify_canonical_families() -> dict[str, int]:
         classes = ambiguity_classes(probabilistic)
         for signature, games in classes.items():
             _, upper = ambiguity_interval(signature, probabilistic)
-            assert wait_and_see(games) == upper
-            assert upper <= robust_actionability(games).value
+            if wait_and_see(games) != upper:
+                raise RuntimeError(f"wait-and-see identity failed for {name}")
+            if upper > robust_actionability(games).value:
+                raise RuntimeError(f"minimax order inequality failed for {name}")
         counts[name] = len(classes)
     return counts
