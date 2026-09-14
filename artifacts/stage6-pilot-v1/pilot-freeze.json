@@ -1,0 +1,8 @@
+{
+  "files": {
+    "leakage-report.json": "c485a920fed85e882ad41d1d133e74b0a940dc13e0c7f4a79c59e6427f2c3253",
+    "pilot-corpus.json": "05cd583655c4859e32139a7c9e6352475fb1c4e509d4cbf06d6ba6d8da35b69b",
+    "render-manifest.json": "0d61cd34de77a849b672f7bd24bdf1aee9927f121d53bf54032d8fe9e1c30bdd"
+  },
+  "version": "stage6-pilot-v1"
+}

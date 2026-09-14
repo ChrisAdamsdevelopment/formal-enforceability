@@ -25,7 +25,11 @@ The review selects **Paper Shape B (theory + benchmark)**: the finite examples
 remain exact benchmark constructions, but their generic partial-identification
 and feedback-dependent-coverage principles are not claimed as new.
 
-The repository does not yet establish a general theorem that passive public
-evidence identifies strategic enforceability. No general novelty claim is made
-for the frozen finite propositions; the surviving question is a structural
-characterization of information needed only for a minimax threshold decision.
+The repository does not establish a new general identifiability theorem. The
+[actionability formalization](docs/actionability.md) instead records the exact
+identity `W = upper V`, the standard inequality `W <= R`, and a finite one-step
+vertex reduction for a fixed policy. Uniform actionability is a hierarchical
+refinement only inside the certifiably-WINNING branch. A deterministic
+[Stage 6A pilot](docs/stage6-pilot-design.md) is the next experimental gate;
+no frontier-model evaluation has started, and the canonical-interface witness
+gap documented there remains a blocker.
