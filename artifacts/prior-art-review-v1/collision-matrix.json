@@ -221,24 +221,24 @@
       "primary_source_locator": "https://arxiv.org/abs/2210.13396",
       "proposition_mapping": {
         "A": {
-          "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
           "primary_source_locator": "https://arxiv.org/abs/2210.13396",
-          "reason": "The paper directly establishes the general interface-dependent-coverage phenomenon, but not one-sided latent-state minimax-value or threshold identification."
+          "reason": "The paper establishes feedback-dependent coverage in congestion games, but does not prove the project's public-latent minimax-value nonidentification claim A."
         },
         "B": {
-          "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
           "primary_source_locator": "https://arxiv.org/abs/2210.13396",
-          "reason": "The paper directly establishes the general interface-dependent-coverage phenomenon, but not one-sided latent-state minimax-value or threshold identification."
+          "reason": "The paper establishes feedback-dependent coverage in congestion games, but does not prove threshold nonidentification for the project's one-sided latent-state interface."
         },
         "C": {
-          "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
           "primary_source_locator": "https://arxiv.org/abs/2210.13396",
-          "reason": "The paper directly establishes the general interface-dependent-coverage phenomenon, but not one-sided latent-state minimax-value or threshold identification."
+          "reason": "The paper establishes feedback-dependent coverage in congestion games, but does not prove threshold identification without exact-value identification for the project's interface."
         },
         "D": {
           "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
           "primary_source_locator": "https://arxiv.org/abs/2210.13396",
-          "reason": "The paper directly establishes the general interface-dependent-coverage phenomenon, but not one-sided latent-state minimax-value or threshold identification."
+          "reason": "The paper directly establishes the general feedback-dependent-coverage phenomenon; the project's full-public-joint-action-support witness under a privileged latent-state adversary is a distinct exact instantiation."
         }
       },
       "source_type": "conference/preprint",
