@@ -3,6 +3,7 @@ from types import MappingProxyType
 
 import pytest
 
+from enforceability.corpus import CorpusBuildError
 from enforceability.rendering import (DOMAINS, PROTOCOL_TEXT, RenderCorpusSpec, RendererSpec, RestorationTaskContext,
     assign_primary_domain, build_render_plan, deep_freeze, deep_thaw, prompt_from_plan, reconstruct_game_from_clauses,
     reconstruct_surface_game_from_clauses, realize_clause, render_case, scan_direct_leakage, semantic_signature, to_model_input,
@@ -202,5 +203,8 @@ def test_stage5_rejects_changed_stage4_corpus_behind_unchanged_freeze(tmp_path):
     # The attacker deliberately leaves formal-evaluation-freeze-v1.json and its
     # old fingerprint untouched.  Stage 5 must still invoke the authoritative
     # Stage-4 verifier and reject the altered retained corpus.
-    with pytest.raises(Exception,match="mismatch|corrupt|fingerprint|retained"):
-        verify_freeze(repository/"artifacts/stage5-render-v1",repository)
+    with pytest.raises(CorpusBuildError,match="corpus verification mismatch"):
+        verify_freeze(
+            repository/"artifacts/stage5-render-v1",
+            repository,
+        )
