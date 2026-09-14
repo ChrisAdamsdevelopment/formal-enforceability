@@ -5,7 +5,7 @@ import hashlib, json, shutil
 from pathlib import Path
 from typing import Any, Mapping
 
-from enforceability.benchmark import deterministic_fixture_mismatches
+from enforceability.benchmark import verify as verify_formal_freeze
 from enforceability.schema import Game
 from .core import (DOMAINS, PROTOCOL_TEXT, PROTOCOL_VERSION, RendererSpec, assign_primary_domain, build_render_plan, canonical_json,
                    deep_freeze, deep_thaw, fingerprint, prompt_from_plan, render_case, representation_features,
@@ -27,6 +27,13 @@ class RenderCorpusSpec:
     def fingerprint(self): return fingerprint(self.to_dict())
     @classmethod
     def from_dict(cls,raw): return cls(**{**deep_thaw(raw),"domains":tuple(raw["domains"])})
+    @classmethod
+    def from_artifact(cls,raw):
+        ordinary=deep_thaw(raw); expected={f.name for f in fields(cls)}|{"fingerprint"}
+        if set(ordinary)!=expected: raise ValueError("render corpus artifact fields mismatch")
+        declared=ordinary.pop("fingerprint"); spec=cls.from_dict(ordinary)
+        if not isinstance(declared,str) or declared!=spec.fingerprint: raise ValueError("render corpus artifact fingerprint mismatch")
+        return spec
 
 def _retained(root):
     rows=[]
@@ -35,11 +42,15 @@ def _retained(root):
     return sorted(rows)
 
 def verify_stage4(root=Path("artifacts")):
-    freeze=json.loads((root/"stage4-formal-v1/formal-evaluation-freeze-v1.json").read_text())
-    actual=freeze.get("benchmark_freeze_fingerprint")
+    from argparse import Namespace
+    root=Path(root); repository=root.parent
+    result=verify_formal_freeze(Namespace(
+      development=str(root/"development-v1"),evaluation=str(root/"evaluation-v1"),complexity=str(root/"complexity-fixture-v1"),unresolved=str(root/"unresolved-fixture-v1"),
+      mechanisms=str(repository/"corpus_specs/stage4-mechanisms-v1.json"),artifacts=str(root/"stage4-formal-v1"),
+      development_spec=str(repository/"corpus_specs/development-v1.json"),evaluation_spec=str(repository/"corpus_specs/evaluation-v1.json"),
+      complexity_spec=str(repository/"corpus_specs/complexity-fixture-v1.json"),unresolved_spec=str(repository/"corpus_specs/unresolved-fixture-v1.json")))
+    actual=result["benchmark_freeze_fingerprint"]
     if actual!=STAGE4_FINGERPRINT: raise ValueError(f"Stage-4 fingerprint discrepancy: {actual}")
-    mismatches=deterministic_fixture_mismatches(root/"stage4-formal-v1")
-    if mismatches: raise ValueError(f"Stage-4 verification failed: {mismatches}")
     return actual
 
 def _record(case): return case.to_dict()
@@ -131,11 +142,10 @@ def verify_freeze(artifacts: str|Path, repository_root: str|Path="."):
 def validate_stored_dependencies(root: str|Path) -> None:
     root=Path(root); frozen=json.loads((root/"render-freeze.json").read_text())
     if frozen["stage4_benchmark_freeze_fingerprint"]!=STAGE4_FINGERPRINT: raise ValueError("Stage-4 dependency fingerprint")
-    renderer=json.loads((root/"renderer-spec.json").read_text()); declared=renderer.pop("fingerprint")
-    spec=RendererSpec.from_dict(renderer)
-    if declared!=spec.fingerprint or frozen["renderer_spec_fingerprint"]!=declared: raise ValueError("renderer specification fingerprint")
-    corpus=json.loads((root/"render-corpus-spec.json").read_text()); declared_corpus=corpus.pop("fingerprint")
-    if declared_corpus!=RenderCorpusSpec.from_dict(corpus).fingerprint or frozen["render_corpus_spec_fingerprint"]!=declared_corpus: raise ValueError("render corpus specification fingerprint")
+    spec=RendererSpec.from_artifact(json.loads((root/"renderer-spec.json").read_text()))
+    if frozen["renderer_spec_fingerprint"]!=spec.fingerprint: raise ValueError("renderer specification fingerprint")
+    corpus=RenderCorpusSpec.from_artifact(json.loads((root/"render-corpus-spec.json").read_text()))
+    if frozen["render_corpus_spec_fingerprint"]!=corpus.fingerprint: raise ValueError("render corpus specification fingerprint")
     answers=json.loads((root/"answer-key.json").read_text())["answers"]
     if fingerprint(answers)!=frozen["answer_key_fingerprint"]: raise ValueError("answer-key fingerprint")
     if frozen["protocol_hash"]!=fingerprint(PROTOCOL_TEXT): raise ValueError("protocol-text fingerprint")

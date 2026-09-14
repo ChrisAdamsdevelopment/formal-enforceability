@@ -6,7 +6,7 @@ import pytest
 from enforceability.rendering import (DOMAINS, PROTOCOL_TEXT, RenderCorpusSpec, RendererSpec, RestorationTaskContext,
     assign_primary_domain, build_render_plan, deep_freeze, deep_thaw, prompt_from_plan, reconstruct_game_from_clauses,
     reconstruct_surface_game_from_clauses, realize_clause, render_case, scan_direct_leakage, semantic_signature, to_model_input,
-    validate_plan, validate_primary_assignment, validate_rendered_case, validate_stored_dependencies)
+    validate_plan, validate_primary_assignment, validate_rendered_case, validate_stored_dependencies, verify_freeze)
 from enforceability.rendering.freeze import ASSIGNMENT_SALT, STAGE4_FINGERPRINT, _plan_from_dict
 from enforceability.schema import Game
 
@@ -180,3 +180,27 @@ def test_frozen_dependency_corruption_is_rejected(tmp_path,file_name,mutation):
     target=tmp_path/"stage5"; shutil.copytree("artifacts/stage5-render-v1",target)
     path=target/file_name; raw=json.loads(path.read_text()); mutation(raw); path.write_text(json.dumps(raw))
     with pytest.raises(ValueError): validate_stored_dependencies(target)
+
+def test_canonical_spec_artifacts_round_trip_and_validate_fingerprints():
+    renderer=RendererSpec(); renderer_artifact={**renderer.to_dict(),"fingerprint":renderer.fingerprint}
+    assert RendererSpec.from_artifact(renderer_artifact)==renderer
+    corpus_raw=json.loads(__import__('pathlib').Path("artifacts/stage5-render-v1/render-corpus-spec.json").read_text())
+    corpus=RenderCorpusSpec.from_artifact(corpus_raw)
+    assert RenderCorpusSpec.from_artifact({**corpus.to_dict(),"fingerprint":corpus.fingerprint})==corpus
+    for corrupt in ({**renderer_artifact,"fingerprint":"0"*64},{**renderer_artifact,"language":"fr"}):
+        with pytest.raises(ValueError): RendererSpec.from_artifact(corrupt)
+    corrupt=deep_thaw(corpus_raw); corrupt["assignment_salt"]="altered-without-new-fingerprint"
+    with pytest.raises(ValueError): RenderCorpusSpec.from_artifact(corrupt)
+    with pytest.raises(ValueError): RendererSpec.from_artifact({**renderer_artifact,"unknown_metadata":True})
+
+def test_stage5_rejects_changed_stage4_corpus_behind_unchanged_freeze(tmp_path):
+    repository=tmp_path/"repository"
+    shutil.copytree("artifacts",repository/"artifacts")
+    shutil.copytree("corpus_specs",repository/"corpus_specs")
+    retained=next((repository/"artifacts/development-v1/retained").glob("*.json"))
+    raw=json.loads(retained.read_text()); raw["formal_game"]["display_labels"]={"tampered":"underlying Stage-4 state"}; retained.write_text(json.dumps(raw))
+    # The attacker deliberately leaves formal-evaluation-freeze-v1.json and its
+    # old fingerprint untouched.  Stage 5 must still invoke the authoritative
+    # Stage-4 verifier and reject the altered retained corpus.
+    with pytest.raises(Exception,match="mismatch|corrupt|fingerprint|retained"):
+        verify_freeze(repository/"artifacts/stage5-render-v1",repository)

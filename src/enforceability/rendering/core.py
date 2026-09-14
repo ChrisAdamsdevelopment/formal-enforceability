@@ -103,6 +103,19 @@ class RendererSpec:
         if set(raw) != {f.name for f in fields(cls)}: raise ValueError("renderer fields mismatch")
         return cls(**{**deep_thaw(raw), "domains": tuple(raw["domains"])})
 
+    @classmethod
+    def from_artifact(cls, raw: Mapping[str, Any]) -> "RendererSpec":
+        """Load the exact checked-in artifact envelope and verify its digest."""
+        ordinary = deep_thaw(raw)
+        expected = {f.name for f in fields(cls)} | {"fingerprint"}
+        if set(ordinary) != expected:
+            raise ValueError("renderer artifact fields mismatch")
+        declared = ordinary.pop("fingerprint")
+        spec = cls.from_dict(ordinary)
+        if not isinstance(declared, str) or declared != spec.fingerprint:
+            raise ValueError("renderer artifact fingerprint mismatch")
+        return spec
+
 
 @dataclass(frozen=True, slots=True)
 class RestorationTaskContext:
@@ -194,7 +207,7 @@ def _surface(game: Game, seed: str, domain: str):
     raw["observation_map"]={sm[s]:om[o] for s,o in game.observation_map.items()}
     raw["transitions"]=[{"state":sm[x["state"]],"controller_action":cm[x["controller_action"]],"adversary_action":am[x["adversary_action"]],
                          "outcomes":[{"state":sm[y["state"]],"probability":y["probability"]} for y in x["outcomes"]]} for x in raw["transitions"]]
-    raw["failure_states"]=[sm[x] for x in game.failure_states]; raw["recovery_states"]=[sm[x] for x in game.recovery_states]
+    raw["failure_states"]=[sm[x] for x in raw["failure_states"]]; raw["recovery_states"]=[sm[x] for x in raw["recovery_states"]]
     raw["action_availability"]={cm[a]:v for a,v in raw["action_availability"].items()}
     raw["legitimate_rewards"]=[{"state":sm[x["state"]],"controller_action":cm[x["controller_action"]],"reward":x["reward"]} for x in raw["legitimate_rewards"]]
     raw["display_labels"]={}
