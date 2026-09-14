@@ -1,0 +1,85 @@
+{
+  "selection_rule": "lexicographic canonical IDs after stated scientific filters",
+  "witness_A": {
+    "epsilon": "1/4",
+    "game_ids": [
+      "d006",
+      "d036"
+    ],
+    "game_labels": [
+      "WINNING",
+      "LOSING"
+    ],
+    "signature": {
+      "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+      "failure_conditionals": [
+        "0",
+        "1/2",
+        "1/2",
+        "0"
+      ],
+      "signature_version": "public-failure-conditionals.v1"
+    },
+    "values": [
+      "1/4",
+      "1/2"
+    ]
+  },
+  "witness_B": {
+    "all_public_joint_actions_positive_probability": true,
+    "epsilon": "1/2",
+    "equal_visible_conditionals": true,
+    "game_ids": [
+      "d015",
+      "d090"
+    ],
+    "game_labels": [
+      "WINNING",
+      "LOSING"
+    ],
+    "signature": {
+      "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+      "failure_conditionals": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "signature_version": "public-failure-conditionals.v1"
+    },
+    "values": [
+      "1/2",
+      "1"
+    ]
+  },
+  "witness_C": {
+    "class_value_set": [
+      "1/4",
+      "1/2"
+    ],
+    "epsilon": "0",
+    "game_ids": [
+      "d006",
+      "d036"
+    ],
+    "game_labels": [
+      "LOSING",
+      "LOSING"
+    ],
+    "signature": {
+      "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+      "failure_conditionals": [
+        "0",
+        "1/2",
+        "1/2",
+        "0"
+      ],
+      "signature_version": "public-failure-conditionals.v1"
+    },
+    "threshold_status": "CERTIFIABLY_LOSING",
+    "values": [
+      "1/4",
+      "1/2"
+    ]
+  }
+}

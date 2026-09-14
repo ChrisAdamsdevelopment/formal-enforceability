@@ -11,3 +11,4 @@ jobs:
       - run: ruff check src tests
       - run: python -m pytest
       - run: validate-independent-oracle
+      - run: verify-identifiability

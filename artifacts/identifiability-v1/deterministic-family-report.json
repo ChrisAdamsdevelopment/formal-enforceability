@@ -1,0 +1,1917 @@
+{
+  "distinct_public_signatures": 81,
+  "exact_value_set": [
+    "0",
+    "1/4",
+    "1/2",
+    "3/4",
+    "1"
+  ],
+  "family_version": "one-step-2state-2x2.v1",
+  "probability_alphabet": [
+    "0",
+    "1"
+  ],
+  "public_classes": [
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d000"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d001",
+        "d016"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "0",
+          "0",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d017"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "0",
+          "0",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d002",
+        "d032"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "0",
+          "1/2",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d003",
+        "d018",
+        "d033",
+        "d048"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "0",
+          "1/2",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d019",
+        "d049"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "0",
+          "1/2",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d034"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d035",
+        "d050"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "0",
+          "1",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d051"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d004",
+        "d064"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/2",
+          "0",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d005",
+        "d020",
+        "d065",
+        "d080"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/2",
+          "0",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d021",
+        "d081"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/2",
+          "0",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/4",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/4",
+        "1/2"
+      ],
+      "game_ids": [
+        "d006",
+        "d036",
+        "d066",
+        "d096"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d007",
+        "d022",
+        "d037",
+        "d052",
+        "d067",
+        "d082",
+        "d097",
+        "d112"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/2",
+          "1/2",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d023",
+        "d053",
+        "d083",
+        "d113"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/2",
+          "1/2",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d038",
+        "d098"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/2",
+          "1",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d039",
+        "d054",
+        "d099",
+        "d114"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/2",
+          "1",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d055",
+        "d115"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/2",
+          "1",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d068"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d069",
+        "d084"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1",
+          "0",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d085"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1",
+          "0",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d070",
+        "d100"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1",
+          "1/2",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "3/4",
+      "exact_values": [
+        "1/2",
+        "3/4"
+      ],
+      "game_ids": [
+        "d071",
+        "d086",
+        "d101",
+        "d116"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1",
+          "1/2",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d087",
+        "d117"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1",
+          "1/2",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d102"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1",
+          "1",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "3/4",
+      "V_upper": "3/4",
+      "exact_values": [
+        "3/4"
+      ],
+      "game_ids": [
+        "d103",
+        "d118"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1",
+          "1",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d119"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1",
+          "1",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d008",
+        "d128"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "0",
+          "0",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/4",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/4",
+        "1/2"
+      ],
+      "game_ids": [
+        "d009",
+        "d024",
+        "d129",
+        "d144"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "0",
+          "0",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d025",
+        "d145"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "0",
+          "0",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d010",
+        "d040",
+        "d130",
+        "d160"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "0",
+          "1/2",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d011",
+        "d026",
+        "d041",
+        "d056",
+        "d131",
+        "d146",
+        "d161",
+        "d176"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "0",
+          "1/2",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d027",
+        "d057",
+        "d147",
+        "d177"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "0",
+          "1/2",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d042",
+        "d162"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "0",
+          "1",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d043",
+        "d058",
+        "d163",
+        "d178"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "0",
+          "1",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d059",
+        "d179"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "0",
+          "1",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d012",
+        "d072",
+        "d132",
+        "d192"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1/2",
+          "0",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d013",
+        "d028",
+        "d073",
+        "d088",
+        "d133",
+        "d148",
+        "d193",
+        "d208"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1/2",
+          "0",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "3/4",
+      "exact_values": [
+        "1/2",
+        "3/4"
+      ],
+      "game_ids": [
+        "d029",
+        "d089",
+        "d149",
+        "d209"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1/2",
+          "0",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d014",
+        "d044",
+        "d074",
+        "d104",
+        "d134",
+        "d164",
+        "d194",
+        "d224"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1",
+      "exact_values": [
+        "1/2",
+        "1"
+      ],
+      "game_ids": [
+        "d015",
+        "d030",
+        "d045",
+        "d060",
+        "d075",
+        "d090",
+        "d105",
+        "d120",
+        "d135",
+        "d150",
+        "d165",
+        "d180",
+        "d195",
+        "d210",
+        "d225",
+        "d240"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1/2",
+          "1/2",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1",
+      "exact_values": [
+        "1/2",
+        "3/4",
+        "1"
+      ],
+      "game_ids": [
+        "d031",
+        "d061",
+        "d091",
+        "d121",
+        "d151",
+        "d181",
+        "d211",
+        "d241"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1/2",
+          "1/2",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "3/4",
+      "exact_values": [
+        "1/2",
+        "3/4"
+      ],
+      "game_ids": [
+        "d046",
+        "d106",
+        "d166",
+        "d226"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1/2",
+          "1",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1",
+      "exact_values": [
+        "1/2",
+        "3/4",
+        "1"
+      ],
+      "game_ids": [
+        "d047",
+        "d062",
+        "d107",
+        "d122",
+        "d167",
+        "d182",
+        "d227",
+        "d242"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1/2",
+          "1",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1",
+      "exact_values": [
+        "1/2",
+        "1"
+      ],
+      "game_ids": [
+        "d063",
+        "d123",
+        "d183",
+        "d243"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1/2",
+          "1",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d076",
+        "d196"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1",
+          "0",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d077",
+        "d092",
+        "d197",
+        "d212"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1",
+          "0",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d093",
+        "d213"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1",
+          "0",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d078",
+        "d108",
+        "d198",
+        "d228"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1",
+          "1/2",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1",
+      "exact_values": [
+        "1/2",
+        "3/4",
+        "1"
+      ],
+      "game_ids": [
+        "d079",
+        "d094",
+        "d109",
+        "d124",
+        "d199",
+        "d214",
+        "d229",
+        "d244"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1",
+          "1/2",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d095",
+        "d125",
+        "d215",
+        "d245"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1",
+          "1/2",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "3/4",
+      "V_upper": "3/4",
+      "exact_values": [
+        "3/4"
+      ],
+      "game_ids": [
+        "d110",
+        "d230"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1",
+          "1",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "3/4",
+      "V_upper": "1",
+      "exact_values": [
+        "3/4",
+        "1"
+      ],
+      "game_ids": [
+        "d111",
+        "d126",
+        "d231",
+        "d246"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1",
+          "1",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d127",
+        "d247"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1",
+          "1",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d136"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d137",
+        "d152"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "0",
+          "0",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d153"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "0",
+          "0",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d138",
+        "d168"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "0",
+          "1/2",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "3/4",
+      "exact_values": [
+        "1/2",
+        "3/4"
+      ],
+      "game_ids": [
+        "d139",
+        "d154",
+        "d169",
+        "d184"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "0",
+          "1/2",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "3/4",
+      "V_upper": "3/4",
+      "exact_values": [
+        "3/4"
+      ],
+      "game_ids": [
+        "d155",
+        "d185"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "0",
+          "1/2",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d170"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "0",
+          "1",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d171",
+        "d186"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "0",
+          "1",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d187"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "0",
+          "1",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d140",
+        "d200"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1/2",
+          "0",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d141",
+        "d156",
+        "d201",
+        "d216"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1/2",
+          "0",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "3/4",
+      "V_upper": "3/4",
+      "exact_values": [
+        "3/4"
+      ],
+      "game_ids": [
+        "d157",
+        "d217"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1/2",
+          "0",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d142",
+        "d172",
+        "d202",
+        "d232"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1",
+      "exact_values": [
+        "1/2",
+        "3/4",
+        "1"
+      ],
+      "game_ids": [
+        "d143",
+        "d158",
+        "d173",
+        "d188",
+        "d203",
+        "d218",
+        "d233",
+        "d248"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1/2",
+          "1/2",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "3/4",
+      "V_upper": "1",
+      "exact_values": [
+        "3/4",
+        "1"
+      ],
+      "game_ids": [
+        "d159",
+        "d189",
+        "d219",
+        "d249"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1/2",
+          "1/2",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d174",
+        "d234"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1/2",
+          "1",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d175",
+        "d190",
+        "d235",
+        "d250"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1/2",
+          "1",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d191",
+        "d251"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1/2",
+          "1",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "0",
+      "V_upper": "0",
+      "exact_values": [
+        "0"
+      ],
+      "game_ids": [
+        "d204"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d205",
+        "d220"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1",
+          "0",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d221"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1",
+          "0",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1/2",
+      "exact_values": [
+        "1/2"
+      ],
+      "game_ids": [
+        "d206",
+        "d236"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1",
+          "1/2",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1/2",
+      "V_upper": "1",
+      "exact_values": [
+        "1/2",
+        "1"
+      ],
+      "game_ids": [
+        "d207",
+        "d222",
+        "d237",
+        "d252"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1",
+          "1/2",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d223",
+        "d253"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1",
+          "1/2",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d238"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1",
+          "1",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d239",
+        "d254"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1",
+          "1",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    },
+    {
+      "V_lower": "1",
+      "V_upper": "1",
+      "exact_values": [
+        "1"
+      ],
+      "game_ids": [
+        "d255"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      }
+    }
+  ],
+  "public_equivalence_class_sizes": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    16
+  ],
+  "singleton_value_public_classes": 66,
+  "total_games": 256,
+  "value_ambiguous_public_classes": 15
+}

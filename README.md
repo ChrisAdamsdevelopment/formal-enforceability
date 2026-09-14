@@ -1,19 +1,26 @@
 # Formal Enforceability
 
-A deliberately small Python 3.11+ exact-rational reference implementation for
-finite-horizon probabilistic, one-sided partially observed reach-avoid games and
-finite structural restorations. Deterministic sure safety remains a special case. See
-[`docs/formal_model.md`](docs/formal_model.md) for the precise semantics.
+A small exact-rational reference implementation for finite-horizon,
+one-sided partially observed reach-avoid games and finite structural
+restorations. See the [formal model](docs/formal_model.md).
 
 ```bash
 python -m pip install -e '.[test]'
 ruff check src tests
 python -m pytest
+validate-independent-oracle
+verify-identifiability
 ```
 
-Stage 3 adds the entirely formal, deterministic audited-corpus pipeline described
-in [`docs/corpus.md`](docs/corpus.md): complete candidate ledgers, exact
-identifier-renaming isomorphism, declared retention, and a rebuildable freeze.
+## Project status
 
-Stage 4's formal split and benchmark-freeze workflow is documented in
-[`docs/stage4.md`](docs/stage4.md).
+The repository now has exact formal semantics; an
+[audited corpus/freeze](docs/corpus.md); the [Stage-4 formal benchmark](docs/stage4.md);
+a [semantic representation freeze](docs/stage5-rendering.md); an
+[independently cross-validated probabilistic oracle](docs/independent-probabilistic-validation.md);
+a [value-preserving perfect-recall IIEFG reduction](docs/formal-iiefg-reduction.md);
+and the current [threshold-identifiability theorem sprint](docs/threshold-identifiability.md).
+
+The repository does not yet establish a general theorem that passive public
+evidence identifies strategic enforceability. No publication or novelty claim
+is made here.
