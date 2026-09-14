@@ -12,3 +12,4 @@ jobs:
       - run: python -m pytest
       - run: validate-independent-oracle
       - run: verify-identifiability
+      - run: verify-prior-art-review

@@ -155,18 +155,31 @@ extension is bounded robustness evidence, not an unrestricted theorem.
 * **ESTABLISHED PRIOR THEORY:** perfect-recall game theory and generic
   partial-identification interval logic, including the three-way threshold
   classification used here.
-* **PROVISIONAL COMPARISON:** these results instantiate familiar
-  partial-identification distinctions; comparison to BOMB, Cui–Du, and
-  offline-IIEFG results remains provisional.
-* **NOT YET ESTABLISHED:** novelty or non-collision relative to BOMB, Cui–Du,
-  offline-IIEFG results, asymmetric-information game theory, or generic partial
-  identification. No source-specific collision review is attempted here.
+* **SOURCE-BY-SOURCE REVIEW COMPLETED:** the
+  [prior-art collision review](prior-art-collision.md) compares exact
+  interfaces, estimands, assumptions, and theorem quantifiers. Generic
+  partial-identification logic and feedback-dependent coverage are established
+  prior phenomena. OS-POSG theory subsumes the game model after finite-horizon
+  reach-avoid augmentation, but assumes a known model rather than this public
+  offline interface.
+* **POST-REVIEW CLASSIFICATION:** Propositions A–D remain **PROVED HERE FOR THE
+  DECLARED FINITE FAMILY; NOVELTY NOT YET ESTABLISHED**. No reviewed theorem is
+  a direct corollary under an interface-preserving reduction. Their principles
+  are known; their exact finite witnesses are project-specific benchmark
+  constructions. The review assigns A=2, B=2, C=1, D=2 and selects **PAPER
+  SHAPE B — THEORY + BENCHMARK**. This classification was recomputed after
+  separating the ICLR-2025 and ICLR-2026 OEF/BOMB revisions: the former's
+  model-based result is algorithm-specific iff coverage theory under its
+  training-error assumption, while neither version is an all-algorithms exact
+  value or threshold-identification theorem.
 * **PROJECT QUESTION:** whether useful general conditions identify only
   \(\mathbf1[V_H\leq\epsilon]\) from passive public evidence.
 
 ## Open generalization
 
-The next theoretical task is to characterize interfaces for which an ambiguity
-interval avoids a threshold without reconstructing all latent couplings, and
-then perform a source-by-source prior-art collision review. No manuscript
-should present the finite existence claims as novel before that review.
+The surviving theoretical task is to characterize interfaces for which an
+ambiguity interval avoids a threshold without reconstructing all latent
+couplings. Generic coarsened-functional logic is not novel; a contribution
+would require operational game-structural conditions and matching necessity.
+The exact witnesses should be presented as benchmark justification, not as a
+new general principle.

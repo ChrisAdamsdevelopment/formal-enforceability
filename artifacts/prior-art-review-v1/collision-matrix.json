@@ -1,0 +1,842 @@
+{
+  "claim_verdicts": {
+    "A": {
+      "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+      "evidence_that_moves_score_down": "A prior theorem constructing public-marginal-equivalent one-sided games with unequal minimax values.",
+      "evidence_that_moves_score_up": "A source search proving no earlier minimax-value result under precisely public stopped-record equivalence.",
+      "score": 2,
+      "verdict": "Generic observational equivalence and set identification preempt the principle; the exact finite one-sided minimax witness remains project-specific."
+    },
+    "B": {
+      "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+      "evidence_that_moves_score_down": "A prior hidden-state game lower bound whose observationally equivalent values straddle arbitrary cutoffs.",
+      "evidence_that_moves_score_up": "A structural theorem separating threshold from value identification in this interface.",
+      "score": 2,
+      "verdict": "Threshold nonidentification is routine once an identified value set straddles a cutoff; the exact tables are useful benchmark witnesses."
+    },
+    "C": {
+      "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+      "evidence_that_moves_score_down": "An earlier minimax-game example or theorem stating exactly the same value-versus-threshold separation.",
+      "evidence_that_moves_score_up": "A nontrivial game-structural characterization showing strictly weaker information is sufficient for threshold identification.",
+      "score": 1,
+      "verdict": "Identification of a coarsened decision on a non-singleton identified set is standard; this is an explicit finite-game instantiation, not a general novelty claim."
+    },
+    "D": {
+      "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+      "evidence_that_moves_score_down": "An offline POSG theorem with state-blind full public joint-action support and observationally equivalent threshold-straddling games.",
+      "evidence_that_moves_score_up": "A proof that existing lower bounds cannot represent latent coupling ambiguity even after interface-preserving reductions.",
+      "score": 2,
+      "verdict": "Feedback-dependent coverage and unilateral-coverage failures are known; the exact privileged-latent-state/public-action witness is distinct but should not headline a general principle."
+    },
+    "broader_threshold_question": {
+      "collision_status": "NO MATERIAL COLLISION FOUND",
+      "evidence_that_moves_score_down": "A robust/partial-identification theorem already characterizing minimax-value level-set identification under observation coarsenings.",
+      "evidence_that_moves_score_up": "A closed-form or operational characterization strictly weaker than value/model recovery, with matching necessity.",
+      "score": 4,
+      "verdict": "A useful necessary-and-sufficient information characterization specialized to minimax threshold functionals remains a plausible structural gap, although generic identified-set logic is standard."
+    }
+  },
+  "direct_corollaries": [],
+  "paper_shape": "B — THEORY + BENCHMARK",
+  "project_commit": "ff706903ca742d516d4ad58e0d665c36de51be97",
+  "review_version": "prior-art-review-v1",
+  "search_stop_rule": "Backward/forward and targeted searches were stopped after results repeated fully observed offline Markov-game coverage, known-model one-sided POSG solution, or generic identified-set logic without a closer public-latent threshold theorem.",
+  "sources": [
+    {
+      "authors": [
+        "Claire Chen et al."
+      ],
+      "confidence": "high",
+      "coverage_assumption": "quantitative concentrability relative to unilateral deviations, modified by regularization",
+      "estimands": [
+        "regularized equilibrium policy/profile",
+        "regularized value"
+      ],
+      "game_class": "finite-horizon fully observed simultaneous-move zero-sum Markov games with KL regularization",
+      "guarantee_type": "finite-sample statistical upper and lower bounds",
+      "id": "chen-et-al-2605.13025",
+      "identifiers": {
+        "arXiv": "2605.13025"
+      },
+      "interface_mapping": {
+        "I_full": {
+          "argument": "I_full supplies every semantic transition row, including unreachable rows; the offline sample need not.",
+          "status": "PROJECT INTERFACE STRICTLY RICHER"
+        },
+        "I_node": {
+          "argument": "Both are node/state indexed, but the source sampling experiment and the project population interface expose different objects.",
+          "status": "INCOMPARABLE"
+        },
+        "I_public": {
+          "argument": "Records are indexed by the common Markov state; I_public marginalizes the latent state/node.",
+          "status": "SOURCE STRICTLY RICHER"
+        }
+      },
+      "learner_observes": "state/action/next-state offline transitions",
+      "move_timing": "Simultaneous player actions within each stage",
+      "necessity_vs_sufficiency": "both sufficiency and problem-dependent lower bounds; not arbitrary-functional identification",
+      "offline_evidence_object": "state/action/next-state offline transitions",
+      "player_information_structure": "a common state is observed; no one-sided private state",
+      "primary_source_locator": "https://arxiv.org/abs/2605.13025",
+      "proposition_mapping": {
+        "A": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2605.13025",
+          "reason": "Regularization and common observed state change both estimand and evidence; no theorem treats a public-marginal latent coupling or threshold bit."
+        },
+        "B": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2605.13025",
+          "reason": "Regularization and common observed state change both estimand and evidence; no theorem treats a public-marginal latent coupling or threshold bit."
+        },
+        "C": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2605.13025",
+          "reason": "Regularization and common observed state change both estimand and evidence; no theorem treats a public-marginal latent coupling or threshold bit."
+        },
+        "D": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2605.13025",
+          "reason": "Regularization and common observed state change both estimand and evidence; no theorem treats a public-marginal latent coupling or threshold bit."
+        }
+      },
+      "source_type": "preprint",
+      "theorem_assumption_references": [
+        "Definitions of KL-regularized objective and unilateral coverage; main upper/lower-bound theorems (numbering checked in cited version)"
+      ],
+      "title": "Offline Two-Player Zero-Sum Markov Games with KL Regularization",
+      "unresolved_questions": [],
+      "version_reviewed": "arXiv v1, submitted 13 May 2026; official submission history checked and contains only v1",
+      "version_specific_logical_wording": "arXiv v1 theorem wording; only version in the official submission history as reviewed",
+      "year": 2026
+    },
+    {
+      "authors": [
+        "Qiwen Cui",
+        "Simon S. Du"
+      ],
+      "confidence": "high",
+      "coverage_assumption": "unilateral concentrability bounds occupancies formed by one equilibrium player and every unilateral opponent policy; stronger than single-policy concentration",
+      "estimands": [
+        "Nash policies",
+        "duality gap/suboptimality",
+        "equilibrium value as a consequence of learned policies"
+      ],
+      "game_class": "finite-horizon, tabular, two-player zero-sum simultaneous-move Markov game",
+      "guarantee_type": "high-probability finite-sample learning and minimax lower bound",
+      "id": "cui-du-2201.03522",
+      "identifiers": {
+        "arXiv": "2201.03522",
+        "venue": "NeurIPS 2022"
+      },
+      "interface_mapping": {
+        "I_full": {
+          "argument": "I_full supplies every semantic transition row, including unreachable rows; the offline sample need not.",
+          "status": "PROJECT INTERFACE STRICTLY RICHER"
+        },
+        "I_node": {
+          "argument": "Both are node/state indexed, but the source sampling experiment and the project population interface expose different objects.",
+          "status": "INCOMPARABLE"
+        },
+        "I_public": {
+          "argument": "Each transition record includes the true common state s_h; I_public marginalizes the latent state/node.",
+          "status": "SOURCE STRICTLY RICHER"
+        }
+      },
+      "learner_observes": "n independent state-joint-action/reward/next-state trajectories generated by an offline policy",
+      "move_timing": "Simultaneous player actions within each stage",
+      "necessity_vs_sufficiency": "unilateral concentration sufficient; their hard-instance lower bound makes single-policy concentration insufficient for learning an NE in the stated class, not every functional",
+      "offline_evidence_object": "n independent state-joint-action/reward/next-state trajectories generated by an offline policy",
+      "player_information_structure": "both players and learner use the same observed Markov state; no private type/observation",
+      "primary_source_locator": "https://arxiv.org/abs/2201.03522",
+      "proposition_mapping": {
+        "A": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2201.03522",
+          "reason": "The lower bound concerns NE policy learning in a fully observed state-indexed Markov game. It neither quantifies over threshold decisions nor permits the state-marginal observational equivalence defining I_public."
+        },
+        "B": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2201.03522",
+          "reason": "The lower bound concerns NE policy learning in a fully observed state-indexed Markov game. It neither quantifies over threshold decisions nor permits the state-marginal observational equivalence defining I_public."
+        },
+        "C": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2201.03522",
+          "reason": "The lower bound concerns NE policy learning in a fully observed state-indexed Markov game. It neither quantifies over threshold decisions nor permits the state-marginal observational equivalence defining I_public."
+        },
+        "D": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2201.03522",
+          "reason": "The lower bound concerns NE policy learning in a fully observed state-indexed Markov game. It neither quantifies over threshold decisions nor permits the state-marginal observational equivalence defining I_public."
+        }
+      },
+      "source_type": "conference paper",
+      "theorem_assumption_references": [
+        "Definition 3.1 (single-policy concentration)",
+        "Definition 3.2 (unilateral concentration)",
+        "Theorem 4.3 (upper bound under unilateral concentration)",
+        "Theorem 4.4 (necessity/lower bound); Sections 2–4"
+      ],
+      "title": "When is Offline Two-Player Zero-Sum Markov Game Solvable?",
+      "unresolved_questions": [],
+      "version_reviewed": "arXiv v3 / NeurIPS 2022 proceedings",
+      "version_specific_logical_wording": "unilateral concentration sufficient; their hard-instance lower bound makes single-policy concentration insufficient for learning an NE in the stated class, not every functional",
+      "year": 2022
+    },
+    {
+      "authors": [
+        "Qiwen Cui et al."
+      ],
+      "confidence": "high",
+      "coverage_assumption": "coverage changes with feedback granularity and structural sharing",
+      "estimands": [
+        "approximate Nash equilibrium"
+      ],
+      "game_class": "finite congestion games",
+      "guarantee_type": "finite-sample upper bounds and feedback-specific lower bounds",
+      "id": "cui-et-al-congestion-2210.13396",
+      "identifiers": {
+        "arXiv": "2210.13396"
+      },
+      "interface_mapping": {
+        "I_full": {
+          "argument": "I_full supplies the complete project game, while the source still samples congestion rewards.",
+          "status": "PROJECT INTERFACE STRICTLY RICHER"
+        },
+        "I_node": {
+          "argument": "Facilities are not latent game-tree nodes, and neither interface reconstructs the other.",
+          "status": "INCOMPARABLE"
+        },
+        "I_public": {
+          "argument": "Trajectory/facility payoff feedback is coarser in some payoff coordinates but has congestion-game structure absent from I_public.",
+          "status": "INCOMPARABLE"
+        }
+      },
+      "learner_observes": "offline joint-action samples plus one of three payoff-feedback interfaces",
+      "move_timing": "Source-specific static/dynamic timing",
+      "necessity_vs_sufficiency": "feedback-specific sufficient coverage and impossibility/lower bounds",
+      "offline_evidence_object": "offline joint-action samples plus one of three payoff-feedback interfaces",
+      "player_information_structure": "players choose resources/routes; feedback exposes total return, facility rewards, or agent/resource detail depending on model",
+      "primary_source_locator": "https://arxiv.org/abs/2210.13396",
+      "proposition_mapping": {
+        "A": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2210.13396",
+          "reason": "The paper establishes feedback-dependent coverage in congestion games, but does not prove the project's public-latent minimax-value nonidentification claim A."
+        },
+        "B": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2210.13396",
+          "reason": "The paper establishes feedback-dependent coverage in congestion games, but does not prove threshold nonidentification for the project's one-sided latent-state interface."
+        },
+        "C": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2210.13396",
+          "reason": "The paper establishes feedback-dependent coverage in congestion games, but does not prove threshold identification without exact-value identification for the project's interface."
+        },
+        "D": {
+          "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+          "primary_source_locator": "https://arxiv.org/abs/2210.13396",
+          "reason": "The paper directly establishes the general feedback-dependent-coverage phenomenon; the project's full-public-joint-action-support witness under a privileged latent-state adversary is a distinct exact instantiation."
+        }
+      },
+      "source_type": "conference/preprint",
+      "theorem_assumption_references": [
+        "Section 3 feedback models",
+        "Theorems 1–3 (trajectory, facility, and agent feedback guarantees/lower bounds; numbering in conference version)"
+      ],
+      "title": "Offline Congestion Games: How Feedback Type Affects Data Coverage Requirement",
+      "unresolved_questions": [],
+      "version_reviewed": "arXiv version associated with ICLR 2023",
+      "version_specific_logical_wording": "feedback-specific sufficient coverage and impossibility/lower bounds",
+      "year": 2023
+    },
+    {
+      "authors": [
+        "Áureo de Paula et al."
+      ],
+      "confidence": "medium",
+      "coverage_assumption": "identification restrictions, not offline action support in the project sense",
+      "estimands": [
+        "structural parameter identified set",
+        "counterfactuals"
+      ],
+      "game_class": "econometric dynamic discrete games with incomplete information",
+      "guarantee_type": "set-identification characterization",
+      "id": "dynamic-games-ijio-102915",
+      "identifiers": {
+        "DOI": "10.1016/j.ijindorg.2022.102915"
+      },
+      "interface_mapping": {
+        "I_full": {
+          "argument": "I_full fixes a complete known game; the source studies unknown primitives through population observables and restrictions.",
+          "status": "INCOMPARABLE"
+        },
+        "I_node": {
+          "argument": "Econometric state/type variables and project tree nodes do not mutually determine one another.",
+          "status": "INCOMPARABLE"
+        },
+        "I_public": {
+          "argument": "Observed market state/actions plus equilibrium restrictions differ from stopped public trajectory laws.",
+          "status": "INCOMPARABLE"
+        }
+      },
+      "learner_observes": "market-level actions/states and maintained restrictions",
+      "move_timing": "Source-specific static/dynamic timing",
+      "necessity_vs_sufficiency": "neither an OEF coverage theorem nor a threshold-value impossibility theorem",
+      "offline_evidence_object": "market-level actions/states and maintained restrictions",
+      "player_information_structure": "private payoff shocks/types under an econometric observation model",
+      "primary_source_locator": "https://doi.org/10.1016/j.ijindorg.2022.102915",
+      "proposition_mapping": {
+        "A": {
+          "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+          "primary_source_locator": "https://doi.org/10.1016/j.ijindorg.2022.102915",
+          "reason": "Generic game primitives and counterfactuals can be set identified, but the paper does not give this minimax-value witness."
+        },
+        "B": {
+          "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+          "primary_source_locator": "https://doi.org/10.1016/j.ijindorg.2022.102915",
+          "reason": "A decision can vary over a structural identified set, but this threshold witness is not its theorem."
+        },
+        "C": {
+          "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+          "primary_source_locator": "https://doi.org/10.1016/j.ijindorg.2022.102915",
+          "reason": "Functionals/coarsenings may be constant over a non-singleton identified set; the project contributes only an exact strategic instance."
+        },
+        "D": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://doi.org/10.1016/j.ijindorg.2022.102915",
+          "reason": "No matching full-public-joint-action, privately informed deployment-adversary theorem."
+        }
+      },
+      "source_type": "journal article",
+      "theorem_assumption_references": [
+        "Section 2 model and identified set",
+        "identified-set propositions and moment-inequality characterization in Sections 3–4"
+      ],
+      "title": "A partial identification framework for dynamic games",
+      "unresolved_questions": [
+        "Bibliographic author list should be checked against the publisher record before final manuscript typesetting."
+      ],
+      "version_reviewed": "International Journal of Industrial Organization 87 (2023), article 102915",
+      "version_specific_logical_wording": "neither an OEF coverage theorem nor a threshold-value impossibility theorem",
+      "year": 2023
+    },
+    {
+      "authors": [
+        "Alfred Galichon",
+        "Marc Henry"
+      ],
+      "confidence": "high",
+      "coverage_assumption": "compatibility inequalities rather than trajectory coverage",
+      "estimands": [
+        "structural parameter identified set"
+      ],
+      "game_class": "econometric models with equilibrium correspondence/multiple equilibria",
+      "guarantee_type": "sharp set-identification theorem",
+      "id": "galichon-henry-2102.12249",
+      "identifiers": {
+        "arXiv": "2102.12249"
+      },
+      "interface_mapping": {
+        "I_full": {
+          "argument": "Known full game data and econometric identified-set inputs answer different experiments.",
+          "status": "INCOMPARABLE"
+        },
+        "I_node": {
+          "argument": "No project node-indexed transition interface.",
+          "status": "INCOMPARABLE"
+        },
+        "I_public": {
+          "argument": "Both retain population observables and latent compatibility, but its equilibrium correspondence/econometric distribution is not the project stopped-record law.",
+          "status": "INCOMPARABLE"
+        }
+      },
+      "learner_observes": "population distribution of observables plus model correspondence",
+      "move_timing": "Source-specific static/dynamic timing",
+      "necessity_vs_sufficiency": "characterization, not offline equilibrium recovery",
+      "offline_evidence_object": "population distribution of observables plus model correspondence",
+      "player_information_structure": "latent variables and equilibrium selection are not point observed",
+      "primary_source_locator": "https://arxiv.org/abs/2102.12249",
+      "proposition_mapping": {
+        "A": {
+          "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+          "primary_source_locator": "https://arxiv.org/abs/2102.12249",
+          "reason": "Non-singleton compatible sets and non-point-identified functionals are standard; no minimax-value construction is supplied."
+        },
+        "B": {
+          "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+          "primary_source_locator": "https://arxiv.org/abs/2102.12249",
+          "reason": "Observational equivalence can prevent decisions, generically, without the project threshold theorem."
+        },
+        "C": {
+          "collision_status": "KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS",
+          "primary_source_locator": "https://arxiv.org/abs/2102.12249",
+          "reason": "A coarsening can be constant on a non-singleton identified set by elementary identified-set logic; not a novel principle."
+        },
+        "D": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2102.12249",
+          "reason": "No action-coverage theorem with one-sided state information."
+        }
+      },
+      "source_type": "preprint",
+      "theorem_assumption_references": [
+        "Definition 1 identified set",
+        "Theorem 1 characterization via optimal transport/capacity inequalities; Sections 2–3"
+      ],
+      "title": "Set Identification in Models with Multiple Equilibria",
+      "unresolved_questions": [],
+      "version_reviewed": "arXiv:2102.12249 version reviewed",
+      "version_specific_logical_wording": "characterization, not offline equilibrium recovery",
+      "year": 2021
+    },
+    {
+      "authors": [
+        "Karel Horák",
+        "Branislav Bošanský",
+        "Vojtěch Kovařík",
+        "Christopher Kiekintveld"
+      ],
+      "confidence": "high",
+      "coverage_assumption": "not applicable",
+      "estimands": [
+        "discounted game value",
+        "strategies"
+      ],
+      "game_class": "discounted zero-sum one-sided partially observable stochastic games with simultaneous actions",
+      "guarantee_type": "dynamic-programming characterization and approximation",
+      "id": "horak-et-al-os-posg-2010.11243",
+      "identifiers": {
+        "DOI": "10.1016/j.artint.2022.103838",
+        "arXiv": "2010.11243"
+      },
+      "interface_mapping": {
+        "I_full": {
+          "argument": "For the finite project specialization, I_full supplies the state, observation, transition, payoff, and horizon data needed by the OS-POSG model, after time/absorbing-state augmentation.",
+          "status": "EQUIVALENT"
+        },
+        "I_node": {
+          "argument": "The source assumes a supplied known-game model, whereas I_node is a reachable node-indexed population evidence interface; these are different categories and neither determines the other.",
+          "status": "INCOMPARABLE"
+        },
+        "I_public": {
+          "argument": "The source assumes a supplied known-game model, whereas I_public is a coarsened population evidence interface for identification; neither object determines the other.",
+          "status": "INCOMPARABLE"
+        }
+      },
+      "learner_observes": "not an offline-identification paper; known game model is input",
+      "move_timing": "Simultaneous player actions within each stage",
+      "necessity_vs_sufficiency": "not an identification necessity/sufficiency result",
+      "offline_evidence_object": "not an offline-identification paper; known game model is input",
+      "player_information_structure": "player 1 observes observations/belief; player 2 observes the state; public action-observation history assumptions are explicit",
+      "primary_source_locator": "https://arxiv.org/abs/2010.11243",
+      "proposition_mapping": {
+        "A": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2010.11243",
+          "reason": "The project game is a finite-horizon reach-avoid special case after adding time and absorbing terminals (and converting failure probability to zero-sum reward), but this source assumes a known model and proves no offline observational-equivalence result."
+        },
+        "B": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2010.11243",
+          "reason": "The project game is a finite-horizon reach-avoid special case after adding time and absorbing terminals (and converting failure probability to zero-sum reward), but this source assumes a known model and proves no offline observational-equivalence result."
+        },
+        "C": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2010.11243",
+          "reason": "The project game is a finite-horizon reach-avoid special case after adding time and absorbing terminals (and converting failure probability to zero-sum reward), but this source assumes a known model and proves no offline observational-equivalence result."
+        },
+        "D": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2010.11243",
+          "reason": "The project game is a finite-horizon reach-avoid special case after adding time and absorbing terminals (and converting failure probability to zero-sum reward), but this source assumes a known model and proves no offline observational-equivalence result."
+        }
+      },
+      "source_type": "journal article",
+      "theorem_assumption_references": [
+        "Definition 1 (zs-OS-POSG)",
+        "Section 3 occupancy/belief-state value",
+        "Theorem 1 Bellman operator/value properties",
+        "Sections 4–5 approximation results"
+      ],
+      "title": "Solving Zero-Sum One-Sided Partially Observable Stochastic Games",
+      "unresolved_questions": [],
+      "version_reviewed": "Artificial Intelligence 316 (2023), 103838 / arXiv version",
+      "version_specific_logical_wording": "not an identification necessity/sufficiency result",
+      "year": 2023
+    },
+    {
+      "authors": [
+        "Shuxin Li et al."
+      ],
+      "confidence": "high",
+      "coverage_assumption": "uniform quantitative node-action coverage for the stated model-based convergence proof",
+      "estimands": [
+        "learned game model",
+        "equilibrium/profile in learned model",
+        "exploitability in true game"
+      ],
+      "game_class": "finite imperfect-information extensive-form games",
+      "guarantee_type": "consistency/convergence of the BOMB pipeline",
+      "id": "li-et-al-bomb-openreview-Re5iu0hBTs",
+      "identifiers": {
+        "OpenReview": "Re5iu0hBTs"
+      },
+      "interface_mapping": {
+        "I_full": {
+          "argument": "I_full supplies every semantic transition row, including unreachable rows; the offline sample need not.",
+          "status": "PROJECT INTERFACE STRICTLY RICHER"
+        },
+        "I_node": {
+          "argument": "Both are node/state indexed, but the source sampling experiment and the project population interface expose different objects.",
+          "status": "INCOMPARABLE"
+        },
+        "I_public": {
+          "argument": "BOMB conditions observations/transition fitting on underlying nodes or states and actions; I_public marginalizes the latent state/node.",
+          "status": "SOURCE STRICTLY RICHER"
+        }
+      },
+      "learner_observes": "offline episodes/node-action transition observations used to fit a generative game model",
+      "move_timing": "Extensive-form history timing",
+      "necessity_vs_sufficiency": "Theorem 4.4 states an if-and-only-if coverage condition for the stated model-based algorithm convergence guarantee under Assumption 4.3. This is algorithm/framework-specific necessity and sufficiency, not an all-algorithms information-theoretic necessity result.",
+      "offline_evidence_object": "offline episodes/node-action transition observations used to fit a generative game model",
+      "player_information_structure": "offline records are indexed by game-tree state/node and action in the learned simulator; information-set structure is part of the game representation",
+      "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
+      "proposition_mapping": {
+        "A": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
+          "reason": "The ICLR-2025 Theorem 4.4 iff is specific to the stated model-based algorithm and its assumptions. It neither constructs I_public-equivalent games nor targets exact value or 1[V≤epsilon]."
+        },
+        "B": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
+          "reason": "The ICLR-2025 Theorem 4.4 iff is specific to the stated model-based algorithm and its assumptions. It neither constructs I_public-equivalent games nor targets exact value or 1[V≤epsilon]."
+        },
+        "C": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
+          "reason": "The ICLR-2025 Theorem 4.4 iff is specific to the stated model-based algorithm and its assumptions. It neither constructs I_public-equivalent games nor targets exact value or 1[V≤epsilon]."
+        },
+        "D": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
+          "reason": "The ICLR-2025 Theorem 4.4 iff is specific to the stated model-based algorithm and its assumptions. It neither constructs I_public-equivalent games nor targets exact value or 1[V≤epsilon]."
+        }
+      },
+      "source_type": "conference paper",
+      "theorem_assumption_references": [
+        "Definition 4.1 (uniform coverage)",
+        "Definition 4.2 (epsilon-equilibrium coverage)",
+        "Assumption 4.3 (sufficiently small neural-network training error)",
+        "Theorem 4.4 (model-based algorithm coverage/convergence condition)",
+        "Theorem 4.5 (behavior-cloning coverage/convergence condition)",
+        "Theorem 4.6 (BOMB performance relation)"
+      ],
+      "title": "Offline Equilibrium Finding in Extensive-Form Games: Datasets, Methods, and Analysis",
+      "unresolved_questions": [],
+      "version_reviewed": "ICLR 2025 submission/revision, OpenReview primary PDF Re5iu0hBTs",
+      "version_specific_logical_wording": "if and only if for the stated MB convergence guarantee, under Assumption 4.3",
+      "year": 2025
+    },
+    {
+      "authors": [
+        "Shuxin Li et al."
+      ],
+      "confidence": "medium",
+      "coverage_assumption": "coverage of strategically relevant node/action observations, quantitatively strengthened in later BOMB",
+      "estimands": [
+        "equilibrium strategy/profile",
+        "exploitability"
+      ],
+      "game_class": "finite imperfect-information extensive-form games",
+      "guarantee_type": "offline model-based recovery/convergence, not exact compatible-model identification",
+      "id": "li-et-al-oef-2207.05285",
+      "identifiers": {
+        "arXiv": "2207.05285"
+      },
+      "interface_mapping": {
+        "I_full": {
+          "argument": "I_full supplies every semantic transition row, including unreachable rows; the offline sample need not.",
+          "status": "PROJECT INTERFACE STRICTLY RICHER"
+        },
+        "I_node": {
+          "argument": "Both are node/state indexed, but the source sampling experiment and the project population interface expose different objects.",
+          "status": "INCOMPARABLE"
+        },
+        "I_public": {
+          "argument": "Dataset records retain the underlying history/node used by the learned EFG model; I_public marginalizes the latent state/node.",
+          "status": "SOURCE STRICTLY RICHER"
+        }
+      },
+      "learner_observes": "fixed offline trajectory collection with node/action-conditioned game outcomes for model fitting",
+      "move_timing": "Extensive-form history timing",
+      "necessity_vs_sufficiency": "sufficiency for the analyzed procedure; no threshold-bit necessity theorem",
+      "offline_evidence_object": "fixed offline trajectory collection with node/action-conditioned game outcomes for model fitting",
+      "player_information_structure": "the game representation supplies histories/nodes, legal actions, players and information sets; the dataset contains sampled play records used for offline equilibrium finding",
+      "primary_source_locator": "https://arxiv.org/abs/2207.05285",
+      "proposition_mapping": {
+        "A": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2207.05285",
+          "reason": "OEF targets equilibrium recovery/exploitability from node-indexed EFG data, not identification of minimax value or its threshold from state-marginal public laws."
+        },
+        "B": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2207.05285",
+          "reason": "OEF targets equilibrium recovery/exploitability from node-indexed EFG data, not identification of minimax value or its threshold from state-marginal public laws."
+        },
+        "C": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2207.05285",
+          "reason": "OEF targets equilibrium recovery/exploitability from node-indexed EFG data, not identification of minimax value or its threshold from state-marginal public laws."
+        },
+        "D": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://arxiv.org/abs/2207.05285",
+          "reason": "OEF targets equilibrium recovery/exploitability from node-indexed EFG data, not identification of minimax value or its threshold from state-marginal public laws."
+        }
+      },
+      "source_type": "preprint",
+      "theorem_assumption_references": [
+        "Section 3 formal OEF problem",
+        "Definition of offline trajectory dataset in Section 3",
+        "model-based consistency/convergence result in Section 4"
+      ],
+      "title": "Offline Equilibrium Finding",
+      "unresolved_questions": [
+        "The arXiv and OpenReview theorem numbering differs; cite each version independently."
+      ],
+      "version_reviewed": "arXiv version reviewed (2022 submission with later BOMB revisions compared)",
+      "version_specific_logical_wording": "sufficiency for the analyzed procedure; no threshold-bit necessity theorem",
+      "year": 2022
+    },
+    {
+      "authors": [
+        "Shuxin Li et al."
+      ],
+      "confidence": "high",
+      "coverage_assumption": "uniform quantitative node-action coverage for the stated model-based convergence proof",
+      "estimands": [
+        "learned game model",
+        "equilibrium/profile in learned model",
+        "exploitability in true game"
+      ],
+      "game_class": "finite imperfect-information extensive-form games",
+      "guarantee_type": "consistency/convergence of the BOMB pipeline",
+      "id": "li-et-al-oef-bomb-openreview-h8u0KWgg9C",
+      "identifiers": {
+        "OpenReview": "h8u0KWgg9C"
+      },
+      "interface_mapping": {
+        "I_full": {
+          "argument": "I_full supplies every semantic transition row, including unreachable rows; the offline sample need not.",
+          "status": "PROJECT INTERFACE STRICTLY RICHER"
+        },
+        "I_node": {
+          "argument": "Both are node/state indexed, but the source sampling experiment and the project population interface expose different objects.",
+          "status": "INCOMPARABLE"
+        },
+        "I_public": {
+          "argument": "BOMB conditions observations/transition fitting on underlying nodes or states and actions; I_public marginalizes the latent state/node.",
+          "status": "SOURCE STRICTLY RICHER"
+        }
+      },
+      "learner_observes": "offline episodes/node-action transition observations used to fit a generative game model",
+      "move_timing": "Extensive-form history timing",
+      "necessity_vs_sufficiency": "Theorem 4.4 states that the MB guarantee holds if its conditions hold and that, if either condition fails, the guarantee may no longer hold. This is not asserted as a biconditional and is not an all-algorithms information-theoretic necessity result.",
+      "offline_evidence_object": "offline episodes/node-action transition observations used to fit a generative game model",
+      "player_information_structure": "offline records are indexed by game-tree state/node and action in the learned simulator; information-set structure is part of the game representation",
+      "primary_source_locator": "https://openreview.net/forum?id=h8u0KWgg9C",
+      "proposition_mapping": {
+        "A": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://openreview.net/forum?id=h8u0KWgg9C",
+          "reason": "The ICLR-2026 conditional/may-no-longer-hold language remains specific to MB performance. It is not an all-algorithms lower bound and treats neither exact value identification nor 1[V≤epsilon]."
+        },
+        "B": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://openreview.net/forum?id=h8u0KWgg9C",
+          "reason": "The ICLR-2026 conditional/may-no-longer-hold language remains specific to MB performance. It is not an all-algorithms lower bound and treats neither exact value identification nor 1[V≤epsilon]."
+        },
+        "C": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://openreview.net/forum?id=h8u0KWgg9C",
+          "reason": "The ICLR-2026 conditional/may-no-longer-hold language remains specific to MB performance. It is not an all-algorithms lower bound and treats neither exact value identification nor 1[V≤epsilon]."
+        },
+        "D": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://openreview.net/forum?id=h8u0KWgg9C",
+          "reason": "The ICLR-2026 conditional/may-no-longer-hold language remains specific to MB performance. It is not an all-algorithms lower bound and treats neither exact value identification nor 1[V≤epsilon]."
+        }
+      },
+      "source_type": "conference paper",
+      "theorem_assumption_references": [
+        "Definition 4.1 (uniform coverage)",
+        "Definition 4.2 (epsilon-equilibrium coverage)",
+        "Assumption 4.3 (training-error condition)",
+        "Theorem 4.4 (MB performance guarantee)",
+        "Theorem 4.5 (BC performance guarantee)",
+        "Theorem 4.6 (BOMB performance guarantee)"
+      ],
+      "title": "Offline Equilibrium Finding in Extensive-Form Games: Datasets, Methods, and Analysis",
+      "unresolved_questions": [],
+      "version_reviewed": "ICLR 2026 submission/revision, OpenReview primary PDF h8u0KWgg9C",
+      "version_specific_logical_wording": "if the stated conditions hold; if either condition fails, the guarantee may no longer hold (not recorded as an iff)",
+      "year": 2026
+    },
+    {
+      "authors": [
+        "Shuxin Li"
+      ],
+      "confidence": "high",
+      "coverage_assumption": "uniform node-action coverage in the BOMB convergence chapter",
+      "estimands": [
+        "game model",
+        "equilibrium profile",
+        "exploitability"
+      ],
+      "game_class": "finite imperfect-information extensive-form games",
+      "guarantee_type": "thesis consolidation of model-based convergence argument",
+      "id": "li-thesis-2025",
+      "identifiers": {
+        "type": "PhD thesis"
+      },
+      "interface_mapping": {
+        "I_full": {
+          "argument": "I_full supplies every semantic transition row, including unreachable rows; the offline sample need not.",
+          "status": "PROJECT INTERFACE STRICTLY RICHER"
+        },
+        "I_node": {
+          "argument": "Both are node/state indexed, but the source sampling experiment and the project population interface expose different objects.",
+          "status": "INCOMPARABLE"
+        },
+        "I_public": {
+          "argument": "The thesis BOMB model assigns samples to underlying game-tree nodes/actions; I_public marginalizes the latent state/node.",
+          "status": "SOURCE STRICTLY RICHER"
+        }
+      },
+      "learner_observes": "offline trajectories for fitting the BOMB model",
+      "move_timing": "Extensive-form history timing",
+      "necessity_vs_sufficiency": "Theorem 6.6 gives BOMB convergence under the Chapter 6 random/uniform-cover or expert/equilibrium-cover dataset conditions; it is framework-specific, not an all-algorithms threshold-identification lower bound.",
+      "offline_evidence_object": "offline trajectories for fitting the BOMB model",
+      "player_information_structure": "game tree/information sets are specified and offline experience is assigned to underlying model nodes/actions",
+      "primary_source_locator": "https://personal.ntu.edu.sg/boan/thesis/Li_Shuxin_PhD_Thesis.pdf",
+      "proposition_mapping": {
+        "A": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://personal.ntu.edu.sg/boan/thesis/Li_Shuxin_PhD_Thesis.pdf",
+          "reason": "The later exposition clarifies the model-estimation-to-equilibrium convergence chain but supplies no public-latent threshold identifiability theorem."
+        },
+        "B": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://personal.ntu.edu.sg/boan/thesis/Li_Shuxin_PhD_Thesis.pdf",
+          "reason": "The later exposition clarifies the model-estimation-to-equilibrium convergence chain but supplies no public-latent threshold identifiability theorem."
+        },
+        "C": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://personal.ntu.edu.sg/boan/thesis/Li_Shuxin_PhD_Thesis.pdf",
+          "reason": "The later exposition clarifies the model-estimation-to-equilibrium convergence chain but supplies no public-latent threshold identifiability theorem."
+        },
+        "D": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://personal.ntu.edu.sg/boan/thesis/Li_Shuxin_PhD_Thesis.pdf",
+          "reason": "The later exposition clarifies the model-estimation-to-equilibrium convergence chain but supplies no public-latent threshold identifiability theorem."
+        }
+      },
+      "source_type": "doctoral thesis",
+      "theorem_assumption_references": [
+        "Chapter 6",
+        "Section 6.5 (BOMB)",
+        "Assumption 6.3 (random dataset as uniform cover)",
+        "Assumption 6.4 (expert dataset as equilibrium cover)",
+        "Table 6.2 (theoretical-results summary)",
+        "Theorem 6.6 (BOMB convergence under random/expert datasets)"
+      ],
+      "title": "Scalable, Generalizable, and Offline Methods for Imperfect-Information Extensive-Form Games",
+      "unresolved_questions": [
+        "No separate NTU institutional-repository record was located; the official NTU faculty-hosted thesis PDF is the primary locator. Intermediate results 6.4/6.5 are intentionally not labelled here because OCR label ambiguity was not needed for this comparison."
+      ],
+      "version_reviewed": "Nanyang Technological University PhD thesis (2025), official NTU faculty-hosted primary PDF",
+      "version_specific_logical_wording": "convergence under the random/uniform-cover or expert/equilibrium-cover conditions in Theorem 6.6",
+      "year": 2025
+    },
+    {
+      "authors": [
+        "Yuling Yan",
+        "Gen Li",
+        "Yuxin Chen",
+        "Jianqing Fan"
+      ],
+      "confidence": "high",
+      "coverage_assumption": "quantitative unilateral concentrability/coverage",
+      "estimands": [
+        "Nash policies",
+        "duality gap",
+        "equilibrium value through policy guarantees"
+      ],
+      "game_class": "finite-horizon tabular fully observed zero-sum Markov games",
+      "guarantee_type": "finite-sample model-based pessimistic upper bound and matching/near-matching lower bound",
+      "id": "yan-et-al-opre-2022.0342",
+      "identifiers": {
+        "DOI": "10.1287/opre.2022.0342"
+      },
+      "interface_mapping": {
+        "I_full": {
+          "argument": "I_full supplies every semantic transition row, including unreachable rows; the offline sample need not.",
+          "status": "PROJECT INTERFACE STRICTLY RICHER"
+        },
+        "I_node": {
+          "argument": "Both are node/state indexed, but the source sampling experiment and the project population interface expose different objects.",
+          "status": "INCOMPARABLE"
+        },
+        "I_public": {
+          "argument": "Transition data are indexed by the common state; I_public marginalizes the latent state/node.",
+          "status": "SOURCE STRICTLY RICHER"
+        }
+      },
+      "learner_observes": "offline transition tuples/trajectories indexed by state and joint action",
+      "move_timing": "Simultaneous player actions within each stage",
+      "necessity_vs_sufficiency": "unilateral coverage sufficient and statistically sharp for its learning objective, not arbitrary threshold identification",
+      "offline_evidence_object": "offline transition tuples/trajectories indexed by state and joint action",
+      "player_information_structure": "both players condition on the common observed Markov state",
+      "primary_source_locator": "https://doi.org/10.1287/opre.2022.0342",
+      "proposition_mapping": {
+        "A": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://doi.org/10.1287/opre.2022.0342",
+          "reason": "It sharpens rates/interpretation for state-observed Markov games; it does not coarsen away a privately observed state or target a threshold bit."
+        },
+        "B": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://doi.org/10.1287/opre.2022.0342",
+          "reason": "It sharpens rates/interpretation for state-observed Markov games; it does not coarsen away a privately observed state or target a threshold bit."
+        },
+        "C": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://doi.org/10.1287/opre.2022.0342",
+          "reason": "It sharpens rates/interpretation for state-observed Markov games; it does not coarsen away a privately observed state or target a threshold bit."
+        },
+        "D": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://doi.org/10.1287/opre.2022.0342",
+          "reason": "It sharpens rates/interpretation for state-observed Markov games; it does not coarsen away a privately observed state or target a threshold bit."
+        }
+      },
+      "source_type": "journal article",
+      "theorem_assumption_references": [
+        "Section 2 model/data",
+        "Assumption 1 (unilateral concentrability)",
+        "main pessimistic model-based sample-complexity theorem",
+        "minimax lower-bound theorem"
+      ],
+      "title": "Model-Based Reinforcement Learning for Offline Zero-Sum Markov Games",
+      "unresolved_questions": [],
+      "version_reviewed": "Operations Research version of record, DOI 10.1287/opre.2022.0342",
+      "version_specific_logical_wording": "unilateral coverage sufficient and statistically sharp for its learning objective, not arbitrary threshold identification",
+      "year": 2024
+    }
+  ]
+}
