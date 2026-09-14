@@ -31,5 +31,5 @@ identity `W = upper V`, the standard inequality `W <= R`, and a finite one-step
 vertex reduction for a fixed policy. Uniform actionability is a hierarchical
 refinement only inside the certifiably-WINNING branch. The
 [small Stage 6A model-pilot plan](docs/stage6a-model-pilot.md) and execution
-harness are frozen and ready. No real model responses were collected because
-two explicit provider configurations and credentials were unavailable.
+harness are frozen. Real provider responses collected: **0**. Provider execution
+remains blocked pending two explicit configurations and fresh green hosted CI.

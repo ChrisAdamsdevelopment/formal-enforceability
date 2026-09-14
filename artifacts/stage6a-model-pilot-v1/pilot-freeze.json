@@ -1,19 +1,23 @@
 {
-  "deterministic_files": {
-    "aggregate-report.json": "0f0cd63b4d793796ad61ed358a51fa003e435d90928c1dd7cdb54811cb624107",
+  "files": {
+    "aggregate-report.json": "1534d156b6e33ef801af5a29035572933225d95a8149c46b9d57ee85cd2cc646",
     "condition-transition-report.json": "320b06c7565597c24779b69395558de6d797f12b7cae13e4174455f5db87f3e3",
-    "cross-domain-report.json": "ead8612a49a8d5828aa6b17ca82dd1c785bbc2e697296e1fe4545d776514ea13",
-    "pilot-plan.json": "b69f9e7017512b91b42ab03dfe9f5e8eea8ebddd697d11b163b245d1f37f81fd",
+    "cross-domain-report.json": "013c84a4d62ca0169415593ce0fa54c4f96b981ae7fb4dc5ce71f514b0ede5b3",
+    "pilot-plan.json": "ab393f32b9da8f8b27f1d45cdd1795a88b35073ce9eef948811e5205a4dee2f5",
+    "repair-sensitivity-report.json": "b217926b7a9461921cfd00a8e29a3fa2eb35f48601d5983a1b3b88218cf6c1ac",
     "representation-leakage-control.json": "581632ddf4cfb6bd844759064f61b708a95d107721686424f3c985b2d2b994b0",
-    "request-manifest.json": "f92de4b54b49f87f5ffb41d655ca0faaaad7f69cf459d67ee843f7e67bb08ddb",
+    "request-manifest.json": "1181bcdebd3e09e3b0793d219578e1164fd3d653448afcdfd4303e85ee752c77",
     "scored-responses.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
-  "pilot_plan_sha256": "b69f9e7017512b91b42ab03dfe9f5e8eea8ebddd697d11b163b245d1f37f81fd",
-  "raw_metadata_excluded_from_deterministic_hash": [
-    "request_timestamp",
-    "provider_request_id",
-    "latency_seconds",
-    "token_usage"
-  ],
-  "version": "stage6a-model-pilot-v1"
+  "pilot_plan_sha256": "ab393f32b9da8f8b27f1d45cdd1795a88b35073ce9eef948811e5205a4dee2f5",
+  "previous_pilot_plan_sha256": "b69f9e7017512b91b42ab03dfe9f5e8eea8ebddd697d11b163b245d1f37f81fd",
+  "purpose": "immutable pre-provider design freeze",
+  "runtime_files_initial_sha256": {
+    "execution-sessions.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw-responses.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transport-events.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stage6a_source_freeze_sha256": "917364477c330cfeee6e368dfe9692f35238c7bfb11ce37c744f5cfa5a6336c1",
+  "version": "stage6a-model-pilot-v1.1",
+  "zero_real_provider_responses_at_revision": true
 }

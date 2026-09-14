@@ -26,5 +26,5 @@
   },
   "call_count": 0,
   "real_model_responses": false,
-  "status": "READY_FOR_PROVIDER_EXECUTION"
+  "status": "PRE_EXECUTION_INTEGRITY_VERIFIED"
 }

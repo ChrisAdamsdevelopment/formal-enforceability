@@ -2,7 +2,8 @@
   "configurations": [
     {
       "id": "model-a-standard",
-      "provider": "openai_compatible",
+      "role": "standard/default reasoning",
+      "provider_adapter": "openai_responses_compatible",
       "endpoint": "https://provider.example/v1/responses",
       "credential_env": "STAGE6A_MODEL_A_API_KEY",
       "model": "provider-model-version",
@@ -14,7 +15,8 @@
     },
     {
       "id": "model-b-stronger",
-      "provider": "openai_compatible",
+      "role": "stronger reasoning",
+      "provider_adapter": "openai_responses_compatible",
       "endpoint": "https://provider.example/v1/responses",
       "credential_env": "STAGE6A_MODEL_B_API_KEY",
       "model": "provider-model-version",

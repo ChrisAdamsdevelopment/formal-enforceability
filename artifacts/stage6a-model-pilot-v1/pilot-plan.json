@@ -4,7 +4,7 @@
     "reasoning_effort": "configuration-specific and never normalized",
     "seed": "record if supported",
     "temperature": 0,
-    "unsupported_parameters": "record explicitly"
+    "unsupported_parameters": "omitted from provider payload and recorded"
   },
   "exclusion_rules": [
     "Exclude only requests not completed after the single permitted format repair or documented provider transport failures; never exclude semantic errors or hard cases.",
@@ -101,9 +101,16 @@
     "cross_domain": [
       "canonical proposition agreement",
       "action-consistency agreement",
-      "confidence range and maximum swing"
+      "confidence range and maximum swing",
+      "representation inconsistency by formal instance"
     ],
     "high_confidence_threshold": 0.8,
+    "repair_sensitivity": [
+      "parse_failure_initial",
+      "parse_failure_after_repair",
+      "accuracy_with_allowed_format_repair",
+      "accuracy_treating_all_repairs_as_failures"
+    ],
     "track_a": [
       "three-way and per-class accuracy",
       "macro accuracy",
@@ -126,14 +133,16 @@
     "unit": "formal instance; repeated renders are not independent"
   },
   "model_configurations": {
+    "adapter": "openai_responses_compatible",
     "configuration_file": "configs/stage6a-models.example.json",
     "minimum_real_configurations": 2,
-    "roles": [
+    "required_roles": [
       "standard/default reasoning",
       "stronger reasoning"
     ]
   },
-  "parse_failure_handling": "Preserve original raw text, mark parse failure, allow at most one format-only repair, preserve repair text, and report failures separately.",
+  "parse_failure_handling": "Preserve initial raw response and metadata, allow at most one format-only repair containing that malformed response, preserve repair raw response and metadata, and report primary plus conservative sensitivity views.",
+  "previous_plan_sha256": "b69f9e7017512b91b42ab03dfe9f5e8eea8ebddd697d11b163b245d1f37f81fd",
   "rendering_selection": {
     "cross_domain": {
       "condition": "natural",
@@ -181,10 +190,12 @@
   },
   "retry_rules": {
     "format_repairs": 1,
-    "repair_message": "Your response did not match the required schema. Return only a JSON object matching the supplied response_schema.",
+    "manual_resume": "a new audited execution session may attempt keys having transport events but no completed response",
+    "repair_message": "Reformat the previous response only. Do not solve the problem again. Do not reconsider, recompute, or change its answer choice, action choice, confidence, or substantive content. Return only a JSON object matching response_schema.",
     "semantic_retries": 0,
     "transport_retries": 0
   },
+  "revision_reason": "Execution-integrity repair before any provider response: format-only repair context, resumability, configuration freeze, transport/session audit, and repair sensitivity.",
   "sample_sizes": {
     "cross_domain_additional_calls_per_model": 16,
     "primary_calls_per_model": 54,
@@ -197,8 +208,9 @@
   "status": "FROZEN_BEFORE_PROVIDER_EXECUTION",
   "stop_criteria": [
     "Stop rather than tune if a genuine benchmark validity defect appears.",
-    "Do not execute or claim results with fewer than two explicitly configured real model configurations.",
-    "Complete exactly 70 planned calls per executed configuration unless a documented provider failure occurs."
+    "Do not execute or claim results with fewer than two validated real model configurations.",
+    "Complete exactly 70 calls per configuration unless an unresolved transport failure is explicitly recorded."
   ],
-  "version": "stage6a-model-pilot-v1"
+  "version": "stage6a-model-pilot-v1.1",
+  "zero_real_responses_before_revision": true
 }
