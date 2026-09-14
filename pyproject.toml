@@ -15,6 +15,7 @@ test = ["pytest>=8", "hypothesis>=6", "ruff>=0.6", "scipy>=1.11"]
 validate-independent-oracle = "enforceability.validation_report:main"
 verify-identifiability = "enforceability.identifiability:main"
 verify-prior-art-review = "enforceability.prior_art_review:main"
+verify-stage6a-pilot = "enforceability.stage6_pilot:main"
 
 [tool.pytest.ini_options]
 pythonpath = ["src", "."]

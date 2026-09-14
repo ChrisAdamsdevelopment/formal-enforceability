@@ -1,0 +1,59 @@
+{
+  "continuous_public_fiber": {
+    "adaptive_V_upper_solved": false,
+    "gap_search_status": "unresolved",
+    "robust_R_via_vertices": true,
+    "vertices_implemented": true
+  },
+  "explicit_interface_regression_case": {
+    "R": "1/2",
+    "V_lower": "0",
+    "V_upper": "0",
+    "W": "0",
+    "common_optimal_controller": false,
+    "epsilon": "0",
+    "game_ids": [
+      "d051",
+      "d204"
+    ],
+    "note": "Not a public-signature compatibility class; used only to test generic explicit-set actionability.",
+    "optimal_controller_c0_probabilities": [
+      [
+        "1"
+      ],
+      [
+        "0"
+      ]
+    ],
+    "public_signatures": [
+      [
+        "0",
+        "0",
+        "1",
+        "1"
+      ],
+      [
+        "1",
+        "1",
+        "0",
+        "0"
+      ]
+    ],
+    "values": [
+      "0",
+      "0"
+    ]
+  },
+  "frozen_family_gap_found": false,
+  "search_scope": {
+    "deterministic_games": 256,
+    "deterministic_public_classes": 81,
+    "probabilistic_games": 6561,
+    "probabilistic_public_classes": 625
+  },
+  "verified": {
+    "deterministic_classes": 81,
+    "probabilistic_classes": 625
+  },
+  "version": "actionability-v1"
+}
