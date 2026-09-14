@@ -9,7 +9,10 @@ description = "A transparent exact-rational reference oracle for finite probabil
 requires-python = ">=3.11"
 
 [project.optional-dependencies]
-test = ["pytest>=8", "hypothesis>=6", "ruff>=0.6"]
+test = ["pytest>=8", "hypothesis>=6", "ruff>=0.6", "scipy>=1.11"]
+
+[project.scripts]
+validate-independent-oracle = "enforceability.validation_report:main"
 
 [tool.pytest.ini_options]
 pythonpath = ["src", "."]
