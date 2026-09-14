@@ -10,3 +10,4 @@ jobs:
       - run: python -m pip install -e '.[test]'
       - run: ruff check src tests
       - run: python -m pytest
+      - run: validate-independent-oracle
