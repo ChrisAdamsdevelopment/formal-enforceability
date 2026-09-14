@@ -1,0 +1,3964 @@
+{
+  "ambiguity_intervals": [
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "0",
+        "0",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "0",
+        "0",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "0",
+        "0",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "0",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "0",
+        "0",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "0",
+        "0",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "0",
+        "0",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "0",
+        "0",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "0",
+        "1/2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "0",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "0",
+        "1/2",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/4",
+        "1/2"
+      ],
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "0",
+        "1/2",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "0",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "0",
+        "1/2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "0",
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "0",
+        "1",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "0",
+        "1",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "0",
+        "1",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "3/4"
+      ],
+      "public_signature": [
+        "0",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "0",
+        "1",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "0",
+        "1",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "3/4",
+        "3/4"
+      ],
+      "public_signature": [
+        "0",
+        "1",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "1/2",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/4",
+        "1/2"
+      ],
+      "public_signature": [
+        "1/2",
+        "0",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1/2",
+        "0",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1/2",
+        "0",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1/2",
+        "0",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1/2",
+        "0",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "3/4"
+      ],
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1"
+      ],
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1"
+      ],
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "3/4"
+      ],
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1"
+      ],
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1"
+      ],
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "1/2",
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1/2",
+        "1",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1/2",
+        "1",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1"
+      ],
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "3/4",
+        "3/4"
+      ],
+      "public_signature": [
+        "1/2",
+        "1",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "3/4",
+        "1"
+      ],
+      "public_signature": [
+        "1/2",
+        "1",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1/2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1",
+        "0",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1",
+        "0",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1",
+        "0",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "3/4"
+      ],
+      "public_signature": [
+        "1",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "3/4",
+        "3/4"
+      ],
+      "public_signature": [
+        "1",
+        "0",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "0",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "0",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "0",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "1",
+        "1/2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "3/4",
+        "3/4"
+      ],
+      "public_signature": [
+        "1",
+        "1/2",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "3/4",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "1/2",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "1/2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "0",
+        "0"
+      ],
+      "public_signature": [
+        "1",
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1",
+        "1",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "1",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1/2"
+      ],
+      "public_signature": [
+        "1",
+        "1",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "1",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "1",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "1",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "1"
+      ],
+      "public_signature": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    }
+  ],
+  "assignments": [
+    {
+      "exact_value": "0",
+      "game_id": "d000",
+      "public_signature": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d001",
+      "public_signature": [
+        "0",
+        "0",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d002",
+      "public_signature": [
+        "0",
+        "0",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d003",
+      "public_signature": [
+        "0",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d004",
+      "public_signature": [
+        "0",
+        "1/2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d005",
+      "public_signature": [
+        "0",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/4",
+      "game_id": "d006",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d007",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d008",
+      "public_signature": [
+        "1/2",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/4",
+      "game_id": "d009",
+      "public_signature": [
+        "1/2",
+        "0",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d010",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d011",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d012",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d013",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d014",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d015",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d016",
+      "public_signature": [
+        "0",
+        "0",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d017",
+      "public_signature": [
+        "0",
+        "0",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d018",
+      "public_signature": [
+        "0",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d019",
+      "public_signature": [
+        "0",
+        "0",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d020",
+      "public_signature": [
+        "0",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d021",
+      "public_signature": [
+        "0",
+        "1/2",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d022",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d023",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d024",
+      "public_signature": [
+        "1/2",
+        "0",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d025",
+      "public_signature": [
+        "1/2",
+        "0",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d026",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d027",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d028",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d029",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d030",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d031",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d032",
+      "public_signature": [
+        "0",
+        "0",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d033",
+      "public_signature": [
+        "0",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d034",
+      "public_signature": [
+        "0",
+        "0",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d035",
+      "public_signature": [
+        "0",
+        "0",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d036",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d037",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d038",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d039",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d040",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d041",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d042",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d043",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d044",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d045",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d046",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d047",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d048",
+      "public_signature": [
+        "0",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d049",
+      "public_signature": [
+        "0",
+        "0",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d050",
+      "public_signature": [
+        "0",
+        "0",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d051",
+      "public_signature": [
+        "0",
+        "0",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d052",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d053",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d054",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d055",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d056",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d057",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d058",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d059",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d060",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d061",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d062",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d063",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d064",
+      "public_signature": [
+        "0",
+        "1/2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d065",
+      "public_signature": [
+        "0",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d066",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d067",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d068",
+      "public_signature": [
+        "0",
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d069",
+      "public_signature": [
+        "0",
+        "1",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d070",
+      "public_signature": [
+        "0",
+        "1",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d071",
+      "public_signature": [
+        "0",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d072",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d073",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d074",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d075",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d076",
+      "public_signature": [
+        "1/2",
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d077",
+      "public_signature": [
+        "1/2",
+        "1",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d078",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d079",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d080",
+      "public_signature": [
+        "0",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d081",
+      "public_signature": [
+        "0",
+        "1/2",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d082",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d083",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d084",
+      "public_signature": [
+        "0",
+        "1",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d085",
+      "public_signature": [
+        "0",
+        "1",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d086",
+      "public_signature": [
+        "0",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d087",
+      "public_signature": [
+        "0",
+        "1",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d088",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d089",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d090",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d091",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d092",
+      "public_signature": [
+        "1/2",
+        "1",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d093",
+      "public_signature": [
+        "1/2",
+        "1",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d094",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d095",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/4",
+      "game_id": "d096",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d097",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d098",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d099",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d100",
+      "public_signature": [
+        "0",
+        "1",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d101",
+      "public_signature": [
+        "0",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d102",
+      "public_signature": [
+        "0",
+        "1",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d103",
+      "public_signature": [
+        "0",
+        "1",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d104",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d105",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d106",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d107",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d108",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d109",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d110",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d111",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d112",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d113",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d114",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d115",
+      "public_signature": [
+        "0",
+        "1/2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d116",
+      "public_signature": [
+        "0",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d117",
+      "public_signature": [
+        "0",
+        "1",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d118",
+      "public_signature": [
+        "0",
+        "1",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d119",
+      "public_signature": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d120",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d121",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d122",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d123",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d124",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d125",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d126",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d127",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d128",
+      "public_signature": [
+        "1/2",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d129",
+      "public_signature": [
+        "1/2",
+        "0",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d130",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d131",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d132",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d133",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d134",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d135",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d136",
+      "public_signature": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d137",
+      "public_signature": [
+        "1",
+        "0",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d138",
+      "public_signature": [
+        "1",
+        "0",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d139",
+      "public_signature": [
+        "1",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d140",
+      "public_signature": [
+        "1",
+        "1/2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d141",
+      "public_signature": [
+        "1",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d142",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d143",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/4",
+      "game_id": "d144",
+      "public_signature": [
+        "1/2",
+        "0",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d145",
+      "public_signature": [
+        "1/2",
+        "0",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d146",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d147",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d148",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d149",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d150",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d151",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d152",
+      "public_signature": [
+        "1",
+        "0",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d153",
+      "public_signature": [
+        "1",
+        "0",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d154",
+      "public_signature": [
+        "1",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d155",
+      "public_signature": [
+        "1",
+        "0",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d156",
+      "public_signature": [
+        "1",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d157",
+      "public_signature": [
+        "1",
+        "1/2",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d158",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d159",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d160",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d161",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d162",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d163",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d164",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d165",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d166",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d167",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d168",
+      "public_signature": [
+        "1",
+        "0",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d169",
+      "public_signature": [
+        "1",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d170",
+      "public_signature": [
+        "1",
+        "0",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d171",
+      "public_signature": [
+        "1",
+        "0",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d172",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d173",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d174",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d175",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d176",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d177",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d178",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d179",
+      "public_signature": [
+        "1/2",
+        "0",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d180",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d181",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d182",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d183",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d184",
+      "public_signature": [
+        "1",
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d185",
+      "public_signature": [
+        "1",
+        "0",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d186",
+      "public_signature": [
+        "1",
+        "0",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d187",
+      "public_signature": [
+        "1",
+        "0",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d188",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d189",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d190",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d191",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d192",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d193",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d194",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d195",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d196",
+      "public_signature": [
+        "1/2",
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d197",
+      "public_signature": [
+        "1/2",
+        "1",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d198",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d199",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d200",
+      "public_signature": [
+        "1",
+        "1/2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d201",
+      "public_signature": [
+        "1",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d202",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d203",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "0",
+      "game_id": "d204",
+      "public_signature": [
+        "1",
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d205",
+      "public_signature": [
+        "1",
+        "1",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d206",
+      "public_signature": [
+        "1",
+        "1",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d207",
+      "public_signature": [
+        "1",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d208",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d209",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d210",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d211",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d212",
+      "public_signature": [
+        "1/2",
+        "1",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d213",
+      "public_signature": [
+        "1/2",
+        "1",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d214",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d215",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d216",
+      "public_signature": [
+        "1",
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d217",
+      "public_signature": [
+        "1",
+        "1/2",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d218",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d219",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d220",
+      "public_signature": [
+        "1",
+        "1",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d221",
+      "public_signature": [
+        "1",
+        "1",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d222",
+      "public_signature": [
+        "1",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d223",
+      "public_signature": [
+        "1",
+        "1",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d224",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d225",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d226",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d227",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d228",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d229",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d230",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d231",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d232",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d233",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d234",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d235",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d236",
+      "public_signature": [
+        "1",
+        "1",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d237",
+      "public_signature": [
+        "1",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d238",
+      "public_signature": [
+        "1",
+        "1",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d239",
+      "public_signature": [
+        "1",
+        "1",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d240",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d241",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d242",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d243",
+      "public_signature": [
+        "1/2",
+        "1/2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d244",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d245",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d246",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d247",
+      "public_signature": [
+        "1/2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d248",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "3/4",
+      "game_id": "d249",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d250",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d251",
+      "public_signature": [
+        "1",
+        "1/2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1/2",
+      "game_id": "d252",
+      "public_signature": [
+        "1",
+        "1",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d253",
+      "public_signature": [
+        "1",
+        "1",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d254",
+      "public_signature": [
+        "1",
+        "1",
+        "1",
+        "1/2"
+      ]
+    },
+    {
+      "exact_value": "1",
+      "game_id": "d255",
+      "public_signature": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    }
+  ],
+  "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+  "family_version": "one-step-2state-2x2.v1",
+  "interface_signature_version": "public-failure-conditionals.v1",
+  "ordered_canonical_game_ids": [
+    "d000",
+    "d001",
+    "d002",
+    "d003",
+    "d004",
+    "d005",
+    "d006",
+    "d007",
+    "d008",
+    "d009",
+    "d010",
+    "d011",
+    "d012",
+    "d013",
+    "d014",
+    "d015",
+    "d016",
+    "d017",
+    "d018",
+    "d019",
+    "d020",
+    "d021",
+    "d022",
+    "d023",
+    "d024",
+    "d025",
+    "d026",
+    "d027",
+    "d028",
+    "d029",
+    "d030",
+    "d031",
+    "d032",
+    "d033",
+    "d034",
+    "d035",
+    "d036",
+    "d037",
+    "d038",
+    "d039",
+    "d040",
+    "d041",
+    "d042",
+    "d043",
+    "d044",
+    "d045",
+    "d046",
+    "d047",
+    "d048",
+    "d049",
+    "d050",
+    "d051",
+    "d052",
+    "d053",
+    "d054",
+    "d055",
+    "d056",
+    "d057",
+    "d058",
+    "d059",
+    "d060",
+    "d061",
+    "d062",
+    "d063",
+    "d064",
+    "d065",
+    "d066",
+    "d067",
+    "d068",
+    "d069",
+    "d070",
+    "d071",
+    "d072",
+    "d073",
+    "d074",
+    "d075",
+    "d076",
+    "d077",
+    "d078",
+    "d079",
+    "d080",
+    "d081",
+    "d082",
+    "d083",
+    "d084",
+    "d085",
+    "d086",
+    "d087",
+    "d088",
+    "d089",
+    "d090",
+    "d091",
+    "d092",
+    "d093",
+    "d094",
+    "d095",
+    "d096",
+    "d097",
+    "d098",
+    "d099",
+    "d100",
+    "d101",
+    "d102",
+    "d103",
+    "d104",
+    "d105",
+    "d106",
+    "d107",
+    "d108",
+    "d109",
+    "d110",
+    "d111",
+    "d112",
+    "d113",
+    "d114",
+    "d115",
+    "d116",
+    "d117",
+    "d118",
+    "d119",
+    "d120",
+    "d121",
+    "d122",
+    "d123",
+    "d124",
+    "d125",
+    "d126",
+    "d127",
+    "d128",
+    "d129",
+    "d130",
+    "d131",
+    "d132",
+    "d133",
+    "d134",
+    "d135",
+    "d136",
+    "d137",
+    "d138",
+    "d139",
+    "d140",
+    "d141",
+    "d142",
+    "d143",
+    "d144",
+    "d145",
+    "d146",
+    "d147",
+    "d148",
+    "d149",
+    "d150",
+    "d151",
+    "d152",
+    "d153",
+    "d154",
+    "d155",
+    "d156",
+    "d157",
+    "d158",
+    "d159",
+    "d160",
+    "d161",
+    "d162",
+    "d163",
+    "d164",
+    "d165",
+    "d166",
+    "d167",
+    "d168",
+    "d169",
+    "d170",
+    "d171",
+    "d172",
+    "d173",
+    "d174",
+    "d175",
+    "d176",
+    "d177",
+    "d178",
+    "d179",
+    "d180",
+    "d181",
+    "d182",
+    "d183",
+    "d184",
+    "d185",
+    "d186",
+    "d187",
+    "d188",
+    "d189",
+    "d190",
+    "d191",
+    "d192",
+    "d193",
+    "d194",
+    "d195",
+    "d196",
+    "d197",
+    "d198",
+    "d199",
+    "d200",
+    "d201",
+    "d202",
+    "d203",
+    "d204",
+    "d205",
+    "d206",
+    "d207",
+    "d208",
+    "d209",
+    "d210",
+    "d211",
+    "d212",
+    "d213",
+    "d214",
+    "d215",
+    "d216",
+    "d217",
+    "d218",
+    "d219",
+    "d220",
+    "d221",
+    "d222",
+    "d223",
+    "d224",
+    "d225",
+    "d226",
+    "d227",
+    "d228",
+    "d229",
+    "d230",
+    "d231",
+    "d232",
+    "d233",
+    "d234",
+    "d235",
+    "d236",
+    "d237",
+    "d238",
+    "d239",
+    "d240",
+    "d241",
+    "d242",
+    "d243",
+    "d244",
+    "d245",
+    "d246",
+    "d247",
+    "d248",
+    "d249",
+    "d250",
+    "d251",
+    "d252",
+    "d253",
+    "d254",
+    "d255"
+  ],
+  "selected_witness_ids": {
+    "witness_A": [
+      "d006",
+      "d036"
+    ],
+    "witness_B": [
+      "d015",
+      "d090"
+    ],
+    "witness_C": [
+      "d006",
+      "d036"
+    ]
+  },
+  "selected_witnesses": {
+    "witness_A": {
+      "epsilon": "1/4",
+      "game_ids": [
+        "d006",
+        "d036"
+      ],
+      "game_labels": [
+        "WINNING",
+        "LOSING"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      },
+      "values": [
+        "1/4",
+        "1/2"
+      ]
+    },
+    "witness_B": {
+      "all_public_joint_actions_positive_probability": true,
+      "epsilon": "1/2",
+      "equal_visible_conditionals": true,
+      "game_ids": [
+        "d015",
+        "d090"
+      ],
+      "game_labels": [
+        "WINNING",
+        "LOSING"
+      ],
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "1/2",
+          "1/2",
+          "1/2",
+          "1/2"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      },
+      "values": [
+        "1/2",
+        "1"
+      ]
+    },
+    "witness_C": {
+      "class_value_set": [
+        "1/4",
+        "1/2"
+      ],
+      "epsilon": "1/2",
+      "epsilon_nonidentified": "1/4",
+      "game_ids": [
+        "d006",
+        "d036"
+      ],
+      "game_labels": [
+        "WINNING",
+        "WINNING"
+      ],
+      "selection_rule": "prefer Witness A class with both identified and nonidentified declared thresholds; choose its upper boundary when certifiably winning",
+      "signature": {
+        "collection_regime_version": "state-blind-uniform-joint-actions.v1",
+        "failure_conditionals": [
+          "0",
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "signature_version": "public-failure-conditionals.v1"
+      },
+      "threshold_phase_structure": {
+        "ambiguity_interval": [
+          "1/4",
+          "1/2"
+        ],
+        "phases": [
+          {
+            "epsilon_region": "epsilon < 1/4",
+            "status": "CERTIFIABLY_LOSING"
+          },
+          {
+            "epsilon_region": "1/4 <= epsilon < 1/2",
+            "status": "INSUFFICIENT_INFORMATION"
+          },
+          {
+            "epsilon_region": "epsilon >= 1/2",
+            "status": "CERTIFIABLY_WINNING"
+          }
+        ],
+        "standard_partial_identification_logic": true
+      },
+      "threshold_status": "CERTIFIABLY_WINNING",
+      "values": [
+        "1/4",
+        "1/2"
+      ]
+    }
+  },
+  "threshold_sweep": [
+    {
+      "CERTIFIABLY_LOSING": 64,
+      "CERTIFIABLY_WINNING": 17,
+      "INSUFFICIENT_INFORMATION": 0,
+      "epsilon": "0"
+    },
+    {
+      "CERTIFIABLY_LOSING": 62,
+      "CERTIFIABLY_WINNING": 17,
+      "INSUFFICIENT_INFORMATION": 2,
+      "epsilon": "1/4"
+    },
+    {
+      "CERTIFIABLY_LOSING": 62,
+      "CERTIFIABLY_WINNING": 17,
+      "INSUFFICIENT_INFORMATION": 2,
+      "epsilon": "1/3"
+    },
+    {
+      "CERTIFIABLY_LOSING": 23,
+      "CERTIFIABLY_WINNING": 47,
+      "INSUFFICIENT_INFORMATION": 11,
+      "epsilon": "1/2"
+    },
+    {
+      "CERTIFIABLY_LOSING": 23,
+      "CERTIFIABLY_WINNING": 47,
+      "INSUFFICIENT_INFORMATION": 11,
+      "epsilon": "2/3"
+    },
+    {
+      "CERTIFIABLY_LOSING": 17,
+      "CERTIFIABLY_WINNING": 55,
+      "INSUFFICIENT_INFORMATION": 9,
+      "epsilon": "3/4"
+    },
+    {
+      "CERTIFIABLY_LOSING": 0,
+      "CERTIFIABLY_WINNING": 81,
+      "INSUFFICIENT_INFORMATION": 0,
+      "epsilon": "1"
+    }
+  ]
+}
