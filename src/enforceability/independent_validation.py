@@ -9,6 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from fractions import Fraction
 from itertools import product
+import math
 
 from enforceability.schema import Game
 
@@ -256,8 +257,8 @@ def validate_game(
     tolerance: float = DEFAULT_TOLERANCE,
 ) -> IndependentResult:
     """Compute a bounded independent validation estimate for ``game``."""
-    if tolerance <= 0:
-        raise ValueError("tolerance must be positive")
+    if not math.isfinite(tolerance) or tolerance <= 0:
+        raise ValueError("tolerance must be positive and finite")
     tree = build_reachable_tree(game, limits)
     controllers, adversaries = _pure_policies(game, tree, limits)
     matrix = tuple(

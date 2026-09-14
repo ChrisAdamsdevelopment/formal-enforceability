@@ -115,6 +115,17 @@ def test_explicit_complexity_limits_fail_clearly():
         validate_game(matching_pennies(), limits=ValidationLimits(max_matrix_cells=3))
 
 
+@pytest.mark.parametrize("tolerance", (0.0, -1e-9, float("nan"), float("inf"), float("-inf")))
+def test_invalid_tolerances_are_rejected(tolerance):
+    with pytest.raises(ValueError, match="tolerance must be positive and finite"):
+        validate_game(matching_pennies(), tolerance=tolerance)
+
+
+def test_finite_positive_tolerance_is_accepted():
+    result = validate_game(matching_pennies(), tolerance=1e-8)
+    assert result.tolerance == 1e-8
+
+
 def test_reproducible_full_report():
     report = run_cross_validation()
     assert report.result == "PASS"
