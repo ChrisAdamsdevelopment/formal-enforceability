@@ -46,7 +46,7 @@
       "authors": [
         "Claire Chen et al."
       ],
-      "confidence": "medium",
+      "confidence": "high",
       "coverage_assumption": "quantitative concentrability relative to unilateral deviations, modified by regularization",
       "estimands": [
         "regularized equilibrium policy/profile",
@@ -105,10 +105,9 @@
         "Definitions of KL-regularized objective and unilateral coverage; main upper/lower-bound theorems (numbering checked in cited version)"
       ],
       "title": "Offline Two-Player Zero-Sum Markov Games with KL Regularization",
-      "unresolved_questions": [
-        "Confirm theorem numbering against any post-May-2026 revision before manuscript submission."
-      ],
-      "version_reviewed": "arXiv:2605.13025 (May 2026 version)",
+      "unresolved_questions": [],
+      "version_reviewed": "arXiv v1, submitted 13 May 2026; official submission history checked and contains only v1",
+      "version_specific_logical_wording": "arXiv v1 theorem wording; only version in the official submission history as reviewed",
       "year": 2026
     },
     {
@@ -182,6 +181,7 @@
       "title": "When is Offline Two-Player Zero-Sum Markov Game Solvable?",
       "unresolved_questions": [],
       "version_reviewed": "arXiv v3 / NeurIPS 2022 proceedings",
+      "version_specific_logical_wording": "unilateral concentration sufficient; their hard-instance lower bound makes single-policy concentration insufficient for learning an NE in the stated class, not every functional",
       "year": 2022
     },
     {
@@ -249,6 +249,7 @@
       "title": "Offline Congestion Games: How Feedback Type Affects Data Coverage Requirement",
       "unresolved_questions": [],
       "version_reviewed": "arXiv version associated with ICLR 2023",
+      "version_specific_logical_wording": "feedback-specific sufficient coverage and impossibility/lower bounds",
       "year": 2023
     },
     {
@@ -319,6 +320,7 @@
         "Bibliographic author list should be checked against the publisher record before final manuscript typesetting."
       ],
       "version_reviewed": "International Journal of Industrial Organization 87 (2023), article 102915",
+      "version_specific_logical_wording": "neither an OEF coverage theorem nor a threshold-value impossibility theorem",
       "year": 2023
     },
     {
@@ -387,6 +389,7 @@
       "title": "Set Identification in Models with Multiple Equilibria",
       "unresolved_questions": [],
       "version_reviewed": "arXiv:2102.12249 version reviewed",
+      "version_specific_logical_wording": "characterization, not offline equilibrium recovery",
       "year": 2021
     },
     {
@@ -415,12 +418,12 @@
           "status": "EQUIVALENT"
         },
         "I_node": {
-          "argument": "The solver takes a known OS-POSG model rather than node-indexed offline evidence.",
+          "argument": "The source assumes a supplied known-game model, whereas I_node is a reachable node-indexed population evidence interface; these are different categories and neither determines the other.",
           "status": "INCOMPARABLE"
         },
         "I_public": {
-          "argument": "The source has no offline population evidence object at all; as a solver it assumes the model, whereas I_public additionally defines a sampling law but omits the model.",
-          "status": "PROJECT INTERFACE STRICTLY RICHER"
+          "argument": "The source assumes a supplied known-game model, whereas I_public is a coarsened population evidence interface for identification; neither object determines the other.",
+          "status": "INCOMPARABLE"
         }
       },
       "learner_observes": "not an offline-identification paper; known game model is input",
@@ -461,13 +464,14 @@
       "title": "Solving Zero-Sum One-Sided Partially Observable Stochastic Games",
       "unresolved_questions": [],
       "version_reviewed": "Artificial Intelligence 316 (2023), 103838 / arXiv version",
+      "version_specific_logical_wording": "not an identification necessity/sufficiency result",
       "year": 2023
     },
     {
       "authors": [
         "Shuxin Li et al."
       ],
-      "confidence": "medium",
+      "confidence": "high",
       "coverage_assumption": "uniform quantitative node-action coverage for the stated model-based convergence proof",
       "estimands": [
         "learned game model",
@@ -496,7 +500,7 @@
       },
       "learner_observes": "offline episodes/node-action transition observations used to fit a generative game model",
       "move_timing": "Extensive-form history timing",
-      "necessity_vs_sufficiency": "a sufficient assumption for this estimator/framework; the cited theorem is not an all-algorithms information-theoretic necessity theorem",
+      "necessity_vs_sufficiency": "Theorem 4.4 states an if-and-only-if coverage condition for the stated model-based algorithm convergence guarantee under Assumption 4.3. This is algorithm/framework-specific necessity and sufficiency, not an all-algorithms information-theoretic necessity result.",
       "offline_evidence_object": "offline episodes/node-action transition observations used to fit a generative game model",
       "player_information_structure": "offline records are indexed by game-tree state/node and action in the learned simulator; information-set structure is part of the game representation",
       "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
@@ -504,37 +508,38 @@
         "A": {
           "collision_status": "RELATED BUT FORMALLY DISTINCT",
           "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
-          "reason": "The theorem establishes convergence of a specified model-based equilibrium pipeline under node-action coverage. It does not exhibit I_public-equivalent values, quantify over every algorithm, or classify 1[V≤ε]."
+          "reason": "The ICLR-2025 Theorem 4.4 iff is specific to the stated model-based algorithm and its assumptions. It neither constructs I_public-equivalent games nor targets exact value or 1[V≤epsilon]."
         },
         "B": {
           "collision_status": "RELATED BUT FORMALLY DISTINCT",
           "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
-          "reason": "The theorem establishes convergence of a specified model-based equilibrium pipeline under node-action coverage. It does not exhibit I_public-equivalent values, quantify over every algorithm, or classify 1[V≤ε]."
+          "reason": "The ICLR-2025 Theorem 4.4 iff is specific to the stated model-based algorithm and its assumptions. It neither constructs I_public-equivalent games nor targets exact value or 1[V≤epsilon]."
         },
         "C": {
           "collision_status": "RELATED BUT FORMALLY DISTINCT",
           "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
-          "reason": "The theorem establishes convergence of a specified model-based equilibrium pipeline under node-action coverage. It does not exhibit I_public-equivalent values, quantify over every algorithm, or classify 1[V≤ε]."
+          "reason": "The ICLR-2025 Theorem 4.4 iff is specific to the stated model-based algorithm and its assumptions. It neither constructs I_public-equivalent games nor targets exact value or 1[V≤epsilon]."
         },
         "D": {
           "collision_status": "RELATED BUT FORMALLY DISTINCT",
           "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
-          "reason": "The theorem establishes convergence of a specified model-based equilibrium pipeline under node-action coverage. It does not exhibit I_public-equivalent values, quantify over every algorithm, or classify 1[V≤ε]."
+          "reason": "The ICLR-2025 Theorem 4.4 iff is specific to the stated model-based algorithm and its assumptions. It neither constructs I_public-equivalent games nor targets exact value or 1[V≤epsilon]."
         }
       },
       "source_type": "conference paper",
       "theorem_assumption_references": [
-        "Section 3 BOMB framework",
-        "Assumption 4.1 (uniform node-action coverage)",
-        "Theorem 4.1 (model/equilibrium convergence under coverage)",
-        "coverage discussion immediately following Theorem 4.1"
+        "Definition 4.1 (uniform coverage)",
+        "Definition 4.2 (epsilon-equilibrium coverage)",
+        "Assumption 4.3 (sufficiently small neural-network training error)",
+        "Theorem 4.4 (model-based algorithm coverage/convergence condition)",
+        "Theorem 4.5 (behavior-cloning coverage/convergence condition)",
+        "Theorem 4.6 (BOMB performance relation)"
       ],
-      "title": "BOMB: Bayesian Offline Model-Based framework for equilibrium finding",
-      "unresolved_questions": [
-        "The word “minimal” in surrounding prose must not be upgraded beyond the theorem quantifiers; preserve a copy of the reviewed revision identifier during manuscript archiving."
-      ],
-      "version_reviewed": "OpenReview forum primary PDF, revision posted for the conference decision",
-      "year": 2024
+      "title": "Offline Equilibrium Finding in Extensive-Form Games: Datasets, Methods, and Analysis",
+      "unresolved_questions": [],
+      "version_reviewed": "ICLR 2025 submission/revision, OpenReview primary PDF Re5iu0hBTs",
+      "version_specific_logical_wording": "if and only if for the stated MB convergence guarantee, under Assumption 4.3",
+      "year": 2025
     },
     {
       "authors": [
@@ -605,13 +610,88 @@
         "The arXiv and OpenReview theorem numbering differs; cite each version independently."
       ],
       "version_reviewed": "arXiv version reviewed (2022 submission with later BOMB revisions compared)",
+      "version_specific_logical_wording": "sufficiency for the analyzed procedure; no threshold-bit necessity theorem",
       "year": 2022
+    },
+    {
+      "authors": [
+        "Shuxin Li et al."
+      ],
+      "confidence": "high",
+      "coverage_assumption": "uniform quantitative node-action coverage for the stated model-based convergence proof",
+      "estimands": [
+        "learned game model",
+        "equilibrium/profile in learned model",
+        "exploitability in true game"
+      ],
+      "game_class": "finite imperfect-information extensive-form games",
+      "guarantee_type": "consistency/convergence of the BOMB pipeline",
+      "id": "li-et-al-oef-bomb-openreview-h8u0KWgg9C",
+      "identifiers": {
+        "OpenReview": "h8u0KWgg9C"
+      },
+      "interface_mapping": {
+        "I_full": {
+          "argument": "I_full supplies every semantic transition row, including unreachable rows; the offline sample need not.",
+          "status": "PROJECT INTERFACE STRICTLY RICHER"
+        },
+        "I_node": {
+          "argument": "Both are node/state indexed, but the source sampling experiment and the project population interface expose different objects.",
+          "status": "INCOMPARABLE"
+        },
+        "I_public": {
+          "argument": "BOMB conditions observations/transition fitting on underlying nodes or states and actions; I_public marginalizes the latent state/node.",
+          "status": "SOURCE STRICTLY RICHER"
+        }
+      },
+      "learner_observes": "offline episodes/node-action transition observations used to fit a generative game model",
+      "move_timing": "Extensive-form history timing",
+      "necessity_vs_sufficiency": "Theorem 4.4 states that the MB guarantee holds if its conditions hold and that, if either condition fails, the guarantee may no longer hold. This is not asserted as a biconditional and is not an all-algorithms information-theoretic necessity result.",
+      "offline_evidence_object": "offline episodes/node-action transition observations used to fit a generative game model",
+      "player_information_structure": "offline records are indexed by game-tree state/node and action in the learned simulator; information-set structure is part of the game representation",
+      "primary_source_locator": "https://openreview.net/forum?id=h8u0KWgg9C",
+      "proposition_mapping": {
+        "A": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://openreview.net/forum?id=h8u0KWgg9C",
+          "reason": "The ICLR-2026 conditional/may-no-longer-hold language remains specific to MB performance. It is not an all-algorithms lower bound and treats neither exact value identification nor 1[V≤epsilon]."
+        },
+        "B": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://openreview.net/forum?id=h8u0KWgg9C",
+          "reason": "The ICLR-2026 conditional/may-no-longer-hold language remains specific to MB performance. It is not an all-algorithms lower bound and treats neither exact value identification nor 1[V≤epsilon]."
+        },
+        "C": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://openreview.net/forum?id=h8u0KWgg9C",
+          "reason": "The ICLR-2026 conditional/may-no-longer-hold language remains specific to MB performance. It is not an all-algorithms lower bound and treats neither exact value identification nor 1[V≤epsilon]."
+        },
+        "D": {
+          "collision_status": "RELATED BUT FORMALLY DISTINCT",
+          "primary_source_locator": "https://openreview.net/forum?id=h8u0KWgg9C",
+          "reason": "The ICLR-2026 conditional/may-no-longer-hold language remains specific to MB performance. It is not an all-algorithms lower bound and treats neither exact value identification nor 1[V≤epsilon]."
+        }
+      },
+      "source_type": "conference paper",
+      "theorem_assumption_references": [
+        "Definition 4.1 (uniform coverage)",
+        "Definition 4.2 (epsilon-equilibrium coverage)",
+        "Assumption 4.3 (training-error condition)",
+        "Theorem 4.4 (MB performance guarantee)",
+        "Theorem 4.5 (BC performance guarantee)",
+        "Theorem 4.6 (BOMB performance guarantee)"
+      ],
+      "title": "Offline Equilibrium Finding in Extensive-Form Games: Datasets, Methods, and Analysis",
+      "unresolved_questions": [],
+      "version_reviewed": "ICLR 2026 submission/revision, OpenReview primary PDF h8u0KWgg9C",
+      "version_specific_logical_wording": "if the stated conditions hold; if either condition fails, the guarantee may no longer hold (not recorded as an iff)",
+      "year": 2026
     },
     {
       "authors": [
         "Shuxin Li"
       ],
-      "confidence": "low",
+      "confidence": "high",
       "coverage_assumption": "uniform node-action coverage in the BOMB convergence chapter",
       "estimands": [
         "game model",
@@ -640,41 +720,47 @@
       },
       "learner_observes": "offline trajectories for fitting the BOMB model",
       "move_timing": "Extensive-form history timing",
-      "necessity_vs_sufficiency": "sufficient framework condition, not universal information-theoretic threshold lower bound",
+      "necessity_vs_sufficiency": "Theorem 6.6 gives BOMB convergence under the Chapter 6 random/uniform-cover or expert/equilibrium-cover dataset conditions; it is framework-specific, not an all-algorithms threshold-identification lower bound.",
       "offline_evidence_object": "offline trajectories for fitting the BOMB model",
       "player_information_structure": "game tree/information sets are specified and offline experience is assigned to underlying model nodes/actions",
-      "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
+      "primary_source_locator": "https://personal.ntu.edu.sg/boan/thesis/Li_Shuxin_PhD_Thesis.pdf",
       "proposition_mapping": {
         "A": {
           "collision_status": "RELATED BUT FORMALLY DISTINCT",
-          "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
+          "primary_source_locator": "https://personal.ntu.edu.sg/boan/thesis/Li_Shuxin_PhD_Thesis.pdf",
           "reason": "The later exposition clarifies the model-estimation-to-equilibrium convergence chain but supplies no public-latent threshold identifiability theorem."
         },
         "B": {
           "collision_status": "RELATED BUT FORMALLY DISTINCT",
-          "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
+          "primary_source_locator": "https://personal.ntu.edu.sg/boan/thesis/Li_Shuxin_PhD_Thesis.pdf",
           "reason": "The later exposition clarifies the model-estimation-to-equilibrium convergence chain but supplies no public-latent threshold identifiability theorem."
         },
         "C": {
           "collision_status": "RELATED BUT FORMALLY DISTINCT",
-          "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
+          "primary_source_locator": "https://personal.ntu.edu.sg/boan/thesis/Li_Shuxin_PhD_Thesis.pdf",
           "reason": "The later exposition clarifies the model-estimation-to-equilibrium convergence chain but supplies no public-latent threshold identifiability theorem."
         },
         "D": {
           "collision_status": "RELATED BUT FORMALLY DISTINCT",
-          "primary_source_locator": "https://openreview.net/forum?id=Re5iu0hBTs",
+          "primary_source_locator": "https://personal.ntu.edu.sg/boan/thesis/Li_Shuxin_PhD_Thesis.pdf",
           "reason": "The later exposition clarifies the model-estimation-to-equilibrium convergence chain but supplies no public-latent threshold identifiability theorem."
         }
       },
       "source_type": "doctoral thesis",
       "theorem_assumption_references": [
-        "OEF/BOMB chapter: problem formulation, uniform coverage assumption, and model-based convergence theorem (chapter-local numbering)"
+        "Chapter 6",
+        "Section 6.5 (BOMB)",
+        "Assumption 6.3 (random dataset as uniform cover)",
+        "Assumption 6.4 (expert dataset as equilibrium cover)",
+        "Table 6.2 (theoretical-results summary)",
+        "Theorem 6.6 (BOMB convergence under random/expert datasets)"
       ],
       "title": "Scalable, Generalizable, and Offline Methods for Imperfect-Information Extensive-Form Games",
       "unresolved_questions": [
-        "Add the institutional repository permalink and exact chapter/theorem numbers before manuscript citation; no stable primary thesis locator was available in the repository review environment."
+        "No separate NTU institutional-repository record was located; the official NTU faculty-hosted thesis PDF is the primary locator. Intermediate results 6.4/6.5 are intentionally not labelled here because OCR label ambiguity was not needed for this comparison."
       ],
-      "version_reviewed": "2025 deposited thesis, OEF/BOMB chapter",
+      "version_reviewed": "Nanyang Technological University PhD thesis (2025), official NTU faculty-hosted primary PDF",
+      "version_specific_logical_wording": "convergence under the random/uniform-cover or expert/equilibrium-cover conditions in Theorem 6.6",
       "year": 2025
     },
     {
@@ -749,6 +835,7 @@
       "title": "Model-Based Reinforcement Learning for Offline Zero-Sum Markov Games",
       "unresolved_questions": [],
       "version_reviewed": "Operations Research version of record, DOI 10.1287/opre.2022.0342",
+      "version_specific_logical_wording": "unilateral coverage sufficient and statistically sharp for its learning objective, not arbitrary threshold identification",
       "year": 2024
     }
   ]

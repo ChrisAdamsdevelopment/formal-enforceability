@@ -67,39 +67,72 @@ offline trajectory data; §4 model-based result.
 | Interface status | `I_public`: **SOURCE STRICTLY RICHER** (underlying history/node index); `I_node`: **INCOMPARABLE** (closely node indexed, but finite trajectory sample versus a population chance-law interface); `I_full`: **PROJECT INTERFACE STRICTLY RICHER** (complete semantic rows). |
 | Closest proposition / formal relation | D; **RELATED BUT FORMALLY DISTINCT**. It warns that public action support is not node-action coverage, but does not prove A–D. |
 
-### Li et al., BOMB, OpenReview `Re5iu0hBTs`
+### Li et al., ICLR-2025 OEF/BOMB revision (`Re5iu0hBTs`)
 
-Primary source: [OpenReview forum and primary PDF](https://openreview.net/forum?id=Re5iu0hBTs),
-conference-decision revision reviewed. Relevant locations: §3 framework;
-Assumption 4.1 uniform node-action coverage; Theorem 4.1 convergence; coverage
-discussion immediately after the theorem.
+Primary source: [OpenReview primary PDF](https://openreview.net/forum?id=Re5iu0hBTs),
+*Offline Equilibrium Finding in Extensive-Form Games: Datasets, Methods, and
+Analysis*, ICLR 2025 submission/revision. The exact sequence is Definition 4.1
+(uniform coverage), Definition 4.2 (epsilon-equilibrium coverage), Assumption
+4.3 (sufficiently small neural-network training error), Theorem 4.4 (MB
+coverage/convergence), Theorem 4.5 (BC coverage/convergence), and Theorem 4.6
+(BOMB performance relation).
 
 | Field | Exact comparison |
 |---|---|
-| Game / data | Finite IIEFG model plus offline episodes used to estimate node/action-conditioned dynamics. Information sets are part of the game representation, and observations used by the estimator are assigned to underlying model nodes/actions. |
-| Coverage | Assumption 4.1 is quantitative uniform node-action coverage, not four-way public joint-action support. “Minimal” in the discussion describes what the BOMB model estimator/convergence argument needs; Theorem 4.1 does **not** quantify over all possible algorithms. |
-| Estimand | Learned model, equilibrium/profile in that model, and exploitability/convergence in the true game. It does not form the sharp identified set of equilibrium values and never targets `1[V<=epsilon]`. |
-| Exact finding | The theorem is a sufficient model-based convergence statement. It is not an information-theoretic impossibility; it does not prove inability to identify an exact value or any threshold decision. |
-| Interface status | `I_public`: **SOURCE STRICTLY RICHER** because node/state identity used for transition fitting is erased by `I_public`; `I_node`: **INCOMPARABLE** because BOMB has sampled episodes while `I_node` exposes population node-conditioned laws; `I_full`: **PROJECT INTERFACE STRICTLY RICHER**. |
-| Witness B test | The two games can share a public BOMB-like action log only after discarding the node/state labels required by Assumption 4.1. With those labels retained, their state-conditioned outcomes differ. They are therefore not one observational dataset satisfying BOMB's node-action evidence assumption. |
-| Collision | A–D: **RELATED BUT FORMALLY DISTINCT**. No explicit reduction exists. |
+| Game / data | Finite IIEFG model plus offline episodes used to estimate node/action-conditioned dynamics. Information sets are part of the representation, and samples used by the estimator are assigned to underlying nodes/actions. |
+| Coverage | Definitions 4.1–4.2 define uniform and epsilon-equilibrium coverage. These are not four-way public joint-action support. |
+| Exact logic | Under Assumption 4.3, Theorem 4.4 uses **if and only if** for the stated model-based algorithm convergence guarantee. It is therefore algorithm/framework-specific necessity and sufficiency—not merely sufficiency. |
+| Limits of the iff | It is **not** an all-algorithms information-theoretic lower bound, a theorem about arbitrary functionals, exact equilibrium-value identification, or `1[V<=epsilon]`. Theorems 4.5–4.6 concern BC/BOMB performance, not those identification objects. |
+| Interface status | `I_public`: **SOURCE STRICTLY RICHER** because node/state identity is erased by `I_public`; `I_node`: **INCOMPARABLE** because finite samples and a population node-conditioned interface differ; `I_full`: **PROJECT INTERFACE STRICTLY RICHER**. |
+| Witness-B test | Retaining the node/state-action evidence object separates Witness B's state-conditioned outcomes. The games remain equivalent only after discarding the labels required by the source evidence object. |
+| Collision | A–D: **RELATED BUT FORMALLY DISTINCT**. The iff does not create an interface- and estimand-preserving reduction. |
 
-This rejects both tempting overstatements: BOMB does not establish a universal
-minimal-information theorem, and our Witness B does not refute its sufficient
-condition. It does establish that “coverage” must be indexed to the estimator's
-information object.
+### Li et al., ICLR-2026 OEF/BOMB revision (`h8u0KWgg9C`)
+
+Primary source: [OpenReview primary PDF](https://openreview.net/forum?id=h8u0KWgg9C),
+same title, ICLR 2026 submission/revision. It retains Definition 4.1 (uniform
+coverage), Definition 4.2 (epsilon-equilibrium coverage), Assumption 4.3
+(training-error condition), and Theorems 4.4–4.6 for MB, BC, and BOMB
+performance respectively.
+
+The logical wording is materially different: Theorem 4.4 states that the MB
+guarantee holds **if** its conditions hold and that, if either condition fails,
+the guarantee **may no longer hold**. This review does not turn that warning
+into an iff. It also does not quantify over all algorithms, identify exact
+value, or prove threshold-bit nonidentification. Its interface mapping,
+Witness-B incompatibility, and A–D verdict remain the same as the 2025 version.
 
 ### Li, 2025 doctoral thesis
 
-Primary work reviewed: Shuxin Li, *Scalable, Generalizable, and Offline Methods
-for Imperfect-Information Extensive-Form Games* (2025), OEF/BOMB chapter; the
-version relationship is cross-recorded at the [BOMB primary forum](https://openreview.net/forum?id=Re5iu0hBTs).
-The thesis chapter consolidates the problem, uniform coverage assumption, and
-model-based convergence chain; it does not strengthen it to an all-algorithms
-threshold impossibility. The interface mapping and collision verdict are the
-same as BOMB. **Archival issue:** before manuscript typesetting, add the
-institutional-repository permalink and chapter-local theorem numbers. This is a
-citation-quality limitation, not a reason to infer a stronger theorem.
+Primary source: Shuxin Li, *Scalable, Generalizable, and Offline Methods for
+Imperfect-Information Extensive-Form Games*, Nanyang Technological University
+(2025), [official NTU faculty-hosted thesis PDF](https://personal.ntu.edu.sg/boan/thesis/Li_Shuxin_PhD_Thesis.pdf).
+The BOMB treatment is Chapter 6, §6.5. The exact references used here are
+Assumption 6.3 (random dataset as uniform cover), Assumption 6.4 (expert dataset
+as equilibrium cover), Table 6.2 (theoretical-results summary), and Theorem 6.6
+(BOMB convergence under random/expert datasets). Intermediate results 6.4/6.5
+are deliberately not assigned a Lemma/Theorem label because they are unnecessary
+to this comparison and the searchable text is inconsistent. No separate NTU
+institutional-repository record was located; the official NTU-hosted PDF is the
+stable primary locator used here.
+
+### OEF/BOMB version delta
+
+| Version | Coverage definition | Result numbering | Target estimand | Necessity/sufficiency wording | Algorithm-specific? | Threshold-identifiability result? |
+|---|---|---|---|---|---|---|
+| 2022 OEF, arXiv:2207.05285 | node/history-action coverage in the original OEF formulation | §3 data/problem; §4 model-based analysis; numbering is not imported into later versions | equilibrium/profile and exploitability through a learned model | sufficient conditions for analyzed procedure | Yes | No |
+| ICLR 2025, `Re5iu0hBTs` | Def. 4.1 uniform; Def. 4.2 epsilon-equilibrium coverage | Assumption 4.3; Theorems 4.4 MB, 4.5 BC, 4.6 BOMB | algorithm convergence/performance | Thm. 4.4 is **iff** under Assumption 4.3 | Yes | No |
+| 2025 NTU thesis | Assumption 6.3 random/uniform cover; Assumption 6.4 expert/equilibrium cover | §6.5; Table 6.2; Theorem 6.6 | BOMB convergence under random/expert datasets | convergence under the stated dataset conditions | Yes | No |
+| ICLR 2026, `h8u0KWgg9C` | Def. 4.1 uniform; Def. 4.2 epsilon-equilibrium coverage | Assumption 4.3; Theorems 4.4 MB, 4.5 BC, 4.6 BOMB | algorithm performance guarantees | **if** conditions hold; if either fails, guarantee **may no longer hold**—not recorded as iff | Yes | No |
+
+**Fresh collision audit.** The 2025 iff remains scoped to one algorithm and
+Assumption 4.3, so it proves none of A–D directly. The 2026 revision does not
+strengthen this into all-algorithms necessity. Neither version identifies exact
+equilibrium value or studies a threshold bit. Neither permits Witness-B games
+to remain observationally equivalent while retaining its node/state-action
+evidence. Consequently the stronger corrected record changes neither the
+A–D scores nor Paper Shape B; that conclusion follows from the mismatched
+quantifiers, evidence object, and estimand rather than from weakening BOMB.
 
 ### Cui and Du, *When is Offline Two-Player Zero-Sum Markov Game Solvable?*
 
@@ -146,10 +179,8 @@ and minimax lower-bound theorem.
 
 ### Chen et al., KL-regularized offline zero-sum Markov games
 
-Primary source: [arXiv:2605.13025](https://arxiv.org/abs/2605.13025), May 2026
-version reviewed. Relevant items are its KL-regularized objective, unilateral
-coverage definition, and main finite-sample upper/lower bounds; theorem
-numbering must be rechecked against any later arXiv revision.
+Primary source: [arXiv:2605.13025](https://arxiv.org/abs/2605.13025), **arXiv v1, submitted 13 May 2026**. The official submission history was rechecked and contains only v1. Relevant items are its KL-regularized objective, unilateral
+coverage definition, and main finite-sample upper/lower bounds; theorem numbering from that v1 record.
 
 The common Markov state remains in the data and both players' information;
 regularization modifies the equilibrium target and coverage/rate tradeoff. It
@@ -193,7 +224,7 @@ approximations.
 | Horizon/payoff | Source emphasizes discounted stochastic reward; add time to state and absorbing failure/recovery terminals to represent the project's finite-horizon reach-avoid loss. |
 | Strategies/value | Behavioral/history-dependent strategies and zero-sum value; the finite perfect-recall project normal form is realization-equivalent for its finite specialization. |
 | Offline evidence | None: the complete game is solver input. |
-| Interface mapping | `I_full`: **EQUIVALENT** for the augmented finite specialization; `I_node`: **INCOMPARABLE**; `I_public`: **PROJECT INTERFACE STRICTLY RICHER** only as an *evidence object* because the solver has no offline sample, while the source assumes model knowledge. |
+| Interface mapping | `I_full`: **EQUIVALENT** for the augmented finite specialization; `I_node`: **INCOMPARABLE**; `I_public`: **INCOMPARABLE**. Horák et al. take a known game as solver input, while the latter two are evidence interfaces for identification; neither category is strictly richer merely because the paper has no offline sample. |
 | Collision | Game-model novelty is preempted. A–D remain **RELATED BUT FORMALLY DISTINCT** because OS-POSG solution theory assumes the model rather than identifying it from public evidence. |
 
 Thus the repository game is a **finite-horizon reach-avoid special case after
@@ -259,8 +290,7 @@ Expansion stopped when new candidates did not combine all four collision
 coordinates: one-sided private state, a state-marginal public population
 interface, passive public joint-action support, and exact minimax threshold
 identification. This is evidence of **no material collision found**, not proof
-of absence. The thesis locator and mutable 2026 preprint are the two explicit
-pre-manuscript recheck items.
+of absence. The reviewed primary versions now resolve the earlier thesis-locator and Chen-version questions.
 
 ## Collision verdicts and publication consequences
 
@@ -283,9 +313,7 @@ also abandoned because the game is an OS-POSG specialization.
 
 The verdict is strong enough to choose Shape B and to prohibit stronger novelty
 language. Before a manuscript treats the review as archival-complete, however,
-resolve the thesis institutional locator/chapter numbering and recheck the
-mutable May 2026 KL preprint for later revisions. Those items could lower a
-score; they do not support raising one. This review deliberately retains
+preserve the reviewed OpenReview revisions because their theorem wording differs. No source-specific uncertainty currently changes a collision verdict. This review deliberately retains
 **PROVED HERE FOR THE DECLARED FINITE FAMILY; NOVELTY NOT YET ESTABLISHED** for
 A–D.
 
@@ -297,12 +325,13 @@ The detailed source cards above control if this compact matrix is ambiguous.
 | Source; citation/year | Exact theorem / assumption | Game class; player information; move timing | Offline evidence; learner observation; coverage | Recovery object; guarantee; necessity/sufficiency | Project interface mapping | Closest proposition; formal relationship; collision verdict; reason |
 |---|---|---|---|---|---|---|
 | Li et al., OEF; arXiv:2207.05285 (2022) | §3 OEF/data; §4 model-based result | finite IIEFG; represented information sets; EFG timing | node/history-assigned trajectories; learner sees model node/action; node-action coverage | equilibrium/profile, exploitability; convergence; procedure-level sufficiency | **SOURCE STRICTLY RICHER / INCOMPARABLE / PROJECT INTERFACE STRICTLY RICHER** | D; no interface-preserving reduction; **RELATED BUT FORMALLY DISTINCT** because state/node labels exceed public records and no threshold is targeted |
-| Li et al., BOMB; OpenReview Re5iu0hBTs (2024) | Assumption 4.1; Theorem 4.1; §3–4 | finite IIEFG; represented nodes/information sets; EFG timing | episodes for node/action model estimation; uniform quantitative node-action coverage | model, equilibrium/profile, exploitability; convergence; sufficient for framework, not universal necessity | **SOURCE STRICTLY RICHER / INCOMPARABLE / PROJECT INTERFACE STRICTLY RICHER** | D; no reduction; **RELATED BUT FORMALLY DISTINCT** because “minimal” is not an all-algorithms threshold theorem |
-| Li thesis (2025) | OEF/BOMB chapter coverage assumption and convergence theorem (chapter number unresolved) | finite IIEFG; same one-sided possibilities; EFG timing | node/action trajectories and fitted model; uniform coverage | model/equilibrium/exploitability; convergence; framework sufficiency | **SOURCE STRICTLY RICHER / INCOMPARABLE / PROJECT INTERFACE STRICTLY RICHER** | D; **RELATED BUT FORMALLY DISTINCT**; later exposition does not strengthen quantifiers |
+| Li et al., ICLR-2025 OEF/BOMB; OpenReview Re5iu0hBTs | Defs. 4.1–4.2; Assumption 4.3; Theorems 4.4–4.6 | finite IIEFG; represented nodes/information sets; EFG timing | episodes for node/action model estimation; uniform quantitative node-action coverage | model, equilibrium/profile, exploitability; convergence; Thm. 4.4 iff for MB guarantee under Assumption 4.3; not universal necessity | **SOURCE STRICTLY RICHER / INCOMPARABLE / PROJECT INTERFACE STRICTLY RICHER** | D; no reduction; **RELATED BUT FORMALLY DISTINCT** because “minimal” is not an all-algorithms threshold theorem |
+| Li et al., ICLR-2026 OEF/BOMB; OpenReview h8u0KWgg9C | Defs. 4.1–4.2; Assumption 4.3; Theorems 4.4–4.6 | finite IIEFG; represented nodes/information sets; EFG timing | node/action episodes; uniform/equilibrium coverage | MB/BC/BOMB performance; conditional and may-no-longer-hold wording, not iff | **SOURCE STRICTLY RICHER / INCOMPARABLE / PROJECT INTERFACE STRICTLY RICHER** | A–D; **RELATED BUT FORMALLY DISTINCT**; no all-algorithms or threshold theorem |
+| Li thesis (2025) | Chapter 6 §6.5; Assumptions 6.3–6.4; Table 6.2; Theorem 6.6 | finite IIEFG; same one-sided possibilities; EFG timing | node/action trajectories and fitted model; uniform coverage | model/equilibrium/exploitability; convergence; framework sufficiency | **SOURCE STRICTLY RICHER / INCOMPARABLE / PROJECT INTERFACE STRICTLY RICHER** | D; **RELATED BUT FORMALLY DISTINCT**; later exposition does not strengthen quantifiers |
 | Cui–Du; arXiv:2201.03522 / NeurIPS 2022 | Defs. 3.1–3.2; Thms. 4.3–4.4 | tabular zero-sum Markov game; common observed state; simultaneous stage actions | state/action/reward/next-state trajectories; learner sees `s`; quantitative occupancy ratios | NE policies/profile, duality gap/value consequences; finite-sample upper/lower bounds; unilateral sufficiency and NE-learning necessity | **SOURCE STRICTLY RICHER / INCOMPARABLE / PROJECT INTERFACE STRICTLY RICHER** | D; attempted reduction fails at state observability/policy class; **RELATED BUT FORMALLY DISTINCT** |
 | Yan–Li–Chen–Fan; DOI 10.1287/opre.2022.0342 (version of record) | §2; Assumption 1; main upper/lower-bound theorems | tabular zero-sum Markov game; common state; simultaneous | state-indexed transition data; quantitative unilateral concentrability | NE policies, duality gap/value consequences; rate bounds; sufficient/sharp for learning objective | **SOURCE STRICTLY RICHER / INCOMPARABLE / PROJECT INTERFACE STRICTLY RICHER** | D; **RELATED BUT FORMALLY DISTINCT** because latent state is not marginalized |
 | Chen et al.; arXiv:2605.13025 (May 2026) | regularized objective/coverage definitions; main upper/lower bounds | KL-regularized common-state Markov game; simultaneous | state-indexed offline transitions; regularized/unilateral coverage | regularized policy/profile/value; statistical bounds; objective-specific upper/lower results | **SOURCE STRICTLY RICHER / INCOMPARABLE / PROJECT INTERFACE STRICTLY RICHER** | D; **RELATED BUT FORMALLY DISTINCT**; different information and estimand |
 | Offline congestion games; arXiv:2210.13396 (ICLR 2023 version) | §3; Thms. 1–3 | congestion game; feedback-dependent payoff knowledge; simultaneous joint actions | joint actions plus trajectory/facility/agent feedback; feedback-specific structural coverage | approximate NE; upper/lower bounds; interface-specific necessity/sufficiency | **INCOMPARABLE / INCOMPARABLE / PROJECT INTERFACE STRICTLY RICHER** | D; no exact game reduction; **KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS** because feedback changes coverage but no latent minimax threshold appears |
-| Horák et al.; AI 316 (2023), Def. 1 / Thm. 1 | Def. 1; §3 Thm. 1; §§4–5 | zs-OS-POSG; one partial/one state-informed player; simultaneous | no offline evidence—known model input; no coverage | value/strategies; DP/approximation; not identification | **PROJECT INTERFACE STRICTLY RICHER / INCOMPARABLE / EQUIVALENT** (for augmented specialization) | A–D; model reduction succeeds but evidence reduction does not; **RELATED BUT FORMALLY DISTINCT** |
+| Horák et al.; AI 316 (2023), Def. 1 / Thm. 1 | Def. 1; §3 Thm. 1; §§4–5 | zs-OS-POSG; one partial/one state-informed player; simultaneous | no offline evidence—known model input; no coverage | value/strategies; DP/approximation; not identification | **INCOMPARABLE / INCOMPARABLE / EQUIVALENT** (for augmented specialization) | A–D; model reduction succeeds but evidence reduction does not; **RELATED BUT FORMALLY DISTINCT** |
 | Dynamic-games partial-ID; IJIO 87 (2023), 102915 | §2 and identified-set propositions in §§3–4 | econometric dynamic game; private shocks/types; dynamic actions | population market states/actions plus restrictions; no offline support condition | structural/counterfactual identified sets; sharp/set bounds; not OEF coverage | **INCOMPARABLE / INCOMPARABLE / INCOMPARABLE** | A–C; **KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS** because functional set identification is generic |
 | Galichon–Henry; arXiv:2102.12249 (2021) | Def. 1; Thm. 1; §§2–3 | multiple-equilibrium econometric model; latent selection; model-specific timing | observable distribution plus equilibrium correspondence; capacity/compatibility inequalities | structural identified set; sharp characterization; neither coverage nor equilibrium recovery | **INCOMPARABLE / INCOMPARABLE / INCOMPARABLE** | A–C; **KNOWN GENERAL PHENOMENON, PROJECT-SPECIFIC EXACT WITNESS** because coarsenings of non-singleton sets are standard |

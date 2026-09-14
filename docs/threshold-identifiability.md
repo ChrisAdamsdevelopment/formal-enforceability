@@ -167,7 +167,11 @@ extension is bounded robustness evidence, not an unrestricted theorem.
   a direct corollary under an interface-preserving reduction. Their principles
   are known; their exact finite witnesses are project-specific benchmark
   constructions. The review assigns A=2, B=2, C=1, D=2 and selects **PAPER
-  SHAPE B — THEORY + BENCHMARK**.
+  SHAPE B — THEORY + BENCHMARK**. This classification was recomputed after
+  separating the ICLR-2025 and ICLR-2026 OEF/BOMB revisions: the former's
+  model-based result is algorithm-specific iff coverage theory under its
+  training-error assumption, while neither version is an all-algorithms exact
+  value or threshold-identification theorem.
 * **PROJECT QUESTION:** whether useful general conditions identify only
   \(\mathbf1[V_H\leq\epsilon]\) from passive public evidence.
 
