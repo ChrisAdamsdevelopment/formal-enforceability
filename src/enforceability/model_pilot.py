@@ -532,7 +532,9 @@ def score(directory: Path = ARTIFACT_DIRECTORY) -> dict[str, object]:
 
 
 def _oracle_and_ignorant_baselines(keys: dict[str, dict[str, object]]) -> dict[str, object]:
-    primary = [key for render_id, key in keys.items() if "-abstract-" in render_id]
+    # Baselines use one canonical observation per formal unit. Conditions and
+    # alternate domains remain repeated experimental measurements, not extra N.
+    primary = [key for render_id, key in keys.items() if render_id.endswith("-abstract-natural")]
     oracle_action_ok = all(any(x["epistemically_consistent"] for x in key["action_evaluations"]) for key in primary)
     ignorant = {}
     for track in (TRACK_A, TRACK_B):
@@ -565,12 +567,34 @@ def build_artifacts() -> dict[str, bytes]:
 
 
 def write_artifacts(directory: Path = ARTIFACT_DIRECTORY) -> None:
-    directory.mkdir(parents=True, exist_ok=True)
-    for path in directory.iterdir():
-        if path.is_file():
-            path.unlink()
-    for name, data in build_artifacts().items():
-        (directory / name).write_bytes(data)
+    """Create or verify the pre-execution freeze without deleting any data."""
+    expected = build_artifacts()
+    if not directory.exists():
+        directory.mkdir(parents=True)
+    entries = list(directory.iterdir())
+    existing = {path.name: path for path in entries if path.is_file()}
+    if len(existing) != len(entries):
+        raise RuntimeError("refusing to rebuild a nonempty, noncanonical pre-execution directory")
+    if not existing:
+        for name, data in expected.items():
+            (directory / name).write_bytes(data)
+        return
+
+    append_only = ("raw-responses.jsonl", "transport-events.jsonl", "execution-sessions.jsonl")
+    execution_has_begun = any(
+        (directory / name).exists() and (directory / name).stat().st_size > 0 for name in append_only
+    ) or any((directory / name).exists() for name in ("execution-manifest.json", "execution-freeze.json"))
+    execution_has_begun = execution_has_begun or (
+        (directory / "scored-responses.jsonl").exists() and (directory / "scored-responses.jsonl").stat().st_size > 0
+    )
+    if execution_has_begun:
+        raise RuntimeError("refusing to rebuild frozen pilot after execution has begun")
+    if set(existing) != set(expected):
+        raise RuntimeError("refusing to rebuild a nonempty, noncanonical pre-execution directory")
+    mismatches = [name for name, data in expected.items() if existing[name].read_bytes() != data]
+    if mismatches:
+        raise RuntimeError(f"refusing to overwrite mismatched pre-execution artifacts: {mismatches}")
+    # Exact pre-execution set: verification only; leave every byte untouched.
 
 
 def verify_pre_execution(directory: Path = ARTIFACT_DIRECTORY) -> dict[str, object]:

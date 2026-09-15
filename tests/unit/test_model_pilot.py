@@ -24,6 +24,7 @@ from enforceability.model_pilot import (
     strict_parse,
     validate_configurations,
     verify,
+    write_artifacts,
 )
 
 
@@ -68,6 +69,48 @@ def test_plan_revision_and_artifacts_are_frozen_before_execution():
     assert set(expected) == {path.name for path in ARTIFACT_DIRECTORY.iterdir()}
     assert all((ARTIFACT_DIRECTORY / name).read_bytes() == value for name, value in expected.items())
     assert verify()["status"] == "READY_FOR_PROVIDER_EXECUTION"
+
+
+def test_baselines_use_one_natural_abstract_render_per_formal_instance():
+    report = json.loads((ARTIFACT_DIRECTORY / "aggregate-report.json").read_text())["baselines"]
+    assert report["oracle"] == {"accuracy": 1.0, "all_cases_have_mechanically_certifiable_consistent_action": True,
+                                "n": 18, "not_an_ai_model": True, "proposition_correct": 18}
+    ignorant = report["deliberately_ignorant_majority_by_track"]
+    assert ignorant[TRACK_A]["n"] == 12 and ignorant[TRACK_A]["correct"] == 4 and ignorant[TRACK_A]["accuracy"] == 1 / 3
+    assert ignorant[TRACK_B]["n"] == 6 and ignorant[TRACK_B]["correct"] == 3 and ignorant[TRACK_B]["accuracy"] == 1 / 2
+
+
+@pytest.mark.parametrize("marker", ["raw", "transport", "sessions", "manifest", "freeze", "scored"])
+def test_build_never_erases_execution_evidence(artifact_copy, marker):
+    markers = {
+        "raw": ("raw-responses.jsonl", b'{"completed":"response"}\n'),
+        "transport": ("transport-events.jsonl", b'{"transport":"failure"}\n'),
+        "sessions": ("execution-sessions.jsonl", b'{"session":"started"}\n'),
+        "manifest": ("execution-manifest.json", b'{"frozen":"configuration"}\n'),
+        "freeze": ("execution-freeze.json", b'{"frozen":"results"}\n'),
+        "scored": ("scored-responses.jsonl", b'{"scored":"response"}\n'),
+    }
+    name, evidence = markers[marker]
+    (artifact_copy / name).write_bytes(evidence)
+    if marker == "raw":
+        (artifact_copy / "execution-manifest.json").write_bytes(b'{"frozen":"configuration"}\n')
+    before = {path.name: path.read_bytes() for path in artifact_copy.iterdir() if path.is_file()}
+    with pytest.raises(RuntimeError, match="after execution has begun"):
+        write_artifacts(artifact_copy)
+    assert {path.name: path.read_bytes() for path in artifact_copy.iterdir() if path.is_file()} == before
+
+
+def test_build_is_idempotent_for_exact_pre_execution_freeze(artifact_copy):
+    before = {path.name: path.read_bytes() for path in artifact_copy.iterdir() if path.is_file()}
+    write_artifacts(artifact_copy)
+    assert {path.name: path.read_bytes() for path in artifact_copy.iterdir() if path.is_file()} == before
+
+
+def test_build_creates_pre_execution_freeze_in_empty_directory(tmp_path):
+    directory = tmp_path / "empty-pilot"
+    directory.mkdir()
+    write_artifacts(directory)
+    assert {path.name: path.read_bytes() for path in directory.iterdir()} == build_artifacts()
 
 
 def test_strict_parser_accepts_only_neutral_schema():
