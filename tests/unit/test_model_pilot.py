@@ -171,6 +171,27 @@ def test_repair_preserves_both_calls_metadata_and_occurs_once(artifact_copy, tmp
     assert "original_request" not in calls[1]
 
 
+def test_repair_transport_failure_preserves_initial_evidence(artifact_copy, tmp_path, monkeypatch):
+    monkeypatch.setenv("TEST_STANDARD_KEY", "x"); monkeypatch.setenv("TEST_STRONG_KEY", "x")
+    config_path = tmp_path / "config.json"; config_path.write_text(json.dumps({"configurations": configurations()}))
+    calls = 0
+    def transport(config, payload, credential):
+        nonlocal calls; calls += 1
+        if calls == 1:
+            return provider_response("not json", "initial-preserved")
+        raise OSError("repair unavailable")
+    with pytest.raises(OSError):
+        run(config_path, artifact_copy, transport, harness_sha="test-sha")
+    rows = [json.loads(line) for line in (artifact_copy / "raw-responses.jsonl").read_text().splitlines()]
+    assert len(rows) == 1
+    assert rows[0]["initial_raw_response"] == "not json"
+    assert rows[0]["initial_provider_request_id"] == "initial-preserved"
+    assert rows[0]["repair_attempted"] is True and rows[0]["repair_raw_response"] is None
+    events = [json.loads(line) for line in (artifact_copy / "transport-events.jsonl").read_text().splitlines()]
+    assert events[0]["phase"] == "repair"
+    assert verify(artifact_copy)["status"] == "EXECUTION_INCOMPLETE"
+
+
 def test_resume_skips_first_ten_and_transport_events_are_separate(artifact_copy, tmp_path, monkeypatch):
     monkeypatch.setenv("TEST_STANDARD_KEY", "x"); monkeypatch.setenv("TEST_STRONG_KEY", "x")
     path = tmp_path / "config.json"; path.write_text(json.dumps({"configurations": configurations()}))

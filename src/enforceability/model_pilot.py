@@ -57,6 +57,9 @@ class ProviderProtocolError(ValueError):
         self.safe_status = safe_status
 
 
+TRANSPORT_ERRORS = (OSError, TimeoutError, urllib.error.URLError, urllib.error.HTTPError, ProviderProtocolError)
+
+
 def _sha(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
@@ -357,6 +360,7 @@ def run(config_path: Path, directory: Path = ARTIFACT_DIRECTORY,
                 key = execution_key(config["id"], request["request_id"])
                 if key in completed:
                     continue
+                transport_phase = "initial"
                 try:
                     session["transport_attempts"] += 1
                     initial = _provider_call(config, build_initial_payload(config, request["prompt"]), credential, transport)
@@ -371,18 +375,28 @@ def run(config_path: Path, directory: Path = ARTIFACT_DIRECTORY,
                     try:
                         strict_parse(initial["raw_response"], keys[request["render_id"]])
                     except (ValueError, json.JSONDecodeError):
+                        record["repair_attempted"] = True
+                        transport_phase = "repair"
                         session["transport_attempts"] += 1
-                        repair = _provider_call(config, build_format_repair_payload(config, request["prompt"]["response_schema"], initial["raw_response"]), credential, transport)
+                        try:
+                            repair = _provider_call(config, build_format_repair_payload(config, request["prompt"]["response_schema"], initial["raw_response"]), credential, transport)
+                        except TRANSPORT_ERRORS:
+                            # The initial model evidence is already complete. Preserve it
+                            # before propagating the repair transport/protocol failure so
+                            # resume cannot silently issue the initial request again.
+                            _append_jsonl(directory / "raw-responses.jsonl", record)
+                            completed.add(key); session["completed_during_session"] += 1
+                            raise
                         record.update({"repair_attempted": True, "repair_raw_response": repair["raw_response"],
                                        "repair_provider_request_id": repair["provider_request_id"], "repair_token_usage": repair["token_usage"],
                                        "repair_latency": repair["latency"], "repair_timestamp": repair["timestamp"]})
                     _append_jsonl(directory / "raw-responses.jsonl", record)
                     completed.add(key); session["completed_during_session"] += 1
-                except (OSError, TimeoutError, urllib.error.URLError, urllib.error.HTTPError, ProviderProtocolError) as exc:
+                except TRANSPORT_ERRORS as exc:
                     event = {"execution_key": key, "model_configuration_id": config["id"], "request_id": request["request_id"],
                              "timestamp": _now(), "error_class": type(exc).__name__,
                              "safe_provider_status": getattr(exc, "code", getattr(exc, "safe_status", None)),
-                             "execution_session_id": session["session_id"]}
+                             "execution_session_id": session["session_id"], "phase": transport_phase}
                     _append_jsonl(directory / "transport-events.jsonl", event)
                     session["transport_failures"] += 1
                     raise
@@ -422,7 +436,7 @@ def score_records(raw_records: list[dict[str, object]]) -> list[dict[str, object
         initial_ok = True
         try:
             strict_parse(row["initial_raw_response"], private)
-        except (ValueError, json.JSONDecodeError):
+        except (TypeError, ValueError, json.JSONDecodeError):
             initial_ok = False
         supplied = "repair" if row["repair_attempted"] else "initial"
         raw = row["repair_raw_response"] if row["repair_attempted"] else row["initial_raw_response"]
