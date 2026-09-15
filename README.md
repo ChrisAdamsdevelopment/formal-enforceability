@@ -29,7 +29,7 @@ The repository does not establish a new general identifiability theorem. The
 [actionability formalization](docs/actionability.md) instead records the exact
 identity `W = upper V`, the standard inequality `W <= R`, and a finite one-step
 vertex reduction for a fixed policy. Uniform actionability is a hierarchical
-refinement only inside the certifiably-WINNING branch. A deterministic
-[Stage 6A pilot](docs/stage6-pilot-design.md) is the next experimental gate;
-no frontier-model evaluation has started, and the canonical-interface witness
-gap documented there remains a blocker.
+refinement only inside the certifiably-WINNING branch. The
+[small Stage 6A model-pilot plan](docs/stage6a-model-pilot.md) and execution
+harness are frozen. Real provider responses collected: **0**. Provider execution
+remains blocked pending two explicit configurations and fresh green hosted CI.

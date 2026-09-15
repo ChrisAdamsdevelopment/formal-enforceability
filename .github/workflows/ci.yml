@@ -10,6 +10,16 @@ jobs:
       - run: python -m pip install -e '.[test]'
       - run: ruff check src tests
       - run: python -m pytest
+      - run: git diff --check
+      - name: Verify scientific artifacts and independent oracle modules
+        run: |
+          PYTHONPATH=src python -m enforceability.identifiability
+          PYTHONPATH=src python -m enforceability.prior_art_review
+          PYTHONPATH=src python -m enforceability.stage6_pilot
+          PYTHONPATH=src python -m enforceability.model_pilot verify
+          PYTHONPATH=src python -m enforceability.validation_report
       - run: validate-independent-oracle
       - run: verify-identifiability
       - run: verify-prior-art-review
+      - run: verify-stage6a-pilot
+      - run: verify-stage6a-model-pilot
