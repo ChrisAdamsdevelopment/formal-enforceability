@@ -189,7 +189,16 @@ def test_repair_transport_failure_preserves_initial_evidence(artifact_copy, tmp_
     assert rows[0]["repair_attempted"] is True and rows[0]["repair_raw_response"] is None
     events = [json.loads(line) for line in (artifact_copy / "transport-events.jsonl").read_text().splitlines()]
     assert events[0]["phase"] == "repair"
-    assert verify(artifact_copy)["status"] == "EXECUTION_INCOMPLETE"
+    verification = verify(artifact_copy)
+    assert verification["status"] == "EXECUTION_INCOMPLETE"
+    assert verification["completed"] == 0 and verification["missing"] == 140
+    requests, _ = build_requests(); resumed = []
+    def resume_transport(config, payload, credential):
+        resumed.append(json.loads(payload["input"])["render_id"])
+        raise OSError("stop resumed session")
+    with pytest.raises(OSError):
+        run(config_path, artifact_copy, resume_transport, harness_sha="test-sha")
+    assert resumed == [requests[1]["render_id"]]
 
 
 def test_resume_skips_first_ten_and_transport_events_are_separate(artifact_copy, tmp_path, monkeypatch):

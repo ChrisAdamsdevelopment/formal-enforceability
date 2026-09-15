@@ -647,9 +647,13 @@ def verify(directory: Path = ARTIFACT_DIRECTORY) -> dict[str, object]:
     requests, _ = build_requests()
     completed = validate_completed_records(raw, manifest, requests)
     expected_keys = {execution_key(config["configuration_id"], request["request_id"]) for config in manifest["configurations"] for request in requests}
-    missing = expected_keys - completed
+    incomplete_repairs = {
+        row["execution_key"] for row in raw if row["repair_attempted"] and row["repair_raw_response"] is None
+    }
+    missing = (expected_keys - completed) | incomplete_repairs
     if missing:
-        return {"status": "EXECUTION_INCOMPLETE", "completed": len(completed), "expected": len(expected_keys), "missing": len(missing)}
+        return {"status": "EXECUTION_INCOMPLETE", "completed": len(completed - incomplete_repairs),
+                "expected": len(expected_keys), "missing": len(missing)}
     freeze_path = directory / "execution-freeze.json"
     if not freeze_path.exists():
         raise ValueError("completed calls lack execution freeze")
