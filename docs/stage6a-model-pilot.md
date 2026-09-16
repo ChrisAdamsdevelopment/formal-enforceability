@@ -155,3 +155,31 @@ stage6a-model-pilot run --config /secure/path/stage6a-models.json
 stage6a-model-pilot score
 verify-stage6a-model-pilot
 ```
+
+## Execution configuration handoff
+
+Provider execution must not start from guessed credentials, endpoints, models,
+or provider capabilities. When those details have not been supplied, the
+checked-in `configs/stage6a-models.example.json` is the execution-ready handoff
+template. Keep the fixed roles, adapter, temperature, seed, and output limit in
+that template unchanged. The operator must supply only these provider-specific
+values for each configuration before `run`:
+
+- `id`: a unique, stable configuration identifier;
+- `endpoint`: the exact OpenAI Responses-compatible endpoint;
+- `credential_env`: the name of an environment variable containing the secret
+  (never the secret itself);
+- `model`: the exact pinned model/version identifier, not a moving `latest`
+  alias when a stable identifier is available;
+- `reasoning_effort`: the exact provider-supported setting that fulfills the
+  configuration's frozen role; and
+- `unsupported_parameters`: every optional request parameter unsupported by
+  that endpoint, selected only from `temperature`, `seed`, `reasoning`, and
+  `reasoning_effort`.
+
+The standard/default and stronger-reasoning configurations must remain
+substantively distinct. If the selected provider does not support a reasoning
+parameter, record that fact in `unsupported_parameters`; do not invent a
+setting. Credentials remain exclusively in the named environment variables.
+Validate the completed file and obtain any required cost/configuration approval
+before provider call 1.
