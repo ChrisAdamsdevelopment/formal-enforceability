@@ -205,6 +205,7 @@
     "total_calls_per_model": 70,
     "unique_formal_instances": 18
   },
+  "scoring_gate": "Scientific scoring and execution-freeze creation require all 140 frozen execution keys to have completed outcomes; EXECUTION_INCOMPLETE prohibits scoring and leaves every analysis artifact unchanged.",
   "selection_rule": "Fixed class-local indices recorded in source, applied to deterministic frozen Stage 6A order; no model outputs used.",
   "stage6a_freeze_file": "artifacts/stage6-pilot-v1/pilot-freeze.json",
   "stage6a_freeze_sha256": "917364477c330cfeee6e368dfe9692f35238c7bfb11ce37c744f5cfa5a6336c1",

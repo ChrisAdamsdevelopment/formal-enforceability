@@ -49,6 +49,8 @@ FORMAT_ONLY_MESSAGE = (
     "Return only a JSON object matching response_schema."
 )
 OPTIONAL_PARAMETERS = {"temperature", "seed", "reasoning", "reasoning_effort"}
+ANALYSIS_OUTPUTS = {"scored-responses.jsonl", "aggregate-report.json", "repair-sensitivity-report.json",
+                    "cross-domain-report.json", "condition-transition-report.json"}
 
 
 class ProviderProtocolError(ValueError):
@@ -180,6 +182,7 @@ def pilot_plan() -> dict[str, object]:
         "parse_failure_handling": "Only a completed provider response with malformed answer JSON may receive at most one format-only repair containing that malformed response. Preserve initial and repair evidence. A noncompleted initial or repair envelope is never parsed or repaired again and remains scientifically incomplete.",
         "retry_rules": {"format_repairs": 1, "repair_message": FORMAT_ONLY_MESSAGE, "semantic_retries": 0, "transport_retries": 0, "provider_noncompletion_retries": 0, "manual_resume": "a new audited execution session may attempt keys having transport events but no response evidence; completed answers and keys with initial- or repair-phase noncompletion evidence are never silently reissued"},
         "stop_criteria": ["Stop rather than tune if a genuine benchmark validity defect appears.", "Do not execute or claim results with fewer than two validated real model configurations.", "Attempt exactly 70 scientific request keys per configuration; any provider noncompletion or unresolved transport failure is explicitly preserved and verification reports EXECUTION_INCOMPLETE."],
+        "scoring_gate": "Scientific scoring and execution-freeze creation require all 140 frozen execution keys to have completed outcomes; EXECUTION_INCOMPLETE prohibits scoring and leaves every analysis artifact unchanged.",
         "interpretation": "Exploratory construct-validity pilot only; report counts, percentages, paired transitions, and confidence distributions without significance or population-ranking claims.",
     }
 
@@ -646,14 +649,36 @@ def aggregate_reports(rows: list[dict[str, object]]) -> dict[str, dict[str, obje
 
 
 def score(directory: Path = ARTIFACT_DIRECTORY) -> dict[str, object]:
+    """Score only a scientifically complete frozen execution."""
     pre_freeze = (directory / "pilot-freeze.json").read_bytes()
     manifest_path = directory / "execution-manifest.json"
     if not manifest_path.exists():
         raise ValueError("execution manifest is absent")
     manifest = json.loads(manifest_path.read_text())
+    manifest_without_hash = {k: v for k, v in manifest.items() if k != "execution_manifest_sha256"}
+    if manifest.get("execution_manifest_sha256") != _sha(_json(manifest_without_hash)):
+        raise ValueError("execution manifest self-hash mismatch")
+    configs = [{("id" if k == "configuration_id" else k): v for k, v in row.items()}
+               for row in manifest.get("configurations", [])]
+    validate_configurations(configs, require_credentials=False)
+    if len(configs) != 2:
+        raise ValueError("scientific scoring requires exactly two frozen configurations")
     requests, _ = build_requests()
     raw = _read_jsonl(directory / "raw-responses.jsonl")
-    validate_completed_records(raw, manifest, requests)
+    completed = validate_completed_records(raw, manifest, requests)
+    noncompleted_rows = _read_jsonl(directory / "incomplete-responses.jsonl")
+    noncompleted = validate_incomplete_records(noncompleted_rows, manifest, requests)
+    expected = {execution_key(config["id"], request["request_id"]) for config in configs for request in requests}
+    unfinished_repairs = {row["execution_key"] for row in raw if row["repair_attempted"] and row["repair_raw_response"] is None}
+    missing = expected - completed
+    unexpected = completed - expected
+    if len(expected) != 140 or noncompleted or unfinished_repairs or missing or unexpected:
+        raise ValueError(
+            "EXECUTION_INCOMPLETE: scoring prohibited "
+            f"(expected={len(expected)}, completed={len(completed - unfinished_repairs - noncompleted)}, "
+            f"missing={len(missing | unfinished_repairs | noncompleted)}, noncompleted={len(noncompleted)}, "
+            f"unfinished_repairs={len(unfinished_repairs)}, unexpected={len(unexpected)})"
+        )
     scored = score_records(raw)
     (directory / "scored-responses.jsonl").write_text("".join(json.dumps(x, sort_keys=True) + "\n" for x in scored))
     reports = aggregate_reports(scored)
@@ -744,7 +769,10 @@ def verify_pre_execution(directory: Path = ARTIFACT_DIRECTORY) -> dict[str, obje
     freeze = json.loads((directory / "pilot-freeze.json").read_text())
     if freeze != json.loads(expected["pilot-freeze.json"]):
         raise ValueError("pre-execution pilot freeze mismatch")
+    execution_frozen = (directory / "execution-freeze.json").exists()
     for name, digest in freeze["files"].items():
+        if execution_frozen and name in ANALYSIS_OUTPUTS:
+            continue
         if _sha((directory / name).read_bytes()) != digest:
             raise ValueError(f"immutable pre-execution artifact mismatch: {name}")
     if _sha((STAGE6_DIRECTORY / "pilot-freeze.json").read_bytes()) != freeze["stage6a_source_freeze_sha256"]:

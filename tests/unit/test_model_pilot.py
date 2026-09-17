@@ -1,3 +1,4 @@
+import hashlib
 import json
 import shutil
 
@@ -43,6 +44,19 @@ def configurations():
 def provider_response(text="{}", request_id="resp_1"):
     return {"id": request_id, "status": "completed", "usage": {"input_tokens": 2, "output_tokens": 3},
             "output": [{"type": "message", "content": [{"type": "output_text", "text": text}]}]}
+
+
+ANALYSIS_FILES = ("scored-responses.jsonl", "aggregate-report.json", "repair-sensitivity-report.json",
+                  "cross-domain-report.json", "condition-transition-report.json", "pilot-freeze.json")
+
+
+def assert_scoring_rejected_without_mutation(directory):
+    before = {name: (directory / name).read_bytes() for name in ANALYSIS_FILES}
+    assert not (directory / "execution-freeze.json").exists()
+    with pytest.raises(ValueError, match="EXECUTION_INCOMPLETE: scoring prohibited"):
+        score(directory)
+    assert before == {name: (directory / name).read_bytes() for name in ANALYSIS_FILES}
+    assert not (directory / "execution-freeze.json").exists()
 
 
 @pytest.fixture
@@ -255,6 +269,7 @@ def test_incomplete_response_is_preserved_without_parse_repair_or_completion(art
     result = verify(artifact_copy)
     assert result["status"] == "EXECUTION_INCOMPLETE" and result["completed"] == 0
     assert result["provider_incomplete"] == 1
+    assert_scoring_rejected_without_mutation(artifact_copy)
 
     resumed = []
     def resumed_transport(config, payload, credential):
@@ -291,6 +306,7 @@ def test_repair_incomplete_preserves_both_evidence_streams_and_resume_skips_key(
     assert first_incomplete["initial_raw_response"] == "malformed initial"
     assert first_incomplete["provider_response"] == repair_envelope and first_incomplete["phase"] == "repair"
     assert verify(artifact_copy)["status"] == "EXECUTION_INCOMPLETE"
+    assert_scoring_rejected_without_mutation(artifact_copy)
     before = ((artifact_copy / "raw-responses.jsonl").read_bytes(), (artifact_copy / "incomplete-responses.jsonl").read_bytes())
     resumed_calls = []
     def resumed(config, payload, credential):
@@ -324,6 +340,7 @@ def test_repair_transport_failure_preserves_initial_evidence(artifact_copy, tmp_
     verification = verify(artifact_copy)
     assert verification["status"] == "EXECUTION_INCOMPLETE"
     assert verification["completed"] == 0 and verification["missing"] == 140
+    assert_scoring_rejected_without_mutation(artifact_copy)
     requests, _ = build_requests(); resumed = []
     def resume_transport(config, payload, credential):
         resumed.append(json.loads(payload["input"])["render_id"])
@@ -382,7 +399,7 @@ def test_duplicate_partial_and_configuration_request_drift_failures(artifact_cop
     with pytest.raises(ValueError, match="drift"): verify(artifact_copy)
 
 
-def test_scoring_preserves_pre_execution_freeze_and_reports_repair_sensitivity(artifact_copy, tmp_path, monkeypatch):
+def test_interrupted_partial_run_cannot_be_scored(artifact_copy, tmp_path, monkeypatch):
     monkeypatch.setenv("TEST_STANDARD_KEY", "x"); monkeypatch.setenv("TEST_STRONG_KEY", "x")
     path = tmp_path / "config.json"; path.write_text(json.dumps({"configurations": configurations()}))
     requests, keys = build_requests(); private = keys[requests[0]["render_id"]]
@@ -394,12 +411,44 @@ def test_scoring_preserves_pre_execution_freeze_and_reports_repair_sensitivity(a
         if calls == 2: return provider_response(valid)
         raise OSError("stop")
     with pytest.raises(OSError): run(path, artifact_copy, transport, harness_sha="test-sha")
-    before = (artifact_copy / "pilot-freeze.json").read_bytes(); score(artifact_copy)
+    assert_scoring_rejected_without_mutation(artifact_copy)
+
+
+def test_complete_execution_scores_and_freezes_all_140_keys(artifact_copy, tmp_path, monkeypatch):
+    monkeypatch.setenv("TEST_STANDARD_KEY", "x"); monkeypatch.setenv("TEST_STRONG_KEY", "x")
+    path = tmp_path / "config.json"; path.write_text(json.dumps({"configurations": configurations()}))
+    requests, keys = build_requests(); valid_by_render = {}
+    for request in requests:
+        private = keys[request["render_id"]]
+        valid_by_render[request["render_id"]] = json.dumps({
+            "answer_id": next(iter(private["answer_id_to_semantic"])),
+            "action_id": next(iter(private["action_id_to_semantic"])), "confidence": 0.5,
+        })
+    calls = 0
+    def transport(config, payload, credential):
+        nonlocal calls; calls += 1
+        prompt = json.loads(payload["input"])
+        if calls == 1:
+            return provider_response("bad", "initial-malformed")
+        if "format_only_message" in prompt:
+            return provider_response(valid_by_render[requests[0]["render_id"]], "repair-completed")
+        return provider_response(valid_by_render[prompt["render_id"]], f"completed-{calls}")
+    run(path, artifact_copy, transport, harness_sha="test-sha")
+    assert calls == 141
+    before = (artifact_copy / "pilot-freeze.json").read_bytes()
+    freeze = score(artifact_copy)
     assert (artifact_copy / "pilot-freeze.json").read_bytes() == before
     sensitivity = json.loads((artifact_copy / "repair-sensitivity-report.json").read_text())
     assert sensitivity["parse_failure_initial"] == 1 and sensitivity["parse_failure_after_repair"] == 0
-    assert sensitivity["accuracy_treating_all_repairs_as_failures"] == 0
-    assert (artifact_copy / "execution-freeze.json").exists()
+    assert sensitivity["accuracy_treating_all_repairs_as_failures"] < sensitivity["accuracy_with_allowed_format_repair"]
+    assert len((artifact_copy / "scored-responses.jsonl").read_text().splitlines()) == 140
+    assert set(freeze["files"]) == {"execution-manifest.json", "raw-responses.jsonl", "incomplete-responses.jsonl",
+                                     "transport-events.jsonl", "execution-sessions.jsonl", "scored-responses.jsonl",
+                                     "aggregate-report.json", "repair-sensitivity-report.json", "cross-domain-report.json",
+                                     "condition-transition-report.json"}
+    assert all(freeze["files"][name] == hashlib.sha256((artifact_copy / name).read_bytes()).hexdigest()
+               for name in freeze["files"])
+    assert verify(artifact_copy) == {"status": "VERIFIED_EXECUTED", "completed": 140, "expected": 140}
 
 
 def test_representation_inconsistency_is_cross_render_and_generic_error_is_other():
