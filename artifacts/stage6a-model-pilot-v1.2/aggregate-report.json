@@ -1,0 +1,30 @@
+{
+  "baselines": {
+    "deliberately_ignorant_majority_by_track": {
+      "canonical_public_evidence": {
+        "accuracy": 0.3333333333333333,
+        "constant_label": "CERTIFIABLY_LOSING",
+        "correct": 4,
+        "n": 12,
+        "purpose": "scoring-pipeline check, not model evidence"
+      },
+      "explicit_compatible_set_diagnostic": {
+        "accuracy": 0.5,
+        "constant_label": "COMMON_POLICY",
+        "correct": 3,
+        "n": 6,
+        "purpose": "scoring-pipeline check, not model evidence"
+      }
+    },
+    "oracle": {
+      "accuracy": 1.0,
+      "all_cases_have_mechanically_certifiable_consistent_action": true,
+      "n": 18,
+      "not_an_ai_model": true,
+      "proposition_correct": 18
+    }
+  },
+  "call_count": 0,
+  "real_model_responses": false,
+  "status": "PRE_EXECUTION_INTEGRITY_VERIFIED"
+}

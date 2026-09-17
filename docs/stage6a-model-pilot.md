@@ -1,27 +1,43 @@
-# Small Stage 6A model pilot
+# Small Stage 6A model pilot v1.2
 
 ## Status and immutable boundary
 
-**Local integrity status: verified. Decision gate:
-`NOT_READY_FOR_PROVIDER_EXECUTION` pending fresh green hosted CI and automated
-review. Real provider responses collected: 0.** The execution-integrity revision is
-`stage6a-model-pilot-v1.1`. It supersedes the pre-review plan fingerprint
-`b69f9e7017512b91b42ab03dfe9f5e8eea8ebddd697d11b163b245d1f37f81fd`
-before any provider response existed. The scientific design did not change;
-the revision specifies strict format-repair context, configuration freezing,
-crash-safe resume, transport/session auditing, and repair sensitivity.
+**Pre-execution successor: `stage6a-model-pilot-v1.2`. Real provider calls: 0.**
+V1.1 remains byte-for-byte in `artifacts/stage6a-model-pilot-v1/` and is
+superseded pre-execution. V1.2 is separately frozen in
+`artifacts/stage6a-model-pilot-v1.2/`; its freeze records the v1.1 plan,
+request-manifest, and freeze fingerprints. Thus evidence from the two versions
+cannot be confused.
 
-The source benchmark remains `artifacts/stage6-pilot-v1/pilot-freeze.json`
-(SHA-256 `917364477c330cfeee6e368dfe9692f35238c7bfb11ce37c744f5cfa5a6336c1`),
-and the pilot base remains repository SHA
-`7abe966c79a461073153fa178eb394ad9406263b`. The normative machine plan is
-`artifacts/stage6a-model-pilot-v1/pilot-plan.json`; its current fingerprint is
-recorded in immutable `pilot-freeze.json`.
+No real provider responses existed under v1.1.
 
-Once a completed raw response exists, plan, requests, execution manifest,
-prompts, mappings, and scoring rules cannot change. A genuine validity defect
-invalidates this version and requires a documented successor; model difficulty
-must never cause tuning.
+Pre-execution review found that Responses API `max_output_tokens` includes
+reasoning tokens as well as visible output. The frozen value of 500 can
+therefore truncate stronger-reasoning responses before a visible answer is
+produced, creating differential failure risk between medium and high reasoning.
+
+The pilot was revised before provider call #1.
+
+The v1.2 cap is 25,000 for both configurations. This is the smallest defensible
+initial cap because OpenAI's reasoning guidance recommends allowing at least
+25,000 tokens for reasoning and output when first experimenting, before actual
+reasoning-token requirements are known. This correction changes no formal
+instance, render, prompt, answer/action ID, hypothesis, threshold, scoring rule,
+or sample size. Primary references reviewed were OpenAI's
+[reasoning guide](https://platform.openai.com/docs/guides/reasoning) and
+[Responses reference](https://platform.openai.com/docs/api-reference/responses).
+
+Provenance summary:
+
+```text
+v1.1:
+0 provider responses
+superseded pre-execution
+
+v1.2:
+successor execution specification
+0 provider responses at time of freeze
+```
 
 ## Frozen scientific design
 
@@ -45,6 +61,44 @@ payload and prompt SHA-256 for every call are in `request-manifest.json`.
 
 ## Narrow provider adapter and configuration freeze
 
+The intended first execution uses OpenAI `gpt-5.6-terra` for both roles:
+`medium` reasoning for `standard/default reasoning`, and `high` reasoning for
+`stronger reasoning`. Using one model isolates reasoning effort. Credentials
+remain external in `OPENAI_API_KEY`. Primary public documentation reviewed for
+this freeze explicitly lists `gpt-5.6-terra`, Responses API availability, and
+the `medium` and `high` reasoning levels. It does not establish exact-model
+acceptance of `temperature` or `seed`; no claim is inferred from a third-party
+schema. The example therefore records `temperature: 0` but lists
+`temperature` as unsupported so it is omitted, and likewise records `seed:
+null` with `seed` unsupported because the Responses request reference does not
+document a seed field. Exact model, medium/high effort, and parameter acceptance
+must pass the non-benchmark canary below before scientific call #1.
+
+Every request unconditionally emits `store: false`. This is a runtime/privacy
+control, not a scientific parameter: each request is independent and requires
+no provider-side conversational state.
+
+A top-level `status: completed` is required before `output_text` extraction or
+answer parsing. Missing status is a protocol failure. `incomplete` and every
+other explicit noncompleted status (`failed`, `in_progress`, `cancelled`, or
+`queued`) fail closed even if an output field exists. For `incomplete`, the
+documented reason is retained without assigning any invented meaning.
+
+For either the initial or repair phase, the harness preserves the entire safe
+noncompleted JSON envelope, response ID, usage, timestamp, latency,
+configuration/request identity, status, reason, execution key, and phase in
+`incomplete-responses.jsonl`. It performs no further repair and no automatic
+retry. If a completed initial answer was malformed and its single permitted
+repair is noncompleted, the noncompletion record also embeds all initial raw
+answer metadata before the initial record is appended to `raw-responses.jsonl`.
+This append order makes both pieces crash-safe in one first append; the two
+streams may intentionally share that execution key only for repair-phase
+noncompletion. Resume skips the evidenced key, and verification subtracts it
+from completed scientific answers and reports `EXECUTION_INCOMPLETE`. OpenAI
+currently documents `max_output_tokens` and `content_filter` as incomplete
+reasons; handling is generic for any provider-supplied reason.
+
+
 V1 supports only `openai_responses_compatible`: bearer-authenticated HTTP with
 an OpenAI Responses-style request and raw `output[].content[]` extraction for
 `output_text`. It is not advertised as an arbitrary-provider adapter. Provider
@@ -53,11 +107,21 @@ model answers.
 
 Before call 1, the runner validates the complete configuration schema, safe
 endpoint, supported adapter, allowed unsupported-parameter names, positive
-output limit, unique IDs, unique substantive configurations, exactly one role
-per record, and presence of both `standard/default reasoning` and `stronger
-reasoning`. It confirms each explicitly named credential environment variable
+output limit, unique IDs, unique substantive configurations, and exactly one
+configuration for each required role. It enforces the exact role mapping
+`standard/default reasoning = medium` and `stronger reasoning = high`. Adapter,
+normalized endpoint, model ID, 25,000-token cap, temperature and seed values,
+and unsupported-parameter policy must match, so reasoning effort is the only
+generation-treatment difference. Neither required role may list `reasoning` or
+`reasoning_effort` as unsupported: validated scientific payloads must contain
+exactly `{"reasoning": {"effort": "medium"}}` and
+`{"reasoning": {"effort": "high"}}`, respectively, rather than silently using
+a provider default. It confirms each credential environment variable
 exists without serializing its value. Parameters declared unsupported are
-actually omitted (`temperature`, `seed`, and `reasoning`/`reasoning_effort`).
+actually omitted; in the required pair this applies to `temperature` and
+`seed`, never to the mandatory reasoning treatment. Optional future
+non-scientific configurations may still omit reasoning when explicitly marked
+unsupported.
 
 It then writes `execution-manifest.json` before calling the provider. That
 sanitized file records configuration ID and role, adapter, safe endpoint
@@ -110,6 +174,16 @@ record: session ID, start/end timestamp, harness Git SHA, plan/request/execution
 manifest hashes, completed count before/during the session, transport failures,
 and end status.
 
+Every completed and noncompleted evidence record is bound back to its canonical
+frozen request. Validation compares formal-instance ID, render ID, track,
+domain, condition, and prompt hash in addition to the execution key, request ID,
+model-configuration ID, and exact configuration snapshot. Noncompleted audit
+fields must also agree with their primary preserved provider envelope: status,
+response ID, usage, and (for `incomplete`) the documented incomplete reason.
+Any attribution or duplicated-metadata mismatch fails before scoring or
+successful verification, so a record cannot be scored against another render's
+private key.
+
 ## Analysis, freezes, and verification
 
 Track metrics and paired transitions remain preregistered. Cross-domain analysis
@@ -138,6 +212,16 @@ roles, JSONL structure, execution keys, prompt hashes, configuration snapshots,
 and result-freeze hashes. A partial execution returns `EXECUTION_INCOMPLETE`;
 a normal two-configuration experiment requires all 140 responses.
 
+`score` independently enforces the complete-execution gate before writing any
+analysis byte. It self-validates the execution manifest and frozen
+configurations, validates both completed and noncompleted streams, reconstructs
+the exact 140-key set, and rejects missing keys, any initial- or repair-phase
+noncompletion, and any unfinished repair. Thus scientific scoring implies all
+140 frozen execution keys are complete, and `EXECUTION_INCOMPLETE` prohibits
+scoring and execution-freeze creation. A rejected scoring attempt leaves every
+existing analysis and freeze file byte-for-byte unchanged; partial records are
+never converted into a smaller denominator or `PARSE_FAILURE` result set.
+
 `build` is pre-execution-only and non-destructive. It creates artifacts only in
 an absent or empty directory. For an exact existing pre-execution artifact set,
 it compares the regenerated bytes and leaves every file untouched. It fails
@@ -146,8 +230,32 @@ session, execution manifest, execution freeze, scored response, unexpected
 file, or mismatched frozen artifact indicates that execution or analysis has
 begun.
 
-Copy `configs/stage6a-models.example.json` to a secure path, configure two real
-and substantively distinct models, then use the explicit flow:
+## Mandatory non-benchmark canary
+
+After provider configuration but before scientific call #1, an operator must
+run a segregated canary using a trivial prompt that is not a Stage 6A prompt and
+contains no formal benchmark instance. Run it once with `reasoning.effort =
+medium` and once with `high`, with the exact endpoint, `gpt-5.6-terra`, 25,000
+cap, and `store: false`. It must verify:
+
+1. endpoint and authentication;
+2. exact model and both reasoning-effort values are accepted;
+3. the payload's parameter set is accepted (temperature remains omitted unless
+   primary exact-model documentation establishes support; seed remains omitted);
+4. the outgoing JSON contains `store: false`;
+5. envelope parsing, top-level completed/incomplete status behavior, nested
+   `output[*].content[*].output_text`, response ID, and usage fields required by
+   the harness.
+
+Canary input/output must be stored outside the artifact directory. It must not
+enter `raw-responses.jsonl`, `incomplete-responses.jsonl`, or the scientific
+execution manifest, and does not count toward 140 scientific responses. It may
+only diagnose operational compatibility; it must never tune prompts or
+benchmark difficulty. Any failure blocks scientific call #1 until the
+operational configuration is corrected and the canary passes. This repository
+revision does not run that canary or make any provider request.
+
+Copy `configs/stage6a-models.example.json` to a secure path, configure the two frozen same-model reasoning roles, then use the explicit flow:
 
 ```bash
 stage6a-model-pilot verify
