@@ -354,6 +354,13 @@ def _read_jsonl(path: Path) -> list[dict[str, object]]:
     return rows
 
 
+def _validate_request_attribution(row: dict[str, object], request: dict[str, object], evidence_type: str) -> None:
+    fields = ("formal_instance_id", "render_id", "track", "domain", "condition", "prompt_sha256")
+    mismatches = [field for field in fields if row.get(field) != request[field]]
+    if mismatches:
+        raise ValueError(f"{evidence_type} request attribution mismatch: {mismatches}")
+
+
 def validate_completed_records(rows: list[dict[str, object]], manifest: dict[str, object], requests: list[dict[str, object]]) -> set[str]:
     by_request = {x["request_id"]: x for x in requests}
     by_config = {x["configuration_id"]: x for x in manifest["configurations"]}
@@ -367,8 +374,9 @@ def validate_completed_records(rows: list[dict[str, object]], manifest: dict[str
         request = by_request.get(row.get("request_id")); config = by_config.get(row.get("model_configuration_id"))
         if request is None or config is None or key != execution_key(config["configuration_id"], request["request_id"]):
             raise ValueError("unexpected execution key")
-        if row.get("prompt_sha256") != request["prompt_sha256"] or row.get("configuration_snapshot") != config:
-            raise ValueError("request or configuration drift in completed record")
+        _validate_request_attribution(row, request, "completed")
+        if row.get("configuration_snapshot") != config:
+            raise ValueError("configuration drift in completed record")
         if not required_metadata <= row.keys():
             raise ValueError("completed record lacks initial/repair metadata")
         seen.add(key)
@@ -388,8 +396,20 @@ def validate_incomplete_records(rows: list[dict[str, object]], manifest: dict[st
             raise ValueError("unexpected incomplete execution key")
         if row.get("provider_status") == "completed" or not isinstance(row.get("provider_status"), str) or not isinstance(row.get("provider_response"), dict):
             raise ValueError("invalid noncompleted provider evidence")
-        if row.get("prompt_sha256") != request["prompt_sha256"] or row.get("configuration_snapshot") != config:
-            raise ValueError("request or configuration drift in incomplete record")
+        _validate_request_attribution(row, request, "noncompleted")
+        if row.get("configuration_snapshot") != config:
+            raise ValueError("configuration drift in noncompleted record")
+        envelope = row["provider_response"]
+        if row.get("provider_status") != envelope.get("status"):
+            raise ValueError("noncompleted provider status metadata mismatch")
+        if row.get("provider_request_id") != envelope.get("id"):
+            raise ValueError("noncompleted provider response ID metadata mismatch")
+        if row.get("token_usage") != envelope.get("usage"):
+            raise ValueError("noncompleted provider usage metadata mismatch")
+        details = envelope.get("incomplete_details")
+        envelope_reason = details.get("reason") if row["provider_status"] == "incomplete" and isinstance(details, dict) else None
+        if row.get("incomplete_reason") != envelope_reason:
+            raise ValueError("noncompleted provider reason metadata mismatch")
         if row.get("phase") not in {"initial", "repair"}:
             raise ValueError("noncompleted provider evidence has invalid phase")
         if row["phase"] == "initial" and row.get("repair_attempted") is not False:
@@ -406,6 +426,7 @@ def _noncompletion_record(exc: ProviderNoncompletedResponse, *, key: str, config
     envelope = exc.provider_response
     row = {"execution_key": key, "model_configuration_id": config["id"], "request_id": request["request_id"],
            "formal_instance_id": request["formal_instance_id"], "render_id": request["render_id"],
+           "track": request["track"], "domain": request["domain"], "condition": request["condition"],
            "prompt_sha256": request["prompt_sha256"], "configuration_snapshot": snapshot,
            "provider_status": exc.status, "incomplete_reason": exc.reason, "provider_response": envelope,
            "provider_request_id": envelope.get("id"), "token_usage": envelope.get("usage"),

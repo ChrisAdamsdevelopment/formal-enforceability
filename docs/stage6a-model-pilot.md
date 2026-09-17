@@ -174,6 +174,16 @@ record: session ID, start/end timestamp, harness Git SHA, plan/request/execution
 manifest hashes, completed count before/during the session, transport failures,
 and end status.
 
+Every completed and noncompleted evidence record is bound back to its canonical
+frozen request. Validation compares formal-instance ID, render ID, track,
+domain, condition, and prompt hash in addition to the execution key, request ID,
+model-configuration ID, and exact configuration snapshot. Noncompleted audit
+fields must also agree with their primary preserved provider envelope: status,
+response ID, usage, and (for `incomplete`) the documented incomplete reason.
+Any attribution or duplicated-metadata mismatch fails before scoring or
+successful verification, so a record cannot be scored against another render's
+private key.
+
 ## Analysis, freezes, and verification
 
 Track metrics and paired transitions remain preregistered. Cross-domain analysis

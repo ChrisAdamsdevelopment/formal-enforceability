@@ -396,7 +396,60 @@ def test_duplicate_partial_and_configuration_request_drift_failures(artifact_cop
     changed_path = tmp_path / "changed.json"; changed_path.write_text(json.dumps({"configurations": changed}))
     with pytest.raises(ValueError, match="manifest drift"): run(changed_path, artifact_copy, lambda *_: provider_response(valid), harness_sha="test-sha")
     row = json.loads(one); row["prompt_sha256"] = "0" * 64; raw_path.write_text(json.dumps(row) + "\n")
-    with pytest.raises(ValueError, match="drift"): verify(artifact_copy)
+    with pytest.raises(ValueError, match="drift|attribution mismatch"): verify(artifact_copy)
+
+
+def test_completed_record_request_attribution_is_canonical(artifact_copy, tmp_path, monkeypatch):
+    monkeypatch.setenv("TEST_STANDARD_KEY", "x"); monkeypatch.setenv("TEST_STRONG_KEY", "x")
+    path = tmp_path / "config.json"; path.write_text(json.dumps({"configurations": configurations()}))
+    requests, keys = build_requests(); private = keys[requests[0]["render_id"]]
+    valid = json.dumps({"answer_id": next(iter(private["answer_id_to_semantic"])),
+                        "action_id": next(iter(private["action_id_to_semantic"])), "confidence": 0.5})
+    calls = 0
+    def transport(config, payload, credential):
+        nonlocal calls; calls += 1
+        if calls == 1:
+            return provider_response(valid)
+        raise OSError("stop after valid generated record")
+    with pytest.raises(OSError):
+        run(path, artifact_copy, transport, harness_sha="test-sha")
+    assert verify(artifact_copy)["status"] == "EXECUTION_INCOMPLETE"
+    raw_path = artifact_copy / "raw-responses.jsonl"; original = json.loads(raw_path.read_text())
+    for field in ("formal_instance_id", "render_id", "track", "domain", "condition"):
+        raw_path.write_text(json.dumps(original | {field: "corrupted"}) + "\n")
+        with pytest.raises(ValueError, match="completed request attribution mismatch"):
+            verify(artifact_copy)
+    raw_path.write_text(json.dumps(original) + "\n")
+    assert verify(artifact_copy)["status"] == "EXECUTION_INCOMPLETE"
+
+
+def test_noncompleted_record_attribution_and_envelope_metadata_are_canonical(artifact_copy, tmp_path, monkeypatch):
+    monkeypatch.setenv("TEST_STANDARD_KEY", "x"); monkeypatch.setenv("TEST_STRONG_KEY", "x")
+    path = tmp_path / "config.json"; path.write_text(json.dumps({"configurations": configurations()}))
+    envelope = {"id": "incomplete-id", "status": "incomplete", "usage": {"output_tokens": 25000},
+                "incomplete_details": {"reason": "max_output_tokens"}, "output": []}
+    calls = 0
+    def transport(config, payload, credential):
+        nonlocal calls; calls += 1
+        if calls == 1:
+            return envelope
+        raise OSError("stop after valid generated noncompletion")
+    with pytest.raises(OSError):
+        run(path, artifact_copy, transport, harness_sha="test-sha")
+    assert verify(artifact_copy)["status"] == "EXECUTION_INCOMPLETE"
+    incomplete_path = artifact_copy / "incomplete-responses.jsonl"; original = json.loads(incomplete_path.read_text())
+    mutations = [(field, "corrupted", "request attribution mismatch")
+                 for field in ("formal_instance_id", "render_id", "track", "domain", "condition")]
+    mutations += [("provider_status", "failed", "status metadata mismatch"),
+                  ("provider_request_id", "wrong-id", "response ID metadata mismatch"),
+                  ("token_usage", {"output_tokens": 1}, "usage metadata mismatch"),
+                  ("incomplete_reason", "content_filter", "reason metadata mismatch")]
+    for field, value, message in mutations:
+        incomplete_path.write_text(json.dumps(original | {field: value}) + "\n")
+        with pytest.raises(ValueError, match=message):
+            verify(artifact_copy)
+    incomplete_path.write_text(json.dumps(original) + "\n")
+    assert verify(artifact_copy)["status"] == "EXECUTION_INCOMPLETE"
 
 
 def test_interrupted_partial_run_cannot_be_scored(artifact_copy, tmp_path, monkeypatch):
