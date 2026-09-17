@@ -65,9 +65,10 @@ The intended first execution uses OpenAI `gpt-5.6-terra` for both roles:
 `medium` reasoning for `standard/default reasoning`, and `high` reasoning for
 `stronger reasoning`. Using one model isolates reasoning effort. Credentials
 remain external in `OPENAI_API_KEY`. Primary public documentation reviewed for
-this freeze did not conclusively establish the exact `gpt-5.6-terra` identifier
-or exact-model acceptance of `temperature`; no claim is inferred from a
-third-party schema. The example therefore records `temperature: 0` but lists
+this freeze explicitly lists `gpt-5.6-terra`, Responses API availability, and
+the `medium` and `high` reasoning levels. It does not establish exact-model
+acceptance of `temperature` or `seed`; no claim is inferred from a third-party
+schema. The example therefore records `temperature: 0` but lists
 `temperature` as unsupported so it is omitted, and likewise records `seed:
 null` with `seed` unsupported because the Responses request reference does not
 document a seed field. Exact model, medium/high effort, and parameter acceptance
@@ -77,16 +78,25 @@ Every request unconditionally emits `store: false`. This is a runtime/privacy
 control, not a scientific parameter: each request is independent and requires
 no provider-side conversational state.
 
-A top-level `status: incomplete` is detected before `output_text` extraction or
-answer parsing. It is a valid provider envelope, but not a completed answer.
-The harness preserves the entire safe JSON envelope, response ID, usage,
-timestamp, latency, configuration/request identity, status, and
-`incomplete_details.reason` in `incomplete-responses.jsonl`; it performs no
-format repair and no retry, and the key never enters the completed-response
-stream. Verification reports `EXECUTION_INCOMPLETE`. OpenAI currently documents
-`max_output_tokens` and `content_filter` as incomplete reasons; handling is
-deliberately generic for any provider-supplied reason and assigns no invented
-meaning.
+A top-level `status: completed` is required before `output_text` extraction or
+answer parsing. Missing status is a protocol failure. `incomplete` and every
+other explicit noncompleted status (`failed`, `in_progress`, `cancelled`, or
+`queued`) fail closed even if an output field exists. For `incomplete`, the
+documented reason is retained without assigning any invented meaning.
+
+For either the initial or repair phase, the harness preserves the entire safe
+noncompleted JSON envelope, response ID, usage, timestamp, latency,
+configuration/request identity, status, reason, execution key, and phase in
+`incomplete-responses.jsonl`. It performs no further repair and no automatic
+retry. If a completed initial answer was malformed and its single permitted
+repair is noncompleted, the noncompletion record also embeds all initial raw
+answer metadata before the initial record is appended to `raw-responses.jsonl`.
+This append order makes both pieces crash-safe in one first append; the two
+streams may intentionally share that execution key only for repair-phase
+noncompletion. Resume skips the evidenced key, and verification subtracts it
+from completed scientific answers and reports `EXECUTION_INCOMPLETE`. OpenAI
+currently documents `max_output_tokens` and `content_filter` as incomplete
+reasons; handling is generic for any provider-supplied reason.
 
 
 V1 supports only `openai_responses_compatible`: bearer-authenticated HTTP with
@@ -97,9 +107,12 @@ model answers.
 
 Before call 1, the runner validates the complete configuration schema, safe
 endpoint, supported adapter, allowed unsupported-parameter names, positive
-output limit, unique IDs, unique substantive configurations, exactly one role
-per record, and presence of both `standard/default reasoning` and `stronger
-reasoning`. It confirms each explicitly named credential environment variable
+output limit, unique IDs, unique substantive configurations, and exactly one
+configuration for each required role. It enforces the exact role mapping
+`standard/default reasoning = medium` and `stronger reasoning = high`. Adapter,
+normalized endpoint, model ID, 25,000-token cap, temperature and seed values,
+and unsupported-parameter policy must match, so reasoning effort is the only
+generation-treatment difference. It confirms each credential environment variable
 exists without serializing its value. Parameters declared unsupported are
 actually omitted (`temperature`, `seed`, and `reasoning`/`reasoning_effort`).
 
@@ -203,7 +216,7 @@ cap, and `store: false`. It must verify:
 3. the payload's parameter set is accepted (temperature remains omitted unless
    primary exact-model documentation establishes support; seed remains omitted);
 4. the outgoing JSON contains `store: false`;
-5. envelope parsing, top-level `status`, nested
+5. envelope parsing, top-level completed/incomplete status behavior, nested
    `output[*].content[*].output_text`, response ID, and usage fields required by
    the harness.
 

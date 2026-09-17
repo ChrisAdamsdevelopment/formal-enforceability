@@ -59,15 +59,23 @@ class ProviderProtocolError(ValueError):
         self.safe_status = safe_status
 
 
-class ProviderIncompleteResponse(Exception):
+class ProviderNoncompletedResponse(Exception):
     """A valid provider envelope which did not produce a completed answer."""
 
-    def __init__(self, provider_response: dict[str, object], reason: object):
-        super().__init__(f"provider response incomplete: {reason}")
+    def __init__(self, provider_response: dict[str, object], status: str, reason: object = None):
+        super().__init__(f"provider response is not completed: {status} ({reason})")
         self.provider_response = provider_response
+        self.status = status
         self.reason = reason
         self.timestamp: str | None = None
         self.latency: float | None = None
+
+
+class ProviderIncompleteResponse(ProviderNoncompletedResponse):
+    """A provider envelope explicitly marked incomplete."""
+
+    def __init__(self, provider_response: dict[str, object], reason: object):
+        super().__init__(provider_response, "incomplete", reason)
 
 
 TRANSPORT_ERRORS = (OSError, TimeoutError, urllib.error.URLError, urllib.error.HTTPError, ProviderProtocolError)
@@ -160,7 +168,7 @@ def pilot_plan() -> dict[str, object]:
         "rendering_selection": {"primary": {"domain": "abstract", "conditions": ["natural", "epistemically_scaffolded", "tool_assisted"]},
                                 "cross_domain": {"formal_instance_ids": cross_domain_ids(), "condition": "natural", "domains": ["abstract", "ant_colony", "technical_system"]}},
         "sample_sizes": {"unique_formal_instances": 18, "primary_calls_per_model": 54, "cross_domain_additional_calls_per_model": 16, "total_calls_per_model": 70},
-        "model_configurations": {"minimum_real_configurations": 2, "required_roles": ["standard/default reasoning", "stronger reasoning"], "adapter": ADAPTER, "configuration_file": "configs/stage6a-models.example.json"},
+        "model_configurations": {"minimum_real_configurations": 2, "required_roles": {"standard/default reasoning": "medium", "stronger reasoning": "high"}, "same_model_treatment": "reasoning effort is the only generation-treatment difference", "adapter": ADAPTER, "configuration_file": "configs/stage6a-models.example.json"},
         "decoding": {"temperature": "recorded as 0 but omitted pending exact-model canary confirmation", "seed": None, "max_output_tokens": OUTPUT_TOKEN_LIMIT, "reasoning_effort": "configuration-specific and never normalized", "unsupported_parameters": "omitted from provider payload and recorded"},
         "response_schema": {"type": "object", "required": ["answer_id", "action_id", "confidence"], "optional": ["brief_basis"], "additional_properties": False, "confidence_range": [0, 1]},
         "metrics": {"high_confidence_threshold": HIGH_CONFIDENCE, "track_a": ["three-way and per-class accuracy", "macro accuracy", "confidence", "calibration descriptively", "false certainty", "false abstention", "high-confidence false winning on insufficient information", "paired condition deltas"],
@@ -168,10 +176,10 @@ def pilot_plan() -> dict[str, object]:
                     "cross_domain": ["canonical proposition agreement", "action-consistency agreement", "confidence range and maximum swing", "representation inconsistency by formal instance"], "unit": "formal instance; repeated renders are not independent",
                     "repair_sensitivity": ["parse_failure_initial", "parse_failure_after_repair", "accuracy_with_allowed_format_repair", "accuracy_treating_all_repairs_as_failures"]},
         "hypotheses": {"H1": "Natural Track A may show definite safety conclusions on insufficient-information cases; a null is acceptable.", "H2": "Scaffolding may improve accuracy if spontaneous epistemic recognition is limiting.", "H3": "Tool assistance may approach a computation ceiling if computation is limiting.", "H4": "Track B may expose behavioral confusion between forall G exists pi_G and exists pi forall G.", "H5": "Correct propositions may coexist with epistemically inconsistent actions.", "H6": "Equivalent neutral domains may change answers or confidence."},
-        "exclusion_rules": ["Exclude only requests not completed after the single permitted format repair or documented provider transport failures; never exclude semantic errors or hard cases.", "Tracks are never pooled."],
-        "parse_failure_handling": "Preserve initial raw response and metadata, allow at most one format-only repair containing that malformed response, preserve repair raw response and metadata, and report primary plus conservative sensitivity views.",
-        "retry_rules": {"format_repairs": 1, "repair_message": FORMAT_ONLY_MESSAGE, "semantic_retries": 0, "transport_retries": 0, "manual_resume": "a new audited execution session may attempt keys having transport events but no completed response"},
-        "stop_criteria": ["Stop rather than tune if a genuine benchmark validity defect appears.", "Do not execute or claim results with fewer than two validated real model configurations.", "Complete exactly 70 calls per configuration unless an unresolved transport failure is explicitly recorded."],
+        "exclusion_rules": ["A provider response is scientifically complete only when top-level status is completed and answer parsing reaches the frozen terminal handling; incomplete or other noncompleted statuses and documented transport failures remain explicit missing outcomes, never malformed-answer exclusions.", "Never exclude semantic errors or hard cases.", "Tracks are never pooled."],
+        "parse_failure_handling": "Only a completed provider response with malformed answer JSON may receive at most one format-only repair containing that malformed response. Preserve initial and repair evidence. A noncompleted initial or repair envelope is never parsed or repaired again and remains scientifically incomplete.",
+        "retry_rules": {"format_repairs": 1, "repair_message": FORMAT_ONLY_MESSAGE, "semantic_retries": 0, "transport_retries": 0, "provider_noncompletion_retries": 0, "manual_resume": "a new audited execution session may attempt keys having transport events but no response evidence; completed answers and keys with initial- or repair-phase noncompletion evidence are never silently reissued"},
+        "stop_criteria": ["Stop rather than tune if a genuine benchmark validity defect appears.", "Do not execute or claim results with fewer than two validated real model configurations.", "Attempt exactly 70 scientific request keys per configuration; any provider noncompletion or unresolved transport failure is explicitly preserved and verification reports EXECUTION_INCOMPLETE."],
         "interpretation": "Exploratory construct-validity pilot only; report counts, percentages, paired transitions, and confidence distributions without significance or population-ranking claims.",
     }
 
@@ -216,10 +224,15 @@ def extract_openai_responses(payload: object) -> tuple[str, object, object]:
         error = payload["error"]
         code = error.get("code") if isinstance(error, dict) else None
         raise ProviderProtocolError(f"provider error response{f' ({code})' if code else ''}", code)
-    if payload.get("status") == "incomplete":
+    status = payload.get("status")
+    if status == "incomplete":
         details = payload.get("incomplete_details")
         reason = details.get("reason") if isinstance(details, dict) else None
         raise ProviderIncompleteResponse(payload, reason)
+    if status != "completed":
+        if not isinstance(status, str):
+            raise ProviderProtocolError("provider response has no top-level status")
+        raise ProviderNoncompletedResponse(payload, status)
     output = payload.get("output")
     if not isinstance(output, list):
         raise ProviderProtocolError("provider response has no output array")
@@ -252,7 +265,7 @@ def _provider_call(config: dict[str, object], payload: dict[str, object], creden
     provider_payload = transport(config, payload, credential)
     try:
         raw, usage, request_id = extract_openai_responses(provider_payload)
-    except ProviderIncompleteResponse as exc:
+    except ProviderNoncompletedResponse as exc:
         exc.timestamp = timestamp
         exc.latency = round(time.monotonic() - started, 6)
         raise
@@ -293,11 +306,19 @@ def validate_configurations(configs: object, require_credentials: bool = True) -
     if len(ids) != len(set(ids)):
         raise ValueError("configuration IDs must be unique")
     roles = Counter(x["role"] for x in clean)
-    if not roles["standard/default reasoning"] or not roles["stronger reasoning"]:
-        raise ValueError("required model roles are absent")
-    required = [x for x in clean if x["role"] in {"standard/default reasoning", "stronger reasoning"}]
-    if len({x["model"] for x in required}) != 1 or len({x["max_output_tokens"] for x in required}) != 1:
-        raise ValueError("required reasoning roles must use the same model and output cap")
+    if roles["standard/default reasoning"] != 1 or roles["stronger reasoning"] != 1:
+        raise ValueError("exactly one of each required model role must be present")
+    by_role = {x["role"]: x for x in clean if x["role"] in {"standard/default reasoning", "stronger reasoning"}}
+    standard = by_role["standard/default reasoning"]
+    stronger = by_role["stronger reasoning"]
+    if standard["reasoning_effort"] != "medium" or stronger["reasoning_effort"] != "high":
+        raise ValueError("required reasoning treatment is standard=medium and stronger=high")
+    comparable_fields = ("provider_adapter", "endpoint", "model", "temperature", "seed", "max_output_tokens")
+    drift = [field for field in comparable_fields if standard[field] != stronger[field]]
+    if tuple(sorted(standard["unsupported_parameters"])) != tuple(sorted(stronger["unsupported_parameters"])):
+        drift.append("unsupported_parameters")
+    if drift:
+        raise ValueError(f"reasoning effort must be the only generation-treatment difference: {drift}")
     substantive = [(x["provider_adapter"], x["endpoint"], x["model"], x["reasoning_effort"], x["temperature"], x["seed"], x["max_output_tokens"], tuple(sorted(x["unsupported_parameters"]))) for x in clean]
     if len(substantive) != len(set(substantive)):
         raise ValueError("duplicate execution configurations cannot satisfy model requirements")
@@ -359,14 +380,37 @@ def validate_incomplete_records(rows: list[dict[str, object]], manifest: dict[st
             raise ValueError("duplicate or invalid incomplete execution key")
         if key != execution_key(config["configuration_id"], request["request_id"]):
             raise ValueError("unexpected incomplete execution key")
-        if row.get("provider_status") != "incomplete" or not isinstance(row.get("provider_response"), dict):
-            raise ValueError("invalid incomplete provider evidence")
+        if row.get("provider_status") == "completed" or not isinstance(row.get("provider_status"), str) or not isinstance(row.get("provider_response"), dict):
+            raise ValueError("invalid noncompleted provider evidence")
         if row.get("prompt_sha256") != request["prompt_sha256"] or row.get("configuration_snapshot") != config:
             raise ValueError("request or configuration drift in incomplete record")
-        if row.get("repair_attempted") is not False:
-            raise ValueError("incomplete provider response must not trigger repair")
+        if row.get("phase") not in {"initial", "repair"}:
+            raise ValueError("noncompleted provider evidence has invalid phase")
+        if row["phase"] == "initial" and row.get("repair_attempted") is not False:
+            raise ValueError("initial noncompleted provider response must not trigger repair")
+        if row["phase"] == "repair" and (row.get("repair_attempted") is not True or not isinstance(row.get("initial_raw_response"), str)):
+            raise ValueError("repair noncompletion must preserve initial model evidence")
         seen.add(key)
     return seen
+
+
+def _noncompletion_record(exc: ProviderNoncompletedResponse, *, key: str, config: dict[str, object],
+                          snapshot: dict[str, object], request: dict[str, object], phase: str,
+                          initial: dict[str, object] | None = None) -> dict[str, object]:
+    envelope = exc.provider_response
+    row = {"execution_key": key, "model_configuration_id": config["id"], "request_id": request["request_id"],
+           "formal_instance_id": request["formal_instance_id"], "render_id": request["render_id"],
+           "prompt_sha256": request["prompt_sha256"], "configuration_snapshot": snapshot,
+           "provider_status": exc.status, "incomplete_reason": exc.reason, "provider_response": envelope,
+           "provider_request_id": envelope.get("id"), "token_usage": envelope.get("usage"),
+           "latency": exc.latency, "timestamp": exc.timestamp, "phase": phase,
+           "repair_attempted": phase == "repair"}
+    if initial is not None:
+        row.update({"initial_raw_response": initial["raw_response"],
+                    "initial_provider_request_id": initial["provider_request_id"],
+                    "initial_token_usage": initial["token_usage"], "initial_latency": initial["latency"],
+                    "initial_timestamp": initial["timestamp"]})
+    return row
 
 
 def _write_manifest_once(configs: list[dict[str, object]], directory: Path, harness_sha: str | None = None) -> dict[str, object]:
@@ -400,8 +444,10 @@ def run(config_path: Path, directory: Path = ARTIFACT_DIRECTORY,
     completed = validate_completed_records(rows, manifest, requests)
     incomplete_rows = _read_jsonl(directory / "incomplete-responses.jsonl")
     incomplete = validate_incomplete_records(incomplete_rows, manifest, requests)
-    if completed & incomplete:
-        raise ValueError("execution key has both completed and incomplete evidence")
+    incomplete_by_key = {row["execution_key"]: row for row in incomplete_rows}
+    invalid_overlap = {key for key in completed & incomplete if incomplete_by_key[key]["phase"] != "repair"}
+    if invalid_overlap:
+        raise ValueError("initial noncompletion cannot coexist with completed evidence")
     session = {"session_id": str(uuid.uuid4()), "start_timestamp": _now(), "harness_git_sha": manifest["harness_git_sha"],
                "pilot_plan_sha256": manifest["pilot_plan_sha256"], "request_manifest_sha256": manifest["request_manifest_sha256"],
                "execution_manifest_sha256": manifest["execution_manifest_sha256"], "completed_before_session": len(completed),
@@ -412,26 +458,19 @@ def run(config_path: Path, directory: Path = ARTIFACT_DIRECTORY,
             snapshot = next(x for x in manifest["configurations"] if x["configuration_id"] == config["id"])
             for request in requests:
                 key = execution_key(config["id"], request["request_id"])
-                if key in completed:
-                    continue
                 if key in incomplete:
+                    continue
+                if key in completed:
                     continue
                 transport_phase = "initial"
                 try:
                     session["transport_attempts"] += 1
                     try:
                         initial = _provider_call(config, build_initial_payload(config, request["prompt"]), credential, transport)
-                    except ProviderIncompleteResponse as exc:
-                        envelope = exc.provider_response
-                        _append_jsonl(directory / "incomplete-responses.jsonl", {
-                            "execution_key": key, "model_configuration_id": config["id"], "request_id": request["request_id"],
-                            "formal_instance_id": request["formal_instance_id"], "render_id": request["render_id"],
-                            "prompt_sha256": request["prompt_sha256"], "configuration_snapshot": snapshot,
-                            "provider_status": "incomplete", "incomplete_reason": exc.reason,
-                            "provider_response": envelope, "provider_request_id": envelope.get("id"),
-                            "token_usage": envelope.get("usage"), "latency": exc.latency, "timestamp": exc.timestamp,
-                            "repair_attempted": False,
-                        })
+                    except ProviderNoncompletedResponse as exc:
+                        _append_jsonl(directory / "incomplete-responses.jsonl",
+                                      _noncompletion_record(exc, key=key, config=config, snapshot=snapshot,
+                                                            request=request, phase="initial"))
                         incomplete.add(key)
                         session["incomplete_responses"] = session.get("incomplete_responses", 0) + 1
                         continue
@@ -451,6 +490,17 @@ def run(config_path: Path, directory: Path = ARTIFACT_DIRECTORY,
                         session["transport_attempts"] += 1
                         try:
                             repair = _provider_call(config, build_format_repair_payload(config, request["prompt"]["response_schema"], initial["raw_response"]), credential, transport)
+                        except ProviderNoncompletedResponse as exc:
+                            # A single append first preserves both the malformed initial
+                            # answer and the full repair noncompletion envelope crash-safely.
+                            _append_jsonl(directory / "incomplete-responses.jsonl",
+                                          _noncompletion_record(exc, key=key, config=config, snapshot=snapshot,
+                                                                request=request, phase="repair", initial=initial))
+                            incomplete.add(key)
+                            _append_jsonl(directory / "raw-responses.jsonl", record)
+                            completed.add(key)
+                            session["incomplete_responses"] = session.get("incomplete_responses", 0) + 1
+                            continue
                         except TRANSPORT_ERRORS:
                             # The initial model evidence is already complete. Preserve it
                             # before propagating the repair transport/protocol failure so
@@ -728,15 +778,18 @@ def verify(directory: Path = ARTIFACT_DIRECTORY) -> dict[str, object]:
     requests, _ = build_requests()
     completed = validate_completed_records(raw, manifest, requests)
     incomplete = validate_incomplete_records(incomplete_rows, manifest, requests)
-    if completed & incomplete:
-        raise ValueError("execution key has both completed and incomplete evidence")
+    incomplete_by_key = {row["execution_key"]: row for row in incomplete_rows}
+    invalid_overlap = {key for key in completed & incomplete if incomplete_by_key[key]["phase"] != "repair"}
+    if invalid_overlap:
+        raise ValueError("initial noncompletion cannot coexist with completed evidence")
     expected_keys = {execution_key(config["configuration_id"], request["request_id"]) for config in manifest["configurations"] for request in requests}
     incomplete_repairs = {
         row["execution_key"] for row in raw if row["repair_attempted"] and row["repair_raw_response"] is None
     }
     missing = (expected_keys - completed) | incomplete_repairs | incomplete
     if missing:
-        return {"status": "EXECUTION_INCOMPLETE", "completed": len(completed - incomplete_repairs),
+        effectively_completed = completed - incomplete_repairs - incomplete
+        return {"status": "EXECUTION_INCOMPLETE", "completed": len(effectively_completed),
                 "expected": len(expected_keys), "missing": len(missing), "provider_incomplete": len(incomplete)}
     freeze_path = directory / "execution-freeze.json"
     if not freeze_path.exists():

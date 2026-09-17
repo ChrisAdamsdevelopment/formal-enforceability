@@ -7,7 +7,8 @@
     "unsupported_parameters": "omitted from provider payload and recorded"
   },
   "exclusion_rules": [
-    "Exclude only requests not completed after the single permitted format repair or documented provider transport failures; never exclude semantic errors or hard cases.",
+    "A provider response is scientifically complete only when top-level status is completed and answer parsing reaches the frozen terminal handling; incomplete or other noncompleted statuses and documented transport failures remain explicit missing outcomes, never malformed-answer exclusions.",
+    "Never exclude semantic errors or hard cases.",
     "Tracks are never pooled."
   ],
   "formal_instance_selection": {
@@ -136,12 +137,13 @@
     "adapter": "openai_responses_compatible",
     "configuration_file": "configs/stage6a-models.example.json",
     "minimum_real_configurations": 2,
-    "required_roles": [
-      "standard/default reasoning",
-      "stronger reasoning"
-    ]
+    "required_roles": {
+      "standard/default reasoning": "medium",
+      "stronger reasoning": "high"
+    },
+    "same_model_treatment": "reasoning effort is the only generation-treatment difference"
   },
-  "parse_failure_handling": "Preserve initial raw response and metadata, allow at most one format-only repair containing that malformed response, preserve repair raw response and metadata, and report primary plus conservative sensitivity views.",
+  "parse_failure_handling": "Only a completed provider response with malformed answer JSON may receive at most one format-only repair containing that malformed response. Preserve initial and repair evidence. A noncompleted initial or repair envelope is never parsed or repaired again and remains scientifically incomplete.",
   "previous_plan_sha256": "ab393f32b9da8f8b27f1d45cdd1795a88b35073ce9eef948811e5205a4dee2f5",
   "rendering_selection": {
     "cross_domain": {
@@ -190,7 +192,8 @@
   },
   "retry_rules": {
     "format_repairs": 1,
-    "manual_resume": "a new audited execution session may attempt keys having transport events but no completed response",
+    "manual_resume": "a new audited execution session may attempt keys having transport events but no response evidence; completed answers and keys with initial- or repair-phase noncompletion evidence are never silently reissued",
+    "provider_noncompletion_retries": 0,
     "repair_message": "Reformat the previous response only. Do not solve the problem again. Do not reconsider, recompute, or change its answer choice, action choice, confidence, or substantive content. Return only a JSON object matching response_schema.",
     "semantic_retries": 0,
     "transport_retries": 0
@@ -209,7 +212,7 @@
   "stop_criteria": [
     "Stop rather than tune if a genuine benchmark validity defect appears.",
     "Do not execute or claim results with fewer than two validated real model configurations.",
-    "Complete exactly 70 calls per configuration unless an unresolved transport failure is explicitly recorded."
+    "Attempt exactly 70 scientific request keys per configuration; any provider noncompletion or unresolved transport failure is explicitly preserved and verification reports EXECUTION_INCOMPLETE."
   ],
   "version": "stage6a-model-pilot-v1.2",
   "zero_real_responses_before_revision": true
