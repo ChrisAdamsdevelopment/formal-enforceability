@@ -1,0 +1,41 @@
+{
+  "mechanics_excluded": true,
+  "tracks": {
+    "canonical_public_evidence": {
+      "feature_schema": [
+        "domain",
+        "condition",
+        "template_id",
+        "track",
+        "non_evidence_length_bucket",
+        "answer_option_count",
+        "action_option_count",
+        "answer_id_order",
+        "action_id_order"
+      ],
+      "leave_formal_instance_out_surface_1nn_accuracy": "2/27",
+      "majority_accuracy": "1/3",
+      "renderings": 324,
+      "unique_formal_instances": 36
+    },
+    "explicit_compatible_set_diagnostic": {
+      "feature_schema": [
+        "domain",
+        "condition",
+        "template_id",
+        "track",
+        "non_evidence_length_bucket",
+        "answer_option_count",
+        "action_option_count",
+        "answer_id_order",
+        "action_id_order"
+      ],
+      "leave_formal_instance_out_surface_1nn_accuracy": "0",
+      "majority_accuracy": "1/2",
+      "renderings": 108,
+      "unique_formal_instances": 12
+    }
+  },
+  "tracks_reported_separately": true,
+  "version": "representation-leakage-v2"
+}

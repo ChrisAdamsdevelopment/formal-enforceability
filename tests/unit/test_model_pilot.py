@@ -7,6 +7,9 @@ from enforceability.model_pilot import (
     ADAPTER,
     ARTIFACT_DIRECTORY,
     FORMAT_ONLY_MESSAGE,
+    HISTORICAL_ARTIFACT_DIRECTORY,
+    OUTPUT_TOKEN_LIMIT,
+    ProviderIncompleteResponse,
     TRACK_A,
     TRACK_B,
     _error_types,
@@ -30,8 +33,8 @@ from enforceability.model_pilot import (
 
 def configurations():
     common = {"provider_adapter": ADAPTER, "endpoint": "https://example.test/v1/responses", "temperature": 0, "seed": None,
-              "max_output_tokens": 500, "unsupported_parameters": []}
-    return [common | {"id": "standard", "role": "standard/default reasoning", "credential_env": "TEST_STANDARD_KEY", "model": "m", "reasoning_effort": "default"},
+              "max_output_tokens": OUTPUT_TOKEN_LIMIT, "unsupported_parameters": []}
+    return [common | {"id": "standard", "role": "standard/default reasoning", "credential_env": "TEST_STANDARD_KEY", "model": "m", "reasoning_effort": "medium"},
             common | {"id": "strong", "role": "stronger reasoning", "credential_env": "TEST_STRONG_KEY", "model": "m", "reasoning_effort": "high"}]
 
 
@@ -62,13 +65,15 @@ def test_frozen_selection_and_request_counts():
 
 def test_plan_revision_and_artifacts_are_frozen_before_execution():
     plan = pilot_plan()
-    assert plan["previous_plan_sha256"] == "b69f9e7017512b91b42ab03dfe9f5e8eea8ebddd697d11b163b245d1f37f81fd"
+    assert plan["previous_plan_sha256"] == "ab393f32b9da8f8b27f1d45cdd1795a88b35073ce9eef948811e5205a4dee2f5"
+    assert plan["decoding"]["max_output_tokens"] == 25_000
     assert plan["zero_real_responses_before_revision"] is True
     assert plan["sample_sizes"] == {"unique_formal_instances": 18, "primary_calls_per_model": 54, "cross_domain_additional_calls_per_model": 16, "total_calls_per_model": 70}
     expected = build_artifacts()
     assert set(expected) == {path.name for path in ARTIFACT_DIRECTORY.iterdir()}
     assert all((ARTIFACT_DIRECTORY / name).read_bytes() == value for name, value in expected.items())
     assert verify()["status"] == "READY_FOR_PROVIDER_EXECUTION"
+    assert (HISTORICAL_ARTIFACT_DIRECTORY / "pilot-plan.json").read_bytes() != (ARTIFACT_DIRECTORY / "pilot-plan.json").read_bytes()
 
 
 def test_baselines_use_one_natural_abstract_render_per_formal_instance():
@@ -80,10 +85,11 @@ def test_baselines_use_one_natural_abstract_render_per_formal_instance():
     assert ignorant[TRACK_B]["n"] == 6 and ignorant[TRACK_B]["correct"] == 3 and ignorant[TRACK_B]["accuracy"] == 1 / 2
 
 
-@pytest.mark.parametrize("marker", ["raw", "transport", "sessions", "manifest", "freeze", "scored"])
+@pytest.mark.parametrize("marker", ["raw", "incomplete", "transport", "sessions", "manifest", "freeze", "scored"])
 def test_build_never_erases_execution_evidence(artifact_copy, marker):
     markers = {
         "raw": ("raw-responses.jsonl", b'{"completed":"response"}\n'),
+        "incomplete": ("incomplete-responses.jsonl", b'{"status":"incomplete"}\n'),
         "transport": ("transport-events.jsonl", b'{"transport":"failure"}\n'),
         "sessions": ("execution-sessions.jsonl", b'{"session":"started"}\n'),
         "manifest": ("execution-manifest.json", b'{"frozen":"configuration"}\n'),
@@ -130,7 +136,7 @@ def test_format_repair_payload_is_semantics_preserving_and_omits_unsupported_par
     assert "Do not solve" in context["format_only_message"] and "Do not reconsider" in context["format_only_message"]
     assert not {"temperature", "seed", "reasoning"} & payload.keys()
     initial = build_initial_payload(configurations()[0], {})
-    assert initial["temperature"] == 0 and "reasoning" not in initial
+    assert initial["temperature"] == 0 and initial["store"] is False
 
 
 def test_openai_responses_adapter_extractor_fixtures():
@@ -140,6 +146,10 @@ def test_openai_responses_adapter_extractor_fixtures():
     with pytest.raises(ValueError, match="must be an object"): extract_openai_responses([])
     with pytest.raises(ValueError, match="provider error"): extract_openai_responses({"error": {"code": "bad_request"}})
     with pytest.raises(ValueError, match="malformed"): extract_openai_responses({"output": [{"type": "message", "content": {}}]})
+    with pytest.raises(ProviderIncompleteResponse) as exc:
+        extract_openai_responses({"id": "resp_incomplete", "status": "incomplete", "usage": {"output_tokens": 25000},
+                                  "incomplete_details": {"reason": "max_output_tokens"}, "output": []})
+    assert exc.value.reason == "max_output_tokens"
 
 
 def test_configuration_validation_rejects_duplicates_roles_and_adapter(monkeypatch):
@@ -169,6 +179,40 @@ def test_repair_preserves_both_calls_metadata_and_occurs_once(artifact_copy, tmp
     assert rows[0]["repair_raw_response"] == valid and rows[0]["repair_provider_request_id"] == "repair-id"
     assert calls[1]["malformed_response"] == "not json"
     assert "original_request" not in calls[1]
+
+
+@pytest.mark.parametrize("reason", ["max_output_tokens", "content_filter"])
+def test_incomplete_response_is_preserved_without_parse_repair_or_completion(artifact_copy, tmp_path, monkeypatch, reason):
+    monkeypatch.setenv("TEST_STANDARD_KEY", "x"); monkeypatch.setenv("TEST_STRONG_KEY", "x")
+    config_path = tmp_path / "config.json"; config_path.write_text(json.dumps({"configurations": configurations()}))
+    calls = 0
+    envelope = {"id": "resp_incomplete", "status": "incomplete", "incomplete_details": {"reason": reason},
+                "usage": {"input_tokens": 2, "output_tokens": 25000}, "output": []}
+    def transport(config, payload, credential):
+        nonlocal calls; calls += 1
+        assert payload["store"] is False
+        if calls == 1:
+            return envelope
+        raise OSError("stop after incomplete evidence")
+    with pytest.raises(OSError):
+        run(config_path, artifact_copy, transport, harness_sha="test-sha")
+    assert (artifact_copy / "raw-responses.jsonl").read_text() == ""
+    rows = [json.loads(line) for line in (artifact_copy / "incomplete-responses.jsonl").read_text().splitlines()]
+    assert len(rows) == 1 and rows[0]["provider_response"] == envelope
+    assert rows[0]["provider_request_id"] == "resp_incomplete" and rows[0]["token_usage"] == envelope["usage"]
+    assert rows[0]["incomplete_reason"] == reason and rows[0]["repair_attempted"] is False
+    result = verify(artifact_copy)
+    assert result["status"] == "EXECUTION_INCOMPLETE" and result["completed"] == 0
+    assert result["provider_incomplete"] == 1
+
+    resumed = []
+    def resumed_transport(config, payload, credential):
+        resumed.append(json.loads(payload["input"])["render_id"])
+        raise OSError("stop resumed session")
+    with pytest.raises(OSError):
+        run(config_path, artifact_copy, resumed_transport, harness_sha="test-sha")
+    requests, _ = build_requests()
+    assert resumed == [requests[1]["render_id"]]
 
 
 def test_repair_transport_failure_preserves_initial_evidence(artifact_copy, tmp_path, monkeypatch):

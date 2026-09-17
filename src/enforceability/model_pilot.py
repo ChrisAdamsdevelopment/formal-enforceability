@@ -28,10 +28,12 @@ from enforceability.stage6_pilot import (
 )
 
 ROOT = Path(__file__).parents[2]
-ARTIFACT_DIRECTORY = ROOT / "artifacts" / "stage6a-model-pilot-v1"
-BASE_SHA = "7abe966c79a461073153fa178eb394ad9406263b"
-PLAN_VERSION = "stage6a-model-pilot-v1.1"
-PREVIOUS_PLAN_SHA256 = "b69f9e7017512b91b42ab03dfe9f5e8eea8ebddd697d11b163b245d1f37f81fd"
+ARTIFACT_DIRECTORY = ROOT / "artifacts" / "stage6a-model-pilot-v1.2"
+HISTORICAL_ARTIFACT_DIRECTORY = ROOT / "artifacts" / "stage6a-model-pilot-v1"
+BASE_SHA = "9e5c8d4855b0cdea9e396cee0ea809fd3dbd6cf7"
+PLAN_VERSION = "stage6a-model-pilot-v1.2"
+PREVIOUS_PLAN_SHA256 = "ab393f32b9da8f8b27f1d45cdd1795a88b35073ce9eef948811e5205a4dee2f5"
+OUTPUT_TOKEN_LIMIT = 25_000
 ADAPTER = "openai_responses_compatible"
 HIGH_CONFIDENCE = 0.80
 TRACK_A_SELECTION = {
@@ -55,6 +57,17 @@ class ProviderProtocolError(ValueError):
     def __init__(self, message: str, safe_status: object = None):
         super().__init__(message)
         self.safe_status = safe_status
+
+
+class ProviderIncompleteResponse(Exception):
+    """A valid provider envelope which did not produce a completed answer."""
+
+    def __init__(self, provider_response: dict[str, object], reason: object):
+        super().__init__(f"provider response incomplete: {reason}")
+        self.provider_response = provider_response
+        self.reason = reason
+        self.timestamp: str | None = None
+        self.latency: float | None = None
 
 
 TRANSPORT_ERRORS = (OSError, TimeoutError, urllib.error.URLError, urllib.error.HTTPError, ProviderProtocolError)
@@ -136,7 +149,8 @@ def build_requests() -> tuple[list[dict[str, object]], dict[str, dict[str, objec
 def pilot_plan() -> dict[str, object]:
     selected = selected_instances()
     return {
-        "version": PLAN_VERSION, "revision_reason": "Execution-integrity repair before any provider response: format-only repair context, resumability, configuration freeze, transport/session audit, and repair sensitivity.",
+        "version": PLAN_VERSION,
+        "revision_reason": "No real provider responses existed under v1.1. Pre-execution review found that Responses API max_output_tokens includes reasoning tokens as well as visible output. The frozen value of 500 can therefore truncate stronger-reasoning responses before a visible answer is produced, creating differential failure risk between medium and high reasoning. The pilot was revised before provider call #1.",
         "previous_plan_sha256": PREVIOUS_PLAN_SHA256, "zero_real_responses_before_revision": True,
         "status": "FROZEN_BEFORE_PROVIDER_EXECUTION", "repository_sha": BASE_SHA,
         "stage6a_freeze_file": "artifacts/stage6-pilot-v1/pilot-freeze.json", "stage6a_freeze_sha256": _sha((STAGE6_DIRECTORY / "pilot-freeze.json").read_bytes()),
@@ -147,7 +161,7 @@ def pilot_plan() -> dict[str, object]:
                                 "cross_domain": {"formal_instance_ids": cross_domain_ids(), "condition": "natural", "domains": ["abstract", "ant_colony", "technical_system"]}},
         "sample_sizes": {"unique_formal_instances": 18, "primary_calls_per_model": 54, "cross_domain_additional_calls_per_model": 16, "total_calls_per_model": 70},
         "model_configurations": {"minimum_real_configurations": 2, "required_roles": ["standard/default reasoning", "stronger reasoning"], "adapter": ADAPTER, "configuration_file": "configs/stage6a-models.example.json"},
-        "decoding": {"temperature": 0, "seed": "record if supported", "max_output_tokens": 500, "reasoning_effort": "configuration-specific and never normalized", "unsupported_parameters": "omitted from provider payload and recorded"},
+        "decoding": {"temperature": "recorded as 0 but omitted pending exact-model canary confirmation", "seed": None, "max_output_tokens": OUTPUT_TOKEN_LIMIT, "reasoning_effort": "configuration-specific and never normalized", "unsupported_parameters": "omitted from provider payload and recorded"},
         "response_schema": {"type": "object", "required": ["answer_id", "action_id", "confidence"], "optional": ["brief_basis"], "additional_properties": False, "confidence_range": [0, 1]},
         "metrics": {"high_confidence_threshold": HIGH_CONFIDENCE, "track_a": ["three-way and per-class accuracy", "macro accuracy", "confidence", "calibration descriptively", "false certainty", "false abstention", "high-confidence false winning on insufficient information", "paired condition deltas"],
                     "track_b": ["two-way and per-class accuracy", "confidence", "fixed-policy threshold certification", "action epistemic consistency", "knowledge/action dissociation", "unsafe deployment after correct PER_WORLD_ONLY", "nondeployment after correct COMMON_POLICY"],
@@ -179,7 +193,8 @@ def strict_parse(raw: str, private: dict[str, object]) -> dict[str, object]:
 
 def build_initial_payload(config: dict[str, object], prompt: dict[str, object]) -> dict[str, object]:
     unsupported = set(config["unsupported_parameters"])
-    body: dict[str, object] = {"model": config["model"], "input": json.dumps(prompt, sort_keys=True), "max_output_tokens": config["max_output_tokens"]}
+    body: dict[str, object] = {"model": config["model"], "input": json.dumps(prompt, sort_keys=True),
+                              "max_output_tokens": config["max_output_tokens"], "store": False}
     if "temperature" not in unsupported:
         body["temperature"] = config["temperature"]
     if config.get("seed") is not None and "seed" not in unsupported:
@@ -201,6 +216,10 @@ def extract_openai_responses(payload: object) -> tuple[str, object, object]:
         error = payload["error"]
         code = error.get("code") if isinstance(error, dict) else None
         raise ProviderProtocolError(f"provider error response{f' ({code})' if code else ''}", code)
+    if payload.get("status") == "incomplete":
+        details = payload.get("incomplete_details")
+        reason = details.get("reason") if isinstance(details, dict) else None
+        raise ProviderIncompleteResponse(payload, reason)
     output = payload.get("output")
     if not isinstance(output, list):
         raise ProviderProtocolError("provider response has no output array")
@@ -231,7 +250,12 @@ def _provider_call(config: dict[str, object], payload: dict[str, object], creden
     started = time.monotonic()
     timestamp = _now()
     provider_payload = transport(config, payload, credential)
-    raw, usage, request_id = extract_openai_responses(provider_payload)
+    try:
+        raw, usage, request_id = extract_openai_responses(provider_payload)
+    except ProviderIncompleteResponse as exc:
+        exc.timestamp = timestamp
+        exc.latency = round(time.monotonic() - started, 6)
+        raise
     return {"raw_response": raw, "provider_request_id": request_id, "token_usage": usage,
             "latency": round(time.monotonic() - started, 6), "timestamp": timestamp}
 
@@ -260,6 +284,8 @@ def validate_configurations(configs: object, require_credentials: bool = True) -
             raise ValueError("unsupported_parameters contains an unknown field")
         if not isinstance(config["max_output_tokens"], int) or config["max_output_tokens"] <= 0:
             raise ValueError("max_output_tokens must be positive")
+        if config["max_output_tokens"] != OUTPUT_TOKEN_LIMIT:
+            raise ValueError(f"max_output_tokens must equal frozen limit {OUTPUT_TOKEN_LIMIT}")
         if require_credentials and not os.environ.get(config["credential_env"]):
             raise RuntimeError(f"missing explicitly configured credential: {config['credential_env']}")
         clean.append(config | {"endpoint": _safe_endpoint(config["endpoint"])})
@@ -269,6 +295,9 @@ def validate_configurations(configs: object, require_credentials: bool = True) -
     roles = Counter(x["role"] for x in clean)
     if not roles["standard/default reasoning"] or not roles["stronger reasoning"]:
         raise ValueError("required model roles are absent")
+    required = [x for x in clean if x["role"] in {"standard/default reasoning", "stronger reasoning"}]
+    if len({x["model"] for x in required}) != 1 or len({x["max_output_tokens"] for x in required}) != 1:
+        raise ValueError("required reasoning roles must use the same model and output cap")
     substantive = [(x["provider_adapter"], x["endpoint"], x["model"], x["reasoning_effort"], x["temperature"], x["seed"], x["max_output_tokens"], tuple(sorted(x["unsupported_parameters"]))) for x in clean]
     if len(substantive) != len(set(substantive)):
         raise ValueError("duplicate execution configurations cannot satisfy model requirements")
@@ -319,6 +348,27 @@ def validate_completed_records(rows: list[dict[str, object]], manifest: dict[str
     return seen
 
 
+def validate_incomplete_records(rows: list[dict[str, object]], manifest: dict[str, object], requests: list[dict[str, object]]) -> set[str]:
+    by_request = {x["request_id"]: x for x in requests}
+    by_config = {x["configuration_id"]: x for x in manifest["configurations"]}
+    seen = set()
+    for row in rows:
+        key = row.get("execution_key")
+        request = by_request.get(row.get("request_id")); config = by_config.get(row.get("model_configuration_id"))
+        if not isinstance(key, str) or key in seen or request is None or config is None:
+            raise ValueError("duplicate or invalid incomplete execution key")
+        if key != execution_key(config["configuration_id"], request["request_id"]):
+            raise ValueError("unexpected incomplete execution key")
+        if row.get("provider_status") != "incomplete" or not isinstance(row.get("provider_response"), dict):
+            raise ValueError("invalid incomplete provider evidence")
+        if row.get("prompt_sha256") != request["prompt_sha256"] or row.get("configuration_snapshot") != config:
+            raise ValueError("request or configuration drift in incomplete record")
+        if row.get("repair_attempted") is not False:
+            raise ValueError("incomplete provider response must not trigger repair")
+        seen.add(key)
+    return seen
+
+
 def _write_manifest_once(configs: list[dict[str, object]], directory: Path, harness_sha: str | None = None) -> dict[str, object]:
     manifest = sanitized_execution_manifest(configs, harness_sha)
     path = directory / "execution-manifest.json"
@@ -348,6 +398,10 @@ def run(config_path: Path, directory: Path = ARTIFACT_DIRECTORY,
     requests, keys = build_requests()
     rows = _read_jsonl(directory / "raw-responses.jsonl")
     completed = validate_completed_records(rows, manifest, requests)
+    incomplete_rows = _read_jsonl(directory / "incomplete-responses.jsonl")
+    incomplete = validate_incomplete_records(incomplete_rows, manifest, requests)
+    if completed & incomplete:
+        raise ValueError("execution key has both completed and incomplete evidence")
     session = {"session_id": str(uuid.uuid4()), "start_timestamp": _now(), "harness_git_sha": manifest["harness_git_sha"],
                "pilot_plan_sha256": manifest["pilot_plan_sha256"], "request_manifest_sha256": manifest["request_manifest_sha256"],
                "execution_manifest_sha256": manifest["execution_manifest_sha256"], "completed_before_session": len(completed),
@@ -360,10 +414,27 @@ def run(config_path: Path, directory: Path = ARTIFACT_DIRECTORY,
                 key = execution_key(config["id"], request["request_id"])
                 if key in completed:
                     continue
+                if key in incomplete:
+                    continue
                 transport_phase = "initial"
                 try:
                     session["transport_attempts"] += 1
-                    initial = _provider_call(config, build_initial_payload(config, request["prompt"]), credential, transport)
+                    try:
+                        initial = _provider_call(config, build_initial_payload(config, request["prompt"]), credential, transport)
+                    except ProviderIncompleteResponse as exc:
+                        envelope = exc.provider_response
+                        _append_jsonl(directory / "incomplete-responses.jsonl", {
+                            "execution_key": key, "model_configuration_id": config["id"], "request_id": request["request_id"],
+                            "formal_instance_id": request["formal_instance_id"], "render_id": request["render_id"],
+                            "prompt_sha256": request["prompt_sha256"], "configuration_snapshot": snapshot,
+                            "provider_status": "incomplete", "incomplete_reason": exc.reason,
+                            "provider_response": envelope, "provider_request_id": envelope.get("id"),
+                            "token_usage": envelope.get("usage"), "latency": exc.latency, "timestamp": exc.timestamp,
+                            "repair_attempted": False,
+                        })
+                        incomplete.add(key)
+                        session["incomplete_responses"] = session.get("incomplete_responses", 0) + 1
+                        continue
                     record = {"execution_key": key, "model_configuration_id": config["id"], "request_id": request["request_id"],
                               "formal_instance_id": request["formal_instance_id"], "render_id": request["render_id"], "track": request["track"],
                               "domain": request["domain"], "condition": request["condition"], "prompt_sha256": request["prompt_sha256"],
@@ -535,7 +606,7 @@ def score(directory: Path = ARTIFACT_DIRECTORY) -> dict[str, object]:
     reports = aggregate_reports(scored)
     for name, report in reports.items():
         (directory / name).write_bytes(_json(report))
-    result_files = ["execution-manifest.json", "raw-responses.jsonl", "transport-events.jsonl", "execution-sessions.jsonl", "scored-responses.jsonl",
+    result_files = ["execution-manifest.json", "raw-responses.jsonl", "incomplete-responses.jsonl", "transport-events.jsonl", "execution-sessions.jsonl", "scored-responses.jsonl",
                     "aggregate-report.json", "repair-sensitivity-report.json", "cross-domain-report.json", "condition-transition-report.json"]
     freeze = {"version": "stage6a-execution-freeze-v1", "files": {name: _sha((directory / name).read_bytes()) for name in result_files},
               "pre_execution_pilot_freeze_sha256": _sha(pre_freeze), "execution_manifest_sha256": manifest["execution_manifest_sha256"]}
@@ -564,7 +635,7 @@ def _oracle_and_ignorant_baselines(keys: dict[str, dict[str, object]]) -> dict[s
 def build_artifacts() -> dict[str, bytes]:
     requests, keys = build_requests(); plan = pilot_plan()
     outputs = {"pilot-plan.json": _json(plan), "request-manifest.json": _json({"version": PLAN_VERSION, "requests": requests}),
-               "raw-responses.jsonl": b"", "transport-events.jsonl": b"", "execution-sessions.jsonl": b"", "scored-responses.jsonl": b"",
+               "raw-responses.jsonl": b"", "incomplete-responses.jsonl": b"", "transport-events.jsonl": b"", "execution-sessions.jsonl": b"", "scored-responses.jsonl": b"",
                "aggregate-report.json": _json({"status": "PRE_EXECUTION_INTEGRITY_VERIFIED", "real_model_responses": False, "call_count": 0, "baselines": _oracle_and_ignorant_baselines(keys)}),
                "repair-sensitivity-report.json": _json({"status": "NOT_EXECUTED", "parse_failure_initial": 0, "parse_failure_after_repair": 0,
                                                          "accuracy_with_allowed_format_repair": None, "accuracy_treating_all_repairs_as_failures": None}),
@@ -572,11 +643,15 @@ def build_artifacts() -> dict[str, bytes]:
                                                    "representation_inconsistency_case_count": 0, "representation_inconsistency_formal_instance_ids": []}),
                "condition-transition-report.json": _json({"status": "NOT_EXECUTED", "planned_primary_formal_instances": 18}),
                "representation-leakage-control.json": _json(representation_leakage_report(*build_renders()))}
-    frozen_names = [name for name in outputs if name not in {"raw-responses.jsonl", "transport-events.jsonl", "execution-sessions.jsonl"}]
+    frozen_names = [name for name in outputs if name not in {"raw-responses.jsonl", "incomplete-responses.jsonl", "transport-events.jsonl", "execution-sessions.jsonl"}]
     outputs["pilot-freeze.json"] = _json({"version": PLAN_VERSION, "purpose": "immutable pre-provider design freeze",
         "files": {name: _sha(outputs[name]) for name in frozen_names}, "pilot_plan_sha256": _sha(outputs["pilot-plan.json"]),
         "previous_pilot_plan_sha256": PREVIOUS_PLAN_SHA256, "zero_real_provider_responses_at_revision": True,
-        "stage6a_source_freeze_sha256": plan["stage6a_freeze_sha256"], "runtime_files_initial_sha256": {name: _sha(outputs[name]) for name in ("raw-responses.jsonl", "transport-events.jsonl", "execution-sessions.jsonl")}})
+        "historical_v1_1": {"directory": "artifacts/stage6a-model-pilot-v1", "pilot_plan_sha256": PREVIOUS_PLAN_SHA256,
+                            "request_manifest_sha256": "1181bcdebd3e09e3b0793d219578e1164fd3d653448afcdfd4303e85ee752c77",
+                            "pilot_freeze_sha256": "6896a50e173fd6175172a9ab08313e88bc61151342a4c97963aeea89166d79ac",
+                            "provider_responses": 0, "status": "superseded pre-execution"},
+        "stage6a_source_freeze_sha256": plan["stage6a_freeze_sha256"], "runtime_files_initial_sha256": {name: _sha(outputs[name]) for name in ("raw-responses.jsonl", "incomplete-responses.jsonl", "transport-events.jsonl", "execution-sessions.jsonl")}})
     return outputs
 
 
@@ -594,7 +669,7 @@ def write_artifacts(directory: Path = ARTIFACT_DIRECTORY) -> None:
             (directory / name).write_bytes(data)
         return
 
-    append_only = ("raw-responses.jsonl", "transport-events.jsonl", "execution-sessions.jsonl")
+    append_only = ("raw-responses.jsonl", "incomplete-responses.jsonl", "transport-events.jsonl", "execution-sessions.jsonl")
     execution_has_begun = any(
         (directory / name).exists() and (directory / name).stat().st_size > 0 for name in append_only
     ) or any((directory / name).exists() for name in ("execution-manifest.json", "execution-freeze.json"))
@@ -621,13 +696,19 @@ def verify_pre_execution(directory: Path = ARTIFACT_DIRECTORY) -> dict[str, obje
             raise ValueError(f"immutable pre-execution artifact mismatch: {name}")
     if _sha((STAGE6_DIRECTORY / "pilot-freeze.json").read_bytes()) != freeze["stage6a_source_freeze_sha256"]:
         raise ValueError("Stage 6A source freeze mismatch")
+    historical = freeze["historical_v1_1"]
+    for name, field in (("pilot-plan.json", "pilot_plan_sha256"), ("request-manifest.json", "request_manifest_sha256"),
+                        ("pilot-freeze.json", "pilot_freeze_sha256")):
+        if _sha((HISTORICAL_ARTIFACT_DIRECTORY / name).read_bytes()) != historical[field]:
+            raise ValueError(f"historical v1.1 artifact mismatch: {name}")
     return {"status": "pre-execution-verified", "pilot_plan_sha256": freeze["pilot_plan_sha256"]}
 
 
 def verify(directory: Path = ARTIFACT_DIRECTORY) -> dict[str, object]:
     pre = verify_pre_execution(directory)
     raw = _read_jsonl(directory / "raw-responses.jsonl")
-    if not raw and not (directory / "execution-manifest.json").exists():
+    incomplete_rows = _read_jsonl(directory / "incomplete-responses.jsonl")
+    if not raw and not incomplete_rows and not (directory / "execution-manifest.json").exists():
         allowed = set(build_artifacts())
         extras = {x.name for x in directory.iterdir()} - allowed
         if extras:
@@ -646,14 +727,17 @@ def verify(directory: Path = ARTIFACT_DIRECTORY) -> dict[str, object]:
     validate_configurations(configs, require_credentials=False)
     requests, _ = build_requests()
     completed = validate_completed_records(raw, manifest, requests)
+    incomplete = validate_incomplete_records(incomplete_rows, manifest, requests)
+    if completed & incomplete:
+        raise ValueError("execution key has both completed and incomplete evidence")
     expected_keys = {execution_key(config["configuration_id"], request["request_id"]) for config in manifest["configurations"] for request in requests}
     incomplete_repairs = {
         row["execution_key"] for row in raw if row["repair_attempted"] and row["repair_raw_response"] is None
     }
-    missing = (expected_keys - completed) | incomplete_repairs
+    missing = (expected_keys - completed) | incomplete_repairs | incomplete
     if missing:
         return {"status": "EXECUTION_INCOMPLETE", "completed": len(completed - incomplete_repairs),
-                "expected": len(expected_keys), "missing": len(missing)}
+                "expected": len(expected_keys), "missing": len(missing), "provider_incomplete": len(incomplete)}
     freeze_path = directory / "execution-freeze.json"
     if not freeze_path.exists():
         raise ValueError("completed calls lack execution freeze")
