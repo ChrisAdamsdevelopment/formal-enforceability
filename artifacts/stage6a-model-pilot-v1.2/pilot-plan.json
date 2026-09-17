@@ -1,7 +1,7 @@
 {
   "decoding": {
     "max_output_tokens": 25000,
-    "reasoning_effort": "configuration-specific and never normalized",
+    "reasoning_effort": "required medium/high treatments must be emitted and cannot be marked unsupported",
     "seed": null,
     "temperature": "recorded as 0 but omitted pending exact-model canary confirmation",
     "unsupported_parameters": "omitted from provider payload and recorded"

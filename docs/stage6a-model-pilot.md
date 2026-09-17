@@ -112,9 +112,16 @@ configuration for each required role. It enforces the exact role mapping
 `standard/default reasoning = medium` and `stronger reasoning = high`. Adapter,
 normalized endpoint, model ID, 25,000-token cap, temperature and seed values,
 and unsupported-parameter policy must match, so reasoning effort is the only
-generation-treatment difference. It confirms each credential environment variable
+generation-treatment difference. Neither required role may list `reasoning` or
+`reasoning_effort` as unsupported: validated scientific payloads must contain
+exactly `{"reasoning": {"effort": "medium"}}` and
+`{"reasoning": {"effort": "high"}}`, respectively, rather than silently using
+a provider default. It confirms each credential environment variable
 exists without serializing its value. Parameters declared unsupported are
-actually omitted (`temperature`, `seed`, and `reasoning`/`reasoning_effort`).
+actually omitted; in the required pair this applies to `temperature` and
+`seed`, never to the mandatory reasoning treatment. Optional future
+non-scientific configurations may still omit reasoning when explicitly marked
+unsupported.
 
 It then writes `execution-manifest.json` before calling the provider. That
 sanitized file records configuration ID and role, adapter, safe endpoint

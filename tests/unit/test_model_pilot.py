@@ -11,6 +11,7 @@ from enforceability.model_pilot import (
     OUTPUT_TOKEN_LIMIT,
     ProviderIncompleteResponse,
     ProviderNoncompletedResponse,
+    ROOT,
     TRACK_A,
     TRACK_B,
     _error_types,
@@ -186,6 +187,28 @@ def test_configuration_validation_rejects_output_cap_drift(monkeypatch):
     changed = configurations(); changed[1] = changed[1] | {"max_output_tokens": 24_999}
     with pytest.raises(ValueError, match="frozen limit"):
         validate_configurations(changed)
+
+
+@pytest.mark.parametrize("unsupported_reasoning_name", ["reasoning", "reasoning_effort"])
+def test_required_roles_cannot_mark_reasoning_unsupported(monkeypatch, unsupported_reasoning_name):
+    monkeypatch.setenv("TEST_STANDARD_KEY", "secret"); monkeypatch.setenv("TEST_STRONG_KEY", "secret")
+    changed = [config | {"unsupported_parameters": [unsupported_reasoning_name]} for config in configurations()]
+    with pytest.raises(ValueError, match="reasoning cannot be marked unsupported"):
+        validate_configurations(changed)
+
+
+def test_frozen_example_emits_exact_required_reasoning_payloads():
+    example = json.loads((ROOT / "configs" / "stage6a-models.example.json").read_text())["configurations"]
+    validated = validate_configurations(example, require_credentials=False)
+    by_role = {config["role"]: config for config in validated}
+    standard = build_initial_payload(by_role["standard/default reasoning"], {})
+    stronger = build_initial_payload(by_role["stronger reasoning"], {})
+    assert standard["reasoning"] == {"effort": "medium"}
+    assert stronger["reasoning"] == {"effort": "high"}
+    for payload in (standard, stronger):
+        assert "temperature" not in payload and "seed" not in payload
+        assert payload["store"] is False
+        assert payload["max_output_tokens"] == 25_000
 
 
 def test_repair_preserves_both_calls_metadata_and_occurs_once(artifact_copy, tmp_path, monkeypatch):

@@ -169,7 +169,7 @@ def pilot_plan() -> dict[str, object]:
                                 "cross_domain": {"formal_instance_ids": cross_domain_ids(), "condition": "natural", "domains": ["abstract", "ant_colony", "technical_system"]}},
         "sample_sizes": {"unique_formal_instances": 18, "primary_calls_per_model": 54, "cross_domain_additional_calls_per_model": 16, "total_calls_per_model": 70},
         "model_configurations": {"minimum_real_configurations": 2, "required_roles": {"standard/default reasoning": "medium", "stronger reasoning": "high"}, "same_model_treatment": "reasoning effort is the only generation-treatment difference", "adapter": ADAPTER, "configuration_file": "configs/stage6a-models.example.json"},
-        "decoding": {"temperature": "recorded as 0 but omitted pending exact-model canary confirmation", "seed": None, "max_output_tokens": OUTPUT_TOKEN_LIMIT, "reasoning_effort": "configuration-specific and never normalized", "unsupported_parameters": "omitted from provider payload and recorded"},
+        "decoding": {"temperature": "recorded as 0 but omitted pending exact-model canary confirmation", "seed": None, "max_output_tokens": OUTPUT_TOKEN_LIMIT, "reasoning_effort": "required medium/high treatments must be emitted and cannot be marked unsupported", "unsupported_parameters": "omitted from provider payload and recorded"},
         "response_schema": {"type": "object", "required": ["answer_id", "action_id", "confidence"], "optional": ["brief_basis"], "additional_properties": False, "confidence_range": [0, 1]},
         "metrics": {"high_confidence_threshold": HIGH_CONFIDENCE, "track_a": ["three-way and per-class accuracy", "macro accuracy", "confidence", "calibration descriptively", "false certainty", "false abstention", "high-confidence false winning on insufficient information", "paired condition deltas"],
                     "track_b": ["two-way and per-class accuracy", "confidence", "fixed-policy threshold certification", "action epistemic consistency", "knowledge/action dissociation", "unsafe deployment after correct PER_WORLD_ONLY", "nondeployment after correct COMMON_POLICY"],
@@ -313,6 +313,9 @@ def validate_configurations(configs: object, require_credentials: bool = True) -
     stronger = by_role["stronger reasoning"]
     if standard["reasoning_effort"] != "medium" or stronger["reasoning_effort"] != "high":
         raise ValueError("required reasoning treatment is standard=medium and stronger=high")
+    reasoning_parameter_names = {"reasoning", "reasoning_effort"}
+    if any(reasoning_parameter_names & set(config["unsupported_parameters"]) for config in (standard, stronger)):
+        raise ValueError("reasoning cannot be marked unsupported for required scientific roles")
     comparable_fields = ("provider_adapter", "endpoint", "model", "temperature", "seed", "max_output_tokens")
     drift = [field for field in comparable_fields if standard[field] != stronger[field]]
     if tuple(sorted(standard["unsupported_parameters"])) != tuple(sorted(stronger["unsupported_parameters"])):
