@@ -1,157 +1,157 @@
-# Small Stage 6A model pilot
+# Small Stage 6A model pilot v1.3
 
-## Status and immutable boundary
+## Status and immutable boundaries
 
-**Local integrity status: verified. Decision gate:
-`NOT_READY_FOR_PROVIDER_EXECUTION` pending fresh green hosted CI and automated
-review. Real provider responses collected: 0.** The execution-integrity revision is
-`stage6a-model-pilot-v1.1`. It supersedes the pre-review plan fingerprint
-`b69f9e7017512b91b42ab03dfe9f5e8eea8ebddd697d11b163b245d1f37f81fd`
-before any provider response existed. The scientific design did not change;
-the revision specifies strict format-repair context, configuration freezing,
-crash-safe resume, transport/session auditing, and repair sensitivity.
+PR #14 proposes v1.3; merged main at audit start is
+`9e5c8d4855b0cdea9e396cee0ea809fd3dbd6cf7` and contains historical v1.1.
+**Real provider responses collected: 0.** V1.1 and v1.2 remain byte-for-byte
+unchanged. V1.1 was superseded because its 500-token cap could cause differential
+reasoning truncation. V1.2 raised the cap to 25,000 and hardened noncompletion.
+OpenAI's [reasoning guide](https://developers.openai.com/api/docs/guides/reasoning)
+recommends initially reserving at least 25,000 tokens for reasoning and output;
+this does not prove that this budget suffices for this benchmark.
 
-The source benchmark remains `artifacts/stage6-pilot-v1/pilot-freeze.json`
-(SHA-256 `917364477c330cfeee6e368dfe9692f35238c7bfb11ce37c744f5cfa5a6336c1`),
-and the pilot base remains repository SHA
-`7abe966c79a461073153fa178eb394ad9406263b`. The normative machine plan is
-`artifacts/stage6a-model-pilot-v1/pilot-plan.json`; its current fingerprint is
-recorded in immutable `pilot-freeze.json`.
+The user explicitly authorized v1.3 during the pre-merge audit after finding
+evaluator metadata inside all 70 v1.2 prompt objects. V1.3 removes condition,
+domain, track, formal_instance_id, render_id, template_id, and schema_version
+from model-visible input. Attribution remains in the outer manifest only.
+Every other stimulus field, response option, selected formal instance, mapping,
+hypothesis, threshold, metric and sample size remains unchanged. This is a
+versioned stimulus correction, not a claim of behavioral effects. No project
+context or descriptive experimental title is supplied to subjects.
 
-Once a completed raw response exists, plan, requests, execution manifest,
-prompts, mappings, and scoring rules cannot change. A genuine validity defect
-invalidates this version and requires a documented successor; model difficulty
-must never cause tuning.
+The adapter sends sorted compact JSON encoded as UTF-8 and checks its hash
+against the frozen request manifest before each initial request. V1.2's compact
+hash differed from its adapter's whitespace-bearing input; v1.3 corrects this
+byte-provenance discrepancy. Frozen Stage 6 source artifacts are untouched.
+V1.3 lives in `artifacts/stage6a-model-pilot-v1.3/` and fingerprints both
+predecessors. Historical zero-response streams and all their frozen files are
+verified, not rewritten.
 
-## Frozen scientific design
+## Scientific scope
 
-Selection uses deterministic generator order and frozen class-local indices.
-Track A has four cases each of `CERTIFIABLY_LOSING`,
-`INSUFFICIENT_INFORMATION`, and `CERTIFIABLY_WINNING`. Track B separately has
-three `PER_WORLD_ONLY` and three `COMMON_POLICY`: 18 unique formal units.
+This remains an **exploratory construct-validity pilot**, not confirmatory
+real-model evidence. Track A contains four cases of each three-way epistemic
+class. Track B separately contains three PER_WORLD_ONLY and three COMMON_POLICY
+cases: 18 unique formal units. Each receives abstract natural, scaffolded and
+tool-assisted conditions (54 requests/configuration). Eight units additionally
+receive natural ant-colony and technical-system renders (16 more), totaling
+70/configuration and 140 scientific keys for exactly two configurations.
 
-Each case receives independent `abstract` calls in `natural`,
-`epistemically_scaffolded`, and `tool_assisted`: 54 primary calls per model.
-The cross-domain subset has two Track A cases per class and one Track B case per
-class. Natural `ant_colony` and `technical_system` renders add 16 calls, for 70
-calls per configuration. Alternate renders are repeated measurements, not
-independent observations. Natural has no added hint; scaffolding only identifies
-the compatible-model abstraction; tool assistance adds exact repository-derived
-values and candidate-policy losses, never the semantic gold label.
+Repeated renders are not independent units; tracks and conditions must not be
+pooled. Tool assistance supplies exact values/policy losses, not semantic gold
+labels. H1–H6, confidence >= 0.80, mapping rules, actionability semantics and
+scoring are in the frozen plan. Preserve null/negative results. Exact-oracle and
+deliberately ignorant baselines validate the pipeline only: their denominators
+are 18 total, 12 Track A, and 6 Track B. They are not model observations.
+Observable error labels do not establish hidden cognitive mechanisms.
+The prior-art collision review limits novelty claims.
 
-Hypotheses H1–H6, the `confidence >= 0.80` threshold, metrics, instance IDs,
-conditions, prompts, and scoring semantics are unchanged. The exact public
-payload and prompt SHA-256 for every call are in `request-manifest.json`.
+## Provider configuration and parsing
 
-## Narrow provider adapter and configuration freeze
+Exactly two same-model configurations are permitted: OpenAI gpt-5.6-terra with
+medium and high reasoning. Endpoint, model, output cap, temperature/seed values
+and omission policy must match. Required reasoning cannot be marked unsupported.
+Both configurations use 25,000 max_output_tokens and store=false. Temperature
+and seed remain omitted: generic schema support does not establish acceptance
+for this exact model/treatment. See [the dated API audit](stage6a-premerge-audit.md).
+Credentials remain external; only their environment-variable names enter the
+execution manifest. Real transport requires HTTPS, committed runtime/configuration
+sources, and a passing canary receipt.
 
-V1 supports only `openai_responses_compatible`: bearer-authenticated HTTP with
-an OpenAI Responses-style request and raw `output[].content[]` extraction for
-`output_text`. It is not advertised as an arbitrary-provider adapter. Provider
-error envelopes and malformed/missing output are transport/protocol events, not
-model answers.
+Each request is independent: no previous_response_id, conversation, project
+memory, system experiment labels or repair history is reused. store=false
+disables response storage for later API retrieval; it is not a blanket
+zero-retention promise.
 
-Before call 1, the runner validates the complete configuration schema, safe
-endpoint, supported adapter, allowed unsupported-parameter names, positive
-output limit, unique IDs, unique substantive configurations, exactly one role
-per record, and presence of both `standard/default reasoning` and `stronger
-reasoning`. It confirms each explicitly named credential environment variable
-exists without serializing its value. Parameters declared unsupported are
-actually omitted (`temperature`, `seed`, and `reasoning`/`reasoning_effort`).
+Only top-level completed status permits answer extraction. The adapter gathers
+text from output[].content[] entries of type output_text; reasoning items are
+not scored. Incomplete, failed (including error-bearing failed envelopes),
+in_progress, queued and cancelled states fail closed. Their envelope, reason,
+response ID, usage, timestamp, latency, key and attribution are preserved.
+Missing status and malformed envelopes are protocol failures. No semantic retry
+or automatic transport retry occurs.
 
-It then writes `execution-manifest.json` before calling the provider. That
-sanitized file records configuration ID and role, adapter, safe endpoint
-origin/path, credential environment-variable **name**, model/version, reasoning
-effort, temperature, seed, maximum output tokens, unsupported parameters,
-harness Git SHA, pilot-plan SHA, request-manifest SHA, and its own SHA. Any
-later drift is rejected.
+## Format-only repair and raw evidence
 
-## Strict format-only repair and sensitivity
+Only a completed response failing syntax/schema validation gets at most one
+repair. It contains only the frozen format-only instruction, response schema
+and initial malformed text, never the benchmark problem or gold answer.
+Initial/repair text, IDs, token usage, latency and timestamps remain separate.
+Instructions cannot prove semantic preservation; report the primary permitted-
+repair score alongside the conservative view treating all repairs as failures.
+Semantic mistakes are never retried.
 
-Responses contain only `answer_id`, `action_id`, confidence in `[0,1]`, and an
-optional short `brief_basis`; chain of thought is neither requested nor scored.
-On initial syntax/schema failure, exactly one repair call receives only:
+An incomplete repair first appends an incomplete record embedding the initial
+evidence, then appends the initial raw record. Both streams may share a key only
+for this repair case. It never becomes a completed scientific outcome.
+Repair transport failure also preserves the initial raw record and remains
+unscorable. Resume skips keys with initial or repair noncompletion.
 
-```json
-{
-  "format_only_message": "Reformat the previous response only. Do not solve the problem again. Do not reconsider, recompute, or change its answer choice, action choice, confidence, or substantive content. Return only a JSON object matching response_schema.",
-  "response_schema": {"answer_id": "...", "action_id": "...", "confidence": "...", "brief_basis": "..."},
-  "malformed_response": "the exact initial raw response"
-}
-```
+The execution key is SHA256(configuration_id + ":" + request_id). All evidence
+appends use UTF-8, flush and fsync. An exclusive writer marker prevents
+concurrent run/score. A process crash may leave that marker; investigate before
+removing it. The append-only attempt-journal.jsonl records intent before
+transport and received envelopes before parsing/repair. An unfinished intent or
+received envelope without terminal evidence blocks resume/scoring as
+AMBIGUOUS_PROVIDER_ATTEMPT. Preserve the journal and use a separately audited
+recovery procedure; never delete evidence to force a retry. No software can
+guarantee saving a response immediately before process termination. Such
+ambiguity blocks automatic reissue. Explicit transport errors may be manually
+resumed under a new recorded session, but do not prove the provider did no work.
 
-The benchmark problem is not resubmitted. The raw record separately retains
-initial and repair raw text, provider request ID, usage, latency, and timestamp.
-Scored rows record `repair_attempted`, `repair_succeeded`, and whether `initial`
-or `repair` supplied the scored structure. Semantic errors are never retried.
+## Provenance, analysis and verification
 
-Preregistered scoring uses a successful permitted repair. The conservative
-sensitivity view treats every repaired item as a parse failure. The separate
-report includes `parse_failure_initial`, `parse_failure_after_repair`,
-`accuracy_with_allowed_format_repair`, and
-`accuracy_treating_all_repairs_as_failures`.
+The version-2 execution manifest binds the selected artifact directory's
+plan/request bytes, configuration, current harness Git SHA and exact source hash.
+An invented SHA override is rejected. Run, score and verify check the binding;
+all completed/noncompleted records must match canonical request attribution,
+execution key, configuration and prompt hash. Noncompletion metadata must agree
+with its preserved envelope.
 
-## Crash safety, sessions, and transport events
+Score validates the pre-execution freeze before mutation and requires every
+one of 140 keys to have a completed terminal outcome. Missing/noncompleted
+responses, unfinished repairs and ambiguous attempts block analysis. No
+denominator reduction or conversion of missing work to parse failures occurs.
+Score refuses to overwrite an existing execution freeze; run refuses further
+session/evidence appends after that freeze. The separate execution
+freeze must cover the full required file set and bind the pre-execution freeze
+and execution manifest. Verify is read-only; it never contacts a provider or
+rebuilds artifacts. Its pre-execution result is
+PRE_EXECUTION_VERIFIED_CANARY_REQUIRED, not provider readiness.
 
-The execution key is `SHA256(configuration_id + ":" + request_id)`. Raw records
-are append-only and fsynced. At every invocation the runner validates all
-existing records, rejects duplicate/unexpected keys and request/configuration
-drift, skips completed keys, and calls only missing keys. A partial run is thus
-resumable without ever silently reissuing a completed answer.
+Build is non-destructive: create only an absent/empty directory, or compare an
+exact existing pre-execution set without writes. Any mismatch or evidence of
+execution/analysis fails closed. No historical artifact is rebuilt.
 
-Provider/network/protocol failures append to `transport-events.jsonl` with the
-execution key, configuration ID, request ID, timestamp, exception class, safe
-provider status, and session ID—never credentials. There is no automatic
-transport retry in a session. A later manual invocation creates a new session
-and may attempt a key having only a transport event and no completed answer.
+## Segregated mandatory canary
 
-Every provider-capable invocation appends a safe `execution-sessions.jsonl`
-record: session ID, start/end timestamp, harness Git SHA, plan/request/execution
-manifest hashes, completed count before/during the session, transport failures,
-and end status.
+The canary command uses the same adapter with a fixed trivial ping task, never
+a benchmark prompt. It makes one medium and one high request, without repair
+or retry. Both must complete with the fixed answer, response ID and usage.
+Noncompletion branches are tested with fake transports; the operator does not
+tune the frozen budget to induce them. Public docs do not establish account
+access or live acceptance; these remain unknown until the authorized canary.
 
-## Analysis, freezes, and verification
+Canary writes only canary-report.json and canary-evidence.jsonl in a fresh
+directory outside the entire checkout. It never touches a scientific manifest,
+response stream or freeze and counts as zero scientific requests. Failure
+leaves NOT_PASSED; reruns require a fresh directory. Passing receipts bind
+configuration, runtime and evidence hashes. They are provenance records, not
+provider signatures. Receipts explicitly distinguish mock transport; mock
+evidence cannot authorize real scientific calls. Any runtime/configuration
+change requires a new canary.
 
-Track metrics and paired transitions remain preregistered. Cross-domain analysis
-now measures `REPRESENTATION_INCONSISTENCY` at its correct unit—the
-model/formal-instance three-render set—and reports both case count and IDs.
-Per-response errors retain directly observable
-`FAILED_TO_RECOGNIZE_NONIDENTIFICATION`, `FALSE_ABSTENTION`,
-`QUANTIFIER_ORDER_ERROR`,
-`UNSAFE_DEPLOYMENT_AFTER_CORRECT_EPISTEMIC_ANSWER`, `PARSE_FAILURE`, and
-`OTHER`. A generic Track A mistake is `OTHER`, not an inferred cognitive
-mechanism. The exact oracle baseline remains explicitly non-model evidence.
-
-The oracle and deliberately ignorant pre-execution baselines use one canonical
-`natural`/`abstract` render per unique formal instance: oracle N is 18, Track A
-ignorant-baseline N is 12, and Track B ignorant-baseline N is 6. Alternate
-conditions and domains are repeated experimental measurements and are not
-treated as independent baseline observations.
-
-`pilot-freeze.json` is the immutable pre-provider freeze and is never rewritten
-by `run`, `score`, or `verify`. Explicit `score` writes analysis files and a
-separate `execution-freeze.json` hashing the execution manifest, raw answers,
-transport events, sessions, scored responses, aggregate, sensitivity,
-cross-domain, and transition reports. `verify` is read-only: it checks the
-Stage 6A source freeze and every frozen design hash, configuration self-hash and
-roles, JSONL structure, execution keys, prompt hashes, configuration snapshots,
-and result-freeze hashes. A partial execution returns `EXECUTION_INCOMPLETE`;
-a normal two-configuration experiment requires all 140 responses.
-
-`build` is pre-execution-only and non-destructive. It creates artifacts only in
-an absent or empty directory. For an exact existing pre-execution artifact set,
-it compares the regenerated bytes and leaves every file untouched. It fails
-closed without deleting or truncating anything if a response, transport event,
-session, execution manifest, execution freeze, scored response, unexpected
-file, or mismatched frozen artifact indicates that execution or analysis has
-begun.
-
-Copy `configs/stage6a-models.example.json` to a secure path, configure two real
-and substantively distinct models, then use the explicit flow:
+The following are **future commands requiring explicit authorization**.
+This pre-merge task executes neither canary nor scientific run:
 
 ```bash
 stage6a-model-pilot verify
-stage6a-model-pilot run --config /secure/path/stage6a-models.json
+stage6a-model-pilot canary --config /secure/stage6a-models.json --output /outside-checkout/canary-001 --acknowledge-provider-calls
+stage6a-model-pilot run --config /secure/stage6a-models.json --canary-receipt /outside-checkout/canary-001/canary-report.json
 stage6a-model-pilot score
 verify-stage6a-model-pilot
 ```
+
+Review the actual final GitHub head, hosted CI, configurations and v1.3 hashes
+before authorization. Green tests alone do not establish provider readiness.

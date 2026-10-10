@@ -4,27 +4,33 @@
       "id": "model-a-standard",
       "role": "standard/default reasoning",
       "provider_adapter": "openai_responses_compatible",
-      "endpoint": "https://provider.example/v1/responses",
-      "credential_env": "STAGE6A_MODEL_A_API_KEY",
-      "model": "provider-model-version",
-      "reasoning_effort": "default",
+      "endpoint": "https://api.openai.com/v1/responses",
+      "credential_env": "OPENAI_API_KEY",
+      "model": "gpt-5.6-terra",
+      "reasoning_effort": "medium",
       "temperature": 0,
       "seed": null,
-      "max_output_tokens": 500,
-      "unsupported_parameters": []
+      "max_output_tokens": 25000,
+      "unsupported_parameters": [
+        "temperature",
+        "seed"
+      ]
     },
     {
       "id": "model-b-stronger",
       "role": "stronger reasoning",
       "provider_adapter": "openai_responses_compatible",
-      "endpoint": "https://provider.example/v1/responses",
-      "credential_env": "STAGE6A_MODEL_B_API_KEY",
-      "model": "provider-model-version",
+      "endpoint": "https://api.openai.com/v1/responses",
+      "credential_env": "OPENAI_API_KEY",
+      "model": "gpt-5.6-terra",
       "reasoning_effort": "high",
       "temperature": 0,
       "seed": null,
-      "max_output_tokens": 500,
-      "unsupported_parameters": []
+      "max_output_tokens": 25000,
+      "unsupported_parameters": [
+        "temperature",
+        "seed"
+      ]
     }
   ]
 }
