@@ -1,6 +1,7 @@
 """Offline-only bounded batch regressions; no provider calls or frozen writes."""
 import json
 import shutil
+from functools import cache
 
 import pytest
 
@@ -25,8 +26,13 @@ def setup_config(tmp_path, monkeypatch):
     return path
 
 
+@cache
+def _private_keys():
+    return pilot.build_requests()[1]
+
+
 def _valid_response(payload):
-    private = pilot.build_requests()[1][render_for_payload(payload)]
+    private = _private_keys()[render_for_payload(payload)]
     return json.dumps({
         "answer_id": next(iter(private["answer_id_to_semantic"])),
         "action_id": next(iter(private["action_id_to_semantic"])),
