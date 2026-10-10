@@ -589,7 +589,12 @@ def validate_attempt_journal(directory, requests, manifest, evidenced):
 
 def run(config_path: Path, directory: Path = ARTIFACT_DIRECTORY,
         transport: Callable[[dict[str, object], dict[str, object], str], dict[str, object]] = _perform_http,
-        harness_sha: str | None = None, canary_receipt: Path | None = None) -> dict[str, object]:
+        harness_sha: str | None = None, canary_receipt: Path | None = None,
+        max_initial_requests: int | None = None) -> dict[str, object]:
+    # The CLI requires an explicit limit. Python callers may retain legacy unbounded behavior.
+    if max_initial_requests is not None and (isinstance(max_initial_requests, bool) or
+        not isinstance(max_initial_requests, int) or not 1 <= max_initial_requests <= 140):
+        raise ValueError("max_initial_requests must be an integer from 1 to 140")
     if transport is _perform_http:
         from enforceability.provider_canary import _clean_revision, verify_receipt
         _clean_revision()
@@ -597,12 +602,12 @@ def run(config_path: Path, directory: Path = ARTIFACT_DIRECTORY,
             raise ValueError("passing nonbenchmark canary receipt required before scientific calls")
         verify_receipt(config_path, canary_receipt)
     with execution_lock(directory):
-        return _run_locked(config_path, directory, transport, harness_sha)
+        return _run_locked(config_path, directory, transport, harness_sha, max_initial_requests)
 
 
 def _run_locked(config_path: Path, directory: Path,
         transport: Callable[[dict[str, object], dict[str, object], str], dict[str, object]] = _perform_http,
-        harness_sha: str | None = None) -> dict[str, object]:
+        harness_sha: str | None = None, max_initial_requests: int | None = None) -> dict[str, object]:
     # Fail closed before call #1.
     if (directory / "execution-freeze.json").exists():
         raise ValueError("execution is already frozen; run must not append sessions or evidence")
@@ -622,7 +627,8 @@ def _run_locked(config_path: Path, directory: Path,
     session = {"session_id": str(uuid.uuid4()), "start_timestamp": _now(), "harness_git_sha": manifest["harness_git_sha"],
                "pilot_plan_sha256": manifest["pilot_plan_sha256"], "request_manifest_sha256": manifest["request_manifest_sha256"],
                "execution_manifest_sha256": manifest["execution_manifest_sha256"], "completed_before_session": len(completed),
-               "completed_during_session": 0, "transport_attempts": 0, "transport_failures": 0, "end_status": "RUNNING"}
+               "completed_during_session": 0, "transport_attempts": 0, "transport_failures": 0,
+               "max_initial_requests": max_initial_requests, "initial_requests_started": 0, "end_status": "RUNNING"}
     try:
         for config in configs:
             credential = os.environ[config["credential_env"]]
@@ -633,6 +639,10 @@ def _run_locked(config_path: Path, directory: Path,
                     continue
                 if key in completed:
                     continue
+                # Stop at a key boundary, never between an initial response and its allowed repair.
+                if max_initial_requests is not None and session["initial_requests_started"] >= max_initial_requests:
+                    session["end_status"] = "BATCH_LIMIT_REACHED"
+                    return session
                 transport_phase = "initial"
                 try:
                     session["transport_attempts"] += 1
@@ -640,6 +650,7 @@ def _run_locked(config_path: Path, directory: Path,
                         payload = build_initial_payload(config, request["prompt"])
                         if _sha(payload["input"].encode("utf-8")) != request["prompt_sha256"]:
                             raise ValueError("exact subject input hash mismatch")
+                        session["initial_requests_started"] += 1
                         initial = _provider_call(config, payload, credential, _journal_transport(directory, key, "initial", transport))
                     except ProviderNoncompletedResponse as exc:
                         _append_jsonl(directory / "incomplete-responses.jsonl",
@@ -1030,6 +1041,8 @@ def main() -> None:
     sub.add_parser("build"); sub.add_parser("verify"); sub.add_parser("score")
     run_parser = sub.add_parser("run"); run_parser.add_argument("--config", type=Path, required=True)
     run_parser.add_argument("--canary-receipt", type=Path, required=True)
+    run_parser.add_argument("--max-initial-requests", type=int, required=True,
+                            help="Maximum new scientific keys this invocation; up to one format-repair call per key")
     canary_parser = sub.add_parser("canary")
     canary_parser.add_argument("--config", type=Path, required=True)
     canary_parser.add_argument("--output", type=Path, required=True)
@@ -1044,7 +1057,8 @@ def main() -> None:
     else:
         from enforceability.provider_canary import verify_receipt
         verify_receipt(args.config, args.canary_receipt)
-        run(args.config, canary_receipt=args.canary_receipt)
+        run(args.config, canary_receipt=args.canary_receipt,
+            max_initial_requests=args.max_initial_requests)
 
 
 if __name__ == "__main__":

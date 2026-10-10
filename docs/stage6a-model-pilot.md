@@ -155,3 +155,36 @@ Review the selected Git revision, hosted CI, configuration and v1.3 hashes
 before authorization. Even a documentation-only commit changes the Git SHA
 bound into a canary receipt; use the same pinned checkout for canary and run.
 Green tests alone do not establish provider readiness.
+
+## Bounded real-provider execution (post-v1.3 operational change)
+
+The `run` CLI now **requires** `--max-initial-requests N` (positive integer, at
+most 140). The limit counts *new initial scientific execution keys per invocation*,
+not historical completed keys. Once a key begins, its one permitted format-only
+repair may finish before the runner stops; at most `2*N` provider transport
+attempts may be made in that invocation. No changes are made to the frozen
+model-visible prompts, decoding parameters, request order, metrics or artifacts.
+
+Example, **only after a real passing canary is refreshed for the new merged
+Git SHA, explicit authorization and a prepaid-cost review**:
+
+```powershell
+.\.venv\Scripts\stage6a-model-pilot.exe run `
+  --config .\configs\stage6a-models.example.json `
+  --canary-receipt 'D:\formal-enforceability\provider-preflight\<new-canary>\canary-report.json' `
+  --max-initial-requests 2
+```
+
+A partial invocation ends with `BATCH_LIMIT_REACHED`; the execution manifest,
+per-key raw response and attempt journal remain append-only and are used to skip
+completed or noncompleted keys in the next invocation. `verify` reports
+`EXECUTION_INCOMPLETE` until 140 keys have reached terminal evidence; `score`
+remains forbidden until the entire scientific run is complete. Never score the
+partial batch or delete evidence to force a retry.
+
+**This is not a dollar-denominated cap.** Reasoning/output token usage, input
+tokens, and the permitted single repair call are billable; review actual
+usage and prepaid balance **between batches**, and independently enforce
+billing controls. A crash mid-provider-call is not recoverable by blindly
+reissuing the key. An interrupted or rejected response must remain visible
+as incomplete evidence, not be silently replaced.
