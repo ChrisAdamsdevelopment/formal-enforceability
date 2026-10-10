@@ -1,6 +1,7 @@
 import hashlib
 import json
 import shutil
+from functools import cache
 
 import pytest
 
@@ -46,6 +47,16 @@ def provider_response(text="{}", request_id="resp_1"):
             "output": [{"type": "message", "content": [{"type": "output_text", "text": text}]}]}
 
 
+@cache
+def input_to_render():
+    return {row["prompt_sha256"]: row["render_id"] for row in build_requests()[0]}
+
+
+def render_for_payload(payload):
+    # Attribution comes from the evaluator manifest, never subject-visible IDs.
+    return input_to_render()[hashlib.sha256(payload["input"].encode("utf-8")).hexdigest()]
+
+
 ANALYSIS_FILES = ("scored-responses.jsonl", "aggregate-report.json", "repair-sensitivity-report.json",
                   "cross-domain-report.json", "condition-transition-report.json", "pilot-freeze.json")
 
@@ -81,14 +92,14 @@ def test_frozen_selection_and_request_counts():
 
 def test_plan_revision_and_artifacts_are_frozen_before_execution():
     plan = pilot_plan()
-    assert plan["previous_plan_sha256"] == "ab393f32b9da8f8b27f1d45cdd1795a88b35073ce9eef948811e5205a4dee2f5"
+    assert plan["previous_plan_sha256"] == "15109fb0f023dbfa56bafff2dcd2b3c14fd761bcadf1d669220fa8d3f8cf2f82"
     assert plan["decoding"]["max_output_tokens"] == 25_000
     assert plan["zero_real_responses_before_revision"] is True
     assert plan["sample_sizes"] == {"unique_formal_instances": 18, "primary_calls_per_model": 54, "cross_domain_additional_calls_per_model": 16, "total_calls_per_model": 70}
     expected = build_artifacts()
     assert set(expected) == {path.name for path in ARTIFACT_DIRECTORY.iterdir()}
     assert all((ARTIFACT_DIRECTORY / name).read_bytes() == value for name, value in expected.items())
-    assert verify()["status"] == "READY_FOR_PROVIDER_EXECUTION"
+    assert verify()["status"] == "PRE_EXECUTION_VERIFIED_CANARY_REQUIRED"
     assert (HISTORICAL_ARTIFACT_DIRECTORY / "pilot-plan.json").read_bytes() != (ARTIFACT_DIRECTORY / "pilot-plan.json").read_bytes()
 
 
@@ -236,7 +247,7 @@ def test_repair_preserves_both_calls_metadata_and_occurs_once(artifact_copy, tmp
         if len(calls) == 1: return provider_response("not json", "initial-id")
         if len(calls) == 2: return provider_response(valid, "repair-id")
         raise OSError("stop after first completed request")
-    with pytest.raises(OSError): run(config_path, artifact_copy, transport, harness_sha="test-sha")
+    with pytest.raises(OSError): run(config_path, artifact_copy, transport)
     rows = [json.loads(x) for x in (artifact_copy / "raw-responses.jsonl").read_text().splitlines()]
     assert len(rows) == 1 and rows[0]["repair_attempted"]
     assert rows[0]["initial_raw_response"] == "not json" and rows[0]["initial_provider_request_id"] == "initial-id"
@@ -259,7 +270,7 @@ def test_incomplete_response_is_preserved_without_parse_repair_or_completion(art
             return envelope
         raise OSError("stop after incomplete evidence")
     with pytest.raises(OSError):
-        run(config_path, artifact_copy, transport, harness_sha="test-sha")
+        run(config_path, artifact_copy, transport)
     assert (artifact_copy / "raw-responses.jsonl").read_text() == ""
     rows = [json.loads(line) for line in (artifact_copy / "incomplete-responses.jsonl").read_text().splitlines()]
     assert len(rows) == 1 and rows[0]["provider_response"] == envelope
@@ -273,10 +284,10 @@ def test_incomplete_response_is_preserved_without_parse_repair_or_completion(art
 
     resumed = []
     def resumed_transport(config, payload, credential):
-        resumed.append(json.loads(payload["input"])["render_id"])
+        resumed.append(render_for_payload(payload))
         raise OSError("stop resumed session")
     with pytest.raises(OSError):
-        run(config_path, artifact_copy, resumed_transport, harness_sha="test-sha")
+        run(config_path, artifact_copy, resumed_transport)
     requests, _ = build_requests()
     assert resumed == [requests[1]["render_id"]]
 
@@ -296,7 +307,7 @@ def test_repair_incomplete_preserves_both_evidence_streams_and_resume_skips_key(
             return repair_envelope
         raise OSError("stop on next scientific key")
     with pytest.raises(OSError):
-        run(config_path, artifact_copy, transport, harness_sha="test-sha")
+        run(config_path, artifact_copy, transport)
     assert len(calls) == 3  # initial, its one repair, then the next scientific key
     raw = [json.loads(line) for line in (artifact_copy / "raw-responses.jsonl").read_text().splitlines()]
     incomplete = [json.loads(line) for line in (artifact_copy / "incomplete-responses.jsonl").read_text().splitlines()]
@@ -310,10 +321,10 @@ def test_repair_incomplete_preserves_both_evidence_streams_and_resume_skips_key(
     before = ((artifact_copy / "raw-responses.jsonl").read_bytes(), (artifact_copy / "incomplete-responses.jsonl").read_bytes())
     resumed_calls = []
     def resumed(config, payload, credential):
-        resumed_calls.append(json.loads(payload["input"])["render_id"])
+        resumed_calls.append(render_for_payload(payload))
         raise OSError("stop resumed session")
     with pytest.raises(OSError):
-        run(config_path, artifact_copy, resumed, harness_sha="test-sha")
+        run(config_path, artifact_copy, resumed)
     requests, _ = build_requests()
     assert resumed_calls == [requests[1]["render_id"]]
     assert before == ((artifact_copy / "raw-responses.jsonl").read_bytes(), (artifact_copy / "incomplete-responses.jsonl").read_bytes())
@@ -329,7 +340,7 @@ def test_repair_transport_failure_preserves_initial_evidence(artifact_copy, tmp_
             return provider_response("not json", "initial-preserved")
         raise OSError("repair unavailable")
     with pytest.raises(OSError):
-        run(config_path, artifact_copy, transport, harness_sha="test-sha")
+        run(config_path, artifact_copy, transport)
     rows = [json.loads(line) for line in (artifact_copy / "raw-responses.jsonl").read_text().splitlines()]
     assert len(rows) == 1
     assert rows[0]["initial_raw_response"] == "not json"
@@ -343,10 +354,10 @@ def test_repair_transport_failure_preserves_initial_evidence(artifact_copy, tmp_
     assert_scoring_rejected_without_mutation(artifact_copy)
     requests, _ = build_requests(); resumed = []
     def resume_transport(config, payload, credential):
-        resumed.append(json.loads(payload["input"])["render_id"])
+        resumed.append(render_for_payload(payload))
         raise OSError("stop resumed session")
     with pytest.raises(OSError):
-        run(config_path, artifact_copy, resume_transport, harness_sha="test-sha")
+        run(config_path, artifact_copy, resume_transport)
     assert resumed == [requests[1]["render_id"]]
 
 
@@ -361,14 +372,13 @@ def test_resume_skips_first_ten_and_transport_events_are_separate(artifact_copy,
     def first_transport(config, payload, credential):
         nonlocal count; count += 1
         if count == 11: raise OSError("interruption")
-        prompt = json.loads(payload["input"])
-        return provider_response(valid_by_prompt[prompt["render_id"]], f"id-{count}")
-    with pytest.raises(OSError): run(path, artifact_copy, first_transport, harness_sha="test-sha")
+        return provider_response(valid_by_prompt[render_for_payload(payload)], f"id-{count}")
+    with pytest.raises(OSError): run(path, artifact_copy, first_transport)
     assert len((artifact_copy / "raw-responses.jsonl").read_text().splitlines()) == 10
     resumed = []
     def resumed_transport(config, payload, credential):
-        prompt = json.loads(payload["input"]); resumed.append(prompt["render_id"]); raise OSError("stop")
-    with pytest.raises(OSError): run(path, artifact_copy, resumed_transport, harness_sha="test-sha")
+        resumed.append(render_for_payload(payload)); raise OSError("stop")
+    with pytest.raises(OSError): run(path, artifact_copy, resumed_transport)
     assert resumed == [requests[10]["render_id"]]
     events = [json.loads(x) for x in (artifact_copy / "transport-events.jsonl").read_text().splitlines()]
     assert len(events) == 2 and all("execution_key" in x and "error_class" in x and "safe_provider_status" in x for x in events)
@@ -386,7 +396,7 @@ def test_duplicate_partial_and_configuration_request_drift_failures(artifact_cop
         nonlocal calls; calls += 1
         if calls > 1: raise OSError("stop")
         return provider_response(valid)
-    with pytest.raises(OSError): run(path, artifact_copy, transport, harness_sha="test-sha")
+    with pytest.raises(OSError): run(path, artifact_copy, transport)
     assert verify(artifact_copy)["status"] == "EXECUTION_INCOMPLETE"
     raw_path = artifact_copy / "raw-responses.jsonl"; one = raw_path.read_text()
     raw_path.write_text(one + one)
@@ -394,7 +404,7 @@ def test_duplicate_partial_and_configuration_request_drift_failures(artifact_cop
     raw_path.write_text(one)
     changed = [config | {"temperature": 0.2} for config in configurations()]
     changed_path = tmp_path / "changed.json"; changed_path.write_text(json.dumps({"configurations": changed}))
-    with pytest.raises(ValueError, match="manifest drift"): run(changed_path, artifact_copy, lambda *_: provider_response(valid), harness_sha="test-sha")
+    with pytest.raises(ValueError, match="manifest drift"): run(changed_path, artifact_copy, lambda *_: provider_response(valid))
     row = json.loads(one); row["prompt_sha256"] = "0" * 64; raw_path.write_text(json.dumps(row) + "\n")
     with pytest.raises(ValueError, match="drift|attribution mismatch"): verify(artifact_copy)
 
@@ -412,7 +422,7 @@ def test_completed_record_request_attribution_is_canonical(artifact_copy, tmp_pa
             return provider_response(valid)
         raise OSError("stop after valid generated record")
     with pytest.raises(OSError):
-        run(path, artifact_copy, transport, harness_sha="test-sha")
+        run(path, artifact_copy, transport)
     assert verify(artifact_copy)["status"] == "EXECUTION_INCOMPLETE"
     raw_path = artifact_copy / "raw-responses.jsonl"; original = json.loads(raw_path.read_text())
     for field in ("formal_instance_id", "render_id", "track", "domain", "condition"):
@@ -435,7 +445,7 @@ def test_noncompleted_record_attribution_and_envelope_metadata_are_canonical(art
             return envelope
         raise OSError("stop after valid generated noncompletion")
     with pytest.raises(OSError):
-        run(path, artifact_copy, transport, harness_sha="test-sha")
+        run(path, artifact_copy, transport)
     assert verify(artifact_copy)["status"] == "EXECUTION_INCOMPLETE"
     incomplete_path = artifact_copy / "incomplete-responses.jsonl"; original = json.loads(incomplete_path.read_text())
     mutations = [(field, "corrupted", "request attribution mismatch")
@@ -463,7 +473,7 @@ def test_interrupted_partial_run_cannot_be_scored(artifact_copy, tmp_path, monke
         if calls == 1: return provider_response("bad")
         if calls == 2: return provider_response(valid)
         raise OSError("stop")
-    with pytest.raises(OSError): run(path, artifact_copy, transport, harness_sha="test-sha")
+    with pytest.raises(OSError): run(path, artifact_copy, transport)
     assert_scoring_rejected_without_mutation(artifact_copy)
 
 
@@ -485,8 +495,8 @@ def test_complete_execution_scores_and_freezes_all_140_keys(artifact_copy, tmp_p
             return provider_response("bad", "initial-malformed")
         if "format_only_message" in prompt:
             return provider_response(valid_by_render[requests[0]["render_id"]], "repair-completed")
-        return provider_response(valid_by_render[prompt["render_id"]], f"completed-{calls}")
-    run(path, artifact_copy, transport, harness_sha="test-sha")
+        return provider_response(valid_by_render[render_for_payload(payload)], f"completed-{calls}")
+    run(path, artifact_copy, transport)
     assert calls == 141
     before = (artifact_copy / "pilot-freeze.json").read_bytes()
     freeze = score(artifact_copy)
@@ -496,12 +506,24 @@ def test_complete_execution_scores_and_freezes_all_140_keys(artifact_copy, tmp_p
     assert sensitivity["accuracy_treating_all_repairs_as_failures"] < sensitivity["accuracy_with_allowed_format_repair"]
     assert len((artifact_copy / "scored-responses.jsonl").read_text().splitlines()) == 140
     assert set(freeze["files"]) == {"execution-manifest.json", "raw-responses.jsonl", "incomplete-responses.jsonl",
-                                     "transport-events.jsonl", "execution-sessions.jsonl", "scored-responses.jsonl",
+                                     "transport-events.jsonl", "execution-sessions.jsonl", "attempt-journal.jsonl", "scored-responses.jsonl",
                                      "aggregate-report.json", "repair-sensitivity-report.json", "cross-domain-report.json",
                                      "condition-transition-report.json"}
     assert all(freeze["files"][name] == hashlib.sha256((artifact_copy / name).read_bytes()).hexdigest()
                for name in freeze["files"])
     assert verify(artifact_copy) == {"status": "VERIFIED_EXECUTED", "completed": 140, "expected": 140}
+    before_files = {p.name: p.read_bytes() for p in artifact_copy.iterdir()}
+    with pytest.raises(ValueError, match="already frozen"):
+        score(artifact_copy)
+    with pytest.raises(ValueError, match="already frozen"):
+        run(path, artifact_copy, lambda *_: pytest.fail("frozen execution called transport"))
+    assert before_files == {p.name: p.read_bytes() for p in artifact_copy.iterdir()}
+    for broken in (freeze | {"files": {}}, freeze | {"pre_execution_pilot_freeze_sha256": "bad"},
+                   freeze | {"execution_manifest_sha256": "bad"}):
+        (artifact_copy / "execution-freeze.json").write_text(json.dumps(broken))
+        with pytest.raises(ValueError, match="execution freeze"):
+            verify(artifact_copy)
+    (artifact_copy / "execution-freeze.json").write_bytes(before_files["execution-freeze.json"])
 
 
 def test_representation_inconsistency_is_cross_render_and_generic_error_is_other():
