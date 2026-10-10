@@ -31,12 +31,15 @@ identity `W = upper V`, the standard inequality `W <= R`, and a finite one-step
 vertex reduction for a fixed policy. Uniform actionability is a hierarchical
 refinement only inside the certifiably-WINNING branch. The
 [small Stage 6A model-pilot plan](docs/stage6a-model-pilot.md) and execution
-harness have an explicitly versioned **v1.3 pre-execution successor on PR #14**.
-Merged main retains v1.1; the PR preserves both v1.1 and v1.2 byte-for-byte.
+harness have a **merged v1.3 pre-execution freeze**. PR #14 merged on
+2026-10-10 UTC as `3f4e71d585f981671419e2e14c450634ed3540de`, preserving
+both historical v1.1 and v1.2 byte-for-byte.
 V1.3 removes evaluator metadata from subject inputs and binds prompt hashes to
 the exact transmitted input string. Real provider responses collected: **0**.
-Provider execution requires review of the final hosted head/CI, exactly two
+Provider execution requires review of the selected revision/hosted CI, exactly two
 same-model medium/high configurations, a passing segregated non-benchmark canary
 receipt, and explicit execution authorization. Local or hosted green tests alone
-do not establish provider readiness. See the [pre-merge audit](docs/stage6a-premerge-audit.md)
-for scope, evidence categories, API assumptions, and remaining work.
+do not establish provider readiness. Start with [PROJECT_STATE](PROJECT_STATE.md),
+[DECISION_LOG](DECISION_LOG.md), the [post-merge operator handoff](docs/stage6a-postmerge-status.md)
+and [provider options/cost assumptions](docs/provider-options.md).
+The [pre-merge audit](docs/stage6a-premerge-audit.md) remains a dated historical record.

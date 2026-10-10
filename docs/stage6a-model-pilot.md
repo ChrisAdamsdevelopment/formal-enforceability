@@ -2,8 +2,11 @@
 
 ## Status and immutable boundaries
 
-PR #14 proposes v1.3; merged main at audit start is
-`9e5c8d4855b0cdea9e396cee0ea809fd3dbd6cf7` and contains historical v1.1.
+PR #14 merged v1.3 at 2026-10-10 02:52:12 UTC as
+`3f4e71d585f981671419e2e14c450634ed3540de`, from source head
+`8a999b245e5613f3c2dd69f32a7963a8c49bf13b`. See the
+[post-merge status and operator handoff](stage6a-postmerge-status.md) for
+current gates and dated hosted CI evidence. The pre-merge audit remains historical.
 **Real provider responses collected: 0.** V1.1 and v1.2 remain byte-for-byte
 unchanged. V1.1 was superseded because its 500-token cap could cause differential
 reasoning truncation. V1.2 raised the cap to 25,000 and hardened noncompletion.
@@ -142,16 +145,13 @@ provider signatures. Receipts explicitly distinguish mock transport; mock
 evidence cannot authorize real scientific calls. Any runtime/configuration
 change requires a new canary.
 
-The following are **future commands requiring explicit authorization**.
-This pre-merge task executes neither canary nor scientific run:
+The [post-merge operator handoff](stage6a-postmerge-status.md) gives the exact
+future canary command and separates its authorization from scientific execution
+and scoring. A normally returning canary command can still report NOT_PASSED;
+validate the receipt, not just the process exit code. No real canary or run has
+been performed by the offline recovery task.
 
-```bash
-stage6a-model-pilot verify
-stage6a-model-pilot canary --config /secure/stage6a-models.json --output /outside-checkout/canary-001 --acknowledge-provider-calls
-stage6a-model-pilot run --config /secure/stage6a-models.json --canary-receipt /outside-checkout/canary-001/canary-report.json
-stage6a-model-pilot score
-verify-stage6a-model-pilot
-```
-
-Review the actual final GitHub head, hosted CI, configurations and v1.3 hashes
-before authorization. Green tests alone do not establish provider readiness.
+Review the selected Git revision, hosted CI, configuration and v1.3 hashes
+before authorization. Even a documentation-only commit changes the Git SHA
+bound into a canary receipt; use the same pinned checkout for canary and run.
+Green tests alone do not establish provider readiness.
