@@ -1,5 +1,9 @@
 # Formal Enforceability
 
+**Engineering portfolio:** [Reference evaluation, reproducible model execution, verification and limits](docs/engineering-portfolio.md).
+
+> **Research status (October 2026):** The Stage 6A v1.3 material below describes a historical **pre-execution freeze**. Later local research records (not published as raw evidence in this repo) report 140/140 Stage 6A execution positions verified, 802 completed Stage 6B scheduled observations, and 1,972 technically complete of 1,980 Stage 6C positions. The Stage 6C primary preregistered robust orientation effect **was not established**. See the [engineering guide](docs/engineering-portfolio.md) for scope, provenance boundaries and the documented protocol deviation.
+
 A small exact-rational reference implementation for finite-horizon,
 one-sided partially observed reach-avoid games and finite structural
 restorations. See the [formal model](docs/formal_model.md).
@@ -35,7 +39,9 @@ harness have a **merged v1.3 pre-execution freeze**. PR #14 merged on
 2026-10-10 UTC as `3f4e71d585f981671419e2e14c450634ed3540de`, preserving
 both historical v1.1 and v1.2 byte-for-byte.
 V1.3 removes evaluator metadata from subject inputs and binds prompt hashes to
-the exact transmitted input string. Real provider responses collected: **0**.
+the exact transmitted input string. **At this pre-execution freeze**, real
+provider responses collected: **0**. This historical count is not the status
+of subsequent local executions (see the research status note above).
 Provider execution requires review of the selected revision/hosted CI, exactly two
 same-model medium/high configurations, a passing segregated non-benchmark canary
 receipt, and explicit execution authorization. Local or hosted green tests alone
